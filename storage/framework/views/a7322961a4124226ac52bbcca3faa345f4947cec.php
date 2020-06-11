@@ -1,0 +1,1 @@
+<?php /**PATH G:\averti\resources\views/main/footer.blade.php ENDPATH**/ ?>

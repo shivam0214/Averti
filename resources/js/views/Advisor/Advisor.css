@@ -1,0 +1,79 @@
+#imge{
+    height: 400px;
+    width: 500px;
+    padding-top: 10%;
+}
+
+.ps{
+   padding: 2%; 
+}
+.pt{
+    padding: 10%;
+    width: 100%;
+    padding-left: 10%;
+}
+.scrollbar-container{
+    height: 390px !important;
+}
+.top{
+    padding: 5%;
+    background-color:rgba(255, 255, 255, 0.712)!important;
+}
+.tops{
+    padding: 5%;
+}
+.reglogo{    
+    height: 80px;
+    width: auto;
+    margin-top: -37px;
+}
+
+#scroll{
+    height: 400px;
+    width: 500px;
+}
+input,select{
+    border: 1px solid #20a8d8 !important; 
+    padding: 12px !important;
+    height: 40px !important;
+    font-family: none !important;
+    letter-spacing: 0.9px !important;
+}
+input{
+    border: 1px solid #20a8d8 !important; 
+    padding: 12px !important;
+    height: 40px !important;
+    font-family: none !important;
+    letter-spacing: 0.9px !important;
+    text-transform: inherit !important;
+}
+.labelcheck{
+        text-transform: capitalize !important;
+
+}
+#btn{
+    position:absolute;
+    bottom: 0%;
+    float: right ;
+}
+.set{
+    min-height: 100%;
+    min-width: 1024px;
+	
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+	
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+#checkbox{
+    padding-left: 10%;
+}
+#check{
+    position: absolute;
+    padding-left: 10%;
+
+}
