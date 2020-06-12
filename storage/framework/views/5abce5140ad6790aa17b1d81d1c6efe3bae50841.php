@@ -114,7 +114,7 @@
                             <td bgcolor="#ffffff" align="left" style="padding:0; color: #666666; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400;-webkit-font-smoothing:antialiased;">
                                                 <p style="margin:0;color:#585858;font-size:14px;font-weight:400;line-height:170%;">Thank you for choosing Averti.</p>
                                                 <p style="margin:0;margin-top:20px;line-height:0;"></p>
-                                                <p style="margin:0;color:#585858;font-size:14px;font-weight:400;line-height:170%;">Please confirm that <b><a href="<?php echo e(URL::to('/#/'.$data['url'])); ?>" class="__cf_email__" data-cfemail="7e161b1212113e2d1317121b0d3a1f08170d50071b1f16">[email protected]</a></b> is your e-mail address by clicking on the button below </p>
+                                                <p style="margin:0;color:#585858;font-size:14px;font-weight:400;line-height:170%;">Please confirm that <b><a href="<?php echo e(URL::to('/verify/')); ?>/<?php echo e($data['verify_key']); ?>" class="__cf_email__" data-cfemail="7e161b1212113e2d1317121b0d3a1f08170d50071b1f16">[email protected]</a></b> is your e-mail address by clicking on the button below </p>
                             </td>
                           </tr>
                                             <tr>
@@ -124,7 +124,7 @@
                                                     <td align="center" style="padding: 33px 0 33px 0;">
                                                       <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                                         <tr>
-                                                          <td align="center" style="border-radius: 4px;" bgcolor="#17a2b8"><a href="<?php echo e(URL::to('/#/'.$data['url'])); ?>" style="text-transform:uppercase;background:#17a2b8;font-size: 13px; font-weight: 700; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none !important; padding: 20px 25px; border-radius: 4px; border: 1px solid #17a2b8; display: block;-webkit-font-smoothing:antialiased;" target="_blank"><span style="color: #ffffff;text-decoration: none;">Verify</span></a></td>
+                                                          <td align="center" style="border-radius: 4px;" bgcolor="#17a2b8"><a href="<?php echo e(URL::to('/verify/')); ?>/<?php echo e($data['verify_key']); ?>" style="text-transform:uppercase;background:#17a2b8;font-size: 13px; font-weight: 700; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none !important; padding: 20px 25px; border-radius: 4px; border: 1px solid #17a2b8; display: block;-webkit-font-smoothing:antialiased;" target="_blank"><span style="color: #ffffff;text-decoration: none;">Verify</span></a></td>
                                                         </tr>
                                                       </table>
                                                     </td>

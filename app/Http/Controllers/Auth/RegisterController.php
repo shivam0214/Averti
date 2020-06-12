@@ -67,18 +67,10 @@ class RegisterController extends Controller
         $craete =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'role_id' => 'admin',
+            'role_id' => '2',
             'password' => Hash::make($data['password']),
         ]);
-     if($craete->id>0){   
-        User_meta::create([
-            'user_id' => $craete->id,
-        ]);
-    }else{
-        User_meta::create([
-            'user_id' => 99,
-        ]);
-    }
+     
         
         return $craete;
 

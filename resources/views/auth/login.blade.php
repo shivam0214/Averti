@@ -18,7 +18,7 @@
 
 </head>
 	
-<body class="hold-transition theme-primary bg-img" style="background-image: url(../images/auth-bg/bg-1.jpg)" data-overlay="5">
+<body class="hold-transition theme-primary bg-img" style="background-image: url({{asset('assets/images/auth-bg/bg-1.jpg')}})" data-overlay="5">
 	
 	<div class="container h-p100">
 		<div class="row align-items-center justify-content-md-center h-p100">	
@@ -29,7 +29,7 @@
 						<div class="bg-white rounded30 shadow-lg">
 							<div class="content-top-agile p-20 pb-0">
 								<img src="{{asset('assets/images/averti1.jpg')}}" class="img-responsive" style="width: 20%;">
-								<p class="mb-0">Sign in to continue With Averti.</p>							
+								<p class="mb-0">Sign in to continue With Averti. </p>							
 							</div>
 							<div class="p-40">
 								 <form method="POST" action="{{ route('login') }}">

@@ -4,11 +4,11 @@
 	    <div class="user-profile px-10 py-15">
 			<div class="d-flex align-items-center">			
 				<div class="image">
-				  <img src="{{asset('assets/images/averti1.png')}}" class="avatar avatar-lg" alt="User Image">
+				  <img src="<?php echo e(asset('assets/images/averti1.png')); ?>" class="avatar avatar-lg" alt="User Image">
 				</div>
 				<div class="info ml-10">
 					<p class="mb-0">Welcome</p>
-					<h5 class="mb-0">{{ Auth::user()->name }}</h5>
+					<h5 class="mb-0"><?php echo e(Auth::user()->name); ?></h5>
 				</div>
 			</div>
         </div>	
@@ -22,7 +22,7 @@
           </a>
         </li>	
 		<li>
-          <a href="{{route('contact')}}">
+          <a href="<?php echo e(route('contact')); ?>">
             <i class="fa fa-group"></i>
 			<span>Contact</span>
           </a>
@@ -331,9 +331,9 @@
 		<!-- item-->
 		<a href="mailbox_inbox.html" class="link" data-toggle="tooltip" title="" data-original-title="Email"><i class="ti-email"></i></a>
 		<!-- item-->
-		<a  href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="link" data-toggle="tooltip" title="" data-original-title="Logout"><i class="ti-lock"></i><form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
+		<a  href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="link" data-toggle="tooltip" title="" data-original-title="Logout"><i class="ti-lock"></i><form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                                        <?php echo csrf_field(); ?>
                                     </form></a>
 	</div>
   </aside>
- 
+ <?php /**PATH G:\averti\resources\views/main/sidebar.blade.php ENDPATH**/ ?>
