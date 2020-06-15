@@ -27,4 +27,7 @@ Route::group(['middleware' => ['auth']], function()
 {
 Route::get('/dashboard', 'Adviser\DashboardController@index')->name('dashboard');
 Route::get('/contact', 'Adviser\ContactController@index')->name('contact');
+Route::get('/dashboard/calender', 'Calender\CalenderController@calender')->name('calender');
+
+
 });

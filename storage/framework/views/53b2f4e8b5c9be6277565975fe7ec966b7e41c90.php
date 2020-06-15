@@ -278,26 +278,20 @@
   <div class="control-sidebar-bg"></div>
   </div>
 
-  <script src="{{asset('assets/js/vendors.min.js')}}"></script>
-    <script src="{{asset('assets/icons/feather-icons/feather.min.js')}}"></script>	
-	<script src="{{asset('assets/vendor_components/apexcharts-bundle/dist/apexcharts.js')}}"></script>
-	<script src="{{asset('assets/vendor_components/progressbar.js-master/dist/progressbar.js')}}"></script>	
+  <script src="<?php echo e(asset('assets/js/vendors.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/icons/feather-icons/feather.min.js')); ?>"></script>	
+	<script src="<?php echo e(asset('assets/vendor_components/apexcharts-bundle/dist/apexcharts.js')); ?>"></script>
+	<script src="<?php echo e(asset('assets/vendor_components/progressbar.js-master/dist/progressbar.js')); ?>"></script>	
 	
-	<script src="{{asset('assets/js/template.js')}}"></script>
-	<script src="{{asset('assets/js/pages/dashboard.js')}}"></script>
-	<script src="{{asset('assets/js/demo.js')}}"></script>
-	<script src="{{asset('assets/vendor_plugins/iCheck/icheck.js')}}"></script>
-	<script src="{{asset('assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
-	<script src="{{asset('assets/js/pages/mailbox.js')}}"></script>
-	<script src="{{asset('assets/js/pages/form-compose.js')}}"></script>
-	<script src="{{asset('assets/js/pages/data-table.js')}}"></script>
-	<script src="{{asset('assets/vendor_components/datatable/datatables.min.js')}}"></script>
-	<script src="{{asset('assets/js/vendors.min.js')}}"></script>
-	<script src="{{asset('assets/icons/feather-icons/feather.min.js')}}"></script>	
-	<script src="{{asset('assets/vendor_components/jquery-ui/jquery-ui.min.js')}}"></script>
-    <script src="{{asset('assets/vendor_components/perfect-scrollbar-master/perfect-scrollbar.jquery.min.js')}}"></script>
-	<script src="{{asset('assets/vendor_components/fullcalendar/lib/moment.min.js')}}"></script>
-	<script src="{{asset('assets/vendor_components/fullcalendar/fullcalendar.min.js')}}"></script>
-	<script src="{{asset('assets/js/pages/calendar.js')}}"></script>
+	<script src="<?php echo e(asset('assets/js/template.js')); ?>"></script>
+	<script src="<?php echo e(asset('assets/js/pages/dashboard.js')); ?>"></script>
+	<script src="<?php echo e(asset('assets/js/demo.js')); ?>"></script>
+	<script src="<?php echo e(asset('assets/js/vendors.min.js')); ?>"></script>
+	<script src="<?php echo e(asset('assets/icons/feather-icons/feather.min.js')); ?>"></script>	
+	<script src="<?php echo e(asset('assets/vendor_components/jquery-ui/jquery-ui.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/vendor_components/perfect-scrollbar-master/perfect-scrollbar.jquery.min.js')); ?>"></script>
+	<script src="<?php echo e(asset('assets/vendor_components/fullcalendar/lib/moment.min.js')); ?>"></script>
+	<script src="<?php echo e(asset('assets/vendor_components/fullcalendar/fullcalendar.min.js')); ?>"></script>
+	<script src="<?php echo e(asset('assets/js/pages/calendar.js')); ?>"></script>
 
-	
+	<?php /**PATH H:\updateDemitrius\Averti\Averti\resources\views/main/footer.blade.php ENDPATH**/ ?>
