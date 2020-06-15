@@ -32,6 +32,9 @@
 						<table id="productorder" class="table table-hover no-wrap product-order" data-page-size="10">
 							<thead>
 								<tr>
+								<th>
+								<button type="button" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
+						</button></th>
 									 <th>Customer</th>
 									 <th>Order ID</th>
 									 <th>Photo</th>
@@ -43,7 +46,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
+								<tr><td><input type="checkbox"></td>
 									<td>Maical Roy</td>
 									<td>#12485791</td>
 									<td><img src="../images/product/product-1.png" alt="product" width="80"></td>
@@ -244,7 +247,6 @@
 				</div>
 			  </div>		  
 		  </div>
-
 		</section>
 		<!-- /.content -->
 	  </div>

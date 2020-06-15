@@ -286,5 +286,11 @@
 	<script src="{{asset('assets/js/template.js')}}"></script>
 	<script src="{{asset('assets/js/pages/dashboard.js')}}"></script>
 	<script src="{{asset('assets/js/demo.js')}}"></script>
-	
+	<script src="{{asset('assets/vendor_plugins/iCheck/icheck.js')}}"></script>
+	<script src="{{asset('assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
+	<script src="{{asset('assets/js/pages/mailbox.js')}}"></script>
+	<script src="{{asset('assets/js/pages/form-compose.js')}}"></script>
+	<script src="{{asset('assets/js/pages/data-table.js')}}"></script>
+	<script src="{{asset('assets/vendor_components/datatable/datatables.min.js')}}"></script>
+
 	
