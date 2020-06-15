@@ -39,7 +39,7 @@
 			    </a>
 			</li>
 			<li class="btn-group nav-item d-none d-xl-inline-block">
-				<a href="extra_calendar.html" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
+				<a href="{{route('calender')}}" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
 					<i class="ti-calendar"></i>
 			    </a>
 			</li>

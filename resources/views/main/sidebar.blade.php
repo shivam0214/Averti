@@ -16,27 +16,27 @@
       <!-- sidebar menu-->
       <ul class="sidebar-menu" data-widget="tree">
 		<li>
-          <a href="index.html">
+          <a href="{{route('dashboard')}}">
             <i class="ti-dashboard"></i>
 			<span>Dashboard</span>
           </a>
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="ti-layout-grid"></i>
+            <i class="ti-user"></i>
 			<span>User</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="extra_calendar.html"><i class="ti-more"></i>Add User</a></li>
-            <li><a href="contact_app.html"><i class="ti-more"></i>List User</a></li>
+            <li><a href="{{route('add_user')}}"><i class="ti-more"></i>Add User</a></li>
+            <li><a href="{{route('user')}}"><i class="ti-more"></i>List User</a></li>
           </ul>
         </li>
         	
 		<li>
-          <a href="#">
+          <a href="{{route('mail')}}">
             <i class="ti-email"></i>
 			<span>Mailbox</span>
           </a>
@@ -48,13 +48,13 @@
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="{{route('calender')}}">
             <i class="ti-calendar"></i>
 			<span>Event</span>
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="{{route('chat')}}">
             <i class="ti-email"></i>
 			<span>Chat</span>
           </a>
