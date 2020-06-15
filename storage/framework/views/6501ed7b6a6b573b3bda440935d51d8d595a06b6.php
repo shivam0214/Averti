@@ -75,7 +75,6 @@
             <li><a href="extra_taskboard.html"><i class="ti-more"></i>Todo</a></li>
           </ul>
         </li>
-		
       </ul>
     </section>
 	<div class="sidebar-footer">
