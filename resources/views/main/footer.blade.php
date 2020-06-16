@@ -300,4 +300,5 @@
 	<script src="{{asset('assets/vendor_components/fullcalendar/fullcalendar.min.js')}}"></script>
 	<script src="{{asset('assets/js/pages/calendar.js')}}"></script>
 
-	
+	/* custom js added by sam*/
+	<script src="{{asset('assets/js/custom/zoom.js')}}"></script>

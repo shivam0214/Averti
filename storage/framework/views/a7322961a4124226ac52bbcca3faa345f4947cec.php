@@ -300,4 +300,5 @@
 	<script src="<?php echo e(asset('assets/vendor_components/fullcalendar/fullcalendar.min.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/js/pages/calendar.js')); ?>"></script>
 
-	<?php /**PATH G:\averti\resources\views/main/footer.blade.php ENDPATH**/ ?>
+	/* custom js added by sam*/
+	<script src="<?php echo e(asset('assets/js/custom/zoom.js')); ?>"></script><?php /**PATH G:\averti\resources\views/main/footer.blade.php ENDPATH**/ ?>
