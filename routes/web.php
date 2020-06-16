@@ -19,7 +19,6 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 Auth::routes();
-
 /* verify email */
 Route::get('/verify/{token}', 'api\AuthController@verify')->name('verify');
 /* verify email end */
@@ -27,7 +26,11 @@ Route::group(['middleware' => ['auth']], function()
 {
 Route::get('/dashboard', 'Adviser\DashboardController@index')->name('dashboard');
 Route::get('/contact', 'Adviser\ContactController@index')->name('contact');
-Route::get('/dashboard/calender', 'Calender\CalenderController@calender')->name('calender');
-
+Route::get('/dashboard/event', 'Calender\CalenderController@calender')->name('calender');
+Route::get('/dashboard/User/ListUser', 'User\UserController@user')->name('user');
+Route::get('/dashboard/User/AddUser', 'User\UserController@add_user')->name('add_user');
+Route::get('/dashboard/User/ViewUser', 'User\UserController@view_profile')->name('view_profile');
+Route::get('/Mail', 'User\UserController@mail')->name('mail');
+Route::get('/Chat', 'User\UserController@chat')->name('chat');
 
 });

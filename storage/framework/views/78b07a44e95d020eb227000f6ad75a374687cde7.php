@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content') 
+<?php $__env->startSection('content'); ?> 
 <div class="content-wrapper">
 	  <div class="container-full">
 		<!-- Main content -->
@@ -94,7 +92,7 @@
 						<div class="media-list media-list-hover">
 							<div class="media py-10 px-0 align-items-center">
 							  <a class="avatar avatar-lg status-success" href="#">
-								<img src="{{asset('assets/img/avatars/1.jpg')}}" alt="...">
+								<img src="<?php echo e(asset('assets/img/avatars/1.jpg')); ?>" alt="...">
 							  </a>
 							  <div class="media-body">
 								<p class="font-size-16">
@@ -105,7 +103,7 @@
 
 							<div class="media py-10 px-0 align-items-center">
 							  <a class="avatar avatar-lg status-danger" href="#">
-								<img src="{{asset('assets/img/avatars/2.jpg')}}" alt="...">
+								<img src="<?php echo e(asset('assets/img/avatars/2.jpg')); ?>" alt="...">
 							  </a>
 							  <div class="media-body">
 								<p class="font-size-16">
@@ -116,7 +114,7 @@
 
 							<div class="media py-10 px-0 align-items-center">
 							  <a class="avatar avatar-lg status-warning" href="#">
-								<img src="{{asset('assets/img/avatars/3.jpg')}}" alt="...">
+								<img src="<?php echo e(asset('assets/img/avatars/3.jpg')); ?>" alt="...">
 							  </a>
 							  <div class="media-body">
 								<p class="font-size-16">
@@ -127,7 +125,7 @@
 
 							<div class="media py-10 px-0 align-items-center">
 							  <a class="avatar avatar-lg status-primary" href="#">
-								<img src="{{asset('assets/img/avatars/5.jpg')}}" alt="...">
+								<img src="<?php echo e(asset('assets/img/avatars/5.jpg')); ?>" alt="...">
 							  </a>
 							  <div class="media-body">
 								<p class="font-size-16">
@@ -138,7 +136,7 @@
 
 							<div class="media py-10 px-0 align-items-center">
 							  <a class="avatar avatar-lg status-success" href="#">
-								<img src="{{asset('assets/img/avatars/1.jpg')}}" alt="...">
+								<img src="<?php echo e(asset('assets/img/avatars/1.jpg')); ?>" alt="...">
 							  </a>
 							  <div class="media-body">
 								<p class="font-size-16">
@@ -149,7 +147,7 @@
 
 							<div class="media py-10 px-0 align-items-center">
 							  <a class="avatar avatar-lg status-danger" href="#">
-								<img src="{{asset('assets/img/avatars/2.jpg')}}" alt="...">
+								<img src="<?php echo e(asset('assets/img/avatars/2.jpg')); ?>" alt="...">
 							  </a>
 							  <div class="media-body">
 								<p class="font-size-16">
@@ -372,7 +370,7 @@
 						<h4>Your message title goes here</h4>
 					  </div>
 					  <div class="mailbox-read-info clearfix mb-20">
-						<div class="float-left mr-10"><a href="#"><img src="{{asset('assets/img/avatars/4.jpg')}}" alt="user" width="40" class="rounded-circle"></a></div>
+						<div class="float-left mr-10"><a href="#"><img src="<?php echo e(asset('assets/img/avatars/4.jpg')); ?>" alt="user" width="40" class="rounded-circle"></a></div>
 						<h5 class="no-margin"> Pavan kumar<br>
 							 <small>From: jonathan@domain.com</small>
 						  <span class="mailbox-read-time pull-right">22 JUL. 2019 08:03 PM</span></h5>
@@ -452,4 +450,6 @@
 	  </div>
   </div>
   
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH H:\updateDemitrius\Averti\Averti\resources\views/mail/new_mail.blade.php ENDPATH**/ ?>

@@ -299,6 +299,14 @@
 	<script src="{{asset('assets/vendor_components/fullcalendar/lib/moment.min.js')}}"></script>
 	<script src="{{asset('assets/vendor_components/fullcalendar/fullcalendar.min.js')}}"></script>
 	<script src="{{asset('assets/js/pages/calendar.js')}}"></script>
+	<script src="{{asset('assets/js/pages/app-chat.js')}}"></script>
+	<script src="{{asset('assets/icons/feather-icons/feather.min.js')}}"></script>	
+	<script src="{{asset('assets/vendor_components/Magnific-Popup-master/dist/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{asset('assets/vendor_components/Magnific-Popup-master/dist/jquery.magnific-popup-init.js')}}"></script>
+    <script src="{{asset('assets/vendor_components/perfect-scrollbar-master/perfect-scrollbar.jquery.min.js')}}"></script>
+	<script src="{{asset('assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
+	<script src="{{asset('assets/js/pages/mailbox.js')}}"></script>
+
 
 	/* custom js added by sam*/
 	<script src="{{asset('assets/js/custom/zoom.js')}}"></script>
