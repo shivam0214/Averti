@@ -23,10 +23,10 @@
 										<div class="form-group">
 											<div class="row">
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
-													<input type="text" name="first-name" placeholder="First name">
+													<input type="text" name="first_name" placeholder="First name">
 												</div>
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
-													<input type="text" name="last-name" placeholder="Last name">
+													<input type="text" name="last_name" placeholder="Last name">
 												</div>
 											</div>
 										</div>
@@ -40,10 +40,10 @@
 										<div class="form-group">
 											<div class="row">
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
-													<input type="text" name="Company name" placeholder="Company name">
+													<input type="text" name="company_name" placeholder="Company name">
 												</div>
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
-													<input type="text" name="Phone Number" placeholder="Phone Number">
+													<input type="text" name="phonenumber" placeholder="Phone Number">
 												</div>
 											</div>
 										</div>
@@ -53,7 +53,7 @@
 													<input type="text" name="Street Address" placeholder="Street Address">
 												</div>
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
-													<input type="text" name="City" placeholder="City">
+													<input type="text" name="city" placeholder="City">
 												</div>
 											</div>
 										</div>
