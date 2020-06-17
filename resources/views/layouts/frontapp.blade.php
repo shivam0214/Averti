@@ -19,9 +19,9 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/frontassets/css/slick-theme.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/frontassets/css/jquery.nstSlider.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/frontassets/css/style.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('assets/frontassets/assets/css/style.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/frontassets/assets/css/wizard.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/frontassets/assets/css/slider.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('assets/frontassets/css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/frontassets/css/wizard.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/frontassets/css/slider.css')}}">
     
 	<link id="stylesheet" rel="stylesheet" type="text/css" href="{{asset('assets/frontassets/css/zInput_default_stylesheet.css')}}">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">

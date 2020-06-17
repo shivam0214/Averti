@@ -16,7 +16,12 @@
 	<div class="mainformright">
 	<div class="logoform"><img src="{{asset('assets/frontassets/images/banner/hello.png')}}"></div>
 <form role="form" action="" method="post" class="f1">
+
+
+
+
 <fieldset>
+
 <h4>Advisor Registration</h4>
 <div class="form-group">
 <div class="row">
@@ -92,7 +97,7 @@
 		<div class="form-group">
 			<div class="row">
 			<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12">
-				<select name="select_data" id="select_data" class="form-control-sm form-control"><option value="">What database program  do you currently Use</option><option value="1">Option #1</option><option value="2">Option #2</option><option value="3">Option #3</option><option value="4">Option #4</option><option value="5">Option #5</option></select>	
+				<select name="select_data" id="select_data" class="form-control-sm form-control"><option value="">What database program  do you currently Uses</option><option value="1">Option #1</option><option value="2">Option #2</option><option value="3">Option #3</option><option value="4">Option #4</option><option value="5">Option #5</option></select>	
 			</div>
 			</div>
 			</div>
@@ -105,14 +110,14 @@
 						<label class="checkbox-custom-label" for="noti_6">I would like to recive the redetails email newsletter</label>
 					  </div>
 					
-					</div>
+				</div>
+				</div>
 				</div>
 				<div class="form-group">
 					<div class="row">
-						<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12">
+					<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12">
 						<div class="custom-checkbox">
 							<input name="noti_7" class="checkbox-custom" id="noti_7" value="7" type="checkbox">
-						</div>
 							<label class="checkbox-custom-label" for="noti_7">Populate my trail database with sample data</label>
 						  </div>
 						
@@ -125,20 +130,12 @@
 <button type="button" class="btn btn-next">Next</button>
 </div>
 </fieldset>
-<fieldset>
-<div class="form-group">
-	<div class="row">
-	<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12"><input type="text" name="Lincense Number" placeholder="Lincense Number" ></div>
-	</div>
-	</div>
 
-<div class="f1-buttons">
-<button type="button" class="btn btn-previous">Previous</button>
-<button type="button" class="btn btn-next">Next</button>
-</div>
-</fieldset>
 <fieldset>
+
 <h4>Advisor Username</h4>
+
+
 <div class="form-group">
 	<div class="row">
 	<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12"><input type="text" name="User name" placeholder="User name" ></div>
@@ -557,6 +554,7 @@ Before we can create your life and financial plan, we need to find out what you 
 <div class="f1-step"></div>
 </div>
 </form>
+
 </div>
 </div>
  </div>
@@ -574,7 +572,7 @@ Before we can create your life and financial plan, we need to find out what you 
 		<div class="container">
 			<div class="section-header">
 				<h2>Subscribe Our Newsletter Get News &amp; Updates</h2>
-				<p>Intrinsicly leverage other's robust leadership skills without bricks-and-clicks technologies. Distinctively.</p>
+				<p>Intrinsicly leverage others robust leadership skills without bricks-and-clicks technologies. Distinctively.</p>
 			</div>
 			<div class="section-wrapper">
 				<div class="recent-news">

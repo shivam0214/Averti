@@ -35,14 +35,13 @@ Route::get('/dashboard/User/ViewUser', 'User\UserController@view_profile')->name
 Route::get('/Mail', 'User\UserController@mail')->name('mail');
 Route::get('/Chat', 'User\UserController@chat')->name('chat');
 
-
-/** Front page Route**/
-Route::get('/index', 'Frontform\FrontformController@index')->name('index');
-Route::get('/index/advisor_question', 'Frontform\AdvisorquestionController@home')->name('advisor_question');
-Route::get('/index/find_advisor', 'Frontform\FindadvisorController@home')->name('find_advisor');
-
 /* Zoom */
 Route::get('create/zoom','ZoomController@index')->name('zoomcreate');
 Route::post('post/zoom','ZoomController@store')->name('zoomcreatepost');
 
 });
+
+/** Front page Route**/
+Route::get('/index', 'Frontform\FrontformController@index')->name('index');
+Route::get('/index/advisor_question', 'Frontform\AdvisorquestionController@home')->name('advisor_question');
+Route::get('/index/find_advisor', 'Frontform\FindadvisorController@home')->name('find_advisor');
