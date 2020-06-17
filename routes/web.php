@@ -33,4 +33,8 @@ Route::get('/dashboard/User/ViewUser', 'User\UserController@view_profile')->name
 Route::get('/Mail', 'User\UserController@mail')->name('mail');
 Route::get('/Chat', 'User\UserController@chat')->name('chat');
 
+/* Zoom */
+Route::get('create/zoom','ZoomController@index')->name('zoomcreate');
+Route::post('post/zoom','ZoomController@store')->name('zoomcreatepost');
+
 });

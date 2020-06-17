@@ -1,4 +1,5 @@
 <div class="wrapper">
+
 <header class="main-header">
 	<div class="d-flex align-items-center logo-box justify-content-between">
 		<a href="#" class="waves-effect waves-light nav-link rounded d-none d-md-inline-block mx-10 push-btn" data-toggle="push-menu" role="button">
@@ -44,7 +45,7 @@
 			    </a>
 			</li>
 			<li class="btn-group nav-item d-none d-xl-inline-block">
-				<a href="extra_calendar.html" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
+				<a href="<?php echo e(route('calender')); ?>" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
 					<i class="ti-calendar"></i>
 			    </a>
 			</li>
@@ -177,11 +178,11 @@
 			</button>
 		  </div>
 		  <div class="modal-body">
-			<p>Your content comes here</p>
+			
 		  </div>
 		  <div class="modal-footer modal-footer-uniform">
 			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			<button type="button" class="btn btn-primary float-right">Create</button>
+			<button type="submit" class="btn btn-primary float-right">Create</button>
 		  </div>
 		</div>
 	  </div>
