@@ -91,4 +91,15 @@ class UsersController extends Controller
       $user = DB::table('user_meta')->where('user_id',$user_d->id)->update($data);      
       return back()->with('message','Update successfully.');
    }
+
+/* -------------------------------------------------------------------------------------------------------------------------- */
+############## for the front user ###################### registration please code here for font 
+
+/***************************************************************************************************************************** */
+
+
+
+
+
+
 }
