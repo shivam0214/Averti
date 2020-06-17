@@ -113,6 +113,66 @@
 					 		</div>
 							<!-- /.tab-pane -->
 							<div class="tab-pane" id="settings">
+							<div class="box">
+									<form class="form">
+										<div class="box-body">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label>Task Name</label>
+														<input type="text" class="form-control" placeholder="Task Name">
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<div class="position-relative">
+														<label for="date_of_birth">Duse Date</label>
+														<input type="date" id="date_of_birth" name="due_date" class="form-control" placeholder="DOB">
+														
+														</div>
+                                    				</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+													<label for="Assignh">Assign\</label>
+														<select class="form-control" id="course">
+															<option value="">Brad Creedon</option>
+															<option value="1">Course1</option>
+															<option value="2">Course2</option>
+															<option value="3">Course3</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+													<label for="Assign">Category</label>
+														<select class="form-control" id="course">
+															<option value="">None</option>
+															<option value="1">Course1</option>
+															<option value="2">Course2</option>
+															<option value="3">Course3</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- /.box-body -->
+										<div class="box-footer">
+											<button type="button" class="btn btn-rounded btn-warning btn-outline mr-1">
+											<i class="ti-trash"></i> Cancel
+											</button>
+											<button type="submit" class="btn btn-rounded btn-primary btn-outline">
+											<i class="ti-save-alt"></i> Save
+											</button>
+										</div>  
+									</form>
+					  			</div>
 							</div>
 							<!-- /.tab-pane -->
 						</div>

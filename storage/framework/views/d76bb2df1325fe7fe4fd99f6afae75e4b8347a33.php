@@ -72,19 +72,16 @@
                                     <td><img src="<?php echo e(asset('assets/img/avatars/2.jpg')); ?>" alt="user avatar" class="customer-img rounded-circle"></td>
                                     <td>Sara Jen</td>
                                     <td>+555222333</td>
-									<td><span class="badge badge-pill badge-success">Complete</span></td>
-								     <td>
-                                 <div class="progress shadow" style="height: 4px;">
+									                  <td><span class="badge badge-pill badge-success">Complete</span></td>
+								                    <td>
+                                   <div class="progress shadow" style="height: 4px;">
                                               <div class="progress-bar gradient-ohhappiness" role="progressbar" style="width: 100%"></div>
                                            </div>
                                         </td>
-                                    
                                     <td><button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#video-call"><i class="fa fa-video-camera"></i></button>
                                         <button type="button" class="btn btn-success waves-effect waves-light"><i class="fa fa-edit"></i></button>
                                       <button type="button" class="btn btn-danger waves-effect waves-light"><i class="fa fa-trash"></i></button>
-                                      
                                       </td>
-                                    
                                 </tr>
                                 <tr>
                                     <th scope="row"><div class="icheck-material-primary">
@@ -93,9 +90,8 @@
                                   </div></th>
                                     <td><img src="<?php echo e(asset('assets/img/avatars/7.jpg')); ?>" alt="user avatar" class="customer-img rounded-circle"></td>
                                     <td>Colleen Hurst</td>
-									<td>+555222444</td>
-									<td><span class="badge badge-pill badge-info">on schedule</span></td>
-
+                                    <td>+555222444</td>
+                                    <td><span class="badge badge-pill badge-info">on schedule</span></td>
                                     <td>
                                      <div class="progress shadow" style="height: 4px;">
                                           <div class="progress-bar gradient-scooter" role="progressbar" style="width: 85%"></div>

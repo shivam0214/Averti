@@ -55,7 +55,7 @@
         </li>
         <li>
           <a href="{{route('chat')}}">
-            <i class="ti-email"></i>
+            <i class="mdi mdi-message-text"></i>
 			<span>Chat</span>
           </a>
         </li>

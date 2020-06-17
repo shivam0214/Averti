@@ -55,7 +55,7 @@
         </li>
         <li>
           <a href="<?php echo e(route('chat')); ?>">
-            <i class="ti-email"></i>
+            <i class="mdi mdi-message-text"></i>
 			<span>Chat</span>
           </a>
         </li>
@@ -75,7 +75,6 @@
             <li><a href="extra_taskboard.html"><i class="ti-more"></i>Todo</a></li>
           </ul>
         </li>
-		<li class="header">Login &amp; Error</li>
       </ul>
     </section>
 	<div class="sidebar-footer">
