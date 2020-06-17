@@ -1,6 +1,4 @@
-@extends('layouts.frontapp')
-
-@section('content') 
+<?php $__env->startSection('content'); ?> 
 <section class="wizardform">
 <div class="mid">
 <div class="container">
@@ -14,12 +12,11 @@
 </div>
 <div class="col-sm-12 col-xs-12 col-md-8 col-lg-7 col-xs-12 form-box p-0">
 	<div class="mainformright">
-	<div class="logoform"><img src="{{asset('assets/frontassets/images/banner/hello.png')}}"></div>
-<form role="form" action="{{route('insert')}}" method="post" class="f1">
-@csrf
+	<div class="logoform"><img src="<?php echo e(asset('assets/frontassets/images/banner/hello.png')); ?>"></div>
+<form role="form" action="<?php echo e(route('insert')); ?>" method="post" class="f1">
+<?php echo csrf_field(); ?>
 
 <fieldset>
-
 <h4>Advisor Registration</h4>
 <div class="form-group">
 <div class="row">
@@ -38,49 +35,6 @@
 		<div class="row">
 		<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12"><input type="text" name="Company" placeholder="Company name" ></div>
 		<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12"><input type="text" name="Phone_number" placeholder="Phone Number" ></div>
-		</div>
-		</div>
-
-
-<section class="wizardform">
-<div class="mid">
-<div class="container">
-<div class="row">
-<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 offset-lg-1">
-<div class="row shadow">
-<div class="col-lg-5 col-md-4 col-sm-4 col-xs-12 p-0">
-<div class="img">
-<div class="pics"></div>
-</div>
-</div>
-<div class="col-sm-12 col-xs-12 col-md-8 col-lg-7 col-xs-12 form-box p-0">
-	<div class="mainformright">
-	<div class="logoform"><img src="{{asset('assets/frontassets/images/banner/hello.png')}}"></div>
-<form role="form" action="" method="post" class="f1">
-
-
-
-
-<fieldset>
-
-<h4>Advisor Registration</h4>
-<div class="form-group">
-<div class="row">
-<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12"><input type="text" name="first-name" placeholder="First name" ></div>
-<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12"><input type="text" name="last-name" placeholder="Last name" ></div>
-</div>
-</div>
-<div class="form-group">
-	<div class="row">
-	<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12"><input type="email" name="email" placeholder="Email Address" ></div>
-	</div>
-	</div>
-
-
-	<div class="form-group">
-		<div class="row">
-		<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12"><input type="text" name="Company name" placeholder="Company name" ></div>
-		<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12"><input type="text" name="Phone Number" placeholder="Phone Number" ></div>
 		</div>
 		</div>
 
@@ -115,7 +69,7 @@
 
 <div class="form-group">
 	<div class="row">
-	<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12"><input type="text" name="Lincense_Number" placeholder="Lincense Number" ></div>
+	<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12"><input type="text" name="Lincense Number" placeholder="Lincense Number" ></div>
 	</div>
 	</div>
 
@@ -153,14 +107,14 @@
 						<label class="checkbox-custom-label" for="noti_6">I would like to recive the redetails email newsletter</label>
 					  </div>
 					
-				</div>
-				</div>
+					</div>
 				</div>
 				<div class="form-group">
 					<div class="row">
-					<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12">
+						<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12">
 						<div class="custom-checkbox">
 							<input name="noti_7" class="checkbox-custom" id="noti_7" value="7" type="checkbox">
+						</div>
 							<label class="checkbox-custom-label" for="noti_7">Populate my trail database with sample data</label>
 						  </div>
 						
@@ -190,15 +144,11 @@
 	<button type="button" class="btn btn-next">Next</button>
 	</div>
 </fieldset>
-
 <fieldset>
-
 <h4>Advisor Username</h4>
-
-
 <div class="form-group">
 	<div class="row">
-	<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12"><input type="text" name="User_name" placeholder="User name" ></div>
+	<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12"><input type="text" name="User name" placeholder="User name" ></div>
 	</div>
 	</div>
 
@@ -210,7 +160,7 @@
 
 		<div class="form-group">
 			<div class="row">
-			<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12"><input type="password" name="Confirm_Password" placeholder="Confirm Password" ></div>
+			<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12"><input type="password" name="Confirm Password" placeholder="Confirm Password" ></div>
 			</div>
 			</div>
 
@@ -614,7 +564,6 @@ Before we can create your life and financial plan, we need to find out what you 
 <div class="f1-step"></div>
 </div>
 </form>
-
 </div>
 </div>
  </div>
@@ -632,7 +581,7 @@ Before we can create your life and financial plan, we need to find out what you 
 		<div class="container">
 			<div class="section-header">
 				<h2>Subscribe Our Newsletter Get News &amp; Updates</h2>
-				<p>Intrinsicly leverage others robust leadership skills without bricks-and-clicks technologies. Distinctively.</p>
+				<p>Intrinsicly leverage other's robust leadership skills without bricks-and-clicks technologies. Distinctively.</p>
 			</div>
 			<div class="section-wrapper">
 				<div class="recent-news">
@@ -644,4 +593,6 @@ Before we can create your life and financial plan, we need to find out what you 
 	</section>
 	<!-- newslettar section ending here -->
      
-@endsection('content')
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.frontapp', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH H:\updateDemitrius\Averti\Averti\resources\views/frontview/advisorquestion/advisorquestion.blade.php ENDPATH**/ ?>

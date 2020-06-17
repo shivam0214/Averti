@@ -21,9 +21,13 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/frontassets/css/style.css')); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/frontassets/css/style.css')); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/frontassets/css/wizard.css')); ?>">
+<<<<<<< HEAD:storage/framework/views/02e6d8c2b493f9ba24991ebe400f6119fde0fd82.php
+    <link rel="stylesheet" href="<?php echo e(asset('assets/frontassets/css/slider.css')); ?>" type="text/css">
+=======
     <link rel="stylesheet" href="<?php echo e(asset('assets/frontassets/css/slider.css')); ?>">
+>>>>>>> daa72b8a01b3c664a3ab80df22f0a3e43582148d:storage/framework/views/ea91e7f744b9247f71017e5f89e6aaff1004900b.php
     
-	<link id="stylesheet" rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/frontassets/css/zInput_default_stylesheet.css')); ?>">
+	<link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/frontassets/css/zInput_default_stylesheet.css')); ?>">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 
