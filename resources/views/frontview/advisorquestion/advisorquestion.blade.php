@@ -150,7 +150,7 @@
 <h4>Advisor Username</h4>
 <div class="form-group">
 	<div class="row">
-	<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12"><input type="text" name="User name" placeholder="User name" ></div>
+	<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12"><input type="text" name="User_name" placeholder="User name" ></div>
 	</div>
 	</div>
 
@@ -162,7 +162,7 @@
 
 		<div class="form-group">
 			<div class="row">
-			<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12"><input type="password" name="Confirm Password" placeholder="Confirm Password" ></div>
+			<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12"><input type="password" name="Confirm_Password" placeholder="Confirm Password" ></div>
 			</div>
 			</div>
 
