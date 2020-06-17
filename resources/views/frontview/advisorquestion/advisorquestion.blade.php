@@ -19,6 +19,7 @@
 @csrf
 
 <fieldset>
+
 <h4>Advisor Registration</h4>
 <div class="form-group">
 <div class="row">
@@ -109,14 +110,14 @@
 						<label class="checkbox-custom-label" for="noti_6">I would like to recive the redetails email newsletter</label>
 					  </div>
 					
-					</div>
+				</div>
+				</div>
 				</div>
 				<div class="form-group">
 					<div class="row">
-						<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12">
+					<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12">
 						<div class="custom-checkbox">
 							<input name="noti_7" class="checkbox-custom" id="noti_7" value="7" type="checkbox">
-						</div>
 							<label class="checkbox-custom-label" for="noti_7">Populate my trail database with sample data</label>
 						  </div>
 						
@@ -146,8 +147,12 @@
 	<button type="button" class="btn btn-next">Next</button>
 	</div>
 </fieldset>
+
 <fieldset>
+
 <h4>Advisor Username</h4>
+
+
 <div class="form-group">
 	<div class="row">
 	<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12"><input type="text" name="User_name" placeholder="User name" ></div>
@@ -566,6 +571,7 @@ Before we can create your life and financial plan, we need to find out what you 
 <div class="f1-step"></div>
 </div>
 </form>
+
 </div>
 </div>
  </div>
@@ -583,7 +589,7 @@ Before we can create your life and financial plan, we need to find out what you 
 		<div class="container">
 			<div class="section-header">
 				<h2>Subscribe Our Newsletter Get News &amp; Updates</h2>
-				<p>Intrinsicly leverage other's robust leadership skills without bricks-and-clicks technologies. Distinctively.</p>
+				<p>Intrinsicly leverage others robust leadership skills without bricks-and-clicks technologies. Distinctively.</p>
 			</div>
 			<div class="section-wrapper">
 				<div class="recent-news">
