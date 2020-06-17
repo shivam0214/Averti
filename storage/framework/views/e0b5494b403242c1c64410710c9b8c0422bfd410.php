@@ -13,13 +13,15 @@
 <div class="col-sm-12 col-xs-12 col-md-8 col-lg-7 col-xs-12 form-box p-0">
 	<div class="mainformright">
 	<div class="logoform"><img src="<?php echo e(asset('assets/frontassets/images/banner/hello.png')); ?>"></div>
-<form role="form" action="" method="post" class="f1">
+<form role="form" action="<?php echo e(route('insert')); ?>" method="post" class="f1">
+<?php echo csrf_field(); ?>
+
 <fieldset>
 <h4>Advisor Registration</h4>
 <div class="form-group">
 <div class="row">
-<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12"><input type="text" name="first-name" placeholder="First name" ></div>
-<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12"><input type="text" name="last-name" placeholder="Last name" ></div>
+<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12"><input type="text" name="firstname" placeholder="First name" ></div>
+<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12"><input type="text" name="lastname" placeholder="Last name" ></div>
 </div>
 </div>
 <div class="form-group">
@@ -31,15 +33,15 @@
 
 	<div class="form-group">
 		<div class="row">
-		<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12"><input type="text" name="Company name" placeholder="Company name" ></div>
-		<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12"><input type="text" name="Phone Number" placeholder="Phone Number" ></div>
+		<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12"><input type="text" name="Company" placeholder="Company name" ></div>
+		<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12"><input type="text" name="Phone_number" placeholder="Phone Number" ></div>
 		</div>
 		</div>
 
 
 		<div class="form-group">
 			<div class="row">
-			<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12"><input type="text" name="Street Address" placeholder="Street Address" ></div>
+			<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12"><input type="text" name="Street_Address" placeholder="Street Address" ></div>
 			<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12"><input type="text" name="City" placeholder="City" ></div>
 			</div>
 			</div>
@@ -48,7 +50,7 @@
 			<div class="form-group">
 				<div class="row">
 				<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12"><input type="text" name="State" placeholder="State" ></div>
-				<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12"><input type="text" name="Postal code" placeholder="Postal code" ></div>
+				<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12"><input type="text" name="Postal_code" placeholder="Postal code" ></div>
 				</div>
 				</div>
 				<div class="form-group">
@@ -73,13 +75,11 @@
 
 	<div class="form-group">
 		<div class="row">
-		<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12"><select name="selectSm" id="SelectLm" class="form-control-sm form-control"><option value="">How Did You Hear About Us?</option><option value="1">Option #1</option><option value="2">Option #2</option><option value="3">Option #3</option><option value="4">Option #4</option><option value="5">Option #5</option></select></div>
+		<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12"><select name="selectSm" id="SelectLm" class="form-control-sm form-control">
+			<option value="">How Did You Hear About Us?</option>
+			<option value="1">Option #1</option><option value="2">Option #2</option><option value="3">Option #3</option><option value="4">Option #4</option><option value="5">Option #5</option></select></div>
 		</div>
 		</div>
-
-		
-
-
 	<div class="form-group">
 		<div class="row">
 		<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12"><input type="text" name="ref" placeholder="Did someone ref you to us?" ></div>
@@ -90,7 +90,11 @@
 		<div class="form-group">
 			<div class="row">
 			<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12">
-				<select name="select_data" id="select_data" class="form-control-sm form-control"><option value="">What database program  do you currently Use</option><option value="1">Option #1</option><option value="2">Option #2</option><option value="3">Option #3</option><option value="4">Option #4</option><option value="5">Option #5</option></select>	
+				<select name="select_data" id="select_data" class="form-control-sm form-control">
+					<option value="">What database program  do you currently Use</option>
+					<option value="1">Option #1</option><option value="2">Option #2</option
+					><option value="3">Option #3</option><option value="4">Option #4</option>
+					<option value="5">Option #5</option></select>	
 			</div>
 			</div>
 			</div>
@@ -103,14 +107,14 @@
 						<label class="checkbox-custom-label" for="noti_6">I would like to recive the redetails email newsletter</label>
 					  </div>
 					
-				</div>
-				</div>
+					</div>
 				</div>
 				<div class="form-group">
 					<div class="row">
-					<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12">
+						<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12">
 						<div class="custom-checkbox">
 							<input name="noti_7" class="checkbox-custom" id="noti_7" value="7" type="checkbox">
+						</div>
 							<label class="checkbox-custom-label" for="noti_7">Populate my trail database with sample data</label>
 						  </div>
 						
@@ -123,12 +127,25 @@
 <button type="button" class="btn btn-next">Next</button>
 </div>
 </fieldset>
-
 <fieldset>
-
+	<h4>Details</h4>
+	<div class="form-group">
+			<div class="row">
+			<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12">
+				<select name="select_data" id="select_data" class="form-control-sm form-control"><option value="">How many total years of investment experience do you have?</option>
+				<option value="1">yes</option>
+				<option value="2">No</option>
+			</select>	
+			</div>
+			</div>
+	</div>
+	<div class="f1-buttons">
+	<button type="button" class="btn btn-previous">Previous</button>
+	<button type="button" class="btn btn-next">Next</button>
+	</div>
+</fieldset>
+<fieldset>
 <h4>Advisor Username</h4>
-
-
 <div class="form-group">
 	<div class="row">
 	<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12"><input type="text" name="User name" placeholder="User name" ></div>

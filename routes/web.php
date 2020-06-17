@@ -35,17 +35,16 @@ Route::get('/dashboard/User/ViewUser', 'User\UserController@view_profile')->name
 Route::get('/Mail', 'User\UserController@mail')->name('mail');
 Route::get('/Chat', 'User\UserController@chat')->name('chat');
 
-<<<<<<< HEAD
 
 /** Front page Route**/
 Route::get('/index', 'Frontform\FrontformController@index')->name('index');
 Route::get('/index/advisor_question', 'Frontform\AdvisorquestionController@home')->name('advisor_question');
+Route::post('/advisor_question/dashboard', 'Frontform\AdvisorquestionController@question')->name('insert');
+
 Route::get('/index/find_advisor', 'Frontform\FindadvisorController@home')->name('find_advisor');
 
-=======
 /* Zoom */
 Route::get('create/zoom','ZoomController@index')->name('zoomcreate');
 Route::post('post/zoom','ZoomController@store')->name('zoomcreatepost');
->>>>>>> a181a50fc741f12d9fa52868b0ae03de89d83fbd
 
 });
