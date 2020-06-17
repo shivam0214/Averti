@@ -300,15 +300,13 @@
 	<script src="<?php echo e(asset('assets/js/pages/app-chat.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/vendor_components/Magnific-Popup-master/dist/jquery.magnific-popup.min.js')); ?>"></script>
     <script src="<?php echo e(asset('assets/vendor_components/Magnific-Popup-master/dist/jquery.magnific-popup-init.js')); ?>"></script>
-    <script src="<?php echo e(asset('assets/vendor_components/perfect-scrollbar-master/perfect-scrollbar.jquery.min.js')); ?>"></script>
+    
 	<script src="<?php echo e(asset('assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/js/pages/mailbox.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/vendor_plugins/timepicker/bootstrap-timepicker.min.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/js/pages/advanced-form-element.js')); ?>"></script>
-	<script src="<?php echo e(asset('assets/vendor_components/Magnific-Popup-master/dist/jquery.magnific-popup.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('assets/vendor_components/Magnific-Popup-master/dist/jquery.magnific-popup-init.js')); ?>"></script>
-    <script src="<?php echo e(asset('assets/vendor_components/perfect-scrollbar-master/perfect-scrollbar.jquery.min.js')); ?>"></script>
+	
 	<script src="<?php echo e(asset('assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/js/pages/mailbox.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js')); ?>"></script>
