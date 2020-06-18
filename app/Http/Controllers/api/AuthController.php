@@ -57,11 +57,11 @@ class AuthController extends Controller
             $g = User::where('verify_key',$token)->get();
             User::where('verify_key',$token)->update(['verify_key'=>null]);
             if($g[0]['role_id']==2){
-                $u = 'advisor';
+                $u = '/login';
             }else{
-                $u = 'addprofile';
+                $u = '/';
             }
-                return redirect('/#/'.$u);
+                return redirect($u);
             }else{
                 return view('notfound');
             }

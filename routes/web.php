@@ -12,6 +12,10 @@
 */
 Route::get('/', 'Frontform\FrontformController@index')->name('index');
 
+/* Route::get('/', function() {
+    return view('index');
+}); */
+
 
 Route::get('/login', function () {
     return view('auth.login');
@@ -43,6 +47,6 @@ Route::post('post/zoom','ZoomController@store')->name('zoomcreatepost');
 /** Front page Route**/
 Route::get('/index/advisor_question', 'Frontform\AdvisorquestionController@home')->name('advisor_question');
 Route::post('/advisor_question/dashboard', 'Frontform\AdvisorquestionController@question')->name('insert');
-
 Route::get('/index/find_advisor', 'Frontform\FindadvisorController@home')->name('find_advisor');
 
+Route::get("/checkemail",'Frontform\AdvisorquestionController@checkemail')->name('checkeamil');
