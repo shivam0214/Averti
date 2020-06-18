@@ -43,5 +43,8 @@ class User extends Authenticatable
      function userdata(){
         return $this->HasOne('App\User_meta','user_id');
     } 
+    public function single(){
+        return $this->belongsTo('App\User_meta','id','user_id');
+    }
 
 }
