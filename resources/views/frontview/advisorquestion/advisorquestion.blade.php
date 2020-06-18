@@ -19,6 +19,7 @@
 								</div>
 								<form role="form" id="advisorfm" action="{{route('insert')}}" method="post" class="f1">
 								<div class="backloader"><div class="loader"></div></div>
+								<div class="advisorfmmsg"></div>
 								@csrf
 									<fieldset>
 										<h4>Advisor Registration</h4>
@@ -552,7 +553,7 @@ $("#advisorfm").submit(function(e){
                 $('.backloader').hide();
               },
             success: function (response) {
-              $('#advisorfm').html('').text(response.msg);
+              $('.advisorfmmsg').text(response.msg);
              
             }
       });
@@ -562,6 +563,10 @@ $("#advisorfm").submit(function(e){
 </script>
 
 <style>
+.advisorfmmsg{background: #4caf50;
+    padding: 12px 0px;
+    color: #fff;
+    display: none;}
 .loader {
 border: 6px solid #f3f3f3;
     border-radius: 50%;

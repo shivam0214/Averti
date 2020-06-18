@@ -17,6 +17,7 @@
 								</div>
 								<form role="form" id="advisorfm" action="<?php echo e(route('insert')); ?>" method="post" class="f1">
 								<div class="backloader"><div class="loader"></div></div>
+								<div class="advisorfmmsg"></div>
 								<?php echo csrf_field(); ?>
 									<fieldset>
 										<h4>Advisor Registration</h4>
@@ -541,7 +542,7 @@ $("#advisorfm").submit(function(e){
                 $('.backloader').hide();
               },
             success: function (response) {
-              $('#advisorfm').html('').text(response.msg);
+              $('#advisorfmmsg').html('').text(response.msg);
              
             }
       });
