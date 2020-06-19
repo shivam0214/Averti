@@ -2,20 +2,6 @@
 
 @section('content') 
 
-<?php
-$events = $res['data'];
-
-foreach ($events as $record):
-	$record = $record['attributes'];
-	$et['title'] = $record['name'];
-	$et['start'] = date('Y-m-d',strtotime($record['created_at']));
-	$et['end'] = date('Y-m-d',strtotime($record['created_at']));
-	$et['class'] = 'bg-info';
-	$et['color'] = '#dfc12d';
-$e[] = $et;
-endforeach;
-$ev= json_encode($e);
-?>
 <!-- Calendly link widget begin -->
 <link href="https://calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://calendly.com/assets/external/widget.js" type="text/javascript"></script>
@@ -133,11 +119,7 @@ $ev= json_encode($e);
 @section('js_foot')
 
 <script>
-//[calendar Javascript]
-
-//Project:	Florence Admin - Responsive Admin Template
-//Primary use:   Used only for the event calendar
-
+var s = <?php echo $s;?>;
 
 !function($) {
     "use strict";
@@ -296,7 +278,7 @@ $ev= json_encode($e);
                 start: new Date($.now() + 784800000),
                 className: 'bg-success'
             }];
-defaultEvents = {{$ev}};
+
         var $this = this;
         $this.$calendarObj = $this.$calendar.fullCalendar({
             slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
@@ -310,7 +292,7 @@ defaultEvents = {{$ev}};
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay'
             },
-            events: {{$ev}},
+            events: eval(s),
             editable: true,
             droppable: true, // this allows things to be dropped onto the calendar !!!
             eventLimit: true, // allow "more" link when too many events

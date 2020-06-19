@@ -11,7 +11,7 @@ class CalenderController extends Controller
   public function home(){
     $curl = curl_init();
     curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://calendly.com/api/v1/users/me/event_types",
+  CURLOPT_URL => "https://calendly.com/api/v2/users/me/events",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => "",
   CURLOPT_MAXREDIRS => 10,
@@ -26,8 +26,21 @@ class CalenderController extends Controller
 
 $response = curl_exec($curl);
 curl_close($curl);
-$res= json_decode($response,true);
-    return view('Calendar.calendar',compact('res'));
+echo $response;die;
+$events= json_decode($response,true);
+
+
+foreach ($events as $record):
+	$record = $record['attributes'];
+	$et['title'] = $record['name'];
+	$et['start'] = date('Y-m-d',strtotime($record['created_at']));
+	$et['end'] = date('Y-m-d',strtotime($record['created_at']));
+	$et['class'] = 'bg-info';
+	
+$s[] = $et;
+endforeach;
+$s= json_encode($s,true);
+    return view('Calendar.calendar',compact('s'));
   }
 
     public function text(){
