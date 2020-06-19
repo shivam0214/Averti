@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content') 
+<!-- Calendly link widget begin -->
+<link href="https://calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://calendly.com/assets/external/widget.js" type="text/javascript"></script>
+<!-- Calendly link widget end -->
 <div class="content-wrapper">
 	  <div class="container-full">
 		<!-- Content Header (Page header) -->	  
@@ -8,6 +12,8 @@
 			<div class="d-flex align-items-center">
 				<div class="mr-auto">
 					<h3 class="page-title">Calendar</h3>
+					
+
 					<div class="d-inline-block align-items-center">
 						<nav>
 							<ol class="breadcrumb">

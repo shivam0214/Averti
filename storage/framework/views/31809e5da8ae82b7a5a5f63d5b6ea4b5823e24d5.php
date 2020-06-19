@@ -30,6 +30,12 @@
 			    </a>
 			</li>
 			<li class="btn-group nav-item d-none d-xl-inline-block">
+				<a href="javascript:void(0)" onclick="Calendly.showPopupWidget('https://calendly.com/shivam-sam');return false;"class="waves-effect waves-light nav-link rounded svg-bt-icon" data-toggle="tooltip" data-placement="top" title="Zoom meeting create">
+				<i class="fa fa-tasks" aria-hidden="true"></i>
+			    </a>
+			</li>
+			
+			<li class="btn-group nav-item d-none d-xl-inline-block">
 				<a href="contact_app_chat.html" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
 					<i class="ti-comments"></i>
 			    </a>
