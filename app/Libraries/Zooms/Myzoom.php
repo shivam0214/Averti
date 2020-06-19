@@ -11,8 +11,8 @@ Class Myzoom {
             public $host_id;
 
             public function __construct( $zoom_api_key = '', $zoom_api_secret = '' ) {
-                $this->zoom_api_key    = 'C6yNbPTzT964ySn95vD5rA';
-                $this->zoom_api_secret = 'bybHrotZ2x7auQoQczPiAOkiNIIeM21Vkht7';
+                $this->zoom_api_key    = 'Clv6JeFpSKuT2yJwH_SVEQ';
+                $this->zoom_api_secret = 'W3xkYXjQQ8Hsq9j6QyqQr0IDkRUwiOmhJ0ZO';
                 $this->host_id = '_Y8wtA_ZRWC38SopE_JT7g';
             }
             private function generateJWTKey() {
@@ -30,8 +30,8 @@ Class Myzoom {
             protected function sendRequest( $calledFunction, $data, $request = "GET" ) {
                 $request_url = $this->api_url . $calledFunction;
                $code = $this->generateJWTKey();
-                $this->zoom_api_key    = 'C6yNbPTzT964ySn95vD5rA';
-                $this->zoom_api_secret = 'bybHrotZ2x7auQoQczPiAOkiNIIeM21Vkht7';
+                $this->zoom_api_key    = 'Clv6JeFpSKuT2yJwH_SVEQ';
+                $this->zoom_api_secret = 'W3xkYXjQQ8Hsq9j6QyqQr0IDkRUwiOmhJ0ZO';
 
                 /*Adds the Key, Secret, & Datatype to the passed array*/
                 $data['api_key'] = $this->zoom_api_key;
