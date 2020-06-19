@@ -4,13 +4,14 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\User;
+use Auth;
 class UserController extends Controller
 {
     
     public function user(){
-
-        return view('User.listuser');
+        $users = User::where(['perent_id'=>Auth::user()['id'],'role_id'=>3])->get();
+        return view('User.listuser',compact('users'));
     }
     public function add_user(){
 
