@@ -52,6 +52,7 @@ border: 6px solid #f3f3f3;
             <?php echo $__env->yieldContent('content'); ?>
         </main>
 <?php echo $__env->make('main.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?> 
+
 </body>
 </html>
 <?php /**PATH G:\averti\resources\views/layouts/app.blade.php ENDPATH**/ ?>

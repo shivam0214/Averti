@@ -323,3 +323,4 @@
 
 	/* custom js added by sam*/
 	<script src="{{asset('assets/js/custom/zoom.js')}}"></script>
+@yield('js_foot')
