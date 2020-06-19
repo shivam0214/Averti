@@ -10,7 +10,7 @@
 					<div class="banner-content">
 						<h2 class="banner-text">World's first total life <span>management system</span></h2>
 						<p class="banner-desc">Competently initiate orthogonal systems rather than multimedia based ideas. Phosfluorescently revolutionize client-based.</p>
-						<a href="#" class="btnmy">Find My Advisor</a>
+						<a href="{{route('find_advisor')}}" class="btnmy">Find My Advisor</a>
                         <a href="#" class="btnmysm ml-10">Read More</a>
 					</div>
 				</div>

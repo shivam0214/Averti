@@ -13,6 +13,7 @@ class User extends Authenticatable
     use Notifiable,HasApiTokens;
     use \BinaryCabin\LaravelUUID\Traits\HasUUID;
     use HasRoles;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -44,4 +45,7 @@ class User extends Authenticatable
         return $this->HasOne('App\User_meta','user_id');
     } 
 
+    public function single(){
+        return $this->belongsTo('App\User_meta','id','user_id');
+    }
 }

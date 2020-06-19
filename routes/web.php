@@ -27,6 +27,10 @@ Route::get('/verify/{token}', 'api\AuthController@verify')->name('verify');
 Route::group(['middleware' => ['auth']], function()
 {
 Route::get('/dashboard', 'Adviser\DashboardController@index')->name('dashboard');
+/** Advisor Profile */
+Route::get('/advisor_Profile', 'Adviser\DashboardController@advisor_profile')->name('advisor_profile');
+Route::post('/update_profile', 'Adviser\DashboardController@update_profile')->name('update_profile');
+
 Route::get('/contact', 'Adviser\ContactController@index')->name('contact');
 Route::get('/dashboard/event', 'Calender\CalenderController@home')->name('calender');
 //Route::get('/dashboard/calender', 'Calender\CalenderController@calender')->name('calender');
@@ -45,8 +49,7 @@ Route::post('post/zoom','ZoomController@store')->name('zoomcreatepost');
 });
 
 /** Front page Route**/
-Route::get('/index/advisor_question', 'Frontform\AdvisorquestionController@home')->name('advisor_question');
-Route::post('/advisor_question/dashboard', 'Frontform\AdvisorquestionController@question')->name('insert');
-Route::get('/index/find_advisor', 'Frontform\FindadvisorController@home')->name('find_advisor');
-
-Route::get("/checkemail",'Frontform\AdvisorquestionController@checkemail')->name('checkeamil');
+Route::get('/advisor-question', 'Frontform\FrontformController@questioon_view')->name('advisor_question');
+Route::post('/advisor/dashboard', 'Frontform\FrontformController@question')->name('insert');
+Route::get('/find_advisor', 'Frontform\FrontformController@home')->name('find_advisor');
+Route::get("/checkemail",'Frontform\FrontformController@checkemail')->name('checkeamil');
