@@ -1,95 +1,74 @@
- @extends('layouts.app')
-
-@section('content')
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+@extends('layouts.app')
+@section('content') 
+<div class="content-wrapper">
 	  <div class="container-full">
 		<!-- Content Header (Page header) -->
 		<div class="content-header">
 			<div class="d-flex align-items-center">
 				<div class="mr-auto">
-					<h3 class="page-title">Data Tables</h3>
-					<div class="d-inline-block align-items-center">
-						<nav>
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
-								<li class="breadcrumb-item" aria-current="page">Tables</li>
-								<li class="breadcrumb-item active" aria-current="page">Data Tables</li>
-							</ol>
-						</nav>
-					</div>
+					<h3 class="page-title">User List</h3>
 				</div>
-				
 			</div>
 		</div>
-<section class="content">
-		  <div class="row">
-      <div class="col-12">
-
-			 <div class="box">
-				<div class="box-header with-border">
-				  <h3 class="box-title">Individual column searching</h3>
-				</div>
-				<!-- /.box-header -->
-				<div class="box-body">
-					<div class="table-responsive">
-					  <table id="example5" class="table table-bordered table-striped" style="width:100%">
-						<thead>
-							<tr>
-								<th>Name</th>
-								<th>email</th>
-								<th>City</th>
-								<th>Age</th>
-								<th>Phone</th>
-								<th>Actions</th>
-							</tr>
-						</thead>
-						<tbody>
-							
-              @foreach ($users as $record)
-                <tr>
-								<td>{{$record['name']}}</td>
-								<td>{{$record['email']}}</td>
-								<td>{{$record['single']['city']}}</td>
-								<td>{{$record['single']['age']}}</td>
-                <td>{{$record['single']['phone_no']}}</td>
-								<td>
-								<div class="btn-group">
-								  <button type="button" class="waves-effect waves-light btn btn-info"><i class="fa fa-inbox"></i></button>
-								  <button type="button" class="waves-effect waves-light btn btn-info"><i class="fa fa-pencil"></i></button>
-								  <button type="button" class="waves-effect waves-light btn btn-danger"><i class="fa fa-trash-o"></i></button>
-								  <button type="button" class="waves-effect waves-light btn btn-danger"><i class="fa fa-ban"></i></button>
+		<section class="content">
+			<div class="row">
+				<div class="col-12">
+					<div class="box">
+						<div class="box-header with-border">
+							<h4 class="box-title"></h4>
+							<div class="box-controls pull-right">
+								<div class="lookup lookup-circle lookup-right">
+									<input type="text" name="s">
 								</div>
+							</div>
+						</div>
+						<div class="box-body no-padding">
+							<div class="table-responsive">
+							<table class="table">
+                        <thead>
+                          <tr>
+                                    <th scope="col"><div class="icheck-material-primary">
+									<input type="checkbox" id="primary2" >
+									<label for="primary2"></label>
+									</div></th>
+                                    <th scope="col">Profile</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Phone Number</th> 
+                                    <th scope="col">Status</th>                                  
+                                    <th scope="col">City</th>
+                                    <th scope="col">Action</th>
+                                  
+                          </tr>
+                            </thead>
+                            <tbody style="height:50%">
+                                @foreach ($users as $record)
+                <tr>
+								<td scope="row"><div class="icheck-material-primary">
+									<input type="checkbox" id="primary2" >
+									<label for="primary2"></label>
+									</div>
 								</td>
+								<td><img src="{{asset('assets/img/avatars/1.jpg')}}" alt="user avatar" class="customer-img rounded-circle">{{$record['single']['profile']}}</td>
+								<td><a href="{{route('view_profile')}}">{{$record['name']}} </a></td>
+								<td>{{$record['single']['phone_no']}}</td>
+								<td><span class="badge badge-pill badge-danger">Pending</span></td>
+								<td>{{$record['single']['city']}}</td>
+								
+                
+								<td><button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#video-call"><i class="fa fa-video-camera"></i></button>
+                                        <button type="button" class="btn btn-success waves-effect waves-light"><i class="fa fa-edit"></i></button>
+                                      <button type="button" class="btn btn-danger waves-effect waves-light"><i class="fa fa-trash"></i></button></td>
 							</tr>
               @endforeach
-              
-							
-						</tbody>
-						<tfoot>
-							<tr>
-                <th>Name</th>
-								<th>email</th>
-								<th>City</th>
-								<th>Age</th>
-								<th>Phone</th>
-								<th>Salary</th>
-							</tr>
-						</tfoot>
-					</table>
+                                
+                            </tbody>
+                        </table>
+                   		</div>
+						</div>	
 					</div>
 				</div>
-				<!-- /.box-body -->
-			  </div>
-			  <!-- /.box -->      
-			</div> 
-      </div>
-		  <!-- /.row -->
+			</div>
 		</section>
-		<!-- /.content -->
-	  
-	  </div>
-  </div>
-  <!-- /.content-wrapper -->
-
-  @endsection
+	</div>
+</div>
+@endsection
