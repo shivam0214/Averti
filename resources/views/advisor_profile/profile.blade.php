@@ -168,8 +168,13 @@
             <div class="col-lg-6 col-12">
 					  <div class="box">
 						<!-- /.box-header -->
-						<form class="form">
-							<div class="box-body">
+                  <form role="form" method="post" action="{{route('update_data')}}">
+                  @csrf
+                  {!! Form::hidden('user_id', $user->id) !!}
+
+                  <input type="hidden" class="form-control" name="id" value="{{Auth::user()['id']}}">
+
+               							<div class="box-body">
 								<h4 class="box-title text-info">About</h4>
 								<hr class="my-15">
 								<div class="row">
