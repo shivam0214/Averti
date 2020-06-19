@@ -168,8 +168,14 @@
             <div class="col-lg-6 col-12">
 					  <div class="box">
 						<!-- /.box-header -->
-						<form class="form">
-							<div class="box-body">
+                  <form role="form" method="post" action="<?php echo e(route('update_data')); ?>">
+                  <?php echo csrf_field(); ?>
+                  <?php echo Form::hidden('user_id', $user->id); ?>
+
+
+                  <input type="hidden" class="form-control" name="id" value="<?php echo e(Auth::user()['id']); ?>">
+
+               							<div class="box-body">
 								<h4 class="box-title text-info">About</h4>
 								<hr class="my-15">
 								<div class="row">

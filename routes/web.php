@@ -30,6 +30,8 @@ Route::get('/dashboard', 'Adviser\DashboardController@index')->name('dashboard')
 /** Advisor Profile */
 Route::get('/advisor_Profile', 'Adviser\DashboardController@advisor_profile')->name('advisor_profile');
 Route::post('/update_profile', 'Adviser\DashboardController@update_profile')->name('update_profile');
+Route::post('/update_data', 'Adviser\DashboardController@update_data')->name('update_data');
+
 
 Route::get('/contact', 'Adviser\ContactController@index')->name('contact');
 Route::get('/dashboard/event', 'Calender\CalenderController@home')->name('calender');
