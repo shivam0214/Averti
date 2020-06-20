@@ -323,4 +323,6 @@
 
 	/* custom js added by sam*/
 	<script src="{{asset('assets/js/custom/zoom.js')}}"></script>
+	<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script> 
+	<script src="https://api.vsee.com/js/vseepresence.js"></script>
 @yield('js_foot')
