@@ -13,6 +13,7 @@
 								<li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
 								<li class="breadcrumb-item" aria-current="page">Forms</li>
 								<li class="breadcrumb-item active" aria-current="page">{{auth::user()['name']}}'s Profile</li>
+
 							</ol>
 						</nav>
 					</div>
@@ -69,6 +70,7 @@
 									</div>
 								  </div>
 								  <div class="col-md-6">
+
 									<div class="form-group">
 									  <label >Contact Number</label>
 									  <input type="text" class="form-control" placeholder="Phone" name="phone_no" value="{{$user['single']['phone_no']}}">

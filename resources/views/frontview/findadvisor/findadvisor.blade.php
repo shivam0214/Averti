@@ -14,18 +14,15 @@
 </div>
 </div>
 <div class="col-sm-12 col-xs-12 col-md-8 col-lg-7 col-xs-12 form-box p-0">
-<form role="form" action="" method="post" class="f1">
-
-
-
-
+<form role="form" action="{{route('finadvisor')}}" method="post" class="f1">
+@csrf
 <fieldset>
 <div class="icongol"><img src="{{asset('assets/frontassets/images/banner/hello.png')}}"></div>
 <h4>Nice to meet you!</h4>
 <h5>What's your name?</h5>
 <div class="form-group">
 
-<input type="text" name="f1-first-name" placeholder="First name..." class="f1-first-name form-control" id="f1-first-name">
+<input type="text" name="name" placeholder="First name..." class="f1-first-name form-control" id="f1-first-name">
 </div>
 
 <div class="f1-buttons">
@@ -40,7 +37,7 @@
 <h5>Zoe has great advisors all across the country.</h5>
 <div class="form-group">
 
-<input type="text" name="f1-email" placeholder="10583" class="f1-email form-control" id="located">
+<input type="text" name="located" placeholder="10583" class="f1-email form-control" id="located">
 </div>
 
 
@@ -54,7 +51,7 @@
 <div class="icongol"><img src="{{asset('assets/frontassets/images/banner/birthday-cake.png')}}"></div>
 <h4>How old are you?</h4>
 <h5>Each stage of your life is financially unique.</h5>
-<div id="affected">
+<div id="affected" name="age">
 
 <input type="radio" name="set 2" title="Under 30">
 <input type="radio" name="set 2" title="30s">
@@ -73,13 +70,13 @@
 <div class="icongol"><img src="{{asset('assets/frontassets/images/banner/wedding.png')}}"></div>
 <h4>Are you married?</h4>
 <h5>Your marital status helps us understand the complexity of your finances</h5>
-<div id="affected1">
+<div id="affected1" name="status">
 
-<input type="radio" name="set 3" title="Married">
-<input type="radio" name="set 3" title="Divorced">
-<input type="radio" name="set 3" title="Single">
-<input type="radio" name="set 3" title="Separated">
-<input type="radio" name="set 3" title="Prefer not to say">
+<input type="radio" name="status" value="Married" title="Married">
+<input type="radio" name="status" value="Divorced" title="Divorced">
+<input type="radio" name="status" value="Single" title="Single">
+<input type="radio" name="status" value="Separated" title="Separated">
+<input type="radio" name="status" value="Prefer not to say" title="Prefer not to say">
 </div>
 <div class="f1-buttons">
 <button type="button" class="btn btn-previous">Previous</button>
@@ -92,17 +89,17 @@
 <div class="icongol"><img src="{{asset('assets/frontassets/images/banner/mission-accomplished.png')}}"></div>
 <h4>What would you like to accomplish (Max 3)</h4>
 <h5>Your needs are matched with the advisor's specialties.</h5>
-<div id="affected2">
+<div id="affected2" name="Whatwouldyoulike">
 
-<input type="radio" name="set 4" title="Home Purchase">
-<input type="radio" name="set 4" title="Manage New Wealth">
-<input type="radio" name="set 4" title="Pay Down Debt">
-<input type="radio" name="set 4" title="Plan for Retirement">
-<input type="radio" name="set 4" title="Improve  Investment Strategy">
-<input type="radio" name="set 4" title="Plan for College Savings">
-<input type="radio" name="set 4" title="Employee stock options">
-<input type="radio" name="set 4" title="Family Planning">
-<input type="radio" name="set 4" title="Optimize Tax Strategy">
+<input type="radio" name="Whatwouldyoulike" title="Home Purchase">
+<input type="radio" name="Whatwouldyoulike" title="Manage New Wealth">
+<input type="radio" name="Whatwouldyoulike" title="Pay Down Debt">
+<input type="radio" name="Whatwouldyoulike" title="Plan for Retirement">
+<input type="radio" name="Whatwouldyoulike" title="Improve  Investment Strategy">
+<input type="radio" name="Whatwouldyoulike" title="Plan for College Savings">
+<input type="radio" name="Whatwouldyoulike" title="Employee stock options">
+<input type="radio" name="Whatwouldyoulike" title="Family Planning">
+<input type="radio" name="Whatwouldyoulike" title="Optimize Tax Strategy">
 </div>
 <div class="f1-buttons">
 <button type="button" class="btn btn-previous">Previous</button>
@@ -116,7 +113,7 @@
 <h5>Some fields require unique financial advice.</h5>
 <div class="form-group">
 
-<input type="text" name="f1-first-name" placeholder="What's your occupation?" class="f1-first-name form-control" id="f1-first-name">
+<input type="text" name="occupation" placeholder="What's your occupation?" class="f1-first-name form-control" id="f1-first-name">
 </div>
 
 <div class="f1-buttons">
@@ -209,8 +206,8 @@
 <h4>As, we've found three great advisor matches for you!</h4>
 <h5>Your information is confidential and protected.</h5>
 <div class="form-group">
-<input type="text" name="f1-email" placeholder="Phone Number" class="f1-email form-control" id="located">
-<input type="email" name="f1-email" placeholder="Email Address" class="f1-email form-control" id="located">
+<input type="text" name="phone_no" placeholder="Phone Number" class="f1-email form-control" id="located">
+<input type="email" name="email" placeholder="Email Address" class="f1-email form-control" id="located">
 </div>
 
 

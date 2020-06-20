@@ -205,13 +205,13 @@
 											<div class="row">
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="custom-checkbox">
-														<input name="lookingforholastic" class="checkbox-custom" id="noti_8" value="1" type="checkbox">
+														<input name="lookingforholastic" class="checkbox-custom" id="noti_8" value="1" type="radio">
 														<label class="checkbox-custom-label" for="noti_8">Yes</label>
 													</div>
 												</div>
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="custom-checkbox">
-														<input name="lookingforholastic" class="checkbox-custom" id="noti_9" value="0" type="checkbox">
+														<input name="lookingforholastic" class="checkbox-custom" id="noti_9" value="0" type="radio">
 														<label class="checkbox-custom-label" for="noti_9">No</label>
 													</div>
 												</div>

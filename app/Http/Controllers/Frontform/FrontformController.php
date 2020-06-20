@@ -95,4 +95,26 @@ public function checkemail(Request $r){
     public function home(){
         return view('frontview/findadvisor/findadvisor');
     }
+    public function finadvisor(Request $r){
+        $token = md5($r->email);
+        $form_data=array(
+            'name'=>$r->name,
+            'email'=>$r->email,
+            'role_id'=>3,
+            'verify_key'=>$token
+
+        );
+        $usermeta = array( 
+            'phone_no'=>$r->phone_no,
+            'age'=>$r->age,
+            'question' =>json_encode(array(
+                'status'=>$r->status,
+                'Whatwouldyoulike'=>$r->Whatwouldyoulike,
+                'occupation'=>$r->occupation,                
+            )));
+            $users = User::create($form_data);
+            $usermeta['user_id']=$users['id'];
+            $set = User_meta::create($usermeta);
+            
+    }
 }

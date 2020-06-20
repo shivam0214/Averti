@@ -54,4 +54,6 @@ Route::post('post/zoom','ZoomController@store')->name('zoomcreatepost');
 Route::get('/advisor-question', 'Frontform\FrontformController@questioon_view')->name('advisor_question');
 Route::post('/advisor/dashboard', 'Frontform\FrontformController@question')->name('insert');
 Route::get('/find_advisor', 'Frontform\FrontformController@home')->name('find_advisor');
+Route::post('/finadvisor', 'Frontform\FrontformController@finadvisor')->name('finadvisor');
+
 Route::get("/checkemail",'Frontform\FrontformController@checkemail')->name('checkeamil');
