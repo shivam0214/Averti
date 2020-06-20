@@ -119,7 +119,7 @@
 @section('js_foot')
 
 <script>
-var s = <?php echo $s;?>;
+
 
 !function($) {
     "use strict";
@@ -292,7 +292,7 @@ var s = <?php echo $s;?>;
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay'
             },
-            events: eval(s),
+            events: defaultEvents,
             editable: true,
             droppable: true, // this allows things to be dropped onto the calendar !!!
             eventLimit: true, // allow "more" link when too many events

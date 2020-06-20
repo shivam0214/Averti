@@ -26,21 +26,8 @@ class CalenderController extends Controller
 
 $response = curl_exec($curl);
 curl_close($curl);
-echo $response;die;
-$events= json_decode($response,true);
 
-
-foreach ($events as $record):
-	$record = $record['attributes'];
-	$et['title'] = $record['name'];
-	$et['start'] = date('Y-m-d',strtotime($record['created_at']));
-	$et['end'] = date('Y-m-d',strtotime($record['created_at']));
-	$et['class'] = 'bg-info';
-	
-$s[] = $et;
-endforeach;
-$s= json_encode($s,true);
-    return view('Calendar.calendar',compact('s'));
+    return view('Calendar.calendar');
   }
 
     public function text(){
