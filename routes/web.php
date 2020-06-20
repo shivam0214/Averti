@@ -35,7 +35,7 @@ Route::post('/update_data', 'Adviser\DashboardController@update_data')->name('up
 
 Route::get('/contact', 'Adviser\ContactController@index')->name('contact');
 Route::get('/dashboard/event', 'Calender\CalenderController@home')->name('calender');
-//Route::get('/dashboard/calender', 'Calender\CalenderController@calender')->name('calender');
+Route::get('/dashboard/calender', 'Calender\CalenderController@text')->name('text');
 
 Route::get('/dashboard/User/ListUser', 'User\UserController@user')->name('user');
 Route::get('/dashboard/User/AddUser', 'User\UserController@add_user')->name('add_user');

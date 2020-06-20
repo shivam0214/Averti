@@ -52,5 +52,6 @@ border: 6px solid #f3f3f3;
             @yield('content')
         </main>
 @include('main.footer') 
+
 </body>
 </html>
