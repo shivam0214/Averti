@@ -322,4 +322,6 @@
 	<script src="<?php echo e(asset('assets/vendor_plugins/timepicker/bootstrap-timepicker.min.js')); ?>"></script>
 
 	/* custom js added by sam*/
-	<script src="<?php echo e(asset('assets/js/custom/zoom.js')); ?>"></script><?php /**PATH H:\updateDemitrius\Averti\Averti\resources\views/main/footer.blade.php ENDPATH**/ ?>
+	<script src="<?php echo e(asset('assets/js/custom/zoom.js')); ?>"></script>
+<?php echo $__env->yieldContent('js_foot'); ?>
+<?php /**PATH H:\updateDemitrius\Averti\Averti\resources\views/main/footer.blade.php ENDPATH**/ ?>

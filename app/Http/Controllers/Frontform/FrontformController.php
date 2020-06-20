@@ -102,7 +102,6 @@ public function checkemail(Request $r){
             'email'=>$r->email,
             'role_id'=>3,
             'verify_key'=>$token
-
         );
         $usermeta = array( 
             'phone_no'=>$r->phone_no,
@@ -115,6 +114,8 @@ public function checkemail(Request $r){
             $users = User::create($form_data);
             $usermeta['user_id']=$users['id'];
             $set = User_meta::create($usermeta);
+            $data['verify_key'] = $token;
+            
             
     }
 }
