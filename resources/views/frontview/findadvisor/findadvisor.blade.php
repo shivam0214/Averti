@@ -1,88 +1,86 @@
 @extends('layouts.frontapp')
 
 @section('content') 
-
 <section class="wizardform">
 <div class="mid">
-<div class="container">
-<div class="row">
-<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 offset-lg-1">
-<div class="row shadow">
-<div class="col-lg-5 col-md-4 col-sm-4 col-xs-12 p-0">
-<div class="img">
-<div class="pics"></div>
-</div>
-</div>
-<div class="col-sm-12 col-xs-12 col-md-8 col-lg-7 col-xs-12 form-box p-0">
-<form role="form" action="{{route('finadvisor')}}" method="post" class="f1">
-@csrf
-<fieldset>
-<div class="icongol"><img src="{{asset('assets/frontassets/images/banner/hello.png')}}"></div>
-<h4>Nice to meet you!</h4>
-<h5>What's your name?</h5>
-<div class="form-group">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 offset-lg-1">
+        <div class="row shadow">
+          <div class="col-lg-5 col-md-4 col-sm-4 col-xs-12 p-0">
+            <div class="img">
+                <div class="pics"></div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-xs-12 col-md-8 col-lg-7 col-xs-12 form-box p-0">
+            <form role="form" action="{{route('finadvisor')}}" method="post" class="f1">
+              <div class="backloader"><div class="loader"></div></div>
+                <div class="advisorfmmsg"></div>
+                  @csrf
+                  <fieldset>
+                    <div class="icongol"><img src="{{asset('assets/frontassets/images/banner/hello.png')}}"></div>
+                      <h4>Nice to meet you!</h4>
+                      <h5>What's your name?</h5>
+                        <div class="form-group">
+                      <input type="text" name="name" placeholder="First name..." class="f1-first-name form-control" id="f1-first-name">
+                    </div>
+                    <div class="f1-buttons">
+                    <button type="button" class="btn btn-previous">Previous</button>
+                    <button type="button" class="btn btn-next">Next</button>
+                    </div>
+                  </fieldset>
+                  <fieldset>
+                  <div class="icongol"><img src="{{asset('assets/frontassets/images/banner/location.png')}}"></div>
+                  <h4>Where are you located?</h4>
+                  <h5>Zoe has great advisors all across the country.</h5>
+                  <div class="form-group">
 
-<input type="text" name="name" placeholder="First name..." class="f1-first-name form-control" id="f1-first-name">
-</div>
-
-<div class="f1-buttons">
-<button type="button" class="btn btn-previous">Previous</button>
-<button type="button" class="btn btn-next">Next</button>
-</div>
-</fieldset>
-
-<fieldset>
-<div class="icongol"><img src="{{asset('assets/frontassets/images/banner/location.png')}}"></div>
-<h4>Where are you located?</h4>
-<h5>Zoe has great advisors all across the country.</h5>
-<div class="form-group">
-
-<input type="text" name="located" placeholder="10583" class="f1-email form-control" id="located">
-</div>
+                  <input type="text" name="located" placeholder="10583" class="f1-email form-control" id="located">
+                  </div>
 
 
-<div class="f1-buttons">
-<button type="button" class="btn btn-previous">Previous</button>
-<button type="button" class="btn btn-next">Next</button>
-</div>
-</fieldset>
+                  <div class="f1-buttons">
+                  <button type="button" class="btn btn-previous">Previous</button>
+                  <button type="button" class="btn btn-next">Next</button>
+                  </div>
+                  </fieldset>
 
-<fieldset>
-<div class="icongol"><img src="{{asset('assets/frontassets/images/banner/birthday-cake.png')}}"></div>
-<h4>How old are you?</h4>
-<h5>Each stage of your life is financially unique.</h5>
-<div id="affected" name="age">
+                  <fieldset>
+                  <div class="icongol"><img src="{{asset('assets/frontassets/images/banner/birthday-cake.png')}}"></div>
+                  <h4>How old are you?</h4>
+                  <h5>Each stage of your life is financially unique.</h5>
+                  <div id="affected" name="age">
 
-<input type="radio" name="set 2" title="Under 30">
-<input type="radio" name="set 2" title="30s">
-<input type="radio" name="set 2" title="40s">
-<input type="radio" name="set 2" title="50s">
-<input type="radio" name="set 2" title="60s">
-<input type="radio" name="set 2" title="70+">
-</div>
-<div class="f1-buttons">
-<button type="button" class="btn btn-previous">Previous</button>
-<button type="button" class="btn btn-next">Next</button>
-</div>
-</fieldset>
+                  <input type="radio" name="age" value="Under 30" title="Under 30">
+                  <input type="radio" name="age" value="30s" title="30s">
+                  <input type="radio" name="age" value="40s" title="40s">
+                  <input type="radio" name="age" value="50s" title="50s">
+                  <input type="radio" name="age" value="60s" title="60s">
+                  <input type="radio" name="age" value="70+" title="70+">
+                  </div>
+                  <div class="f1-buttons">
+                  <button type="button" class="btn btn-previous">Previous</button>
+                  <button type="button" class="btn btn-next">Next</button>
+                  </div>
+                  </fieldset>
 
-<fieldset>
-<div class="icongol"><img src="{{asset('assets/frontassets/images/banner/wedding.png')}}"></div>
-<h4>Are you married?</h4>
-<h5>Your marital status helps us understand the complexity of your finances</h5>
-<div id="affected1" name="status">
+                <fieldset>
+                <div class="icongol"><img src="{{asset('assets/frontassets/images/banner/wedding.png')}}"></div>
+                <h4>Are you married?</h4>
+                <h5>Your marital status helps us understand the complexity of your finances</h5>
+                <div id="affected1" name="status">
 
-<input type="radio" name="status" value="Married" title="Married">
-<input type="radio" name="status" value="Divorced" title="Divorced">
-<input type="radio" name="status" value="Single" title="Single">
-<input type="radio" name="status" value="Separated" title="Separated">
-<input type="radio" name="status" value="Prefer not to say" title="Prefer not to say">
-</div>
-<div class="f1-buttons">
-<button type="button" class="btn btn-previous">Previous</button>
-<button type="button" class="btn btn-next">Next</button>
-</div>
-</fieldset>
+                <input type="radio" name="status" value="Married" title="Married">
+                <input type="radio" name="status" value="Divorced" title="Divorced">
+                <input type="radio" name="status" value="Single" title="Single">
+                <input type="radio" name="status" value="Separated" title="Separated">
+                <input type="radio" name="status" value="Prefer not to say" title="Prefer not to say">
+                </div>
+                <div class="f1-buttons">
+                <button type="button" class="btn btn-previous">Previous</button>
+                <button type="button" class="btn btn-next">Next</button>
+                </div>
+                </fieldset>
 
 
 <fieldset>
@@ -235,6 +233,7 @@
 <div class="f1-step"></div>
 <div class="f1-step"></div>
 </div>
+</div>
 </form>
 </div>
  </div>
@@ -261,5 +260,94 @@
 				</div>
 			</div>
 		</div>
-	</section>
+  </section>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+$('#checkidmsg').hide();
+$("#checkemail").change(function(){
+$('#checkidmsg').text('').hide();
+var em = $(this).val();
+$.ajax({
+url:'/checkemail',
+type:'GET',
+data: { 
+   email:em
+  },
+success:function(re){
+if(re.status==0){
+$('#checkidmsg').text(re.msg).show();
+}
+}
+})
+});
+
+
+$("#advisorfm").submit(function(e){
+	e.preventDefault();
+    var inputData = new FormData($(this)[0]);
+    $.ajax({
+            url:'{{route("finadvisor")}}',
+            type:'POST',
+            dataType: 'json',
+            data:inputData,
+            processData:false,
+            contentType:false,
+             beforeSend: function () {
+                $('.backloader').show();
+              },
+              complete: function () {
+                $('.backloader').hide();
+              },
+            success: function (response) {
+              $('.advisorfmmsg').text(response.msg);
+             
+            }
+      });
+})
+
+
+</script>
+
+<style>
+.advisorfmmsg{background: #4caf50;
+    padding: 12px 0px;
+    color: #fff;
+    display: none;}
+.loader {
+border: 6px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 6px solid #001640;
+    border-bottom: 6px solid #001640;
+    width: 50px;
+    height: 50px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+.backloader{
+        background: #ffffffa3;
+    position: absolute;
+    width: 93%;
+    z-index: 9;
+    height: 100%;
+    display:none;
+    text-align: -webkit-center;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+#checkidmsg{
+	padding: 0px 11px;
+    background: #ff0000a8;
+    color: #fff;
+}
+</style>
+
 @endsection('content')

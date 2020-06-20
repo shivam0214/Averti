@@ -130,11 +130,11 @@
                                  <lable>How Did You Hear About Us?</lable>
                                  <select name="How_Did" id="SelectLm"  class="form-control-sm form-control">
                                                 <option>How Did You Hear About Us?</option>
-                                                <option value="1" @if($question_data->How_Did=='1')selected @endif>Option #1</option>
-                                                <option value="2" @if($question_data->How_Did=='2')selected @endif>Option #2</option>
-                                                <option value="3" @if($question_data->How_Did=='3')selected @endif>Option #3</option>
-                                                <option value="4" @if($question_data->How_Did=='4')selected @endif>Option #4</option>
-                                                <option value="5" @if($question_data->How_Did=='5')selected @endif>Option #5</option>
+                                                <option value="1" @if($question_data->How_Did=='1')selected @endif>Less than 1</option>
+                                                <option value="2" @if($question_data->How_Did=='2')selected @endif>1-5</option>
+                                                <option value="3" @if($question_data->How_Did=='3')selected @endif>6-10</option>
+                                                <option value="4" @if($question_data->How_Did=='4')selected @endif>10-15</option>
+                                                <option value="5" @if($question_data->How_Did=='5')selected @endif>15+</option>
                                              </select>
                               </div>
 									</div>
@@ -144,12 +144,12 @@
                            <div class="col-md-12">
                                     <lable>What database program do you currently Uses</lable>
 												<select name="What_database" id="select_data" value="{{$question_data->What_database}}" class="form-control-sm form-control">
-                                       <option>What database program do you currently Uses</option>
-                                       <option value="1"@if($question_data->What_database=='1')selected @endif>Option #1</option>
-                                       <option value="2"@if($question_data->What_database=='2')selected @endif>Option #2</option>
-                                       <option value="3"@if($question_data->What_database=='3')selected @endif>Option #3</option>
-                                       <option value="4"@if($question_data->What_database=='4')selected @endif>Option #4</option>
-                                       <option value="5"@if($question_data->What_database=='5')selected @endif>Option #5</option>
+                                       <option>How did you hear about Site</option>
+                                       <option value="1"@if($question_data->What_database=='1')selected @endif>News Artical</option>
+                                       <option value="2"@if($question_data->What_database=='2')selected @endif>Google</option>
+                                       <option value="3"@if($question_data->What_database=='3')selected @endif>Averti team contact you</option>
+                                       <option value="4"@if($question_data->What_database=='4')selected @endif>Advisor Referral</option>
+                                       <option value="5"@if($question_data->What_database=='5')selected @endif>Other</option>
 												</select>
 											</div>
 								</div>

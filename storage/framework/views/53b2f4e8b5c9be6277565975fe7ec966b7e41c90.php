@@ -323,5 +323,7 @@
 
 	/* custom js added by sam*/
 	<script src="<?php echo e(asset('assets/js/custom/zoom.js')); ?>"></script>
+	<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script> 
+	<script src="https://api.vsee.com/js/vseepresence.js"></script>
 <?php echo $__env->yieldContent('js_foot'); ?>
 <?php /**PATH H:\updateDemitrius\Averti\Averti\resources\views/main/footer.blade.php ENDPATH**/ ?>

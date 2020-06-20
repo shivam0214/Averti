@@ -12,6 +12,7 @@
 								<li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
 								<li class="breadcrumb-item" aria-current="page">Forms</li>
 								<li class="breadcrumb-item active" aria-current="page"><?php echo e(auth::user()['name']); ?>'s Profile</li>
+
 							</ol>
 						</nav>
 					</div>
@@ -69,6 +70,7 @@
 									</div>
 								  </div>
 								  <div class="col-md-6">
+
 									<div class="form-group">
 									  <label >Contact Number</label>
 									  <input type="text" class="form-control" placeholder="Phone" name="phone_no" value="<?php echo e($user['single']['phone_no']); ?>">
@@ -128,11 +130,11 @@
                                  <lable>How Did You Hear About Us?</lable>
                                  <select name="How_Did" id="SelectLm"  class="form-control-sm form-control">
                                                 <option>How Did You Hear About Us?</option>
-                                                <option value="1" <?php if($question_data->How_Did=='1'): ?>selected <?php endif; ?>>Option #1</option>
-                                                <option value="2" <?php if($question_data->How_Did=='2'): ?>selected <?php endif; ?>>Option #2</option>
-                                                <option value="3" <?php if($question_data->How_Did=='3'): ?>selected <?php endif; ?>>Option #3</option>
-                                                <option value="4" <?php if($question_data->How_Did=='4'): ?>selected <?php endif; ?>>Option #4</option>
-                                                <option value="5" <?php if($question_data->How_Did=='5'): ?>selected <?php endif; ?>>Option #5</option>
+                                                <option value="1" <?php if($question_data->How_Did=='1'): ?>selected <?php endif; ?>>Less than 1</option>
+                                                <option value="2" <?php if($question_data->How_Did=='2'): ?>selected <?php endif; ?>>1-5</option>
+                                                <option value="3" <?php if($question_data->How_Did=='3'): ?>selected <?php endif; ?>>6-10</option>
+                                                <option value="4" <?php if($question_data->How_Did=='4'): ?>selected <?php endif; ?>>10-15</option>
+                                                <option value="5" <?php if($question_data->How_Did=='5'): ?>selected <?php endif; ?>>15+</option>
                                              </select>
                               </div>
 									</div>
@@ -142,12 +144,12 @@
                            <div class="col-md-12">
                                     <lable>What database program do you currently Uses</lable>
 												<select name="What_database" id="select_data" value="<?php echo e($question_data->What_database); ?>" class="form-control-sm form-control">
-                                       <option>What database program do you currently Uses</option>
-                                       <option value="1"<?php if($question_data->What_database=='1'): ?>selected <?php endif; ?>>Option #1</option>
-                                       <option value="2"<?php if($question_data->What_database=='2'): ?>selected <?php endif; ?>>Option #2</option>
-                                       <option value="3"<?php if($question_data->What_database=='3'): ?>selected <?php endif; ?>>Option #3</option>
-                                       <option value="4"<?php if($question_data->What_database=='4'): ?>selected <?php endif; ?>>Option #4</option>
-                                       <option value="5"<?php if($question_data->What_database=='5'): ?>selected <?php endif; ?>>Option #5</option>
+                                       <option>How did you hear about Site</option>
+                                       <option value="1"<?php if($question_data->What_database=='1'): ?>selected <?php endif; ?>>News Artical</option>
+                                       <option value="2"<?php if($question_data->What_database=='2'): ?>selected <?php endif; ?>>Google</option>
+                                       <option value="3"<?php if($question_data->What_database=='3'): ?>selected <?php endif; ?>>Averti team contact you</option>
+                                       <option value="4"<?php if($question_data->What_database=='4'): ?>selected <?php endif; ?>>Advisor Referral</option>
+                                       <option value="5"<?php if($question_data->What_database=='5'): ?>selected <?php endif; ?>>Other</option>
 												</select>
 											</div>
 								</div>

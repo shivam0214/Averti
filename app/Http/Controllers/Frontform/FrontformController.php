@@ -18,8 +18,6 @@ class FrontformController extends Controller
     public function index(){
         return view('frontview.landing');
     }
-
-    
 /** Advisor Question Function */
 public function questioon_view(){
     $cat = Categories::all();
@@ -95,6 +93,7 @@ public function checkemail(Request $r){
     public function home(){
         return view('frontview/findadvisor/findadvisor');
     }
+
     public function finadvisor(Request $r){
         $token = md5($r->email);
         $form_data=array(
@@ -114,8 +113,15 @@ public function checkemail(Request $r){
             $users = User::create($form_data);
             $usermeta['user_id']=$users['id'];
             $set = User_meta::create($usermeta);
-            $data['verify_key'] = $token;
+            $data['verify_key'] = $token;    
+            $data['type']='Welcome To User Verification';
+            $subject ="Welcome to Averti verification";
             
-            
+        $ss = Mail::to($r->email)->send(new SendEmail($subject,'verify',$data));
+        if($set){
+            return response()->json(['status'=>1,'msg'=>'Please check your email and Verify the email']);
+        }else{
+            return response()->json(['status'=>0,'msg'=>'Please try again']);
+        }
     }
 }

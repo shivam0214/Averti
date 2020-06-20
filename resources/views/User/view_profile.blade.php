@@ -214,7 +214,6 @@
 									<h4 class="w-50 text-gray font-weight-500">10:10</h4>
 									<div class="media-body pl-15 bl-5 rounded border-primary">
 										<p>Morbi quis ex eu arcu auctor sagittis.</p>
-										<span class="text-fade">by Johne</span>
 									</div>
 									</a>
 
@@ -222,7 +221,6 @@
 									<h4 class="w-50 text-gray font-weight-500">08:40</h4>
 									<div class="media-body pl-15 bl-5 rounded border-success">
 										<p>Proin iaculis eros non odio ornare efficitur.</p>
-										<span class="text-fade">by Amla</span>
 									</div>
 									</a>
 
@@ -230,7 +228,6 @@
 									<h4 class="w-50 text-gray font-weight-500">07:10</h4>
 									<div class="media-body pl-15 bl-5 rounded border-info">
 										<p>In mattis mi ut posuere consectetur.</p>
-										<span class="text-fade">by Josef</span>
 									</div>
 									</a>
 
@@ -238,7 +235,6 @@
 									<h4 class="w-50 text-gray font-weight-500">01:15</h4>
 									<div class="media-body pl-15 bl-5 rounded border-danger">
 										<p>Morbi quis ex eu arcu auctor sagittis.</p>
-										<span class="text-fade">by Rima</span>
 									</div>
 									</a>
 
@@ -246,7 +242,6 @@
 									<h4 class="w-50 text-gray font-weight-500">23:12</h4>
 									<div class="media-body pl-15 bl-5 rounded border-warning">
 										<p>Morbi quis ex eu arcu auctor sagittis.</p>
-										<span class="text-fade">by Alaxa</span>
 									</div>
 									</a>
 

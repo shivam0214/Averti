@@ -42,7 +42,7 @@ class DashboardController extends Controller
             'category_id'=>$r->advisortype,   
             'question' =>json_encode(array(
             'lincensenumber'=>$r->lincensenumber,
-           'How_Did'=>$r->howyouknowboutus,
+           'How_Did'=>$r->How_Did,
            'ref'=>$r->ref,
            'What_database'=>$r->What_database,
            'lookingforholastic'=>$r->lookingforholastic,

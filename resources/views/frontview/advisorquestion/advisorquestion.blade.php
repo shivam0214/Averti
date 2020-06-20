@@ -20,7 +20,7 @@
 								<form role="form" id="advisorfm" action="{{route('insert')}}" method="post" class="f1">
 								<div class="backloader"><div class="loader"></div></div>
 								<div class="advisorfmmsg"></div>
-								@csrf
+									@csrf
 									<fieldset>
 										<h4>Advisor Registration</h4>
 										<div class="form-group">
@@ -116,7 +116,7 @@
 														<option value="1">Less than 1</option>
 														<option value="2">1-5</option>
 														<option value="3">6-10</option>
-														<option value="4">10+</option>
+														<option value="4">10-15</option>
 														<option value="5">15+</option>
 													</select>
 												</div>
@@ -133,12 +133,13 @@
 											<div class="row">
 												<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12">
 													<select name="databaseselect_data" id="select_data" class="form-control-sm form-control">
-														<option value="">What database program do you currently Uses</option>
-														<option value="1">Option #1</option>
-														<option value="2">Option #2</option>
-														<option value="3">Option #3</option>
-														<option value="4">Option #4</option>
-														<option value="5">Option #5</option>
+														<option value="">How did you hear about Site</option>
+														<option value="1">News Artical</option>
+														<option value="2">Google</option>
+														<option value="3">Averti team contact you</option>
+														<option value="3">Advisor Referral</option>
+														<option value="3">Other</option>
+
 													</select>
 												</div>
 											</div>

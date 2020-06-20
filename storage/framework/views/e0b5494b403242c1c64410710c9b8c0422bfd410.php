@@ -110,11 +110,11 @@
 											<div class="row">
 												<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12">
 													<select name="howyouknowboutus" id="SelectLm" class="form-control-sm form-control">
-														<option value="">For how many years has your RIA been established?</option>
+														<option value="">How Did You Hear About Us?</option>
 														<option value="1">Less than 1</option>
 														<option value="2">1-5</option>
 														<option value="3">6-10</option>
-														<option value="4">10-15</option>
+														<option value="4">10+</option>
 														<option value="5">15+</option>
 													</select>
 												</div>
