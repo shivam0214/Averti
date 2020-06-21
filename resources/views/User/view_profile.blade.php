@@ -43,10 +43,13 @@
 					<div class="nav-tabs-custom">
 							<ul class="nav nav-tabs">
 								<li><a href="#Note" class="active" data-toggle="tab">Note</a></li>
+								<li><a href="#activity" data-toggle="tab">Activity</a></li>
 								<li><a href="#activity" data-toggle="tab">Task</a></li>
 								<li><a href="#settings" data-toggle="tab">Event</a></li>
 								<li><a href="#chat" data-toggle="tab">Chat</a></li>
 								<li><a href="#Video" data-toggle="tab">Video</a></li>
+								<li><a href="#email" data-toggle="tab">Mail</a></li>
+
 
 							</ul>
 						<div class="tab-content">

@@ -102,6 +102,7 @@ public function checkemail(Request $r){
             'role_id'=>3,
             'verify_key'=>$token
         );
+        
         $usermeta = array( 
             'phone_no'=>$r->phone_no,
             'age'=>$r->age,
@@ -116,6 +117,8 @@ public function checkemail(Request $r){
             $data['verify_key'] = $token;    
             $data['type']='Welcome To User Verification';
             $subject ="Welcome to Averti verification";
+            print_r($data);
+            die;
             
         $ss = Mail::to($r->email)->send(new SendEmail($subject,'verify',$data));
         if($set){
