@@ -13,9 +13,10 @@
             </div>
           </div>
           <div class="col-sm-12 col-xs-12 col-md-8 col-lg-7 col-xs-12 form-box p-0">
-            <form role="form" action="{{route('finadvisor')}}" method="post" class="f1">
-              <div class="backloader"><div class="loader"></div></div>
+            <form role="form" id="advisorfind" action="{{route('finadvisor')}}" method="post" class="f1">
                 <div class="advisorfmmsg"></div>
+                <div class="backloader"><div class="loader"></div></div>
+
                   @csrf
                   <fieldset>
                     <div class="icongol"><img src="{{asset('assets/frontassets/images/banner/hello.png')}}"></div>
@@ -25,12 +26,13 @@
                       <input type="text" name="name" placeholder="First name..." class="f1-first-name form-control" id="f1-first-name">
                     </div>
                     <div class="f1-buttons">
-                    <button type="button" class="btn btn-previous">Previous</button>
                     <button type="button" class="btn btn-next">Next</button>
                     </div>
                   </fieldset>
                   <fieldset>
                   <div class="icongol"><img src="{{asset('assets/frontassets/images/banner/location.png')}}"></div>
+               
+               
                   <h4>Where are you located?</h4>
                   <h5>Zoe has great advisors all across the country.</h5>
                   <div class="form-group">
@@ -63,7 +65,28 @@
                   <button type="button" class="btn btn-next">Next</button>
                   </div>
                   </fieldset>
-
+                  <fieldset>
+                <div class="icongol"><img src="{{asset('assets/frontassets/images/banner/1.png')}}"></div>
+                <h4>Advisor</h4>
+                <h5>Which Type Of Advisor you want?</h5>
+                    <div class="row">
+												<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12">
+													<select name="advisortype" id="SelectLm" class="form-control-sm form-control">
+														<option value="">Choose your Advisor Type</option>
+														
+														@foreach ($cat as $record)
+															<option value="{{$record['id']}}">{{$record['category_name']}}</option>
+														@endforeach
+														
+													</select>
+												</div>
+											</div>                
+                <div class="f1-buttons">
+                <button type="button" class="btn btn-previous">Previous</button>
+                <button type="button" class="btn btn-next">Next</button>
+                </div>
+                </fieldset>
+               
                 <fieldset>
                 <div class="icongol"><img src="{{asset('assets/frontassets/images/banner/wedding.png')}}"></div>
                 <h4>Are you married?</h4>
@@ -99,7 +122,7 @@
                     </div>
                     <div class="f1-buttons">
 
-                      
+
                     <button type="button" class="btn btn-previous">Previous</button>
                     <button type="button" class="btn btn-next">Next</button>
                     </div>
@@ -120,7 +143,7 @@
                     </div>
                     </fieldset>
 
-
+<!-- 
                       <fieldset>
                       <div class="icongol"><img src="{{asset('assets/frontassets/images/banner/dolar.png')}}"></div>
                       <h4>What is your household income?</h4>
@@ -170,7 +193,7 @@
                       <button type="button" class="btn btn-previous">Previous</button>
                       <button type="button" class="btn btn-next">Next</button>
                       </div>
-                      </fieldset>
+                      </fieldset> -->
 
                       <fieldset>
 
@@ -205,13 +228,12 @@
                       <h5>Your information is confidential and protected.</h5>
                       <div class="form-group">
                       <input type="text" name="phone_no" placeholder="Phone Number" class="f1-email form-control" id="located">
-                      <input type="email" name="email" placeholder="Email Address" class="f1-email form-control" id="located">
-                      </div>
-
-
+                      <span id="checkidmsg"></span>
+                      <input id="checkemail" type="email" name="email" placeholder="Email Address" class="f1-email form-control" id="located">
+                      <input type="password" name="password" placeholder="Password">
+                     </div>
                       <div class="f1-buttons">
-
-                      <button type="button" class="btn btn-previous">Previous</button>
+                     <button type="button" class="btn btn-previous">Previous</button>
                       <button type="submit" class="btn btn-submit">Submit</button>
                       </div>
                       </fieldset>
@@ -255,7 +277,8 @@
                             </div>
                             <div class="section-wrapper">
                               <div class="recent-news">
-                                <input type="email" name="email" placeholder="Enter Your Email">
+                              <span id="checkidmsg"></span>
+                                <input id="checkemail" type="email" name="email" placeholder="Enter Your Email">
                                 <button type="submit" class="btn">Subscribe Now</button>
                               </div>
                             </div>
@@ -277,12 +300,9 @@
     if(re.status==0){
     $('#checkidmsg').text(re.msg).show();
     }
-    }
-    })
-    });
+    else{
 
-
-    $("#advisorfm").submit(function(e){
+      $("#advisorfind").submit(function(e){
       e.preventDefault();
         var inputData = new FormData($(this)[0]);
         $.ajax({
@@ -304,6 +324,12 @@
                 }
           });
     })
+    }
+    }
+    })
+    });
+
+
 
 
     </script>
