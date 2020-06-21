@@ -51,12 +51,12 @@
                   <h5>Each stage of your life is financially unique.</h5>
                   <div id="affected" name="age">
 
-                  <input type="radio" name="age" value="Under 30" title="Under 30">
-                  <input type="radio" name="age" value="30s" title="30s">
-                  <input type="radio" name="age" value="40s" title="40s">
-                  <input type="radio" name="age" value="50s" title="50s">
-                  <input type="radio" name="age" value="60s" title="60s">
-                  <input type="radio" name="age" value="70+" title="70+">
+                  <input type="radio" name="age" value="29" title="Under 30">
+                  <input type="radio" name="age" value="30" title="30s">
+                  <input type="radio" name="age" value="40" title="40s">
+                  <input type="radio" name="age" value="50" title="50s">
+                  <input type="radio" name="age" value="60" title="60s">
+                  <input type="radio" name="age" value="70" title="70+">
                   </div>
                   <div class="f1-buttons">
                   <button type="button" class="btn btn-previous">Previous</button>
