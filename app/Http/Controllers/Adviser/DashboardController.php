@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use Auth;
 use DB;
 use App\User;
-use App\User_meta
-;
+use App\User_meta;
+use Redirect;
 
 class DashboardController extends Controller
 {
@@ -22,6 +22,7 @@ class DashboardController extends Controller
         $user = User::where('id',$id)->get();
         $user = $user[0];
         $question_data= json_decode($user['single']->question);
+        
         return view('advisor_profile.profile',compact('user','question_data'));
     }
     
@@ -65,9 +66,7 @@ class DashboardController extends Controller
 
     }
     public function update_data(Request $r){
-        $form_data = User::findByUUID($r->uuid);
-        // print_r($form_data);
-        // die;
+       
      
         $data = array( 
             'category_id'=>$r->advisortype,   
@@ -90,8 +89,21 @@ class DashboardController extends Controller
            'risk'=>$r->risk,
            'when'=>$r->when,
            'services'=>$r->services)));
-           $user = DB::table('user_meta')->where('user_id',$form_data->id)->update($data);      
-           return back();
+           $user = DB::table('user_meta')->where('user_id',$r->user_id)->update($data);  
+           if($user){
+           $notification = array(
+            'message' => 'Profile data updated successfully!',
+            'alert-type' => 'success'
+            );
+           }else{
+                   
+           $notification = array(
+            'message' => 'Please Try again',
+            'alert-type' => 'error'
+        );
+           }
+        
+         return Redirect::to('/advisor_Profile')->with($notification);
 
     }
 }

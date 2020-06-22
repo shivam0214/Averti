@@ -117,9 +117,6 @@ public function checkemail(Request $r){
             $data['verify_key'] = $token;    
             $data['type']='Welcome To User Verification';
             $subject ="Welcome to Averti verification";
-            print_r($data);
-            die;
-            
         $ss = Mail::to($r->email)->send(new SendEmail($subject,'verify',$data));
         if($set){
             return response()->json(['status'=>1,'msg'=>'Please check your email and Verify the email']);

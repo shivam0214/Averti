@@ -12,7 +12,7 @@
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
 								<li class="breadcrumb-item" aria-current="page">Forms</li>
-								<li class="breadcrumb-item active" aria-current="page">{{auth::user()['name']}}'s Profile</li>
+								<li class="breadcrumb-item active" aria-current="page">{{auth::user()['name']}}s Profile</li>
 
 							</ol>
 						</nav>
@@ -39,6 +39,14 @@
 							<div class="box-body">
 								<div class="row">
                            <div class="col-md-6">
+						   <div class="input-group">
+          <span class="input-group-btn">
+            <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary text-white">
+              <i class="fa fa-picture-o"></i> Choose
+            </a>
+          </span>
+          <input id="thumbnail" class="form-control" type="text" name="filepath">
+        </div>
                               <div class="form-group">
                                  <label>Select Profile Pic</label>
                                  <label class="file">
@@ -113,13 +121,13 @@
                            <div class="col-md-6">
                               <div class="form-group">
                               <label>Lincense Number</label>
-                              <input type="text" class="form-control" name="lincensenumber" placeholder="Lincense Number" value="{{$question_data->lincensenumber}}">
+                              <input type="text" class="form-control" name="lincensenumber" placeholder="Lincense Number" value="{{@$question_data->lincensenumber}}">
                               </div>
                            </div>  
                            <div class="col-md-6">
                               <div class="form-group">
                               <label>Did someone ref you to us?</label>
-                              <input type="text" class="form-control" name="ref" value="{{$question_data->ref}}" placeholder="Did someone ref you to us?">
+                              <input type="text" class="form-control" name="ref" value="{{@$question_data->ref}}" placeholder="Did someone ref you to us?">
                               </div>	   
                         </div>   
                         </div>
@@ -130,11 +138,11 @@
                                  <lable>How Did You Hear About Us?</lable>
                                  <select name="How_Did" id="SelectLm"  class="form-control-sm form-control">
                                                 <option>How Did You Hear About Us?</option>
-                                                <option value="1" @if($question_data->How_Did=='1')selected @endif>Less than 1</option>
-                                                <option value="2" @if($question_data->How_Did=='2')selected @endif>1-5</option>
-                                                <option value="3" @if($question_data->How_Did=='3')selected @endif>6-10</option>
-                                                <option value="4" @if($question_data->How_Did=='4')selected @endif>10-15</option>
-                                                <option value="5" @if($question_data->How_Did=='5')selected @endif>15+</option>
+                                                <option value="1" @if(@$question_data->How_Did=='1')selected @endif>Less than 1</option>
+                                                <option value="2" @if(@$question_data->How_Did=='2')selected @endif>1-5</option>
+                                                <option value="3" @if(@$question_data->How_Did=='3')selected @endif>6-10</option>
+                                                <option value="4" @if(@$question_data->How_Did=='4')selected @endif>10-15</option>
+                                                <option value="5" @if(@$question_data->How_Did=='5')selected @endif>15+</option>
                                              </select>
                               </div>
 									</div>
@@ -143,13 +151,13 @@
                         <div class="row">
                            <div class="col-md-12">
                                     <lable>What database program do you currently Uses</lable>
-												<select name="What_database" id="select_data" value="{{$question_data->What_database}}" class="form-control-sm form-control">
+												<select name="What_database" id="select_data" value="{{@$question_data->What_database}}" class="form-control-sm form-control">
                                        <option>How did you hear about Site</option>
-                                       <option value="1"@if($question_data->What_database=='1')selected @endif>News Artical</option>
-                                       <option value="2"@if($question_data->What_database=='2')selected @endif>Google</option>
-                                       <option value="3"@if($question_data->What_database=='3')selected @endif>Averti team contact you</option>
-                                       <option value="4"@if($question_data->What_database=='4')selected @endif>Advisor Referral</option>
-                                       <option value="5"@if($question_data->What_database=='5')selected @endif>Other</option>
+                                       <option value="1"@if(@$question_data->What_database=='1')selected @endif>News Artical</option>
+                                       <option value="2"@if(@$question_data->What_database=='2')selected @endif>Google</option>
+                                       <option value="3"@if(@$question_data->What_database=='3')selected @endif>Averti team contact you</option>
+                                       <option value="4"@if(@$question_data->What_database=='4')selected @endif>Advisor Referral</option>
+                                       <option value="5"@if(@$question_data->What_database=='5')selected @endif>Other</option>
 												</select>
 											</div>
 								</div>
@@ -173,9 +181,6 @@
                   <form role="form" method="post" action="{{route('update_data')}}">
                   @csrf
                   {!! Form::hidden('user_id', $user->id) !!}
-
-                  <input type="hidden" class="form-control" name="id" value="{{Auth::user()['id']}}">
-
                							<div class="box-body">
 								<h4 class="box-title text-info">About</h4>
 								<hr class="my-15">
@@ -186,13 +191,13 @@
 											<div class="row">
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="custom-checkbox">
-														<input name="lookingforholastic" @if($question_data->lookingforholastic=='1')checked @endif class="checkbox-custom" id="noti_8" value="1"  type="radio">
+														<input name="lookingforholastic" @if(@$question_data->lookingforholastic=='1')checked @endif class="checkbox-custom" id="noti_8" value="1"  type="radio">
 														<label class="checkbox-custom-label" for="noti_8">Yes</label>
 													</div>
 												</div>
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="custom-checkbox">
-														<input name="lookingforholastic" @if($question_data->lookingforholastic=='0')checked @endif class="checkbox-custom" id="noti_9" value="0" type="radio">
+														<input name="lookingforholastic" @if(@$question_data->lookingforholastic=='0')checked @endif class="checkbox-custom" id="noti_9" value="0" type="radio">
 														<label class="checkbox-custom-label" for="noti_9">No</label>
 													</div>
 												</div>
@@ -206,25 +211,25 @@
 											<div class="row">
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="custom-checkbox">
-														<input name="mostinterested" value="{{$question_data->mostinterested}}" class="checkbox-custom" id="noti_11" value="Estate Planning" type="checkbox">
+														<input name="mostinterested" value="Estate Planning" class="checkbox-custom" id="noti_11" value="Estate Planning" type="checkbox" @if('Estate Planning'==$question_data->mostinterested) checked @endif>
 														<label class="checkbox-custom-label" for="noti_11">Estate Planning</label>
 													</div>
 												</div>
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="custom-checkbox">
-														<input name="mostinterested" value="{{$question_data->mostinterested}}"  class="checkbox-custom" id="noti_12" value="Life And Money Management" type="checkbox">
+														<input name="mostinterested" value="Life And Money Management"  class="checkbox-custom" id="noti_12" value="Life And Money Management" type="checkbox" @if('Life And Money Management'==$question_data->mostinterested) checked @endif>
 														<label class="checkbox-custom-label" for="noti_12">Life And Money Management</label>
 													</div>
 												</div>
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="custom-checkbox">
-														<input name="mostinterested" value="{{$question_data->mostinterested}}" class="checkbox-custom" id="noti_13" value="Cash Flow / Budgeting" type="checkbox">
+														<input name="mostinterested" value="Cash Flow / Budgeting" class="checkbox-custom" id="noti_13" value="Cash Flow / Budgeting" type="checkbox" @if('Cash Flow / Budgeting'==$question_data->mostinterested) checked @endif>
 														<label class="checkbox-custom-label" for="noti_13">Cash Flow / Budgeting</label>
 													</div>
 												</div>
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="custom-checkbox">
-														<input name="mostinterested" value="{{$question_data->mostinterested}}" class="checkbox-custom" id="noti_14" value="All Of The Above" type="checkbox">
+														<input name="mostinterested" value="All Of The Above" class="checkbox-custom" id="noti_14" value="All Of The Above" type="checkbox" @if('All Of The Above'==$question_data->mostinterested) checked @endif>
 														<label class="checkbox-custom-label" for="noti_14">All Of The Above</label>
 													</div>
 												</div>
@@ -237,25 +242,25 @@
 											<div class="row">
                                  <div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="rdio rdio-primary radio-inline">
-														<input name="status" value="Single" @if($question_data->status=='Single')checked @endif id="radio1" type="radio">
+														<input name="status" value="Single" @if(@$question_data->status=='Single')checked @endif id="radio1" type="radio">
 														<label for="radio1">Single</label>
 													</div>
 												</div>
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="rdio rdio-primary radio-inline">
-														<input name="status" value="Married" @if($question_data->status=='Married')checked @endif id="radio2" type="radio">
+														<input name="status" value="Married" @if(@$question_data->status=='Married')checked @endif id="radio2" type="radio">
 														<label for="radio2">Married</label>
 													</div>
 												</div>
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="rdio rdio-primary radio-inline">
-														<input name="status" value="Widow" @if($question_data->status=='Widow')checked @endif id="radio3" type="radio">
+														<input name="status" value="Widow" @if(@$question_data->status=='Widow')checked @endif id="radio3" type="radio">
 														<label for="radio3">Widow</label>
 													</div>
 												</div>
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="rdio rdio-primary radio-inline">
-														<input name="status" value="Divorce" @if($question_data->status=='Divorce')checked @endif id="radio4" type="radio">
+														<input name="status" value="Divorce" @if(@$question_data->status=='Divorce')checked @endif id="radio4" type="radio">
 														<label for="radio4">Divorce</label>
 													</div>
 												</div>
@@ -269,20 +274,20 @@
 												<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 													<select name="assets" id="assets" class="form-control-sm form-control">
 														<option value="">Assets</option>
-														<option value="0-99,999" @if($question_data->assets=='0-99,999')selected @endif>0-99,999</option>
-														<option value="100,000-250,000" @if($question_data->assets=='100,000-250,000')selected @endif>100,000-250,000</option>
-														<option value="250,001-500,000" @if($question_data->assets=='250,001-500,000')selected @endif>250,001-500,000</option>
-														<option value="500,001-1,000,000" @if($question_data->assets=='500,001-1,000,000')selected @endif>500,001-1,000,000</option>
+														<option value="0-99,999" @if(@$question_data->assets=='0-99,999')selected @endif>0-99,999</option>
+														<option value="100,000-250,000" @if(@$question_data->assets=='100,000-250,000')selected @endif>100,000-250,000</option>
+														<option value="250,001-500,000" @if(@$question_data->assets=='250,001-500,000')selected @endif>250,001-500,000</option>
+														<option value="500,001-1,000,000" @if(@$question_data->assets=='500,001-1,000,000')selected @endif>500,001-1,000,000</option>
 													</select>
 												</div>
 												<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 													<select name="age" id="age" class="form-control-sm form-control">
 														<option value="">Age</option>
-														<option value="21-35"@if($question_data->age=='21-35')selected @endif>21-35</option>
-														<option value="36-45"@if($question_data->age=='36-45')selected @endif>36-45</option>
-														<option value="46-55"@if($question_data->age=='46-55')selected @endif>46-55</option>
-														<option value="56-75"@if($question_data->age=='56-75')selected @endif>56-75</option>
-														<option value="75"@if($question_data->age=='75')selected @endif>75+</opton>
+														<option value="21-35"@if(@$question_data->age=='21-35')selected @endif>21-35</option>
+														<option value="36-45"@if(@$question_data->age=='36-45')selected @endif>36-45</option>
+														<option value="46-55"@if(@$question_data->age=='46-55')selected @endif>46-55</option>
+														<option value="56-75"@if(@$question_data->age=='56-75')selected @endif>56-75</option>
+														<option value="75"@if(@$question_data->age=='75')selected @endif>75+</opton>
 													</select>
 												</div>
 											</div>
@@ -290,18 +295,18 @@
 												<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 													<select name="life_happiness" id="Select" class="form-control-sm form-control">
 														<option value="">Life Happiness</option>
-														<option value="Over the moon"@if($question_data->life_happiness=='Over the moon')selected @endif>Over the moon</option>
-														<option value="Very Happy"@if($question_data->life_happiness=='Very Happy')selected @endif>Very Happy</option>
-														<option value="UnHappy"@if($question_data->life_happiness=='UnHappy')selected @endif>UnHappy</option>
-														<option value="Depressed"@if($question_data->life_happiness=='Depressed')selected @endif>Depressed</option>
+														<option value="Over the moon"@if(@$question_data->life_happiness=='Over the moon')selected @endif>Over the moon</option>
+														<option value="Very Happy"@if(@$question_data->life_happiness=='Very Happy')selected @endif>Very Happy</option>
+														<option value="UnHappy"@if(@$question_data->life_happiness=='UnHappy')selected @endif>UnHappy</option>
+														<option value="Depressed"@if(@$question_data->life_happiness=='Depressed')selected @endif>Depressed</option>
 													</select>
 												</div>
 												<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 													<select name="financial" id="Select" class="form-control-sm form-control">
-														<option value="Financial Awareness" @if($question_data->financial=='Financial Awareness')selected @endif>Financial Awareness</option>
-														<option value="Financially Confident" @if($question_data->financial=='Financially Confident')selected @endif>Financially Confident</option>
-														<option value="Financially Aware" @if($question_data->financial=='Financially Aware')selected @endif>Financially Aware</option>
-														<option value="Financially Chanllenged" @if($question_data->financial=='Financially Chanllenged')selected @endif>Financially Chanllenged</option>
+														<option value="Financial Awareness" @if(@$question_data->financial=='Financial Awareness')selected @endif>Financial Awareness</option>
+														<option value="Financially Confident" @if(@$question_data->financial=='Financially Confident')selected @endif>Financially Confident</option>
+														<option value="Financially Aware" @if(@$question_data->financial=='Financially Aware')selected @endif>Financially Aware</option>
+														<option value="Financially Chanllenged" @if(@$question_data->financial=='Financially Chanllenged')selected @endif>Financially Chanllenged</option>
 													</select>
 												</div>
 											</div>
@@ -309,18 +314,18 @@
 												<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 													<select name="retirement_goal" id="Select" class="form-control-sm form-control">
 														<option value="">Retirement Goal</option>
-														<option value="0-5"@if($question_data->retirement_goal=='0-5')selected @endif>0-5</option>
-														<option value="6-10"@if($question_data->retirement_goal=='6-10')selected @endif>6-10</option>
-														<option value="11-15"@if($question_data->retirement_goal=='11-15')selected @endif>11-15</option>
+														<option value="0-5"@if(@$question_data->retirement_goal=='0-5')selected @endif>0-5</option>
+														<option value="6-10"@if(@$question_data->retirement_goal=='6-10')selected @endif>6-10</option>
+														<option value="11-15"@if(@$question_data->retirement_goal=='11-15')selected @endif>11-15</option>
 													</select>
 												</div>
 												<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 													<select name="moneymeaning" id="Select" class="form-control-sm form-control">
 														<option value="">Money Meaning</option>
-														<option value="Freedom" @if($question_data->moneymeaning=='Freedom')selected @endif>Freedom</option>
-														<option value="Control" @if($question_data->moneymeaning=='Control')selected @endif>Control</option>
-														<option value="Security" @if($question_data->moneymeaning=='Security')selected @endif>Security</option>
-														<option value="All the above" @if($question_data->moneymeaning=='All the above')selected @endif>All the above</option>
+														<option value="Freedom" @if(@$question_data->moneymeaning=='Freedom')selected @endif>Freedom</option>
+														<option value="Control" @if(@$question_data->moneymeaning=='Control')selected @endif>Control</option>
+														<option value="Security" @if(@$question_data->moneymeaning=='Security')selected @endif>Security</option>
+														<option value="All the above" @if(@$question_data->moneymeaning=='All the above')selected @endif>All the above</option>
 													</select>
 												</div>
 											</div>
@@ -328,10 +333,10 @@
 												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 													<select name="desisionmaker" id="Select" class="form-control-sm form-control">
 														<option value="0">Financial Desision Maker</option>
-														<option value="Me"@if($question_data->desisionmaker=='Me')selected @endif >Me</option>
-														<option value="Partner" @if($question_data->desisionmaker=='Partner')selected @endif>Partner</option>
-														<option value="Both" @if($question_data->desisionmaker=='Both')selected @endif>Both</option>
-														<option value="Outside Source" @if($question_data->desisionmaker=='Outside Source')selected @endif>Outside Source</option>
+														<option value="Me"@if(@$question_data->desisionmaker=='Me')selected @endif >Me</option>
+														<option value="Partner" @if(@$question_data->desisionmaker=='Partner')selected @endif>Partner</option>
+														<option value="Both" @if(@$question_data->desisionmaker=='Both')selected @endif>Both</option>
+														<option value="Outside Source" @if(@$question_data->desisionmaker=='Outside Source')selected @endif>Outside Source</option>
 													</select>
 												</div>
 											</div>
@@ -341,25 +346,25 @@
 											<div class="row">
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="custom-checkbox">
-														<input name="risk" class="checkbox-custom" id="noti_15" value="Aggressive" @if($question_data->risk=='Aggressive')checked @endif type="checkbox">
+														<input name="risk" class="checkbox-custom" id="noti_15" value="Aggressive" @if(@$question_data->risk=='Aggressive')checked @endif type="checkbox">
 														<label class="checkbox-custom-label" for="noti_15">Aggressive</label>
 													</div>
 												</div>
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="custom-checkbox">
-														<input name="risk" class="checkbox-custom" id="noti_16" value="Moderately Aggressive" @if($question_data->risk=='Moderately')selected @endif type="checkbox">
+														<input name="risk" class="checkbox-custom" id="noti_16" value="Moderately Aggressive" @if(@$question_data->risk=='Moderately')selected @endif type="checkbox">
 														<label class="checkbox-custom-label" for="noti_16">Moderately Aggressive</label>
 													</div>
 												</div>
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="custom-checkbox">
-														<input name="risk"@if($question_data->risk=='Moderate')selected @endif class="checkbox-custom" id="noti_17" value="Moderate" type="checkbox">
+														<input name="risk"@if(@$question_data->risk=='Moderate')selected @endif class="checkbox-custom" id="noti_17" value="Moderate" type="checkbox">
 														<label class="checkbox-custom-label" for="noti_17">Moderate</label>
 													</div>
 												</div>
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="custom-checkbox">
-														<input name="risk" class="checkbox-custom" id="noti_18" value="Conservative"@if($question_data->risk=='Conservative Source')selected @endif type="checkbox">
+														<input name="risk" class="checkbox-custom" id="noti_18" value="Conservative"@if(@$question_data->risk=='Conservative Source')selected @endif type="checkbox">
 														<label class="checkbox-custom-label" for="noti_18">Conservative</label>
 													</div>
 												</div>
@@ -371,25 +376,25 @@
 											<div class="row">
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="custom-checkbox">
-														<input name="when" @if($question_data->when=='ASAP')checked @endif class="checkbox-custom" id="noti_19" value="ASAP" type="checkbox">
+														<input name="when" @if(@$question_data->when=='ASAP')checked @endif class="checkbox-custom" id="noti_19" value="ASAP" type="checkbox">
 														<label class="checkbox-custom-label" for="noti_19">ASAP</label>
 													</div>
 												</div>
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="custom-checkbox">
-														<input name="when" class="checkbox-custom" id="noti_20" value="Week from Now" @if($question_data->when=='Week from Now')checked @endif type="checkbox">
+														<input name="when" class="checkbox-custom" id="noti_20" value="Week from Now" @if(@$question_data->when=='Week from Now')checked @endif type="checkbox">
 														<label class="checkbox-custom-label" for="noti_20">Week from Now</label>
 													</div>
 												</div>
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="custom-checkbox">
-														<input name="when" class="checkbox-custom" id="noti_21" value="Month From Now" @if($question_data->when=='Month From Now')checked @endif type="checkbox">
+														<input name="when" class="checkbox-custom" id="noti_21" value="Month From Now" @if(@$question_data->when=='Month From Now')checked @endif type="checkbox">
 														<label class="checkbox-custom-label" for="noti_21">Month From Now</label>
 													</div>
 												</div>
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="custom-checkbox">
-														<input name="when" class="checkbox-custom" id="noti_22" value="With six Months" @if($question_data->when=='With six Months')checked @endif type="checkbox">
+														<input name="when" class="checkbox-custom" id="noti_22" value="With six Months" @if(@$question_data->when=='With six Months')checked @endif type="checkbox">
 														<label class="checkbox-custom-label" for="noti_22">With six Months</label>
 													</div>
 												</div>
@@ -403,10 +408,10 @@
 												<div class="col-sm-12">
 													<select name="planning" id="Select" class="form-control-sm form-control">
 														<option value="0">Select Option</option>
-														<option value="Financial Planning" @if($question_data->planning=='Financial Planning')selected @endif>Financial Planning</option>
-														<option value="Life Management"@if($question_data->planning=='Life Management')selected @endif>Life Management</option>
-														<option value="Income Planning"@if($question_data->planning=='Income Planning')selected @endif>Income Planning</option>
-														<option value="Investments"@if($question_data->planning=='Investments')selected @endif>Investments</option>
+														<option value="Financial Planning" @if(@$question_data->planning=='Financial Planning')selected @endif>Financial Planning</option>
+														<option value="Life Management" @if(@$question_data->planning=='Life Management')selected @endif>Life Management</option>
+														<option value="Income Planning" @if(@$question_data->planning=='Income Planning')selected @endif>Income Planning</option>
+														<option value="Investments" @if(@$question_data->planning=='Investments')selected @endif>Investments</option>
 													</select>
 												</div>
 											</div>
@@ -417,10 +422,10 @@
 												<div class="col-sm-12">
 													<select name="services" id="Select" class="form-control-sm form-control">
 														<option value="0">Select Option</option>
-														<option value="2500-5000" @if($question_data->services=='2500-5000')selected @endif>2500-5000</option>
-														<option value="5001-7000" @if($question_data->services=='5001-7000')selected @endif>5001-7000</option>
-														<option value="7001-10000" @if($question_data->services=='7001-10000')selected @endif>7001-10000</option>
-														<option value="10000" @if($question_data->services=='10000')selected @endif>10000+</option>
+														<option value="2500-5000" @if(@$question_data->services=='2500-5000')selected @endif>2500-5000</option>
+														<option value="5001-7000" @if(@$question_data->services=='5001-7000')selected @endif>5001-7000</option>
+														<option value="7001-10000" @if(@$question_data->services=='7001-10000')selected @endif>7001-10000</option>
+														<option value="10000" @if(@$question_data->services=='10000')selected @endif>10000+</option>
 													</select>
 												</div>
 											</div>
