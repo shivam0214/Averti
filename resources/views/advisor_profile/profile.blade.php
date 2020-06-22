@@ -6,14 +6,10 @@
 		<div class="content-header">
 			<div class="d-flex align-items-center">
 				<div class="mr-auto">
-					<h3 class="page-title">General Form Elements</h3>
 					<div class="d-inline-block align-items-center">
 						<nav>
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
-								<li class="breadcrumb-item" aria-current="page">Forms</li>
-								<li class="breadcrumb-item active" aria-current="page">{{auth::user()['name']}}'s Profile</li>
-
+								<li class="breadcrumb-item active" aria-current="page"><h3 class="page-title">{{auth::user()['name']}}'s Profile</h3></li>
 							</ol>
 						</nav>
 					</div>
