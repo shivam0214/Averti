@@ -320,10 +320,12 @@
 	<script src="<?php echo e(asset('assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/vendor_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/vendor_plugins/timepicker/bootstrap-timepicker.min.js')); ?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 
 	/* custom js added by sam*/
 	<script src="<?php echo e(asset('assets/js/custom/zoom.js')); ?>"></script>
 	<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script> 
 	<script src="https://api.vsee.com/js/vseepresence.js"></script>
+	
 <?php echo $__env->yieldContent('js_foot'); ?>
 <?php /**PATH G:\averti\resources\views/main/footer.blade.php ENDPATH**/ ?>

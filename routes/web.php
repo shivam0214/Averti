@@ -57,3 +57,8 @@ Route::get('/find_advisor', 'Frontform\FrontformController@home')->name('find_ad
 Route::post('/finadvisor', 'Frontform\FrontformController@finadvisor')->name('finadvisor');
 
 Route::get("/checkemail",'Frontform\FrontformController@checkemail')->name('checkeamil');
+
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});

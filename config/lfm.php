@@ -49,19 +49,20 @@ return [
         'file'  => [
             'folder_name'  => 'files',
             'startup_view' => 'grid',
-            'max_size'     => 50000, // size in KB
+            'max_size'     => 500000, // size in KB
             'valid_mime'   => [
                 'image/jpeg',
                 'image/pjpeg',
                 'image/png',
                 'image/gif',
                 'image/svg+xml',
+                'video/mp4',
             ],
         ],
         'image' => [
             'folder_name'  => 'photos',
             'startup_view' => 'list',
-            'max_size'     => 50000, // size in KB
+            'max_size'     => 500000, // size in KB
             'valid_mime'   => [
                 'image/jpeg',
                 'image/pjpeg',
@@ -70,8 +71,19 @@ return [
                 'image/svg+xml',
                 'application/pdf',
                 'text/plain',
+                'video/mp4',
             ],
         ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Pagination
+    |--------------------------------------------------------------------------
+     */
+
+    'paginator' => [
+        'perPage' => 30,
     ],
 
     /*
@@ -82,7 +94,7 @@ return [
 
     'disk'                     => 'public',
 
-    'rename_file'              => false,
+    'rename_file'              => true,
 
     'alphanumeric_filename'    => false,
 
@@ -138,6 +150,7 @@ return [
         'png'  => 'PNG Image',
         'ppt'  => 'Microsoft PowerPoint',
         'pptx' => 'Microsoft PowerPoint',
+        'mp4'=>"media player4"
     ],
 
     /*
