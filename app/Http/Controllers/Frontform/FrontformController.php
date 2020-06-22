@@ -91,25 +91,29 @@ public function checkemail(Request $r){
 }
     /** Find Advisor */
     public function home(){
-        return view('frontview/findadvisor/findadvisor');
+        $cat = Categories::all();
+        return view('frontview/findadvisor/findadvisor',compact('cat'));
     }
 
     public function finadvisor(Request $r){
         $token = md5($r->email);
+       
         $form_data=array(
             'name'=>$r->name,
             'email'=>$r->email,
+            'zipcode'=>$r->located,
             'role_id'=>3,
-            'verify_key'=>$token
-        );
-        
+            'verify_key'=>$token,
+            'password'=>Hash::make($r->password),
+        );        
         $usermeta = array( 
             'phone_no'=>$r->phone_no,
             'age'=>$r->age,
+            'category_id'=>$r->advisortype,               
             'question' =>json_encode(array(
                 'status'=>$r->status,
                 'Whatwouldyoulike'=>$r->Whatwouldyoulike,
-                'occupation'=>$r->occupation,                
+                'occupation'=>$r->occupation,    
             )));
             $users = User::create($form_data);
             $usermeta['user_id']=$users['id'];
@@ -117,6 +121,7 @@ public function checkemail(Request $r){
             $data['verify_key'] = $token;    
             $data['type']='Welcome To User Verification';
             $subject ="Welcome to Averti verification";
+            
         $ss = Mail::to($r->email)->send(new SendEmail($subject,'verify',$data));
         if($set){
             return response()->json(['status'=>1,'msg'=>'Please check your email and Verify the email']);
