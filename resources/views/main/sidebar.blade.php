@@ -75,7 +75,8 @@
             <li><a href="extra_taskboard.html"><i class="ti-more"></i>Todo</a></li>
           </ul>
         </li>
-      </ul>
+    
+      </li>
       <li class="treeview">
           <a href="#">
             <i class="ti-layout-grid2"></i>
