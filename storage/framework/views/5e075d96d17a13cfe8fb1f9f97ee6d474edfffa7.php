@@ -76,6 +76,19 @@
           </ul>
         </li>
       </ul>
+      <li class="treeview">
+          <a href="#">
+            <i class="ti-layout-grid2"></i>
+			<span>Booking</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="ti-more"></i>Booking List</a></li>
+            <li><a href="<?php echo e(route('booking')); ?>"><i class="ti-more"></i> Booking Schedule</a></li>
+          </ul>
+        </li>
     </section>
 	<div class="sidebar-footer">
 		<!-- item-->

@@ -282,7 +282,8 @@
     <script src="<?php echo e(asset('assets/icons/feather-icons/feather.min.js')); ?>"></script>	
 	<script src="<?php echo e(asset('assets/vendor_components/apexcharts-bundle/dist/apexcharts.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/vendor_components/progressbar.js-master/dist/progressbar.js')); ?>"></script>	
-	
+	<script src="<?php echo e(asset('assets/vendor_components/sweetalert/sweetalert.min.js')); ?>"></script>
+
 	<script src="<?php echo e(asset('assets/js/template.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/js/pages/dashboard.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/js/demo.js')); ?>"></script>
@@ -320,10 +321,95 @@
 	<script src="<?php echo e(asset('assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/vendor_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/vendor_plugins/timepicker/bootstrap-timepicker.min.js')); ?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 
+	<script src="<?php echo e(asset('assets/js/pages/steps.js')); ?>"></script>
+	<script src="<?php echo e(asset('assets/js/jquery.timepicker.min.js')); ?>"></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.21.0/slimselect.js'></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="<?php echo e(asset('assets/js/script.js')); ?>"></script>
+	
 	/* custom js added by sam*/
 	<script src="<?php echo e(asset('assets/js/custom/zoom.js')); ?>"></script>
 	<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script> 
 	<script src="https://api.vsee.com/js/vseepresence.js"></script>
+	<script>
+	
+  $( function() {
+
+  $( "#datepicker" ).datepicker({minDate: 0,});
+
+  } );
+
+  </script>
+<script>
+
+  $(document).ready(function(){
+
+  $('#timepicker, #timepicker1').timepicker({});
+
+});
+
+  </script>
+<script>
+  
+new SlimSelect({
+select: '#multiple', 
+});
+new SlimSelect({
+select: '#multiple1', 
+});
+new SlimSelect({
+select: '#multiple2', 
+});
+new SlimSelect({
+select: '#multiple3', 
+});
+new SlimSelect({
+select: '#multiple4', 
+});
+new SlimSelect({
+select: '#multiple5', 
+});
+new SlimSelect({
+select: '#multiple6', 
+});
+new SlimSelect({
+select: '#multiple7', 
+});
+new SlimSelect({
+select: '#multiple8', 
+});
+new SlimSelect({
+select: '#multiple9', 
+});
+new SlimSelect({
+select: '#multiple10', 
+});
+new SlimSelect({
+select: '#multiple11', 
+});
+new SlimSelect({
+select: '#multiple12', 
+});
+new SlimSelect({
+select: '#multiple13', 
+});
+new SlimSelect({
+select: '#multiple14', 
+});
+new SlimSelect({
+select: '#multiple15', 
+});
+new SlimSelect({
+select: '#multiple16', 
+});
+new SlimSelect({
+select: '#multiple17', 
+});
+new SlimSelect({
+select: '#multiple18', 
+});
+</script>
 <?php echo $__env->yieldContent('js_foot'); ?>
 <?php /**PATH H:\updateDemitrius\Averti\Averti\resources\views/main/footer.blade.php ENDPATH**/ ?>

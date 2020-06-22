@@ -42,6 +42,8 @@ Route::get('/dashboard/User/AddUser', 'User\UserController@add_user')->name('add
 Route::get('/dashboard/User/ViewUser', 'User\UserController@view_profile')->name('view_profile');
 Route::get('/Mail', 'User\UserController@mail')->name('mail');
 Route::get('/Chat', 'User\UserController@chat')->name('chat');
+/* Booking */ 
+Route::get('/Booking', 'Adviser\BookingController@booking')->name('booking');
 
 /* wait 1 min me pull karta hoon aab
 Zoom */

@@ -121,4 +121,5 @@ class DashboardController extends Controller
          return Redirect::to('/advisor_Profile')->with($notification);
 
     }
+    
 }

@@ -106,7 +106,7 @@
 									<!-- Post -->
 									<div class="post">
 									<div class="user-block">
-										<img class="img-bordered-sm rounded-circle" src="{{asset('assets/frontassets/images/user6-128x128.jpg')}}" alt="user image">
+										<img class="img-bordered-sm rounded-circle" src="{{asset('assets/img/avatars/1.jpg')}}" alt="user image">
 											<span class="username">
 											<a href="#">Evan</a>
 											<a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
@@ -117,21 +117,21 @@
 									<div class="activitytimeline">
 										<div class="row mb-20">
 											<div class="col-sm-6">
-											<img class="img-fluid" src="{{asset('assets/frontassets/images/photo1.png')}}" alt="Photo">
+											<img class="img-fluid" src="{{asset('assets/images/com.jpg')}}" alt="Photo">
 											</div>
 											<!-- /.col -->
 											<div class="col-sm-6">
 											<div class="row">
 												<div class="col-sm-6">
-												<img class="img-fluid" src="{{asset('assets/frontassets/images/photo2.png')}}" alt="Photo">
+												<img class="img-fluid" src="{{asset('assets/images/reg.jpg')}}" alt="Photo">
 												<br><br>
-												<img class="img-fluid" src="{{asset('assets/frontassets/images/photo3.jpg')}}" alt="Photo">
+												<img class="img-fluid" src="{{asset('assets/images/com.jpg')}}" alt="Photo">
 												</div>
 												<!-- /.col -->
 												<div class="col-sm-6">
-												<img class="img-fluid" src="{{asset('assets/frontassets/images/photo4.jpg')}}" alt="Photo">
+												<img class="img-fluid" src="{{asset('assets/images/com.jpg')}}" alt="Photo">
 												<br><br>
-												<img class="img-fluid" src="{{asset('assets/frontassets/images/photo1.png')}}" alt="Photo">
+												<img class="img-fluid" src="{{asset('assets/images/com.jpg')}}" alt="Photo">
 												</div>
 												<!-- /.col -->
 											</div>
