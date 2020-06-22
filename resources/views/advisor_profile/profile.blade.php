@@ -36,25 +36,22 @@
 
                   {!! Form::hidden('user_id', $user->id) !!}
                   
-							<div class="box-body">
-								<div class="row">
-                           <div class="col-md-6">
-						   <div class="input-group">
-          <span class="input-group-btn">
-            <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary text-white">
-              <i class="fa fa-picture-o"></i> Choose
-            </a>
-          </span>
-          <input id="thumbnail" class="form-control" type="text" name="filepath">
-        </div>
-                              <div class="form-group">
-                                 <label>Select Profile Pic</label>
-                                 <label class="file">
-                                    <input type="file" id="file">
-                                 </label>
-								      </div>
-								   </div>
-                         </div>  
+			<div class="box-body">
+				<div class="row">
+                    <div class="col-md-6">
+						<div class="input-group">
+							<span class="input-group-btn">
+								<a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary text-white">
+									<i class="fa fa-picture-o"></i> Choose
+								</a>
+							</span>
+							<input id="thumbnail" class="form-control" type="text" name="profile_image" value="{{$user['single']['profile_image']}}" name="filepath">
+						</div>
+						<div class="col-md-6">
+							<div id="holder" style="margin-top:15px;max-height:100px;"></div>
+						</div>
+					</div>
+				</div>		
                          <div class="row">
                            <div class="col-md-6">
                         
@@ -117,7 +114,7 @@
 								</div>
 								<h4 class="box-title text-info"><i class="ti-save mr-15"></i> Information</h4>
 								<hr class="my-15">
-                        <div class="row">
+                        	<div class="row">
                            <div class="col-md-6">
                               <div class="form-group">
                               <label>Lincense Number</label>
@@ -211,25 +208,25 @@
 											<div class="row">
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="custom-checkbox">
-														<input name="mostinterested" value="Estate Planning" class="checkbox-custom" id="noti_11" value="Estate Planning" type="checkbox" @if('Estate Planning'==$question_data->mostinterested) checked @endif>
+														<input name="mostinterested" value="Estate Planning" class="checkbox-custom" id="noti_11" value="Estate Planning" type="checkbox" @if('Estate Planning'==@$question_data->mostinterested) checked @endif>
 														<label class="checkbox-custom-label" for="noti_11">Estate Planning</label>
 													</div>
 												</div>
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="custom-checkbox">
-														<input name="mostinterested" value="Life And Money Management"  class="checkbox-custom" id="noti_12" value="Life And Money Management" type="checkbox" @if('Life And Money Management'==$question_data->mostinterested) checked @endif>
+														<input name="mostinterested" value="Life And Money Management"  class="checkbox-custom" id="noti_12" value="Life And Money Management" type="checkbox" @if('Life And Money Management'==@$question_data->mostinterested) checked @endif>
 														<label class="checkbox-custom-label" for="noti_12">Life And Money Management</label>
 													</div>
 												</div>
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="custom-checkbox">
-														<input name="mostinterested" value="Cash Flow / Budgeting" class="checkbox-custom" id="noti_13" value="Cash Flow / Budgeting" type="checkbox" @if('Cash Flow / Budgeting'==$question_data->mostinterested) checked @endif>
+														<input name="mostinterested" value="Cash Flow / Budgeting" class="checkbox-custom" id="noti_13" value="Cash Flow / Budgeting" type="checkbox" @if('Cash Flow / Budgeting'==@$question_data->mostinterested) checked @endif>
 														<label class="checkbox-custom-label" for="noti_13">Cash Flow / Budgeting</label>
 													</div>
 												</div>
 												<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 													<div class="custom-checkbox">
-														<input name="mostinterested" value="All Of The Above" class="checkbox-custom" id="noti_14" value="All Of The Above" type="checkbox" @if('All Of The Above'==$question_data->mostinterested) checked @endif>
+														<input name="mostinterested" value="All Of The Above" class="checkbox-custom" id="noti_14" value="All Of The Above" type="checkbox" @if('All Of The Above'==@$question_data->mostinterested) checked @endif>
 														<label class="checkbox-custom-label" for="noti_14">All Of The Above</label>
 													</div>
 												</div>

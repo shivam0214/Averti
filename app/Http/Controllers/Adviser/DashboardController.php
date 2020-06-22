@@ -27,12 +27,14 @@ class DashboardController extends Controller
     }
     
     public function update_profile(Request $r){
+        
         $form_data = User::findByUUID($r->uuid);
         $form_data->name=$r->name;
         $form_data->last_name=$r->lastname;
         $form_data->email=$r->email;
         $form_data->save();
         $data = array( 
+            'profile_image'=>$r->profile_image,
             'company'=>$r->company,
             'phone_no'=>$r->phone_no,
             'address'=>$r->streetaddress,
@@ -62,7 +64,20 @@ class DashboardController extends Controller
            'services'=>$r->services
            )));
             $user = DB::table('user_meta')->where('user_id',$form_data->id)->update($data);      
-            return back();
+            if($user){
+                $notification = array(
+                 'message' => 'Profile data updated successfully!',
+                 'alert-type' => 'success'
+                 );
+                }else{
+                        
+                $notification = array(
+                 'message' => 'Please Try again',
+                 'alert-type' => 'error'
+             );
+                }
+             
+              return Redirect::to('/advisor_Profile')->with($notification);
 
     }
     public function update_data(Request $r){
