@@ -75,8 +75,7 @@
             <li><a href="extra_taskboard.html"><i class="ti-more"></i>Todo</a></li>
           </ul>
         </li>
-      </ul>
-      <li class="treeview">
+        <li class="treeview">
           <a href="#">
             <i class="ti-layout-grid2"></i>
 			<span>Booking</span>
@@ -85,10 +84,12 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="ti-more"></i>Booking List</a></li>
+            <li><a hregf="#"><i class="ti-more"></i>Booking List</a></li>
             <li><a href="<?php echo e(route('booking')); ?>"><i class="ti-more"></i> Booking Schedule</a></li>
           </ul>
         </li>
+      </ul>
+      
     </section>
 	<div class="sidebar-footer">
 		<!-- item-->
