@@ -7,8 +7,19 @@
     <title><?php echo e(config('app.name', 'Laravel')); ?></title>
 	<link rel="stylesheet" href="<?php echo e(asset('assets/css/vendors_css.css')); ?>">
 	<!-- Style-->  
-	<link rel="stylesheet" href="<?php echo e(asset('assets/css/style.css')); ?>">
+	
+    
+    <?php if(Auth::user()->role_id==2): ?>
+    <link rel="stylesheet" id="<?php echo e(Auth::user()->role_id); ?>" href="<?php echo e(asset('assets/css/style.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/skin_color.css')); ?>">
+    <?php else: ?>
+    <link rel="stylesheet" href="<?php echo e(asset('assets/usercss/style.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/usercss/skin_color.css')); ?>">
+    <?php endif; ?>
+    <link rel='stylesheet' href="<?php echo e(asset('assets/css/selectdropdown.css')); ?>">
+	<link rel="stylesheet" href="<?php echo e(asset('assets/css/jquery.timepicker.min.css')); ?>">
+	<link rel="stylesheet" href="<?php echo e(asset('assets/css/jquery-ui.css')); ?>">
+	<link rel="stylesheet" href="<?php echo e(asset('assets/css/wizard.css')); ?>">
     <link rel="icon" href="https://www.multipurposethemes.com/admin/florence-admin-template/images/favicon.ico">	
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">

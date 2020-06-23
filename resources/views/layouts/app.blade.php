@@ -9,8 +9,16 @@
 
 	<link rel="stylesheet" href="{{asset('assets/css/vendors_css.css')}}">
 	<!-- Style-->  
-	<link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+	
+    {{--  	<link rel="stylesheet" href="{{asset('assets/usercss/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/usercss/skin_color.css')}}">  --}}
+    @if(Auth::user()->role_id==2)
+    <link rel="stylesheet" id="{{Auth::user()->role_id}}" href="{{asset('assets/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/skin_color.css')}}">
+    @else
+    <link rel="stylesheet" href="{{asset('assets/usercss/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/usercss/skin_color.css')}}">
+    @endif
     <link rel='stylesheet' href="{{asset('assets/css/selectdropdown.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/css/jquery.timepicker.min.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/css/jquery-ui.css')}}">
