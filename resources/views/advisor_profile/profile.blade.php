@@ -26,7 +26,7 @@
 					  <h3 class="widget-user-username">{{Auth::user()['name']}}</h3>
 					</div>
 					<div class="widget-user-image">
-					  <img class="rounded-circle" src="{{asset('assets/images/advisor/10.jpg')}}" alt="User Avatar">
+					  <img class="rounded-circle" src="{{$user['single']['profile_image']}}" alt="User Avatar">
 					</div>
 					<div class="box-footer">
 					  <div class="row">
@@ -132,10 +132,10 @@
 				
 				<div class="nav-tabs-custom">
 				  <ul class="nav nav-tabs">
-					<li><a href="#usertimeline" data-toggle="tab">Timeline</a></li>
+					  <li><a href="#settings" data-toggle="tab">Edit Personal Info </li>
+					  <li><a href="#info" data-toggle="tab"> Edit Question</a></li>
 					<li><a class="active" href="#activity" data-toggle="tab">Activity</a></li>
-					<li><a href="#settings" data-toggle="tab">Settings</a></li>
-					<li><a href="#info" data-toggle="tab">Information</a></li>
+					<li><a href="#usertimeline" data-toggle="tab">Timeline</a></li>
 
 				</ul>
   
@@ -258,9 +258,6 @@
 											<h4 class="timeline-title"><a href="#">Rakesh Kumar</a><small> uploaded new photos</small></h4>
 										</div>
 										<div class="timeline-body">
-											<img src="{{asset('assets/images/coming-soon/01.png')}}" alt="..." class="m-10">
-											<img src="{{asset('assets/images/coming-soon/01.png')}}" alt="..." class="m-10">
-											<img src="{{asset('assets/images/coming-soon/01.png')}}" alt="..." class="m-10">
 											<img src="{{asset('assets/images/coming-soon/01.png')}}" alt="..." class="m-10">
 										</div>
 										<div class="timeline-footer">
@@ -591,11 +588,11 @@
                                        <option value="2"@if(@$question_data->What_database=='2')selected @endif>Google</option>
                                        <option value="3"@if(@$question_data->What_database=='3')selected @endif>Averti team contact you</option>
                                        <option value="4"@if(@$question_data->What_database=='4')selected @endif>Advisor Referral</option>
-                                       <option value="5"@if(@$question_data->What_database=='5')selected @endif>Other</option>
+																	<option value="5"@if(@$question_data->What_database=='5')selected @endif>Other</option>
 												</select>
 											</div>
 								</div>
-								
+								<div></div>
                         <h4>What?</h4>
 										<p class="colorchange">Are you looking for holistic approach to life and money management?</p>
 										<div class="form-group">

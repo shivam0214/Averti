@@ -307,7 +307,7 @@
 	<script src="<?php echo e(asset('assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/vendor_plugins/timepicker/bootstrap-timepicker.min.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/js/pages/advanced-form-element.js')); ?>"></script>
-	
+	<script src="<?php echo e(asset('assets/vendor_components/jquery-steps-master/build/jquery.steps.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/js/pages/mailbox.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js')); ?>"></script>
@@ -323,6 +323,8 @@
 	<script src="<?php echo e(asset('assets/vendor_plugins/timepicker/bootstrap-timepicker.min.js')); ?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="<?php echo e(asset('assets/js/script.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/js/pages/steps.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/js/jquery.timepicker.min.js')); ?>"></script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.21.0/slimselect.js'></script>
@@ -333,6 +335,9 @@
 	<script src="<?php echo e(asset('assets/icons/feather-icons/feather.min.js')); ?>"></script>	
 	<script src="<?php echo e(asset('assets/vendor_components/c3/d3.min.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/vendor_components/c3/c3.min.js')); ?>"></script>
+
+	<script src="<?php echo e(asset('assets/vendor_components/sweetalert/sweetalert.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/vendor_components/sweetalert/jquery.sweet-alert.custom.js')); ?>"></script>
 
 	/* custom js added by sam*/
 	<script src="<?php echo e(asset('assets/js/custom/zoom.js')); ?>"></script>

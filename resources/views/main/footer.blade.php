@@ -336,6 +336,9 @@
 	<script src="{{asset('assets/vendor_components/c3/d3.min.js')}}"></script>
 	<script src="{{asset('assets/vendor_components/c3/c3.min.js')}}"></script>
 
+	<script src="{{asset('assets/vendor_components/sweetalert/sweetalert.min.js')}}"></script>
+    <script src="{{asset('assets/vendor_components/sweetalert/jquery.sweet-alert.custom.js')}}"></script>
+
 	/* custom js added by sam*/
 	<script src="{{asset('assets/js/custom/zoom.js')}}"></script>
 	<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script> 

@@ -9,8 +9,15 @@
 
 	<link rel="stylesheet" href="<?php echo e(asset('assets/css/vendors_css.css')); ?>">
 	<!-- Style-->  
-	<link rel="stylesheet" href="<?php echo e(asset('assets/css/style.css')); ?>">
+	
+    
+    <?php if(Auth::user()->role_id==2): ?>
+    <link rel="stylesheet" id="<?php echo e(Auth::user()->role_id); ?>" href="<?php echo e(asset('assets/css/style.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('assets/css/skin_color.css')); ?>">
+    <?php else: ?>
+    <link rel="stylesheet" href="<?php echo e(asset('assets/usercss/style.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/usercss/skin_color.css')); ?>">
+    <?php endif; ?>
     <link rel='stylesheet' href="<?php echo e(asset('assets/css/selectdropdown.css')); ?>">
 	<link rel="stylesheet" href="<?php echo e(asset('assets/css/jquery.timepicker.min.css')); ?>">
 	<link rel="stylesheet" href="<?php echo e(asset('assets/css/jquery-ui.css')); ?>">

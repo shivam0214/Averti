@@ -9,7 +9,7 @@
 				<div class="col-xl-4 col-12">
 					<div class="box">
 						<div class="box-header with-border">
-							<h4 class="box-title">Bar Chart</h4>
+							<h4 class="box-title">Users</h4>
 						</div>
 						<div class="box-body">
 							<div id="bar-chart"></div>
@@ -19,7 +19,7 @@
 				<div class="col-xl-4 col-12">
 					<div class="box">
 						<div class="box-header with-border">
-							<h4 class="box-title">Column Chart</h4>
+							<h4 class="box-title">User List</h4>
 						</div>
 						<div class="box-body">
 							<div id="column-chart"></div>
@@ -29,7 +29,7 @@
 				<div class="col-xl-4 col-12">
 					<div class="box">
 						<div class="box-header with-border">
-							<h4 class="box-title">Donut Chart</h4>
+							<h4 class="box-title">User Calling</h4>
 						</div>
 						<div class="box-body">
 							<div id="donut-chart"></div>
@@ -39,7 +39,7 @@
 				<div class="col-xl-4 col-12">
 					<div class="box">
 						<div class="box-header with-border">
-							<h4 class="box-title">Pie Chart</h4>
+							<h4 class="box-title">Chat Details</h4>
 						</div>
 						<div class="box-body">
 							<div id="pie-chart"></div>
@@ -138,7 +138,7 @@
 				<div class="col-lg-4 col-12">
 					<div class="box">
 						<div class="box-header">
-							<h4 class="box-title">Patient History</h4>
+							<h4 class="box-title">Advisor History</h4>
 						</div>
 						<div class="box-body">
 							<div id="patient_history"></div>
@@ -158,7 +158,7 @@
 				<div class="col-xl-3 col-12">
 					<div class="box">
 						<div class="box-header">
-							<h4 class="box-title">Patients By Division</h4>
+							<h4 class="box-title">User By Division</h4>
 						</div>
 						<div class="box-body">
 							<div class="d-flex align-items-center justify-content-between pb-10 pr-20">
@@ -203,7 +203,7 @@
 						<div class="box-body p-0">
 							<div class="px-30 pt-20">
 								<h4 class="text-white mb-0">34,042 </h4>
-								<p class="text-white-50">Patients this month</p>
+								<p class="text-white-50">User this month</p>
 							</div>
 							<div id="statisticschart3"></div>
 						</div>
@@ -230,7 +230,7 @@
 								</div>
 								<div>
 									<h3 class="mb-0 font-weight-500">4,235</h3>
-									<p class="text-mute mb-0">Total Patients</p>
+									<p class="text-mute mb-0">Total User</p>
 								</div>
 							</div>
 						</div>
@@ -320,7 +320,7 @@
 				<div class="col-xl-7 col-12">
 					<div class="box">
 						<div class="box-header">
-							<h4 class="box-title">Out Patients vs. In Patients Trend</h4>
+							<h4 class="box-title">Out User vs. In User Trend</h4>
 							<ul class="box-controls pull-right d-md-flex d-none">
 							  <li class="dropdown">
 								<button class="btn btn-rounded btn-outline btn-primary dropdown-toggle px-10 " data-toggle="dropdown" href="#">Show By Months</button>
@@ -350,7 +350,7 @@
 				<div class="col-xl-5 col-12">
 					<div class="box">
 						<div class="box-header">
-							<h4 class="box-title">Patients by Gender</h4>
+							<h4 class="box-title">User by Gender</h4>
 						</div>
 						<div class="box-body">
 							<div class="row">

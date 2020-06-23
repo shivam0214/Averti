@@ -36,7 +36,7 @@
 			</li>
 			
 			<li class="btn-group nav-item d-none d-xl-inline-block">
-				<a href="contact_app_chat.html" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
+				<a href="{{route('chat')}}" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
 					<i class="ti-comments"></i>
 			    </a>
 			</li>

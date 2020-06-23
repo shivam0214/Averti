@@ -105,6 +105,7 @@ public function checkemail(Request $r){
             'role_id'=>3,
             'verify_key'=>$token,
             'password'=>Hash::make($r->password),
+            'perent_id'=>$r->advisortype,
         );        
         $usermeta = array( 
             'phone_no'=>$r->phone_no,

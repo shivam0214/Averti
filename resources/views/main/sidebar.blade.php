@@ -4,7 +4,7 @@
 	    <div class="user-profile px-10 py-15">
 			<div class="d-flex align-items-center">			
 				<div class="image">
-				  <img src="#" class="avatar avatar-lg" alt="User Image">
+				  <img src="{{Auth::user()->single->profile_image}}" class="avatar avatar-lg" alt="User Image">
 				</div>
 				<div class="info ml-10">
 					<p class="mb-0">Welcome</p>

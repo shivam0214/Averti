@@ -4,7 +4,7 @@
 	    <div class="user-profile px-10 py-15">
 			<div class="d-flex align-items-center">			
 				<div class="image">
-				  <img src="#" class="avatar avatar-lg" alt="User Image">
+				  <img src="<?php echo e(Auth::user()->single->profile_image); ?>" class="avatar avatar-lg" alt="User Image">
 				</div>
 				<div class="info ml-10">
 					<p class="mb-0">Welcome</p>
@@ -75,7 +75,9 @@
             <li><a href="extra_taskboard.html"><i class="ti-more"></i>Todo</a></li>
           </ul>
         </li>
-        <li class="treeview">
+    
+      </li>
+      <li class="treeview">
           <a href="#">
             <i class="ti-layout-grid2"></i>
 			<span>Booking</span>
