@@ -7,6 +7,7 @@ use App\Mail\SendEmail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class MailerController extends Controller
 {
@@ -18,7 +19,9 @@ class MailerController extends Controller
     public function index()
     {
         //
-        return view('mail.new_mail');
+        $mailer = Mailer::where('user_id',Auth::user()->id)->get();
+        // dd($mailer);
+        return view('mail.new_mail',compact('mailer'));
 
     }
 
@@ -49,15 +52,15 @@ class MailerController extends Controller
         if($request->hasfile('attachment'))
         {
             $file = $request->file('attachment');
-            dump($file->getClientMimeType());
-            dd($file);
+            // dump($file->getClientSize());
+            // dd($file);
             $name=time().$file->getClientOriginalName();
             $file->move(base_path().'/uploads/', $name);
             $is_attached=1;
         }
         // dd('no file');
         $mailer = new Mailer();
-        $mailer->user_id = 0;
+        $mailer->user_id = Auth::user()->id;
         $mailer->subject = $request->subject;
         $mailer->to      = $request->to;
         $mailer->body    = $request->body;
@@ -65,14 +68,14 @@ class MailerController extends Controller
         $mailer->save();
         $lastkey = $mailer->id;
         if($is_attached===1){
-            $insertAttachment['user_id']=0;
+            $insertAttachment['user_id']=Auth::user()->id;
             $insertAttachment['mail_id']=$lastkey;
             $insertAttachment['filename']=$name;
             $insertAttachment['filepath']=base_path().'/uploads/';
-            $insertAttachment['filesize']=$file->getClientSize();
+            $insertAttachment['filesize']='888888';
             $insertAttachment['filetype']=$file->getClientMimeType();
-            $insertAttachment['created_at']=date('Y-m-dH:i:s');
-            DB::table('uploaded_file_process')->insert($insertAttachment);
+            $insertAttachment['created_at']=date('Y-m-d H:i:s');
+            DB::table('mail_attachment')->insert($insertAttachment);
         }
 
         $response = Mail::to($request->to)->send(new SendEmail($request->subject,$request->body,$insertAttachment)); 

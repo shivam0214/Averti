@@ -39,15 +39,15 @@ class SendEmail extends Mailable
         // return  $this->subject($this->subject)->view('mail.'.$this->view)->with(['data'=>$this->data]);
         return $this->from('toshu@gventure.net', 'Mailtrap')
             ->subject($this->subject)
-            ->markdown('mail.welcome_to_subscribe')
-            ->attach($this->data['filepath'].'/'.$this->data['filepath'], [
+            ->markdown('mail.welcome_to_user_subscribe')
+            ->attach($this->data['filepath'].'/'.$this->data['filename'], [
                 'as' => $this->data['filename'],
                 'mime' => $this->data['filetype'],
             ])
             ->with([
                 'body' => $this->view,
                 'data' => $this->data
-        ]);
+            ]);
 
     }
 
