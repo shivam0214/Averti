@@ -17,7 +17,7 @@
         "laravel/tinker": "^2.0",
         "laravelcollective/html": "^6.0",
         "spatie/laravel-permission": "^3.6",
-        "unisharp/laravel-filemanager": "^2.0",
+        "unisharp/laravel-filemanager": "^2.1",
         "yajra/laravel-datatables-oracle": "^9.8",
         "zenapply/php-calendly": "^1.0"
     },

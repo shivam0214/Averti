@@ -44,6 +44,14 @@ Route::get('/dashboard/User/ViewUser', 'User\UserController@view_profile')->name
 Route::get('/Chat', 'User\UserController@chat')->name('chat');
 Route::resource("mailer",'MailerController');
 
+Route::get('/dashboard/User/ViewUser/{id}', 'User\UserController@view_profile')->name('view_profile');
+Route::get('/dashboard/ContactList', 'User\UserController@contacts')->name('contacts');
+
+Route::get('/Mail', 'User\UserController@mail')->name('mail');
+Route::get('/Chat', 'User\UserController@chat')->name('chat');
+/* Booking */ 
+Route::get('/Booking', 'Adviser\BookingController@booking')->name('booking');
+Route::post('/booking','Adviser\BookingController@bookingsetting')->name('bookingsetting');
 /* wait 1 min me pull karta hoon aab
 Zoom */
 Route::get('create/zoom','ZoomController@index')->name('zoomcreate');
@@ -58,3 +66,9 @@ Route::get('/find_advisor', 'Frontform\FrontformController@home')->name('find_ad
 Route::post('/finadvisor', 'Frontform\FrontformController@finadvisor')->name('finadvisor');
 
 Route::get("/checkemail",'Frontform\FrontformController@checkemail')->name('checkeamil');
+
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
+

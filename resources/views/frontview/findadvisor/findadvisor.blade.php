@@ -14,7 +14,6 @@
           </div>
           <div class="col-sm-12 col-xs-12 col-md-8 col-lg-7 col-xs-12 form-box p-0">
             <form role="form" id="advisorfind" action="{{route('finadvisor')}}" method="post" class="f1">
-                <div class="advisorfmmsg"></div>
                 <div class="backloader"><div class="loader"></div></div>
 
                   @csrf
@@ -226,6 +225,7 @@
                       <div class="icongol"><img src="{{asset('assets/frontassets/images/banner/congratulation.png')}}"></div>
                       <h4>As, we've found three great advisor matches for you!</h4>
                       <h5>Your information is confidential and protected.</h5>
+                      <div class="advisorfmmsg"></div>
                       <div class="form-group">
                       <input type="text" name="phone_no" placeholder="Phone Number" class="f1-email form-control" id="located">
                       <span id="checkidmsg"></span>
@@ -234,7 +234,7 @@
                      </div>
                       <div class="f1-buttons">
                      <button type="button" class="btn btn-previous">Previous</button>
-                      <button type="submit" class="btn btn-submit">Submit</button>
+                      <button type="submit" id="submit" class="btn btn-submit">Submit</button>
                       </div>
                       </fieldset>
 
@@ -277,7 +277,7 @@
                             </div>
                             <div class="section-wrapper">
                               <div class="recent-news">
-                              <span id="checkidmsg"></span>
+                              <span id="checkidmsg" style="display:none"></span>
                                 <input id="checkemail" type="email" name="email" placeholder="Enter Your Email">
                                 <button type="submit" class="btn">Subscribe Now</button>
                               </div>
@@ -287,21 +287,6 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script>
     $('#checkidmsg').hide();
-    $("#checkemail").change(function(){
-    $('#checkidmsg').text('').hide();
-    var em = $(this).val();
-    $.ajax({
-    url:'/checkemail',
-    type:'GET',
-    data: { 
-      email:em
-      },
-    success:function(re){
-    if(re.status==0){
-    $('#checkidmsg').text(re.msg).show();
-    }
-    else{
-
       $("#advisorfind").submit(function(e){
       e.preventDefault();
         var inputData = new FormData($(this)[0]);
@@ -312,27 +297,43 @@
                 data:inputData,
                 processData:false,
                 contentType:false,
-                beforeSend: function () {
-                    $('.backloader').show();
-                  },
-                  complete: function () {
-                    $('.backloader').hide();
-                  },
-                success: function (response) {
-                  $('.advisorfmmsg').text(response.msg);
-                
-                }
-          });
-    })
-    }
-    }
-    })
+              beforeSend: function () {
+                  $('.backloader').show();
+                   $('#submit').prop('disabled', true);
+               },
+               complete: function () {
+                 $('.backloader').hide();
+                  $('#submit').prop('disabled',false);
+             },
+            success: function (response) {
+              if(response.status==1){
+                $('.advisorfmmsg').css('background-color','green').text(response.msg).fadeIn('slow');
+                 $('#submit').prop('disabled', true).hide();
+              }else{
+                $('.advisorfmmsg').css('background-color','red').text(response.msg).fadeIn('slow');
+              }
+              
+            }  
+                  });
+
     });
-
-
-
-
-    </script>
+   $("#checkemail").change(function(){
+      $('#checkidmsg').text('').hide();
+      var em = $(this).val();
+      $.ajax({
+      url:'/checkemail',
+      type:'GET',
+      data: { 
+        email:em
+      },
+      success:function(re){
+          if(re.status==0){
+          $('#checkidmsg').text(re.msg).show();
+          }
+      }
+      })
+}); 
+  </script>
 
     <style>
     .advisorfmmsg{background: #4caf50;

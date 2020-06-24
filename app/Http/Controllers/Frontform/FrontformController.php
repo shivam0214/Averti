@@ -26,6 +26,10 @@ public function questioon_view(){
 
 public function question(Request $r){
     $token = md5($r->email);
+    $check=User::where('email',$r->email)->count();
+    if($check>0){
+        return response()->json(['status'=>0,'msg'=>'Email Already Exist']);
+    }
     $form_data=array(
         'name'=>$r->firstname,
         'last_name'=>$r->lastname,
@@ -97,7 +101,10 @@ public function checkemail(Request $r){
 
     public function finadvisor(Request $r){
         $token = md5($r->email);
-       
+        $check=User::where('email',$r->email)->count();
+        if($check>0){
+            return response()->json(['status'=>0,'msg'=>'Email Already Exist']);
+        }
         $form_data=array(
             'name'=>$r->name,
             'email'=>$r->email,
@@ -105,6 +112,7 @@ public function checkemail(Request $r){
             'role_id'=>3,
             'verify_key'=>$token,
             'password'=>Hash::make($r->password),
+            'perent_id'=>$r->advisortype,
         );        
         $usermeta = array( 
             'phone_no'=>$r->phone_no,
@@ -121,7 +129,6 @@ public function checkemail(Request $r){
             $data['verify_key'] = $token;    
             $data['type']='Welcome To User Verification';
             $subject ="Welcome to Averti verification";
-            
         $ss = Mail::to($r->email)->send(new SendEmail($subject,'verify',$data));
         if($set){
             return response()->json(['status'=>1,'msg'=>'Please check your email and Verify the email']);

@@ -2,6 +2,75 @@
 <div class="content-wrapper">
 	  <div class="container-full">
 		<!-- Main content -->
+			
+		<!-- Main content -->
+		<section class="content">		    
+			 <div class="row">
+				<div class="col-xl-4 col-12">
+					<div class="box">
+						<div class="box-header with-border">
+							<h4 class="box-title">Users</h4>
+						</div>
+						<div class="box-body">
+							<div id="bar-chart"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-4 col-12">
+					<div class="box">
+						<div class="box-header with-border">
+							<h4 class="box-title">User List</h4>
+						</div>
+						<div class="box-body">
+							<div id="column-chart"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-4 col-12">
+					<div class="box">
+						<div class="box-header with-border">
+							<h4 class="box-title">User Calling</h4>
+						</div>
+						<div class="box-body">
+							<div id="donut-chart"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-4 col-12">
+					<div class="box">
+						<div class="box-header with-border">
+							<h4 class="box-title">Chat Details</h4>
+						</div>
+						<div class="box-body">
+							<div id="pie-chart"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-4 col-12">
+					<div class="box">
+						<div class="box-header with-border">
+							<h4 class="box-title">User Recordings</h4>
+						</div>
+						<div class="box-body">
+							<div id="stacked-bar"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-4 col-12">
+					<div class="box">
+						<div class="box-header with-border">
+							<h4 class="box-title">Task</h4>
+						</div>
+						<div class="box-body">
+							<div id="stacked-column"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</section>
+		<!-- /.content -->
+  	 
 		<section class="content">
 			<div class="row">
 				<div class="col-lg-4 col-12">
@@ -69,7 +138,7 @@
 				<div class="col-lg-4 col-12">
 					<div class="box">
 						<div class="box-header">
-							<h4 class="box-title">Patient History</h4>
+							<h4 class="box-title">Advisor History</h4>
 						</div>
 						<div class="box-body">
 							<div id="patient_history"></div>
@@ -89,7 +158,7 @@
 				<div class="col-xl-3 col-12">
 					<div class="box">
 						<div class="box-header">
-							<h4 class="box-title">Patients By Division</h4>
+							<h4 class="box-title">User By Division</h4>
 						</div>
 						<div class="box-body">
 							<div class="d-flex align-items-center justify-content-between pb-10 pr-20">
@@ -134,7 +203,7 @@
 						<div class="box-body p-0">
 							<div class="px-30 pt-20">
 								<h4 class="text-white mb-0">34,042 </h4>
-								<p class="text-white-50">Patients this month</p>
+								<p class="text-white-50">User this month</p>
 							</div>
 							<div id="statisticschart3"></div>
 						</div>
@@ -161,7 +230,7 @@
 								</div>
 								<div>
 									<h3 class="mb-0 font-weight-500">4,235</h3>
-									<p class="text-mute mb-0">Total Patients</p>
+									<p class="text-mute mb-0">Total User</p>
 								</div>
 							</div>
 						</div>
@@ -251,7 +320,7 @@
 				<div class="col-xl-7 col-12">
 					<div class="box">
 						<div class="box-header">
-							<h4 class="box-title">Out Patients vs. In Patients Trend</h4>
+							<h4 class="box-title">Out User vs. In User Trend</h4>
 							<ul class="box-controls pull-right d-md-flex d-none">
 							  <li class="dropdown">
 								<button class="btn btn-rounded btn-outline btn-primary dropdown-toggle px-10 " data-toggle="dropdown" href="#">Show By Months</button>
@@ -281,7 +350,7 @@
 				<div class="col-xl-5 col-12">
 					<div class="box">
 						<div class="box-header">
-							<h4 class="box-title">Patients by Gender</h4>
+							<h4 class="box-title">User by Gender</h4>
 						</div>
 						<div class="box-body">
 							<div class="row">
@@ -298,6 +367,24 @@
 					</div>
 				</div>
 			</div>
+			<div class="col-xl-8 col-12">
+
+			<div class="timeline-item">
+									<div class="timeline-event">
+										<div class="timeline-heading">
+											<h4 class="timeline-title"><a href="#">How It's Work</a><small> shared a video</small></h4>
+										</div>
+										<div class="timeline-body">
+											<div class="embed-responsive embed-responsive-16by9">
+												<iframe width="854" height="480" src="https://www.youtube.com/embed/k85mRPqvMbE" frameborder="0" allowfullscreen></iframe>
+											</div>									
+										</div>
+										<div class="timeline-footer">
+											<p class="pull-right"><i class="fa fa-clock-o"></i> 8 days ago</p>
+										</div>
+									</div>
+								</div>
+												</div>								
 		</section>
 		<!-- /.content -->
 	  </div>

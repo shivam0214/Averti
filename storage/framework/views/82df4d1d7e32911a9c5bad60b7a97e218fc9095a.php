@@ -14,7 +14,7 @@
         <div class="mobile-menu-area-inner" id="scrollbar">
             <ul class="m-menu">
                         <li><a  href="<?php echo e(route('advisor_question')); ?>">For Advisors</a> </li>
-                            <li><a  href="#">For Clients</a> </li>
+                            <li><a  href="<?php echo e(route('find_advisor')); ?>">For Clients</a> </li>
                 <li><a href="#">Pages</a>
                     <ul class="m-submenu">
                         <li><a href="#">Case Study</a></li>
@@ -46,8 +46,8 @@
 							</a>
 							<div class="main-menu-area d-flex align-items-center">
 								<ul class="main-menu d-flex align-items-center">
-									<li><a  href="#">For Advisors</a> </li>
-									<li><a  href="#">For Clients</a> </li>
+									<li><a  href="<?php echo e(route('advisor_question')); ?>">For Advisors</a> </li>
+									<li><a  href="<?php echo e(route('find_advisor')); ?>">For Clients</a> </li>
                                     
 									<li><a href="#">Pages</a>
 										<ul class="submenu">
