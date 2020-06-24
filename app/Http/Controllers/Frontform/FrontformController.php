@@ -26,6 +26,10 @@ public function questioon_view(){
 
 public function question(Request $r){
     $token = md5($r->email);
+    $check=User::where('email',$r->email)->count();
+    if($check>0){
+        return response()->json(['status'=>0,'msg'=>'Email Already Exist']);
+    }
     $form_data=array(
         'name'=>$r->firstname,
         'last_name'=>$r->lastname,
