@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 <head>
@@ -21,8 +22,9 @@
     <link rel='stylesheet' href="<?php echo e(asset('assets/css/selectdropdown.css')); ?>">
 	<link rel="stylesheet" href="<?php echo e(asset('assets/css/jquery.timepicker.min.css')); ?>">
 	<link rel="stylesheet" href="<?php echo e(asset('assets/css/jquery-ui.css')); ?>">
-	<link rel="stylesheet" href="<?php echo e(asset('assets/css/wizard.css')); ?>">
-    <link rel="icon" href="https://www.multipurposethemes.com/admin/florence-admin-template/images/favicon.ico">	
+  <link rel="stylesheet" href="<?php echo e(asset('assets/css/wizard.css')); ?>">
+  <link rel="stylesheet" src="<?php echo e(asset('assets/icons/material-design-iconic-font/css/materialdesignicons.css')); ?>"></link>	
+
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
     
@@ -58,7 +60,7 @@ border: 6px solid #f3f3f3;
 }
 </style>
 </head>
-<body class="hold-transition dark-skin sidebar-mini theme-primary">
+<body class="hold-transition <?php if(Auth::user()['role_id']==2): ?> dark-skin <?php else: ?> light-skin <?php endif; ?> sidebar-mini theme-primary">
 
 <?php echo $__env->make('main.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php echo $__env->make('main.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?> 

@@ -17,7 +17,7 @@
 								</div>
 								<form role="form" id="advisorfm" action="<?php echo e(route('insert')); ?>" method="post" class="f1">
 								<div class="backloader"><div class="loader"></div></div>
-								<div class="advisorfmmsg"></div>
+								
 									<?php echo csrf_field(); ?>
 									<fieldset>
 										<h4>Advisor Registration</h4>
@@ -477,9 +477,10 @@
 										<h4>As, we've found three great advisor matches for you!</h4>
 										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 										
+										<div class="advisorfmmsg"></div>
 										<div class="f1-buttons">
 											<button type="button" class="btn btn-previous">Decline</button>
-											<button type="submit" class="btn btn-submit">Accept</button>
+											<button type="submit" id="submit" class="btn btn-submit">Accept</button>
 										</div>
 									</fieldset>
 									<div class="f1-steps">
@@ -536,20 +537,25 @@ $("#advisorfm").submit(function(e){
             data:inputData,
             processData:false,
             contentType:false,
-			success: function (response) {
-				$('.advisorfmmsg').text(response.msg).fadeIn('slow');
-			//	$('#advisorfmmsg').delay(8000).fadeOut('slow');
-
-              },
-            //   complete: function () {
-            //     $('.backloader').hide();
-            //   },
-            // success: function (response) {
-            //   $('.advisorfmmsg').text(response.msg);
-             
-            // }
-      });
-})
+		 beforeSend: function () {
+                  $('.backloader').show();
+                   $('#submit').prop('disabled', true);
+               },
+               complete: function () {
+                 $('.backloader').hide();
+                  $('#submit').prop('disabled',false);
+             },
+            success: function (response) {
+              if(response.status==1){
+                $('.advisorfmmsg').css('background-color','green').text(response.msg).fadeIn('slow');
+                 $('#submit').prop('disabled', true).hide();
+              }else{
+                $('.advisorfmmsg').css('background-color','red').text(response.msg).fadeIn('slow');
+              }
+              
+            }  
+                  });
+});
 
 
 </script>

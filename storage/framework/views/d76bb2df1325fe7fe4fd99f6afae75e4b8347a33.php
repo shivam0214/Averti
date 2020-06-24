@@ -48,7 +48,7 @@
 									</div>
 								</td>
 								<td><img src="<?php echo e(asset('assets/img/avatars/1.jpg')); ?>" alt="user avatar" class="customer-img rounded-circle"><?php echo e($record['single']['profile']); ?></td>
-								<td><a href="<?php echo e(route('view_profile')); ?>"><?php echo e($record['name']); ?> </a></td>
+								<td><a href="<?php echo e(route('view_profile',['id'=>$record->id])); ?>"><?php echo e($record['name']); ?> </a></td>
 								<td><?php echo e($record['single']['phone_no']); ?></td>
 								<td><span class="badge badge-pill badge-danger">Pending</span></td>
 								<td><?php echo e($record['single']['city']); ?></td>

@@ -367,6 +367,24 @@
 					</div>
 				</div>
 			</div>
+			<div class="col-xl-8 col-12">
+
+			<div class="timeline-item">
+									<div class="timeline-event">
+										<div class="timeline-heading">
+											<h4 class="timeline-title"><a href="#">How It's Work</a><small> shared a video</small></h4>
+										</div>
+										<div class="timeline-body">
+											<div class="embed-responsive embed-responsive-16by9">
+												<iframe width="854" height="480" src="https://www.youtube.com/embed/k85mRPqvMbE" frameborder="0" allowfullscreen></iframe>
+											</div>									
+										</div>
+										<div class="timeline-footer">
+											<p class="pull-right"><i class="fa fa-clock-o"></i> 8 days ago</p>
+										</div>
+									</div>
+								</div>
+												</div>								
 		</section>
 		<!-- /.content -->
 	  </div>

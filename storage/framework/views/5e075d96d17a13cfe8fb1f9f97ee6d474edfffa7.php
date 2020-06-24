@@ -34,11 +34,16 @@
             <li><a href="<?php echo e(route('user')); ?>"><i class="ti-more"></i>List User</a></li>
           </ul>
         </li>
-        	
-		<li>
+        <li>
+          <a href="<?php echo e(route('contacts')); ?>">
+            <i class="mdi mdi-contacts"></i>
+			    <span>Contacts</span>
+          </a>
+        </li>	
+	    <li>
           <a href="<?php echo e(route('mail')); ?>">
             <i class="ti-email"></i>
-			<span>Mailbox</span>
+			    <span>Mailbox</span>
           </a>
         </li>
         <li>
@@ -55,7 +60,7 @@
         </li>
         <li>
           <a href="<?php echo e(route('chat')); ?>">
-            <i class="mdi mdi-message-text"></i>
+            <i class="ti-comment-alt"></i>
 			<span>Chat</span>
           </a>
         </li>

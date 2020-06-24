@@ -13,7 +13,9 @@
 									</a>
 								<div class="media-body">
 									<p>
-									<a href="#"><strong>Sonya Frost</strong></a>
+									<input type="hidden" value="{{$data->id}}" name="id">
+
+									<a href="#"><strong>{{$data->name}}</strong></a>
 									</p>
 									<p>Full Stack Developer</p>
 									<p>Head at Anderson</p>
@@ -26,9 +28,9 @@
 								</div>
 								<div class="media-right">
 									<p><i class="fa fa-phone" aria-hidden="true"></i>
-									<span>+555444555</span> </p>
+									<span>+{{$data->phone_no}}</span> </p>
 									<p><i class="ti-email"></i> 
-									<span>sonya@gmail.com
+									<span>{{$data->email}}
 									</span>
 									</p>
 										

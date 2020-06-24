@@ -23,8 +23,9 @@
     <link rel='stylesheet' href="{{asset('assets/css/selectdropdown.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/css/jquery.timepicker.min.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/css/jquery-ui.css')}}">
-	<link rel="stylesheet" href="{{asset('assets/css/wizard.css')}}">
-    <link rel="icon" href="https://www.multipurposethemes.com/admin/florence-admin-template/images/favicon.ico">	
+  <link rel="stylesheet" href="{{asset('assets/css/wizard.css')}}">
+  <link rel="stylesheet" src="{{asset('assets/icons/material-design-iconic-font/css/materialdesignicons.css')}}"></link>	
+
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
     

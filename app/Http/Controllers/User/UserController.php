@@ -14,18 +14,21 @@ class UserController extends Controller
         return view('User.listuser',compact('users'));
     }
     public function add_user(){
-
         return view('User.adduser');
     }
-    public function view_profile(){
-        return view('User.view_profile');
+    public function contacts(){
+        return view('User.contacts');
+    }
+    public function view_profile($id){
+        $data = User::find($id);
+
+        return view('User.view_profile',compact('data'));
     }
     public function mail(){
 
         return view('mail.new_mail');
     }
     public function chat(){
-
         return view('chat.chat');
     }
 }

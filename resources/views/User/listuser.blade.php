@@ -49,7 +49,7 @@
 									</div>
 								</td>
 								<td><img src="{{asset('assets/img/avatars/1.jpg')}}" alt="user avatar" class="customer-img rounded-circle">{{$record['single']['profile']}}</td>
-								<td><a href="{{route('view_profile')}}">{{$record['name']}} </a></td>
+								<td><a href="{{ route('view_profile',['id'=>$record->id]) }}">{{$record['name']}} </a></td>
 								<td>{{$record['single']['phone_no']}}</td>
 								<td><span class="badge badge-pill badge-danger">Pending</span></td>
 								<td>{{$record['single']['city']}}</td>
