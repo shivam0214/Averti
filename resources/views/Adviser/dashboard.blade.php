@@ -51,7 +51,7 @@
 				<div class="col-xl-4 col-12">
 					<div class="box">
 						<div class="box-header with-border">
-							<h4 class="box-title">Stacked Bar Chart</h4>
+							<h4 class="box-title">User Recordings</h4>
 						</div>
 						<div class="box-body">
 							<div id="stacked-bar"></div>
@@ -61,7 +61,7 @@
 				<div class="col-xl-4 col-12">
 					<div class="box">
 						<div class="box-header with-border">
-							<h4 class="box-title">Stacked Column Chart</h4>
+							<h4 class="box-title">Task</h4>
 						</div>
 						<div class="box-body">
 							<div id="stacked-column"></div>
