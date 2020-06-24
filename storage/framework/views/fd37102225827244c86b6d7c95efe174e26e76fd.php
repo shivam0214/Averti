@@ -49,7 +49,7 @@
 				<div class="col-xl-4 col-12">
 					<div class="box">
 						<div class="box-header with-border">
-							<h4 class="box-title">Stacked Bar Chart</h4>
+							<h4 class="box-title">User Recordings</h4>
 						</div>
 						<div class="box-body">
 							<div id="stacked-bar"></div>
@@ -59,7 +59,7 @@
 				<div class="col-xl-4 col-12">
 					<div class="box">
 						<div class="box-header with-border">
-							<h4 class="box-title">Stacked Column Chart</h4>
+							<h4 class="box-title">Task</h4>
 						</div>
 						<div class="box-body">
 							<div id="stacked-column"></div>
@@ -367,6 +367,24 @@
 					</div>
 				</div>
 			</div>
+			<div class="col-xl-8 col-12">
+
+			<div class="timeline-item">
+									<div class="timeline-event">
+										<div class="timeline-heading">
+											<h4 class="timeline-title"><a href="#">How It's Work</a><small> shared a video</small></h4>
+										</div>
+										<div class="timeline-body">
+											<div class="embed-responsive embed-responsive-16by9">
+												<iframe width="854" height="480" src="https://www.youtube.com/embed/k85mRPqvMbE" frameborder="0" allowfullscreen></iframe>
+											</div>									
+										</div>
+										<div class="timeline-footer">
+											<p class="pull-right"><i class="fa fa-clock-o"></i> 8 days ago</p>
+										</div>
+									</div>
+								</div>
+												</div>								
 		</section>
 		<!-- /.content -->
 	  </div>

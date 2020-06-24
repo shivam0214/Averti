@@ -46,7 +46,7 @@ Route::get('/Mail', 'User\UserController@mail')->name('mail');
 Route::get('/Chat', 'User\UserController@chat')->name('chat');
 /* Booking */ 
 Route::get('/Booking', 'Adviser\BookingController@booking')->name('booking');
-
+Route::post('/booking','Adviser\BookingController@bookingsetting')->name('bookingsetting');
 /* wait 1 min me pull karta hoon aab
 Zoom */
 Route::get('create/zoom','ZoomController@index')->name('zoomcreate');
@@ -66,3 +66,4 @@ Route::get("/checkemail",'Frontform\FrontformController@checkemail')->name('chec
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
+
