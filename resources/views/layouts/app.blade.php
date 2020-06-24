@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -59,7 +60,7 @@ border: 6px solid #f3f3f3;
 }
 </style>
 </head>
-<body class="hold-transition dark-skin sidebar-mini theme-primary">
+<body class="hold-transition @if(Auth::user()['role_id']==2) dark-skin @else light-skin @endif sidebar-mini theme-primary">
 
 @include('main.header')
 @include('main.sidebar') 

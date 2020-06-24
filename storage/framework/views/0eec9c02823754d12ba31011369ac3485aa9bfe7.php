@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 <head>
@@ -5,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <title><?php echo e(config('app.name', 'Laravel')); ?></title>
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo e(asset('assets/images/averti1.jpg')); ?>">
+
 	<link rel="stylesheet" href="<?php echo e(asset('assets/css/vendors_css.css')); ?>">
 	<!-- Style-->  
 	
@@ -56,7 +59,7 @@ border: 6px solid #f3f3f3;
 }
 </style>
 </head>
-<body class="hold-transition dark-skin sidebar-mini theme-primary">
+<body class="hold-transition <?php if(Auth::user()['role_id']==2): ?> dark-skin <?php else: ?> light-skin <?php endif; ?> sidebar-mini theme-primary">
 
 <?php echo $__env->make('main.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php echo $__env->make('main.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?> 

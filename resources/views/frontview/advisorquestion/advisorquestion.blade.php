@@ -19,7 +19,7 @@
 								</div>
 								<form role="form" id="advisorfm" action="{{route('insert')}}" method="post" class="f1">
 								<div class="backloader"><div class="loader"></div></div>
-								<div class="advisorfmmsg"></div>
+								
 									@csrf
 									<fieldset>
 										<h4>Advisor Registration</h4>
@@ -488,9 +488,10 @@
 											<input type="text" name="phone" placeholder="Phone2" class="f1-email form-control" id="located">
 											<input type="email" name="femail" placeholder="Email Address" class="f1-email form-control" id="located">
 										</div>  --}}
+										<div class="advisorfmmsg"></div>
 										<div class="f1-buttons">
 											<button type="button" class="btn btn-previous">Decline</button>
-											<button type="submit" class="btn btn-submit">Accept</button>
+											<button type="submit" id="submit" class="btn btn-submit">Accept</button>
 										</div>
 									</fieldset>
 									<div class="f1-steps">
@@ -547,20 +548,25 @@ $("#advisorfm").submit(function(e){
             data:inputData,
             processData:false,
             contentType:false,
-			success: function (response) {
-				$('.advisorfmmsg').text(response.msg).fadeIn('slow');
-			//	$('#advisorfmmsg').delay(8000).fadeOut('slow');
-
-              },
-            //   complete: function () {
-            //     $('.backloader').hide();
-            //   },
-            // success: function (response) {
-            //   $('.advisorfmmsg').text(response.msg);
-             
-            // }
-      });
-})
+		 beforeSend: function () {
+                  $('.backloader').show();
+                   $('#submit').prop('disabled', true);
+               },
+               complete: function () {
+                 $('.backloader').hide();
+                  $('#submit').prop('disabled',false);
+             },
+            success: function (response) {
+              if(response.status==1){
+                $('.advisorfmmsg').css('background-color','green').text(response.msg).fadeIn('slow');
+                 $('#submit').prop('disabled', true).hide();
+              }else{
+                $('.advisorfmmsg').css('background-color','red').text(response.msg).fadeIn('slow');
+              }
+              
+            }  
+                  });
+});
 
 
 </script>

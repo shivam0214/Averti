@@ -97,7 +97,10 @@ public function checkemail(Request $r){
 
     public function finadvisor(Request $r){
         $token = md5($r->email);
-       
+        $check=User::where('email',$r->email)->count();
+        if($check>0){
+            return response()->json(['status'=>0,'msg'=>'Email Already Exist']);
+        }
         $form_data=array(
             'name'=>$r->name,
             'email'=>$r->email,
