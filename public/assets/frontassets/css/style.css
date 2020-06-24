@@ -517,7 +517,7 @@ header.header-section.d-none.d-xl-block {
   .primary-menu .menu-area .logo {
     padding: 17px 0;
     outline: none;
-    width: 250px;
+    width: 100px;
     text-align: left; }
   .primary-menu .menu-area .main-menu-area {
     width: calc(100% - 250px);
