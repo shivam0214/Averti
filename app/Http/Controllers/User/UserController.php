@@ -20,9 +20,10 @@ class UserController extends Controller
         return view('User.contacts');
     }
     public function view_profile($id){
-        $data = User::find($id);
-
-        return view('User.view_profile',compact('data'));
+        $data = User::where('id',$id)->get();
+        $data = $data[0];
+        $question_data= json_decode($data['single']->question);
+        return view('User.view_profile',compact('data','question_data'));
     }
     public function mail(){
 

@@ -17,8 +17,7 @@
 
 									<a href="#"><strong>{{$data->name}}</strong></a>
 									</p>
-									<p>Full Stack Developer</p>
-									<p>Head at Anderson</p>
+									<p>{{@$question_data->occupation}}</p>
 									<nav class="nav mt-2">
 									<a class="nav-link" href="#"><i class="fa fa-facebook"></i></a>
 									<a class="nav-link" href="#"><i class="fa fa-twitter"></i></a>
@@ -28,7 +27,7 @@
 								</div>
 								<div class="media-right">
 									<p><i class="fa fa-phone" aria-hidden="true"></i>
-									<span>+{{$data->phone_no}}</span> </p>
+									<span>+{{$data['single']['phone_no']}}</span> </p>
 									<p><i class="ti-email"></i> 
 									<span>{{$data->email}}
 									</span>
