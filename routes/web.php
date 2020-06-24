@@ -40,7 +40,7 @@ Route::get('/dashboard/calender', 'Calender\CalenderController@text')->name('tex
 Route::get('/dashboard/User/ListUser', 'User\UserController@user')->name('user');
 Route::get('/dashboard/User/AddUser', 'User\UserController@add_user')->name('add_user');
 Route::get('/dashboard/User/ViewUser', 'User\UserController@view_profile')->name('view_profile');
-Route::get('/Mail', 'User\UserController@mail')->name('mail');
+// Route::get('/Mail', 'User\UserController@mail')->name('mail');
 Route::get('/Chat', 'User\UserController@chat')->name('chat');
 Route::resource("mailer",'MailerController');
 

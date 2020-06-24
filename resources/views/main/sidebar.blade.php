@@ -36,7 +36,7 @@
         </li>
         	
 		<li>
-          <a href="{{route('mail')}}">
+          <a href="{{route('mailer.index')}}">
             <i class="ti-email"></i>
 			<span>Mailbox</span>
           </a>
