@@ -8,7 +8,8 @@
 						<div class="media-list media-list-divided media-list-hover">
 							<div class="media align-items-center">
 									<a class="avatar avatar-lg status-success" href="#">
-										<img src="<?php echo e(asset('assets/img/avatars/1.jpg')); ?>" alt="...">
+										<img src="<?php echo (($data['single']['profile_image'])!= NULL) ? url($data['single']['profile_image']) : url(asset('assets/img/avatars/user.png')); ?>" alt="&#xf013;">
+										
 									</a>
 								<div class="media-body">
 									<p>
@@ -17,7 +18,6 @@
 									<a href="#"><strong><?php echo e($data->name); ?></strong></a>
 									</p>
 									<p><?php echo e(@$question_data->occupation); ?></p>
-									<p>Head at Anderson</p>
 									<nav class="nav mt-2">
 									<a class="nav-link" href="#"><i class="fa fa-facebook"></i></a>
 									<a class="nav-link" href="#"><i class="fa fa-twitter"></i></a>

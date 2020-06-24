@@ -24,7 +24,7 @@
 					  <h3 class="widget-user-username"><?php echo e(Auth::user()['name']); ?></h3>
 					</div>
 					<div class="widget-user-image">
-					  <img class="rounded-circle" src="<?php echo e($user['single']['profile_image']); ?>" alt="User Avatar">
+					  <img class="rounded-circle" src="<?php echo (($user['single']['profile_image'])!= NULL) ? url($user['single']['profile_image']) : url(asset('assets/img/avatars/Un.png')); ?>" alt="User Avatar">
 					</div>
 					<div class="box-footer">
 					  <div class="row">

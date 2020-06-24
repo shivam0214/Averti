@@ -47,7 +47,9 @@
 									<label for="primary2"></label>
 									</div>
 								</td>
-								<td><img src="<?php echo e(asset('assets/img/avatars/1.jpg')); ?>" alt="user avatar" class="customer-img rounded-circle"><?php echo e($record['single']['profile']); ?></td>
+								<td>
+								<img src="<?php echo (($record['single']['profile_image'])!= NULL) ? url($record['single']['profile_image']) : url(asset('assets/img/avatars/user.png')); ?>" alt="&#xf013;" height="50px" width="50px">
+											</td>
 								<td><a href="<?php echo e(route('view_profile',['id'=>$record->id])); ?>"><?php echo e($record['name']); ?> </a></td>
 								<td><?php echo e($record['single']['phone_no']); ?></td>
 								<td><span class="badge badge-pill badge-danger">Pending</span></td>

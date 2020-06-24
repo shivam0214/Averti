@@ -4,8 +4,9 @@
 	    <div class="user-profile px-10 py-15">
 			<div class="d-flex align-items-center">			
 				<div class="image">
-				  <img src="{{Auth::user()->single->profile_image}}" class="avatar avatar-lg" alt="User Image">
-				</div>
+				  <img src="<?php echo ((Auth::user()->single->profile_image)!= NULL) ? url(Auth::user()->single->profile_image) : url(asset('assets/img/avatars/user.png')); ?>"
+          class="avatar avatar-lg" alt="User Image">
+        </div>
 				<div class="info ml-10">
 					<p class="mb-0">Welcome</p>
 					<h5 class="mb-0">{{ Auth::user()->name }}</h5>

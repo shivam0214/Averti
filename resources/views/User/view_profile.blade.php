@@ -9,7 +9,8 @@
 						<div class="media-list media-list-divided media-list-hover">
 							<div class="media align-items-center">
 									<a class="avatar avatar-lg status-success" href="#">
-										<img src="{{asset('assets/img/avatars/1.jpg')}}" alt="...">
+										<img src="<?php echo (($data['single']['profile_image'])!= NULL) ? url($data['single']['profile_image']) : url(asset('assets/img/avatars/user.png')); ?>" alt="&#xf013;">
+										
 									</a>
 								<div class="media-body">
 									<p>

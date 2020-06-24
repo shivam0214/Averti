@@ -48,7 +48,9 @@
 									<label for="primary2"></label>
 									</div>
 								</td>
-								<td><img src="{{asset('assets/img/avatars/1.jpg')}}" alt="user avatar" class="customer-img rounded-circle">{{$record['single']['profile']}}</td>
+								<td>
+								<img src="<?php echo (($record['single']['profile_image'])!= NULL) ? url($record['single']['profile_image']) : url(asset('assets/img/avatars/user.png')); ?>" alt="&#xf013;" height="50px" width="50px">
+											</td>
 								<td><a href="{{ route('view_profile',['id'=>$record->id]) }}">{{$record['name']}} </a></td>
 								<td>{{$record['single']['phone_no']}}</td>
 								<td><span class="badge badge-pill badge-danger">Pending</span></td>
