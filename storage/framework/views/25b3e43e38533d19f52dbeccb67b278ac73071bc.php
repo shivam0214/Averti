@@ -16,7 +16,7 @@
 
 									<a href="#"><strong><?php echo e($data->name); ?></strong></a>
 									</p>
-									<p>Full Stack Developer</p>
+									<p><?php echo e(@$question_data->occupation); ?></p>
 									<p>Head at Anderson</p>
 									<nav class="nav mt-2">
 									<a class="nav-link" href="#"><i class="fa fa-facebook"></i></a>
@@ -27,7 +27,7 @@
 								</div>
 								<div class="media-right">
 									<p><i class="fa fa-phone" aria-hidden="true"></i>
-									<span>+<?php echo e($data->phone_no); ?></span> </p>
+									<span>+<?php echo e($data['single']['phone_no']); ?></span> </p>
 									<p><i class="ti-email"></i> 
 									<span><?php echo e($data->email); ?>
 
