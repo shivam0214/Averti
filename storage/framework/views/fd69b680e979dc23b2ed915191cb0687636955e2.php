@@ -310,17 +310,18 @@
                 data:inputData,
                 processData:false,
                 contentType:false,
-                beforeSend: function () {
-                    $('.backloader').show();
-                  },
-                  complete: function () {
-                    $('.backloader').hide();
-                  },
-                success: function (response) {
-                  $('.advisorfmmsg').text(response.msg);
-                
-                }
-          });
+              //   beforeSend: function () {
+              //       $('.backloader').show();
+              //       $('.advisorfmmsg').text(response.msg).show();
+              // },
+              // complete: function () {
+              //   $('.backloader').hide();
+              // },
+            success: function (response) {
+              $('.advisorfmmsg').text(response.msg).fadeIn('slow');
+            }  
+                  });
+
     })
     }
     }

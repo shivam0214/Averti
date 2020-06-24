@@ -328,8 +328,17 @@
 	<script src="{{asset('assets/js/pages/steps.js')}}"></script>
 	<script src="{{asset('assets/js/jquery.timepicker.min.js')}}"></script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.21.0/slimselect.js'></script>
-	
-	
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+	<script src="{{asset('assets/js/pages/c3-bar-pie.js')}}"></script>
+	<script src="{{asset('assets/js/script.js')}}"></script>
+	<script src="{{asset('assets/icons/feather-icons/feather.min.js')}}"></script>	
+	<script src="{{asset('assets/vendor_components/c3/d3.min.js')}}"></script>
+	<script src="{{asset('assets/vendor_components/c3/c3.min.js')}}"></script>
+
+	<script src="{{asset('assets/vendor_components/sweetalert/sweetalert.min.js')}}"></script>
+    <script src="{{asset('assets/vendor_components/sweetalert/jquery.sweet-alert.custom.js')}}"></script>
+
 	/* custom js added by sam*/
 	<script src="{{asset('assets/js/custom/zoom.js')}}"></script>
 	<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script> 

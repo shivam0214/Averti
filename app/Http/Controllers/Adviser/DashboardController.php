@@ -38,32 +38,13 @@ class DashboardController extends Controller
             'profile_image'=>$r->profile_image,
             'company'=>$r->company,
             'phone_no'=>$r->phone_no,
-            'address'=>$r->streetaddress,
+            'address'=>$r->address,
             'city'=>$r->city,
             'state'=>$r->state,
             'zipcode'=>$r->zipcode,
             'country'=>$r->country,
             'category_id'=>$r->advisortype,   
-            'question' =>json_encode(array(
-            'lincensenumber'=>$r->lincensenumber,
-           'How_Did'=>$r->How_Did,
-           'ref'=>$r->ref,
-           'What_database'=>$r->What_database,
-           'lookingforholastic'=>$r->lookingforholastic,
-           'mostinterested'=>$r->mostinterested,
-           'status'=>$r->status,
-           'assets'=>$r->assets,
-           'age'=>$r->age,
-           'life_happiness'=>$r->life_happiness,
-           'planning'=>$r->planning,
-           'financial'=>$r->financial,
-           'retirement_goal'=>$r->retirement_goal,
-           'moneymeaning'=>$r->moneymeaning,
-           'desisionmaker'=>$r->desisionmaker,
-           'risk'=>$r->risk,
-           'when'=>$r->when,
-           'services'=>$r->services
-           )));
+            );
             $user = DB::table('user_meta')->where('user_id',$form_data->id)->update($data);      
             if($user){
                 $notification = array(

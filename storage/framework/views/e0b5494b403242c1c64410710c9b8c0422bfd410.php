@@ -536,16 +536,18 @@ $("#advisorfm").submit(function(e){
             data:inputData,
             processData:false,
             contentType:false,
-             beforeSend: function () {
-                $('.backloader').show();
+			success: function (response) {
+				$('.advisorfmmsg').text(response.msg).fadeIn('slow');
+			//	$('#advisorfmmsg').delay(8000).fadeOut('slow');
+
               },
-              complete: function () {
-                $('.backloader').hide();
-              },
-            success: function (response) {
-              $('.advisorfmmsg').text(response.msg);
+            //   complete: function () {
+            //     $('.backloader').hide();
+            //   },
+            // success: function (response) {
+            //   $('.advisorfmmsg').text(response.msg);
              
-            }
+            // }
       });
 })
 
