@@ -51,6 +51,7 @@ class DashboardController extends Controller
                  'message' => 'Profile data updated successfully!',
                  'alert-type' => 'success'
                  );
+                 
                 }else{
                         
                 $notification = array(

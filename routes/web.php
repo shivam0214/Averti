@@ -50,6 +50,10 @@ Route::get('/dashboard/ContactList', 'User\UserController@contacts')->name('cont
 Route::get('/invoice', 'Adviser\InvoiceController@invoice')->name('invoice');
 Route::get('/invoice_list', 'Adviser\InvoiceController@invoice_list')->name('invoice_list');
 
+Route::get('/advisor_request', 'User\UserController@advisor_request')->name('advisor_request');
+Route::post('/advisor_request_send', 'User\UserController@advisor_request_send')->name('advisor_request_send');
+
+
 Route::get('/Mail', 'User\UserController@mail')->name('mail');
 Route::get('/Chat', 'User\UserController@chat')->name('chat');
 

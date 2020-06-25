@@ -30,8 +30,7 @@
 									<p><i class="fa fa-phone" aria-hidden="true"></i>
 									<span>+{{$data['single']['phone_no']}}</span> </p>
 									<p><i class="ti-email"></i> 
-									<span>{{$data->email}}
-									</span>
+									<span>{{$data->email}}</span>
 									</p>
 										
 								</div>
