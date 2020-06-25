@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mailer;
-use App\Mail\SendEmail;
+use App\Mail\MailerEmail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,9 +19,10 @@ class MailerController extends Controller
     public function index()
     {
         //
-        $mailer = Mailer::where('user_id',Auth::user()->id)->get();
+        $mailer = Mailer::where('user_id',Auth::user()->id)->orderBy('created_at', 'desc')->get();
         // dd($mailer);
-        return view('mail.new_mail',compact('mailer'));
+        $countSent = $mailer->count();
+        return view('mail.new_mail',compact('countSent','mailer'));
 
     }
 
@@ -78,7 +79,7 @@ class MailerController extends Controller
             DB::table('mail_attachment')->insert($insertAttachment);
         }
 
-        $response = Mail::to($request->to)->send(new SendEmail($request->subject,$request->body,$insertAttachment)); 
+        $response = Mail::to($request->to)->send(new MailerEmail($request->subject,$request->body,$insertAttachment)); 
         return redirect()->route('mailer.index');
     }
 

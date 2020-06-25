@@ -82,7 +82,7 @@
                       <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px;border-bottom: 1px solid #e4e4e4 ;">
                         <tbody>
                           <tr>
-                            <td bgcolor="#ffffff" align="left" valign="middle" style="padding: 0px; color: #111111; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; line-height: 62px;padding:0 0 15px 0;"><a href="{{URL::to('/')}}" target="_blank"><img width="100%" height="110px" alt="logo" src="{{URL::to('/')}}/assets/images/my.png"></a></td>
+                          <td bgcolor="#ffffff" align="left" valign="middle" style="padding: 0px; color: #111111; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 48px; font-weight: 400; line-height: 62px;padding:0 0 15px 0;"><a href="{{URL::to('/')}}" target="_blank"><img width="100%" height="110px" alt="logo" src="{{URL::to('/')}}/assets/images/my.png"></a></td>
                             
                           </tr>
                         </tbody>
@@ -129,17 +129,17 @@
                         <tbody>
                           <tr>
                             <td bgcolor="#ffffff" align="center" style="padding: 30px 0 30px 0; color: #666666; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 18px;">
-                                                <p style="margin: 0;color: #585858;font-size: 12px;font-weight: 400;-webkit-font-smoothing:antialiased;line-height: 170%;">Need help? Ask at <a href="#" style="color: #17a2b8;text-decoration: underline;" target="_blank"><span class="__cf_email__" data-cfemail="7d09181c103d1c0b121e121918531e1210">[email protected]</span></a> or visit our <a href="{{URL::to('/')}}" style="color: #17a2b8;text-decoration: underline;" target="_blank">Help Center</a></p>
-                                                <tr>
-                                                  <td bgcolor="#ffffff" align="center" style="padding: 0; color: #666666; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 18px;">
-                                                    <p style="margin: 0;color: #585858;font-size: 12px;font-weight: 400;-webkit-font-smoothing:antialiased;line-height: 170%;"></p>
-                                                  </td>
-                                                </tr>
-                                                <tr>
-                                                  <td bgcolor="#ffffff" align="center" style="padding: 15px 0 30px 0; color: #666666; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 18px;">
-                                                    <p style="margin: 0;color: #585858;font-size: 12px;font-weight: 400;-webkit-font-smoothing:antialiased;line-height: 170%;">Averti<br> Dummy, 7th Floor<br> New York, NY 10022, USA</p>
-                                                  </td>
-                                                </tr>
+                            <p style="margin: 0;color: #585858;font-size: 12px;font-weight: 400;-webkit-font-smoothing:antialiased;line-height: 170%;">Need help? Ask at <a href="#" style="color: #17a2b8;text-decoration: underline;" target="_blank"><span class="__cf_email__" data-cfemail="7d09181c103d1c0b121e121918531e1210">[email protected]</span></a> or visit our <a href="{{URL::to('/')}}" style="color: #17a2b8;text-decoration: underline;" target="_blank">Help Center</a></p>
+                            <tr>
+                              <td bgcolor="#ffffff" align="center" style="padding: 0; color: #666666; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 18px;">
+                                <p style="margin: 0;color: #585858;font-size: 12px;font-weight: 400;-webkit-font-smoothing:antialiased;line-height: 170%;"></p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td bgcolor="#ffffff" align="center" style="padding: 15px 0 30px 0; color: #666666; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 18px;">
+                                <p style="margin: 0;color: #585858;font-size: 12px;font-weight: 400;-webkit-font-smoothing:antialiased;line-height: 170%;">Averti<br> Dummy, 7th Floor<br> New York, NY 10022, USA</p>
+                              </td>
+                            </tr>
                             </td>
                           </tr>
                         </tbody>
