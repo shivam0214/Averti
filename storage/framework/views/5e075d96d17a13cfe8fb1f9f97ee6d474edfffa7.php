@@ -15,11 +15,12 @@
         </div>	
 		
       <!-- sidebar menu-->
-      <ul class="sidebar-menu" data-widget="tree">
-		<li>
+<ul class="sidebar-menu" data-widget="tree">
+ <?php if(Auth::user()->role_id==2): ?>
+        <li>
           <a href="<?php echo e(route('dashboard')); ?>">
             <i class="ti-dashboard"></i>
-			<span>Dashboard</span>
+      <span>Dashboard</span>
           </a>
         </li>
         <li class="treeview">
@@ -35,6 +36,8 @@
             <li><a href="<?php echo e(route('user')); ?>"><i class="ti-more"></i>List User</a></li>
           </ul>
         </li>
+        	
+		  <li>
         <li>
           <a href="<?php echo e(route('contacts')); ?>">
             <i class="ti-menu-alt"></i>
@@ -42,9 +45,9 @@
           </a>
         </li>	
 	    <li>
-          <a href="<?php echo e(route('mail')); ?>">
+          <a href="<?php echo e(route('mailer.index')); ?>">
             <i class="ti-email"></i>
-			    <span>Mailbox</span>
+            <span>Mailbox</span>
           </a>
         </li>
         <li>
@@ -109,7 +112,20 @@
             <li><a href="<?php echo e(route('booking')); ?>"><i class="ti-more"></i> Booking Schedule</a></li>
           </ul>
         </li>
-
+      <?php else: ?>
+       <li>
+          <a href="<?php echo e(route('dashboard')); ?>">
+            <i class="ti-dashboard"></i>
+      <span>Reuest to user</span>
+          </a>
+        </li>
+         <li>
+          <a href="<?php echo e(route('booknow')); ?>">
+            <i class="ti-dashboard"></i>
+      <span>Booking</span>
+          </a>
+        </li>
+<?php endif; ?>
       </ul>
       
     </section>

@@ -37,6 +37,7 @@ public function question(Request $r){
         'role_id'=>2,
         'perent_id'=>-1,
         'password'=>Hash::make($r->password),
+        'category_id'=>$r->advisortype,   
         'verify_key'=>$token
     );
    $usermeta = array( 
@@ -112,7 +113,7 @@ public function checkemail(Request $r){
             'role_id'=>3,
             'verify_key'=>$token,
             'password'=>Hash::make($r->password),
-            'perent_id'=>$r->advisortype,
+            'category_id'=>$r->advisortype,               
         );        
         $usermeta = array( 
             'phone_no'=>$r->phone_no,
