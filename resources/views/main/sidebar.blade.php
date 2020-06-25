@@ -14,11 +14,12 @@
         </div>	
 		
       <!-- sidebar menu-->
-      <ul class="sidebar-menu" data-widget="tree">
-		<li>
+<ul class="sidebar-menu" data-widget="tree">
+ @if(Auth::user()->role_id==2)
+        <li>
           <a href="{{route('dashboard')}}">
             <i class="ti-dashboard"></i>
-			<span>Dashboard</span>
+      <span>Dashboard</span>
           </a>
         </li>
         <li class="treeview">
@@ -95,6 +96,20 @@
             <li><a href="{{route('booking')}}"><i class="ti-more"></i> Booking Schedule</a></li>
           </ul>
         </li>
+      @else
+       <li>
+          <a href="{{route('dashboard')}}">
+            <i class="ti-dashboard"></i>
+      <span>Reuest to user</span>
+          </a>
+        </li>
+         <li>
+          <a href="{{route('booknow')}}">
+            <i class="ti-dashboard"></i>
+      <span>Booking</span>
+          </a>
+        </li>
+@endif
       </ul>
       
     </section>

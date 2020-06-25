@@ -67,3 +67,9 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
+Route::group(['middleware' => ['auth']], function()
+{
+Route::get('Booknow','User\UserbookingController@index')->name('booknow');
+Route::post('savebook','User\UserbookingController@index')->name('savebook');
+
+});
