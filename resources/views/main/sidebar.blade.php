@@ -35,6 +35,8 @@
             <li><a href="{{route('user')}}"><i class="ti-more"></i>List User</a></li>
           </ul>
         </li>
+        	
+		  <li>
         <li>
           <a href="{{route('contacts')}}">
             <i class="mdi mdi-contacts"></i>
@@ -42,9 +44,9 @@
           </a>
         </li>	
 	    <li>
-          <a href="{{route('mail')}}">
+          <a href="{{route('mailer.index')}}">
             <i class="ti-email"></i>
-			    <span>Mailbox</span>
+            <span>Mailbox</span>
           </a>
         </li>
         <li>

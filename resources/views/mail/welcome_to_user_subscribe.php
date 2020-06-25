@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Please confirm your e-mail</title>
+    <title>Welcome to subscribe our service</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -67,7 +67,6 @@
     </style>
   </head>
   <body bgcolor="#ffffff" style="background-color: #ffffff; margin: 0 !important; padding: 0 !important;">
-    <div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;"> - to finish signing up, you just need to confirm that we got your e-mail right within 48 hours. To confirm please click the VERIFY button.</div>
     <center>
       <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" valign="top">
         <tbody>
@@ -92,45 +91,30 @@
                     </td>
                   </tr>
                   <tr>
-                    <td bgcolor="#ffffff" align="center" style="padding: 0;"><!--[if (gte mso 9)|(IE)]><table align="center" border="0" cellspacing="0" cellpadding="0" width="350">
-<tr>
-<td align="center" valign="top" width="350">
-<![endif]-->
-                      <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px;border-bottom: 1px solid #e4e4e4;">
-                        <tbody>
-                          <tr>
-                            <td bgcolor="#ffffff" align="left" style="padding: 20px 0 0 0; color: #666666; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400;-webkit-font-smoothing:antialiased;">
-                                                <p></p>
-                                                <p class="headingMobile" style="margin: 0;color: #171717;font-size: 26px;font-weight: 200;line-height: 130%;margin-bottom:5px;">
-                                                  {{$data['type']}}<br><br>
-                                                Verify your e-mail to finish signing up for Averti</p>
-                            </td>
-                          </tr>
-                                            <tr>
-                                              <td height="20"></td>
-                                            </tr>
-                          <tr>
+                    <td bgcolor="#ffffff" align="center" style="padding: 0;">
+                    <!--[if (gte mso 9)|(IE)]>
+                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="350">
+                      <tr>
+                        <td align="center" valign="top" width="350">
+                    <![endif]-->
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px;border-bottom: 1px solid #e4e4e4;">
+                      <tbody>
+                        <tr>
+                          <td bgcolor="#ffffff" align="left" style="padding: 20px 0 0 0; color: #666666; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400;-webkit-font-smoothing:antialiased;">
+                            <p class="headingMobile" style="margin: 0;color: #171717;font-size: 26px;font-weight: 200;line-height: 130%;margin-bottom:5px;">
+                              {{$data['type']}}<br /></p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td height="20"></td>
+                        </tr>
+                        <tr>
                             <td bgcolor="#ffffff" align="left" style="padding:0; color: #666666; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400;-webkit-font-smoothing:antialiased;">
-                                                <p style="margin:0;color:#585858;font-size:14px;font-weight:400;line-height:170%;">Thank you for choosing Averti.</p>
-                                                <p style="margin:0;margin-top:20px;line-height:0;"></p>
-                                                <p style="margin:0;color:#585858;font-size:14px;font-weight:400;line-height:170%;">Please confirm that <b><a href="{{URL::to('/verify/')}}/{{$data['verify_key']}}" class="__cf_email__" data-cfemail="7e161b1212113e2d1317121b0d3a1f08170d50071b1f16">[email protected]</a></b> is your e-mail address by clicking on the button below </p>
+                              <p style="margin:0;color:#585858;font-size:14px;font-weight:400;line-height:170%;">Thank you for choosing Averti.</p>
+                              <p style="margin:0;margin-top:20px;line-height:0;"></p>
+                              <p style="margin:0;color:#585858;font-size:14px;font-weight:400;line-height:170%;">Please confirm that is your e-mail address by clicking on the button below </p>
                             </td>
                           </tr>
-                                            <tr>
-                                              <td align="center">
-                                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                                  <tr>
-                                                    <td align="center" style="padding: 33px 0 33px 0;">
-                                                      <table border="0" cellspacing="0" cellpadding="0" width="100%">
-                                                        <tr>
-                                                          <td align="center" style="border-radius: 4px;" bgcolor="#17a2b8"><a href="{{URL::to('/verify/')}}/{{$data['verify_key']}}" style="text-transform:uppercase;background:#17a2b8;font-size: 13px; font-weight: 700; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none !important; padding: 20px 25px; border-radius: 4px; border: 1px solid #17a2b8; display: block;-webkit-font-smoothing:antialiased;" target="_blank"><span style="color: #ffffff;text-decoration: none;">Verify</span></a></td>
-                                                        </tr>
-                                                      </table>
-                                                    </td>
-                                                  </tr>
-                                                </table>
-                                              </td>
-                                            </tr>
                         </tbody>
                       </table><!--[if (gte mso 9)|(IE)]></td></tr></table>
 <![endif]-->
