@@ -15,7 +15,7 @@
 									<p>
 									<input type="hidden" value="<?php echo e($data->id); ?>" name="id">
 
-									<a href="#"><strong><?php echo e($data->name); ?></strong></a>
+									<a href="#"><strong><h4><?php echo e($data->name); ?></h4></strong></a>
 									</p>
 									<p><?php echo e(@$question_data->occupation); ?></p>
 									<nav class="nav mt-2">
@@ -41,13 +41,15 @@
 					<div class="box">
 						<div class="nav-tabs-custom">
 								<ul class="nav nav-tabs">
-									<li><a href="#Note" class="active" data-toggle="tab">Note</a></li>
-									<li><a href="#activity" data-toggle="tab">Activity</a></li>
-									<li><a href="#task" data-toggle="tab">Task</a></li>
-									<li><a href="#settings" data-toggle="tab">Event</a></li>
-									<li><a href="#chat" data-toggle="tab">Chat</a></li>
-									<li><a href="#Video" data-toggle="tab">Video</a></li>
-									<li><a href="#email" data-toggle="tab">Mail</a></li>
+									<li><a href="#Note" class="active" data-toggle="tab"><h5>Note</h5></a></li>
+									<li><a href="#activity" data-toggle="tab"><h5>Activity</h5></a></li>
+									<li><a href="#task" data-toggle="tab"><h5>Task</h5></a></li>
+									<li><a href="#settings" data-toggle="tab"><h5>Event</h5></a></li>
+									<li><a href="#chat" data-toggle="tab"><h5>Chat</h5></a></li>
+									<li><a href="#Video" data-toggle="tab"><h5>Video</h5></a></li>
+									<li><a href="#file" data-toggle="tab"><h5>File</h5></a></li>
+									<li><a href="#whatsapp" data-toggle="tab"><h5>WhatsApp</h5></a></li>
+									<li><a href="#mail" data-toggle="tab"><h5>Mail</h5></a></li>
 
 
 								</ul>
@@ -382,6 +384,46 @@
 									</div>
 								</div>
 								<!-- /.tab-pane -->
+								<div class="tab-pane" id="mail">
+								<div class="modal-header">
+								<h4 class="modal-title" id="myLargeModalLabel">Compose New Message</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							</div>
+							<div class="modal-body">
+								<div class="form-group">
+									<input class="form-control" placeholder="To:">
+								  </div>
+								  <div class="form-group">
+									<input class="form-control" placeholder="Subject:">
+								  </div>
+								  <div class="form-group">
+										<textarea id="compose-textarea" class="form-control" style="height: 300px">
+										  <p>Your Message Here....</p>
+										</textarea>
+								  </div>
+								  <div class="form-group">
+									<div class="btn btn-info btn-file">
+									  <i class="fa fa-paperclip"></i> Attachment
+									  <input type="file" name="attachment">
+									</div>
+									<p class="help-block">Max. 32MB</p>
+								  </div>
+							</div>
+							<div class="modal-footer">
+								<div class="pull-right">
+									<button type="button" class="btn btn-default"><i class="fa fa-pencil"></i> Draft</button>
+									<button type="submit" class="btn btn-success"><i class="fa fa-envelope-o"></i> Send</button>
+								</div>
+								<button type="reset" class="btn btn-danger"><i class="fa fa-times"></i> Discard</button>
+								<button type="button" class="btn btn-danger text-left" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+						
+								</div>
+								<div class="tab-pane" id="chat">
+								</div>
+								<div class="tab-pane" id="chat">
+								</div>
 								<div class="tab-pane" id="chat">
 									<div class="box">
 									<div class="col-12">

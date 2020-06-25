@@ -42,8 +42,12 @@ Route::get('/dashboard/User/AddUser', 'User\UserController@add_user')->name('add
 Route::get('/dashboard/User/ViewUser/{id}', 'User\UserController@view_profile')->name('view_profile');
 Route::get('/dashboard/ContactList', 'User\UserController@contacts')->name('contacts');
 
+Route::get('/invoice', 'Adviser\InvoiceController@invoice')->name('invoice');
+Route::get('/invoice_list', 'Adviser\InvoiceController@invoice_list')->name('invoice_list');
+
 Route::get('/Mail', 'User\UserController@mail')->name('mail');
 Route::get('/Chat', 'User\UserController@chat')->name('chat');
+
 /* Booking */ 
 Route::get('/Booking', 'Adviser\BookingController@booking')->name('booking');
 Route::post('/booking','Adviser\BookingController@bookingsetting')->name('bookingsetting');
@@ -57,8 +61,8 @@ Route::post('post/zoom','ZoomController@store')->name('zoomcreatepost');
 /** Front page Route**/
 Route::get('/advisor-question', 'Frontform\FrontformController@questioon_view')->name('advisor_question');
 Route::post('/advisor/dashboard', 'Frontform\FrontformController@question')->name('insert');
-Route::get('/find_advisor', 'Frontform\FrontformController@home')->name('find_advisor');
-Route::post('/finadvisor', 'Frontform\FrontformController@finadvisor')->name('finadvisor');
+Route::get('/user_registration', 'Frontform\FrontformController@home')->name('find_advisor');
+Route::post('/user_registrations', 'Frontform\FrontformController@finadvisor')->name('finadvisor');
 
 Route::get("/checkemail",'Frontform\FrontformController@checkemail')->name('checkeamil');
 

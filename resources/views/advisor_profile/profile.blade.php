@@ -129,8 +129,8 @@
 			<div class="col-12 col-lg-7 col-xl-8">
 				<div class="nav-tabs-custom">
 				  	<ul class="nav nav-tabs">
-						<li><a class="active" href="#settings" data-toggle="tab"><h5>Informatio</h5></a></li>
-						<li><a href="#info" data-toggle="tab"><h5>Question</h5></a></li>
+						<li><a class="active" href="#settings" data-toggle="tab"><h5> Edit Informatio</h5></a></li>
+						<li><a href="#info" data-toggle="tab"><h5>Edit  Question</h5></a></li>
 						<li><a  href="#activity" data-toggle="tab"><h5>Activity</h5></a></li>
 						<li><a href="#usertimeline" data-toggle="tab"><h5>Timeline</h5></a></li>
 

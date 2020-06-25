@@ -37,7 +37,7 @@
         </li>
         <li>
           <a href="{{route('contacts')}}">
-            <i class="mdi mdi-contacts"></i>
+            <i class="ti-menu-alt"></i>
 			    <span>Contacts</span>
           </a>
         </li>	
@@ -49,7 +49,7 @@
         </li>
         <li>
           <a href="#">
-            <i class="ti-layout-grid2"></i>
+            <i class="ti-align-justify"></i>
 			<span>Task</span>
           </a>
         </li>
@@ -85,6 +85,19 @@
       </li>
       <li class="treeview">
           <a href="#">
+            <i class="ti-receipt"></i>
+			<span>Sales</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{route('invoice')}}"><i class="ti-more"></i>Invoice</a></li>
+            <li><a href="{{route('invoice_list')}}"><i class="ti-more"></i>Invoice List</a></li>
+          </ul>
+        </li>
+      <li class="treeview">
+          <a href="#">
             <i class="ti-layout-grid2"></i>
 			<span>Booking</span>
             <span class="pull-right-container">
@@ -96,6 +109,7 @@
             <li><a href="{{route('booking')}}"><i class="ti-more"></i> Booking Schedule</a></li>
           </ul>
         </li>
+
       </ul>
       
     </section>
