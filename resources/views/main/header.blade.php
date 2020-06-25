@@ -9,8 +9,11 @@
 		<a href="index.html" class="logo">
 		  <!-- logo-->
 		  <div class="logo-lg">
+		  @if(Auth::user()->role_id==2)
 			  <span class="light-logo"><img src="{{asset('assets/images/averti1.png')}}" alt="logo"></span>
-			  <span class="dark-logo"><img src="{{asset('assets/images/averti1.png')}}" alt="logo"></span>
+			  @else
+			  <span class="light-logo"><img src="{{asset('assets/images/averti.png')}}" alt="logo"></span>
+			  @endif
 		  </div>
 		</a>	
 	</div>  
@@ -19,23 +22,36 @@
       <!-- Sidebar toggle button-->
 	  <div class="app-menu">
 		<ul class="header-megamenu nav">
-			<li class="btn-group nav-item d-md-none">
-				<a href="#" class="waves-effect waves-light nav-link rounded push-btn" data-toggle="push-menu" role="button">
-					<i class="ti-menu"></i>
+		@if(Auth::user()->role_id==2)
+		 	<li class="btn-group nav-item d-xl-inline-block">
+				<a href="#" class="waves-effect waves-light nav-link rounded push-btn" title="View User Request"  role="button">
+					<i class="fa fa-user-plus" aria-hidden="true"></i>
 			    </a>
 			</li>
+    	@else
+			<li class="btn-group nav-item d-xl-inline-block">
+				<a href="javascript:void(0)" id="request" class="waves-effect waves-light nav-link rounded push-btn" onclick="$('#modal-right').modal('show');" title="View Advisor" role="button">
+					<i class="fa fa-user-plus" aria-hidden="true"></i>
+			    </a>
+			</li>
+    	@endif
 			<li class="btn-group nav-item d-none d-xl-inline-block">
 				<a href="javascript:void(0)" id="createzoom" onclick="$('#modal-right').modal('show');" class="waves-effect waves-light nav-link rounded svg-bt-icon" data-toggle="tooltip" data-placement="top" title="Zoom meeting create">
 					<i class="fa fa-video-camera"></i>
 			    </a>
 			</li>
 			<li class="btn-group nav-item d-none d-xl-inline-block">
-				<a href="javascript:void(0)" onclick="Calendly.showPopupWidget('https://calendly.com/shivam-sam');return false;"class="waves-effect waves-light nav-link rounded svg-bt-icon" data-toggle="tooltip" data-placement="top" title="Zoom meeting create">
-				<i class="fa fa-tasks" aria-hidden="true"></i>
+				<a href="javascript:void(0)" onclick="Calendly.showPopupWidget('https://calendly.com/shivam-sam');return false;"class="waves-effect waves-light nav-link rounded svg-bt-icon" data-toggle="tooltip" data-placement="top" title="Create Task on Calendly">
+				<i class="ti-calendar"></i>
+			    </a>
+			</li>
+			<li class="btn-group nav-item d-none d-xl-inline-block">
+				<a href="{{route('calender')}}" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
+					<i class="ti-calendar"></i>
 			    </a>
 			</li>
 			
-			<li class="btn-group nav-item d-none d-xl-inline-block">
+		{{--  	<li class="btn-group nav-item d-none d-xl-inline-block">
 				<a href="{{route('chat')}}" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
 					<i class="ti-comments"></i>
 			    </a>
@@ -54,7 +70,7 @@
 				<a href="{{route('calender')}}" class="waves-effect waves-light nav-link rounded svg-bt-icon" title="">
 					<i class="ti-calendar"></i>
 			    </a>
-			</li>
+			</li>  --}}
 		</ul> 
 	  </div>
 		
