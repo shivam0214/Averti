@@ -8,9 +8,15 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Auth;
+use Config;
 
 class MailerController extends Controller
 {
+    public function __construct()
+    {
+        // $this->middleware('auth');
+        // $this->middleware('overwritemailer', ['only' => ['store']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -78,6 +84,7 @@ class MailerController extends Controller
             $insertAttachment['created_at']=date('Y-m-d H:i:s');
             DB::table('mail_attachment')->insert($insertAttachment);
         }
+
 
         $response = Mail::to($request->to)->send(new MailerEmail($request->subject,$request->body,$insertAttachment)); 
         return redirect()->route('mailer.index');

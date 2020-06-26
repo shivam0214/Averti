@@ -6,7 +6,9 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
 use Auth;
+use Config;
 
 class MailerEmail extends Mailable
 {
@@ -23,6 +25,27 @@ class MailerEmail extends Mailable
      */
     public function __construct($subject,$view,$data)
     {
+        $mail=DB::table('mailers')->first();
+	    $config = array(
+            'driver' => $mail->vendor,
+            'host' => $mail->host,
+            'port' => $mail->port,
+            'from' => array('address' => Auth::user()->email, 'name' => Auth::user()->name),
+            'encryption' => $mail->encryption,
+            'username' => $mail->username,
+            'password' => $mail->password,
+            'sendmail' => '/usr/sbin/sendmail -bs',
+            'pretend' => false
+        );
+        Config::set('mail',$config);
+        // create new mailer with new settings
+        $transport = (new \Swift_SmtpTransport($mail->host, $mail->port))
+        ->setUsername($mail->username)
+        ->setPassword($mail->password)
+        ->setEncryption($mail->encryption);
+
+        \Mail::setSwiftMailer(new \Swift_Mailer($transport));
+
 
         $this->subject=$subject;
 
