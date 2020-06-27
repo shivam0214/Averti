@@ -52,6 +52,8 @@ Route::get('/invoice_list', 'Adviser\InvoiceController@invoice_list')->name('inv
 
 Route::get('/advisor_request', 'User\UserController@advisor_request')->name('advisor_request');
 Route::post('/advisor_request_send', 'User\UserController@advisor_request_send')->name('advisor_request_send');
+Route::get('/user_request', 'Adviser\DashboardController@user_request')->name('user_request');
+Route::post('/accept_request', 'Adviser\DashboardController@accept_userreq')->name('accept_userreq');
 
 
 Route::get('/Mail', 'User\UserController@mail')->name('mail');
@@ -68,7 +70,7 @@ Route::post('post/zoom','ZoomController@store')->name('zoomcreatepost');
 });
 
 /** Front page Route**/
-Route::get('/advisor-question', 'Frontform\FrontformController@questioon_view')->name('advisor_question');
+Route::get('/advisor-registration', 'Frontform\FrontformController@questioon_view')->name('advisor_question');
 Route::post('/advisor/dashboard', 'Frontform\FrontformController@question')->name('insert');
 Route::get('/user_registration', 'Frontform\FrontformController@home')->name('find_advisor');
 Route::post('/user_registrations', 'Frontform\FrontformController@finadvisor')->name('finadvisor');

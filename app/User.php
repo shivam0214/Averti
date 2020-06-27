@@ -47,6 +47,12 @@ class User extends Authenticatable
     public function single(){
         return $this->belongsTo('App\User_meta','id','user_id');
     }
+    public function req_data(){
+        return $this->belongsToMany('App\UserRequest','advisor_id','id');
+    }
+    public function req_userata(){
+        return $this->belongsToMany('App\UserRequest','id','advisor_id');
+    }
 
     
 }

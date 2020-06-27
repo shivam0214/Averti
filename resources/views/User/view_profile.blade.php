@@ -417,11 +417,6 @@
 							</div>
 						</div>
 						
-								</div>
-								<div class="tab-pane" id="chat">
-								</div>
-								<div class="tab-pane" id="chat">
-								</div>
 								<div class="tab-pane" id="chat">
 									<div class="box">
 									<div class="col-12">

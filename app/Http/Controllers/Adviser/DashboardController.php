@@ -8,6 +8,8 @@ use Auth;
 use DB;
 use App\User;
 use App\User_meta;
+use App\UserRequest;
+
 use Redirect;
 
 class DashboardController extends Controller
@@ -102,7 +104,30 @@ class DashboardController extends Controller
            }
         
          return Redirect::to('/advisor_Profile')->with($notification);
-
     }
-    
+    public function user_request(){
+        $advisor=UserRequest::where('advisor_id',Auth::user()->id)->get('user_id');
+        
+        $advisor=$advisor[0];
+        // foreach($advisor as $user_details){
+        //     $data['user_id'] =$user_details;
+        // }
+        $value=  user::where(['role_id'=>3,'id'=>$advisor['user_id']])->get();
+        // dd($value);
+        // die;
+        return view('Adviser.user_request',compact('value'));
+    }
+
+    public function accept_userreq(Request $r){
+        $advisor=Auth::user()->id;
+        $data=array('perent_id'=>$advisor);
+        $insert =User::where('id',$r->id)->update($data);
+        if($insert){
+            $notification = array(
+             'message' => 'Thanks',
+             'alert-type' => 'success'
+             );
+            }
+            return Redirect::to('/user_request')->with($notification);
+    }
 }

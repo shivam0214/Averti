@@ -36,10 +36,11 @@ class UserController extends Controller
     }
 
         public function advisor_request_send(Request $r){
-            $check=UserRequest::where('advisor_id',$r->id)->count();
+            $id=Auth::user()->id;
+            $check=UserRequest::where(['user_id'=>$id])->count();
             if($check>0){
                 $notification = array(
-                    'message' => 'You have already sent request to this advisor',
+                    'message' => 'You have already sent a request',
                     'alert-type' => 'info'
                     );
                }else{

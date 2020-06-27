@@ -12,4 +12,5 @@ class UserRequest extends Model
     protected $fillable = [
         'user_id', 'advisor_id',
     ];
+   
 }

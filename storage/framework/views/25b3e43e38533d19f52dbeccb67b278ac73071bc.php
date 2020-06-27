@@ -29,9 +29,7 @@
 									<p><i class="fa fa-phone" aria-hidden="true"></i>
 									<span>+<?php echo e($data['single']['phone_no']); ?></span> </p>
 									<p><i class="ti-email"></i> 
-									<span><?php echo e($data->email); ?>
-
-									</span>
+									<span><?php echo e($data->email); ?></span>
 									</p>
 										
 								</div>
@@ -387,7 +385,6 @@
 								<div class="tab-pane" id="mail">
 								<div class="modal-header">
 								<h4 class="modal-title" id="myLargeModalLabel">Compose New Message</h4>
-								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 							</div>
 							<div class="modal-body">
 								<div class="form-group">
@@ -419,11 +416,6 @@
 							</div>
 						</div>
 						
-								</div>
-								<div class="tab-pane" id="chat">
-								</div>
-								<div class="tab-pane" id="chat">
-								</div>
 								<div class="tab-pane" id="chat">
 									<div class="box">
 									<div class="col-12">
