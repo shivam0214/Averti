@@ -14,16 +14,18 @@
 								<h4 class="modal-title" id="myLargeModalLabel">Compose New Message</h4>
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 							</div>
+							<form method="POST" action="<?php echo e(route('mailer.store')); ?>" enctype="multipart/form-data">
+							<?php echo csrf_field(); ?>
 							<div class="modal-body">
 								<div class="form-group">
-									<input class="form-control" placeholder="To:">
+									<input class="form-control" placeholder="To:" name="to">
 								  </div>
 								  <div class="form-group">
-									<input class="form-control" placeholder="Subject:">
+									<input class="form-control" placeholder="Subject:" name="subject">
 								  </div>
 								  <div class="form-group">
-										<textarea id="compose-textarea" class="form-control" style="height: 300px">
-										  <p>Your Message Here....</p>
+										<textarea id="compose-textarea" class="form-control" style="height: 300px" name="body">
+										  
 										</textarea>
 								  </div>
 								  <div class="form-group">
@@ -42,6 +44,7 @@
 								<button type="reset" class="btn btn-danger"><i class="fa fa-times"></i> Discard</button>
 								<button type="button" class="btn btn-danger text-left" data-dismiss="modal">Close</button>
 							</div>
+							</form>
 						</div>
 						<!-- /.modal-content -->
 					</div>
@@ -222,88 +225,21 @@
 						  <div class="table-responsive">
 							<table class="table table-hover table-striped">
 							  <tbody>
+							  <?php $__currentLoopData = $mailer; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 							  <tr>
 								<td><input type="checkbox"></td>
 								<td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
 								<td>
-									<p class="mailbox-name mb-0 font-size-16 font-weight-600">Johen Doe</p>
-									<a class="mailbox-subject" href="#"><b>Lorem Ipsum</b> - There are many variations of Ipsum available...</a>
-								</td>
-								<td class="mailbox-attachment"></td>
-								<td class="mailbox-date">2:45 PM</td>
-							  </tr>
-							  <tr>
-								<td><input type="checkbox"></td>
-								<td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
-								<td>
-									<p class="mailbox-name mb-0 font-size-16 font-weight-600">Johen Doe</p>
-									<a class="mailbox-subject" href="#"><b>Lorem Ipsum</b> - There are many variations of Ipsum available...</a>
-								</td>
-								<td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-								<td class="mailbox-date">2:45 PM</td>
-							  </tr>
-							  <tr>
-								<td><input type="checkbox"></td>
-								<td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
-								<td>
-									<p class="mailbox-name mb-0 font-size-16 font-weight-600">Johen Doe</p>
-									<a class="mailbox-subject" href="#"><b>Lorem Ipsum</b> - There are many variations of Ipsum available...</a>
-								</td>
-								<td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-								<td class="mailbox-date">2:45 PM</td>
+									<p class="mailbox-name mb-0 font-size-16 font-weight-600"><?php echo e($val->fullname); ?></p>
+									<a class="mailbox-subject" href="#">
+										<?php echo e($val->body); ?>
 
-							  </tr>
-							  <tr>
-								<td><input type="checkbox"></td>
-								<td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-								<td>
-									<p class="mailbox-name mb-0 font-size-16 font-weight-600">Johen Doe</p>
-									<a class="mailbox-subject" href="#"><b>Lorem Ipsum</b> - There are many variations of Ipsum available...</a>
+									</a>
 								</td>
 								<td class="mailbox-attachment"></td>
-								<td class="mailbox-date">2:45 PM</td>
+								<td class="mailbox-date"><?php echo e(date('H:i:s a', strtotime($val->created_at))); ?></td>
 							  </tr>
-							 <tr>
-								<td><input type="checkbox"></td>
-								<td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-								<td>
-									<p class="mailbox-name mb-0 font-size-16 font-weight-600">Johen Doe</p>
-									<a class="mailbox-subject" href="#"><b>Lorem Ipsum</b> - There are many variations of Ipsum available...</a>
-								</td>
-								<td class="mailbox-attachment"></td>
-								<td class="mailbox-date">2:45 PM</td>
-							  </tr>
-							  <tr>
-								<td><input type="checkbox"></td>
-								<td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
-								<td>
-									<p class="mailbox-name mb-0 font-size-16 font-weight-600">Johen Doe</p>
-									<a class="mailbox-subject" href="#"><b>Lorem Ipsum</b> - There are many variations of Ipsum available...</a>
-								</td>
-								<td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-								<td class="mailbox-date">2:45 PM</td>
-							  </tr>
-							  <tr>
-								<td><input type="checkbox"></td>
-								<td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
-								<td>
-									<p class="mailbox-name mb-0 font-size-16 font-weight-600">Johen Doe</p>
-									<a class="mailbox-subject" href="#"><b>Lorem Ipsum</b> - There are many variations of Ipsum available...</a>
-								</td>
-								<td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-
-								<td class="mailbox-date">2:45 PM</td>
-							  </tr>
-							  <tr>
-								<td><input type="checkbox"></td>
-								<td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-								<td>
-									<p class="mailbox-name mb-0 font-size-16 font-weight-600">Johen Doe</p>
-									<a class="mailbox-subject" href="#"><b>Lorem Ipsum</b> - There are many variations of Ipsum available...</a>
-								</td>
-								<td class="mailbox-attachment"></td>
-								<td class="mailbox-date">2:45 PM</td>
-							  </tr>
+							  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 							  </tbody>
 							</table>
 						  </div>                

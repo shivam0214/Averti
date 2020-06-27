@@ -330,12 +330,20 @@
 	<script src="<?php echo e(asset('assets/icons/feather-icons/feather.min.js')); ?>"></script>	
 	<script src="<?php echo e(asset('assets/vendor_components/c3/d3.min.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/vendor_components/c3/c3.min.js')); ?>"></script>
+	<script src="<?php echo e(asset('assets/js/pages/invoice.js')); ?>"></script>
+	<script src="<?php echo e(asset('assets/vendor_plugins/JqueryPrintArea/demo/jquery.PrintArea.js')); ?>"></script>
+	<script src="<?php echo e(asset('assets/icons/feather-icons/feather.min.js')); ?>"></script>
+	<script src="<?php echo e(asset('assets/vendor_components/datatable/datatables.min.js')); ?>"></script>
+	<script src="<?php echo e(asset('assets/js/pages/data-table.js')); ?>"></script>
+
+
 	<script src="<?php echo e(asset('assets/vendor_components/sweetalert/sweetalert.min.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/vendor_components/sweetalert/jquery.sweet-alert.custom.js')); ?>"></script>
 	/* custom js added by sam*/
 	<script src="<?php echo e(asset('assets/js/custom/zoom.js')); ?>"></script>
 	<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script> 
 	<script src="https://api.vsee.com/js/vseepresence.js"></script>
+
 	<script>
 	
   $( function() {

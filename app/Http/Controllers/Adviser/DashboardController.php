@@ -106,13 +106,14 @@ class DashboardController extends Controller
          return Redirect::to('/advisor_Profile')->with($notification);
     }
     public function user_request(){
-        $advisor=UserRequest::where('advisor_id',Auth::user()->id)->get('user_id');
+        $advisor=UserRequest::where(['advisor_id'=>Auth::user()->id,'status'=>0])->get();
         
-        $advisor=$advisor[0];
-        // foreach($advisor as $user_details){
-        //     $data['user_id'] =$user_details;
-        // }
-        $value=  user::where(['role_id'=>3,'id'=>$advisor['user_id']])->get();
+        
+         foreach($advisor as $user_details){
+             $ids[] =$user_details['user_id'];
+         }
+        // print_r($ids);die;
+        $value=  user::where(['role_id'=>3])->whereIn('id',$ids)->get();
         // dd($value);
         // die;
         return view('Adviser.user_request',compact('value'));
@@ -122,6 +123,7 @@ class DashboardController extends Controller
         $advisor=Auth::user()->id;
         $data=array('perent_id'=>$advisor);
         $insert =User::where('id',$r->id)->update($data);
+        UserRequest::where(['advisor_id'=>$advisor,'user_id'=>$r->id])->update(['status'=>1]);
         if($insert){
             $notification = array(
              'message' => 'Thanks',

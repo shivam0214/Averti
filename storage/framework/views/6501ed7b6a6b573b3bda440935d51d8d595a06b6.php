@@ -4,8 +4,9 @@
 	    <div class="user-profile px-10 py-15">
 			<div class="d-flex align-items-center">			
 				<div class="image">
-				  <img src="<?php echo e(Auth::user()->single->profile_image); ?>" class="avatar avatar-lg" alt="User Image">
-				</div>
+				  <img src="<?php echo ((Auth::user()->single->profile_image)!= NULL) ? url(Auth::user()->single->profile_image) : url(asset('assets/img/avatars/user.png')); ?>"
+          class="avatar avatar-lg" alt="User Image">
+        </div>
 				<div class="info ml-10">
 					<p class="mb-0">Welcome</p>
 					<h5 class="mb-0"><?php echo e(Auth::user()->name); ?></h5>
@@ -35,21 +36,23 @@
             <li><a href="<?php echo e(route('user')); ?>"><i class="ti-more"></i>List User</a></li>
           </ul>
         </li>
+        	
+		  <li>
         <li>
           <a href="<?php echo e(route('contacts')); ?>">
-            <i class="mdi mdi-contacts"></i>
+            <i class="ti-menu-alt"></i>
 			    <span>Contacts</span>
           </a>
         </li>	
 	    <li>
-          <a href="<?php echo e(route('mail')); ?>">
+          <a href="<?php echo e(route('mailer.index')); ?>">
             <i class="ti-email"></i>
-			    <span>Mailbox</span>
+            <span>Mailbox</span>
           </a>
         </li>
         <li>
           <a href="#">
-            <i class="ti-layout-grid2"></i>
+            <i class="ti-align-justify"></i>
 			<span>Task</span>
           </a>
         </li>
@@ -83,6 +86,19 @@
         </li>
     
       </li>
+      <li class="treeview">
+          <a href="#">
+            <i class="ti-receipt"></i>
+			<span>Sales</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo e(route('invoice')); ?>"><i class="ti-more"></i>Invoice</a></li>
+            <li><a href="<?php echo e(route('invoice_list')); ?>"><i class="ti-more"></i>Invoice List</a></li>
+          </ul>
+        </li>
       <li class="treeview">
           <a href="#">
             <i class="ti-layout-grid2"></i>

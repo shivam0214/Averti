@@ -44,10 +44,9 @@ class UserController extends Controller
                     'alert-type' => 'info'
                     );
                }else{
-            $user=Auth::user()->id;
             $advisor = $r->id;
             $form_data=array(
-                'user_id'=>$user,
+                'user_id'=>$id,
                 'advisor_id'=>$advisor
             );
             $userrequests = UserRequest::create($form_data);
