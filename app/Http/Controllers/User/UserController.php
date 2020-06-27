@@ -34,8 +34,7 @@ class UserController extends Controller
             $value=  user::where(['role_id'=>2,'category_id'=>$advisor])->get();
             return view('User.advisor_request',compact('value'));
     }
-
-        public function advisor_request_send(Request $r){
+      public function advisor_request_send(Request $r){
             $id=Auth::user()->id;
             $check=UserRequest::where(['user_id'=>$id])->count();
             if($check>0){

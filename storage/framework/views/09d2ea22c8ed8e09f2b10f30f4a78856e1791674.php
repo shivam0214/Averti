@@ -24,13 +24,13 @@
 		<ul class="header-megamenu nav">
 		<?php if(Auth::user()->role_id==2): ?>
 		 	<li class="btn-group nav-item d-xl-inline-block">
-				<a href="#" class="waves-effect waves-light nav-link rounded push-btn" title="View User Request"  role="button">
+				<a href="<?php echo e(route('user_request')); ?>" class="waves-effect waves-light nav-link rounded push-btn" title="View User Request"  role="button">
 					<i class="fa fa-user-plus" aria-hidden="true"></i>
 			    </a>
 			</li>
     	<?php else: ?>
 			<li class="btn-group nav-item d-xl-inline-block">
-				<a href="javascript:void(0)" id="request" class="waves-effect waves-light nav-link rounded push-btn" onclick="$('#modal-right').modal('show');" title="View Advisor" role="button">
+				<a href="<?php echo e(route('advisor_request')); ?>" id="request" class="waves-effect waves-light nav-link rounded push-btn" onclick="$('#modal-right').modal('show');" title="View Advisor" role="button">
 					<i class="fa fa-user-plus" aria-hidden="true"></i>
 			    </a>
 			</li>
@@ -141,7 +141,7 @@
 			  </li>
 			</ul>
 		  </li>	
-		  
+
 	      <!-- User Account-->
           <li class="dropdown user user-menu">
             <a href="#" class="waves-effect waves-light dropdown-toggle" data-toggle="dropdown" title="User">

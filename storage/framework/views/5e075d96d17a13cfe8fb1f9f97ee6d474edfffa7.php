@@ -114,11 +114,31 @@
         </li>
       <?php else: ?>
        <li>
-          <a href="<?php echo e(route('dashboard')); ?>">
+          <a href="<?php echo e(route('advisor_request')); ?>">
             <i class="ti-dashboard"></i>
-      <span>Reuest to user</span>
+      <span>Reuest to Advisor</span>
           </a>
         </li>
+        <li>
+          <a href="<?php echo e(route('chat')); ?>">
+            <i class="ti-comment-alt"></i>
+			<span>Chat</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="ti-bell"></i>
+			<span>Notification</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?php echo e(route('mailer.index')); ?>">
+            <i class="ti-email"></i>
+            <span>Mailbox</span>
+          </a>
+        </li>
+     
+  
          <li>
           <a href="<?php echo e(route('booknow')); ?>">
             <i class="ti-dashboard"></i>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @php
-$bookingav = $bookingav[0];
+@$bookingav = @$bookingav[0];
 @$bookingav['available'] = json_decode(@$bookingav['available'],true);
 @endphp
 
@@ -39,7 +39,7 @@ $bookingav = $bookingav[0];
 			<div class="box-body wizard-content">
 				<form action="{{route('bookingsetting')}}" class="" method="post">
 				@csrf
-				<input type="hidden" value="{{$bookingav['id']}}" name="id">
+				<input type="hidden" value="{{@$bookingav['id']}}" name="id">
 					<!-- Step 1 -->
 					<h6>Client Information</h6>
 					<section>
@@ -48,11 +48,11 @@ $bookingav = $bookingav[0];
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstName5">Languages (s) you and your staff speak ?</label>
-									@php $select = json_decode($bookingav['languages'],true) @endphp
+									@php $select = (!empty(@$bookingav['languages'])?json_decode(@$bookingav['languages'],true):[]) @endphp
 									<select id="multiple" multiple name="language[]">
 									@foreach (@$language as $record)
 									
-										<option value="{{$record['name']}}" @if(in_array($record['name'],$select)) selected @endif>{{$record['name']}}</option>
+										<option value="{{$record['name']}}" @if(in_array($record['name'],@$select)) selected @endif>{{$record['name']}}</option>
 									@endforeach
 									  </select>
 									  
@@ -61,9 +61,9 @@ $bookingav = $bookingav[0];
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstName5">Patient type </label>
-									@php $select = json_decode($bookingav['patient_type'],true) @endphp
+									@php $select =(!empty(@$bookingav['languages'])?json_decode(@$bookingav['patient_type'],true):[]) @endphp
 									<select id="multiple1" name="patient_type[]" multiple>
-										<option value="New_born_babys"  @if(in_array('New_born_babys',$select)) selected @endif>New born babys</option>
+										<option value="New_born_babys"  @if(in_array('New_born_babys',@$select)) selected @endif>New born babys</option>
 										<option value="Kids"  @if(in_array('Kids',$select)) selected @endif>Kids</option>
 										<option value="Teen"  @if(in_array('Teen',$select)) selected @endif>Teen</option>
 									  </select>
@@ -77,9 +77,9 @@ $bookingav = $bookingav[0];
 									<label for="firstName5">Doctor type</label>
 									
 									<select id="multiple2" name="doctor_type[]" multiple>
-									@php $select = json_decode($bookingav['doctor_type'],true) @endphp
+									@php $select =  (!empty(@$bookingav['languages'])?json_decode(@$bookingav['doctor_type'],true):[]) @endphp
 										@foreach ($doctor as $v)
-											<option value="{{$v}}" @if(in_array($v,$select)) selected @endif>{{str_replace('_',' ',$v)}}</option>
+											<option value="{{$v}}" @if(in_array($v,@$select)) selected @endif>{{str_replace('_',' ',$v)}}</option>
 										@endforeach
 										
 										
@@ -89,12 +89,12 @@ $bookingav = $bookingav[0];
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstName6">Patient Checking  location </label>
-									@php $select = json_decode($bookingav['where'],true) @endphp
+									@php $select = (!empty(@$bookingav['languages'])?json_decode(@$bookingav['where'],true):[]) @endphp
 									<select id="multiple6" name="where[]" multiple >
-										<option value="Clinic" @if(in_array('Clinic',$select)) selected @endif>Clinic</option>
-										<option value="Home" @if(in_array('Home',$select)) selected @endif>Home</option>
-										<option value="Hospital" @if(in_array('Hospital',$select)) selected @endif>Hospital</option>
-										<option value="Online" @if(in_array('Online',$select)) selected @endif>Online</option>
+										<option value="Clinic" @if(in_array('Clinic',@$select)) selected @endif>Clinic</option>
+										<option value="Home" @if(in_array('Home',@$select)) selected @endif>Home</option>
+										<option value="Hospital" @if(in_array('Hospital',@$select)) selected @endif>Hospital</option>
+										<option value="Online" @if(in_array('Online',@$select)) selected @endif>Online</option>
 									  </select>
 								</div>
 							</div>

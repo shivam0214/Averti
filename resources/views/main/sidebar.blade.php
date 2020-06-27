@@ -114,11 +114,31 @@
         </li>
       @else
        <li>
-          <a href="{{route('dashboard')}}">
+          <a href="{{route('advisor_request')}}">
             <i class="ti-dashboard"></i>
-      <span>Reuest to user</span>
+      <span>Reuest to Advisor</span>
           </a>
         </li>
+        <li>
+          <a href="{{route('chat')}}">
+            <i class="ti-comment-alt"></i>
+			<span>Chat</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="ti-bell"></i>
+			<span>Notification</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{route('mailer.index')}}">
+            <i class="ti-email"></i>
+            <span>Mailbox</span>
+          </a>
+        </li>
+     
+  
          <li>
           <a href="{{route('booknow')}}">
             <i class="ti-dashboard"></i>

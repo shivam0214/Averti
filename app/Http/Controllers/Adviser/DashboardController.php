@@ -30,7 +30,6 @@ class DashboardController extends Controller
     }
     
     public function update_profile(Request $r){
-        
         $form_data = User::findByUUID($r->uuid);
         $form_data->name=$r->name;
         $form_data->last_name=$r->lastname;
@@ -62,24 +61,22 @@ class DashboardController extends Controller
              );
                 }
              
-              return Redirect::to('/advisor_Profile')->with($notification);
+              return Redirect::to('/Profile')->with($notification);
 
     }
-    public function update_data(Request $r){
-       
-     
+    public function update_advisor_data(Request $r){            
         $data = array( 
-            'category_id'=>$r->advisortype,   
+            'category_id'=>$r->advisortype,
             'question' =>json_encode(array(
             'lincensenumber'=>$r->lincensenumber,
            'How_Did'=>$r->How_Did,
+           'age'=>$r->age,
            'ref'=>$r->ref,
            'What_database'=>$r->What_database,
            'lookingforholastic'=>$r->lookingforholastic,
            'mostinterested'=>$r->mostinterested,
            'status'=>$r->status,
            'assets'=>$r->assets,
-           'age'=>$r->age,
            'life_happiness'=>$r->life_happiness,
            'planning'=>$r->planning,
            'financial'=>$r->financial,
@@ -103,8 +100,34 @@ class DashboardController extends Controller
         );
            }
         
-         return Redirect::to('/advisor_Profile')->with($notification);
+         return Redirect::to('/Profile')->with($notification);
     }
+    public function update_user_data(Request $r){            
+        $data = array( 
+            'category_id'=>$r->advisortype,  
+            'age'=>$r->age,
+            'question' =>json_encode(array(
+               'status'=>$r->status,
+                'Whatwouldyoulike'=>$r->Whatwouldyoulike,
+                'occupation'=>$r->occupation,    
+            )));
+           $user = DB::table('user_meta')->where('user_id',$r->user_id)->update($data);  
+           if($user){
+           $notification = array(
+            'message' => 'Profile data updated successfully!',
+            'alert-type' => 'success'
+            );
+           }else{
+                   
+           $notification = array(
+            'message' => 'Please Try again',
+            'alert-type' => 'error'
+        );
+           }
+        
+         return Redirect::to('/Profile')->with($notification);
+    }
+    
     public function user_request(){
         $advisor=UserRequest::where(['advisor_id'=>Auth::user()->id,'status'=>0])->get();
         
