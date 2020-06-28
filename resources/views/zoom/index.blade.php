@@ -24,7 +24,7 @@
             {!! Form::label('email','Email') !!}
             {!! Form::email('email','', ['class'=>'form-control']) !!}
             {!! Form::label('email','Start Date Time') !!}
-            {!! Form::date('start_time','', ['class'=>'form-control']) !!}
+            <input class="form-control" type="datetime-local" value=""  name="start_time" id="example-datetime-local-input">
             {!! Form::label('password','') !!}
             {!! Form::password('password', ['class'=>'form-control']) !!}
             {!! Form::label('Duration','Duration (Min)') !!}

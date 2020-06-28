@@ -1,5 +1,5 @@
 <?php
-$bookingav = $bookingav[0];
+@$bookingav = @$bookingav[0];
 @$bookingav['available'] = json_decode(@$bookingav['available'],true);
 ?>
 
@@ -38,7 +38,7 @@ $bookingav = $bookingav[0];
 			<div class="box-body wizard-content">
 				<form action="<?php echo e(route('bookingsetting')); ?>" class="" method="post">
 				<?php echo csrf_field(); ?>
-				<input type="hidden" value="<?php echo e($bookingav['id']); ?>" name="id">
+				<input type="hidden" value="<?php echo e(@$bookingav['id']); ?>" name="id">
 					<!-- Step 1 -->
 					<h6>Client Information</h6>
 					<section>
@@ -47,11 +47,11 @@ $bookingav = $bookingav[0];
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstName5">Languages (s) you and your staff speak ?</label>
-									<?php $select = json_decode($bookingav['languages'],true) ?>
+									<?php $select = (!empty(@$bookingav['languages'])?json_decode(@$bookingav['languages'],true):[]) ?>
 									<select id="multiple" multiple name="language[]">
 									<?php $__currentLoopData = @$language; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $record): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 									
-										<option value="<?php echo e($record['name']); ?>" <?php if(in_array($record['name'],$select)): ?> selected <?php endif; ?>><?php echo e($record['name']); ?></option>
+										<option value="<?php echo e($record['name']); ?>" <?php if(in_array($record['name'],@$select)): ?> selected <?php endif; ?>><?php echo e($record['name']); ?></option>
 									<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 									  </select>
 									  
@@ -60,9 +60,9 @@ $bookingav = $bookingav[0];
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstName5">Patient type </label>
-									<?php $select = json_decode($bookingav['patient_type'],true) ?>
+									<?php $select =(!empty(@$bookingav['languages'])?json_decode(@$bookingav['patient_type'],true):[]) ?>
 									<select id="multiple1" name="patient_type[]" multiple>
-										<option value="New_born_babys"  <?php if(in_array('New_born_babys',$select)): ?> selected <?php endif; ?>>New born babys</option>
+										<option value="New_born_babys"  <?php if(in_array('New_born_babys',@$select)): ?> selected <?php endif; ?>>New born babys</option>
 										<option value="Kids"  <?php if(in_array('Kids',$select)): ?> selected <?php endif; ?>>Kids</option>
 										<option value="Teen"  <?php if(in_array('Teen',$select)): ?> selected <?php endif; ?>>Teen</option>
 									  </select>
@@ -76,9 +76,9 @@ $bookingav = $bookingav[0];
 									<label for="firstName5">Doctor type</label>
 									
 									<select id="multiple2" name="doctor_type[]" multiple>
-									<?php $select = json_decode($bookingav['doctor_type'],true) ?>
+									<?php $select =  (!empty(@$bookingav['languages'])?json_decode(@$bookingav['doctor_type'],true):[]) ?>
 										<?php $__currentLoopData = $doctor; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $v): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-											<option value="<?php echo e($v); ?>" <?php if(in_array($v,$select)): ?> selected <?php endif; ?>><?php echo e(str_replace('_',' ',$v)); ?></option>
+											<option value="<?php echo e($v); ?>" <?php if(in_array($v,@$select)): ?> selected <?php endif; ?>><?php echo e(str_replace('_',' ',$v)); ?></option>
 										<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 										
 										
@@ -88,12 +88,12 @@ $bookingav = $bookingav[0];
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstName6">Patient Checking  location </label>
-									<?php $select = json_decode($bookingav['where'],true) ?>
+									<?php $select = (!empty(@$bookingav['languages'])?json_decode(@$bookingav['where'],true):[]) ?>
 									<select id="multiple6" name="where[]" multiple >
-										<option value="Clinic" <?php if(in_array('Clinic',$select)): ?> selected <?php endif; ?>>Clinic</option>
-										<option value="Home" <?php if(in_array('Home',$select)): ?> selected <?php endif; ?>>Home</option>
-										<option value="Hospital" <?php if(in_array('Hospital',$select)): ?> selected <?php endif; ?>>Hospital</option>
-										<option value="Online" <?php if(in_array('Online',$select)): ?> selected <?php endif; ?>>Online</option>
+										<option value="Clinic" <?php if(in_array('Clinic',@$select)): ?> selected <?php endif; ?>>Clinic</option>
+										<option value="Home" <?php if(in_array('Home',@$select)): ?> selected <?php endif; ?>>Home</option>
+										<option value="Hospital" <?php if(in_array('Hospital',@$select)): ?> selected <?php endif; ?>>Hospital</option>
+										<option value="Online" <?php if(in_array('Online',@$select)): ?> selected <?php endif; ?>>Online</option>
 									  </select>
 								</div>
 							</div>
