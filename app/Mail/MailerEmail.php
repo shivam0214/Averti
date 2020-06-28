@@ -25,7 +25,7 @@ class MailerEmail extends Mailable
      */
     public function __construct($subject,$view,$data)
     {
-        $mail=DB::table('mailers')->first();
+        $mail=DB::table('mailers')->where('user_id',Auth::user()->id)->first();
 	    $config = array(
             'driver' => $mail->vendor,
             'host' => $mail->host,
@@ -38,13 +38,25 @@ class MailerEmail extends Mailable
             'pretend' => false
         );
         Config::set('mail',$config);
+        
+
+        extract(Config::get('mail'));
+
         // create new mailer with new settings
-        $transport = (new \Swift_SmtpTransport($mail->host, $mail->port))
+        $transport = (new \Swift_SmtpTransport($host, $port))
+                        ->setUsername($username)
+                        ->setPassword($password)
+                        ->setEncryption($encryption);
+
+        \Mail::setSwiftMailer(new \Swift_Mailer($transport));
+    
+        // create new mailer with new settings
+        /* $transport = (new \Swift_SmtpTransport($mail->host, $mail->port))
         ->setUsername($mail->username)
         ->setPassword($mail->password)
         ->setEncryption($mail->encryption);
 
-        \Mail::setSwiftMailer(new \Swift_Mailer($transport));
+        \Mail::setSwiftMailer(new \Swift_Mailer($transport)); */
 
 
         $this->subject=$subject;
