@@ -20,13 +20,19 @@ $('#create_meetingform').submit(function(e) {
             processData:false,
             contentType:false,
              beforeSend: function () {
-                $('.loader').show();
+                $('.backloader').show();
               },
               complete: function () {
-                $('.loader').hide();
+                $('.backloader').hide();
               },
             success: function (response) {
-              
+              if(response.status==1){
+                $('#modal-right').modal('hide');
+                toastr.success(response.message);
+                setTimeout(function(){ window.location.href = "/getmeeting"; }, 3000);
+              }else{
+                toastr.error(response.message);
+              }
              
             }
       });

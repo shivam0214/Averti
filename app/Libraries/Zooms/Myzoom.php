@@ -12,8 +12,8 @@ Class Myzoom {
 
             public function __construct( $zoom_api_key = '', $zoom_api_secret = '' ) {
                 $this->zoom_api_key    = 'Clv6JeFpSKuT2yJwH_SVEQ';
-                $this->zoom_api_secret = 'W3xkYXjQQ8Hsq9j6QyqQr0IDkRUwiOmhJ0ZO';
-                $this->host_id = '_Y8wtA_ZRWC38SopE_JT7g';
+                $this->zoom_api_secret = 'R8R72aNZtGPnP0EDMYCLUBt25ZCnmGXpibtt';
+                $this->host_id = 'MLo5VF3DQgu1zUysmzoRBA';
             }
             private function generateJWTKey() {
                 $key    = $this->zoom_api_key;
@@ -29,47 +29,73 @@ Class Myzoom {
 
             protected function sendRequest( $calledFunction, $data, $request = "GET" ) {
                 $request_url = $this->api_url . $calledFunction;
-               $code = $this->generateJWTKey();
+                $code = $this->generateJWTKey();
                 $this->zoom_api_key    = 'Clv6JeFpSKuT2yJwH_SVEQ';
-                $this->zoom_api_secret = 'W3xkYXjQQ8Hsq9j6QyqQr0IDkRUwiOmhJ0ZO';
+                $this->zoom_api_secret = 'R8R72aNZtGPnP0EDMYCLUBt25ZCnmGXpibtt';
 
                 /*Adds the Key, Secret, & Datatype to the passed array*/
                 $data['api_key'] = $this->zoom_api_key;
                 $data['api_secret'] = $this->zoom_api_secret;
                 $data['data_type'] = 'JSON';
 
-                 $postFields = json_encode($data);
-      $curl = curl_init();
-      curl_setopt_array($curl, array(
-      CURLOPT_URL => $request_url,
-      CURLOPT_RETURNTRANSFER => true,
-      CURLOPT_ENCODING => "",
-      CURLOPT_MAXREDIRS => 10,
-      CURLOPT_TIMEOUT => 0,
-      CURLOPT_FOLLOWLOCATION => true,
-      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-      CURLOPT_CUSTOMREQUEST => "POST",
-      CURLOPT_POSTFIELDS =>$postFields,
-      CURLOPT_HTTPHEADER => array(
-        'Authorization' => 'Bearer ' . $code,
-        'Content-Type'  => 'application/json'
-)
-  ));
-  
-  $response = curl_exec($curl);
-  curl_close($curl);
-  return $response;               
+                  $postFields = json_encode($data);
+                 $curl = curl_init();
+                   curl_setopt_array($curl, array(
+                   CURLOPT_URL => $request_url,
+                   CURLOPT_RETURNTRANSFER => true,
+                   CURLOPT_ENCODING => "",
+                   CURLOPT_MAXREDIRS => 10,
+                   CURLOPT_TIMEOUT => 30,
+                   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                   CURLOPT_CUSTOMREQUEST => "POST",
+                   CURLOPT_POSTFIELDS => $postFields,
+                   CURLOPT_HTTPHEADER => array(
+                     "authorization: Bearer ".$code,
+                     "content-type: application/json"
+                   ),
+                 ));
+                $response = curl_exec($curl);
+                curl_close($curl);
+                return $response;               
+            }
+
+            public function listMeetings() {
+            $request_url = $this->api_url . 'users/' . $this->host_id . '/meetings';
+            $listMeetingsArray              = array();
+            $listMeetingsArray['page_size'] = 300;   
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+            CURLOPT_URL => $request_url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "authorization: Bearer ". $this->generateJWTKey(),
+                "content-type: application/json"
+              ),
+            ));
+
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+
+            curl_close($curl);
+
+            if ($err) {
+            echo "cURL Error #:" . $err;
+            } else {
+            echo $response;
+            }
+
             }
     
 
-              public function createAMeeting( $data = array() ){
-                date_default_timezone_set('Asia/Calcutta');
-                $post_time  = $data['start_time'];
-                $start_time = gmdate( "Y-m-d\TH:i:s", strtotime( $post_time ) );
-    
-                $createAMeetingArray = array();
-    
-                
+    public function createAMeeting( $data = array() ){
+            $post_time  = $data['start_time'];
+            $start_time = gmdate( "Y-m-d\TH:i:s", strtotime( $post_time ) );
+            $createAMeetingArray = array();
 			$createAMeetingArray['topic']      = $data['topic'];
 			$createAMeetingArray['agenda']     = "";
 			$createAMeetingArray['type']       =  2; //Scheduled
@@ -85,8 +111,6 @@ Class Myzoom {
 				'enforce_login'     => false,
 				'auto_recording'    => "none"
 			);
-            
-               // $createAMeetingArray = apply_filters( 'vczapi_createAmeeting', $createAMeetingArray );
                 if ( ! empty( $createAMeetingArray ) ) {
                     return $this->sendRequest( 'users/'.$this->host_id.'/meetings', $createAMeetingArray, "POST" );
                 } else {

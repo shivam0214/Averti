@@ -8,6 +8,8 @@ use Auth;
 use DB;
 use App\User;
 use App\User_meta;
+use App\UserRequest;
+
 use Redirect;
 
 class DashboardController extends Controller
@@ -28,7 +30,6 @@ class DashboardController extends Controller
     }
     
     public function update_profile(Request $r){
-        
         $form_data = User::findByUUID($r->uuid);
         $form_data->name=$r->name;
         $form_data->last_name=$r->lastname;
@@ -51,6 +52,7 @@ class DashboardController extends Controller
                  'message' => 'Profile data updated successfully!',
                  'alert-type' => 'success'
                  );
+                 
                 }else{
                         
                 $notification = array(
@@ -59,24 +61,22 @@ class DashboardController extends Controller
              );
                 }
              
-              return Redirect::to('/advisor_Profile')->with($notification);
+              return Redirect::to('/Profile')->with($notification);
 
     }
-    public function update_data(Request $r){
-       
-     
+    public function update_advisor_data(Request $r){            
         $data = array( 
-            'category_id'=>$r->advisortype,   
+            'category_id'=>$r->advisortype,
             'question' =>json_encode(array(
             'lincensenumber'=>$r->lincensenumber,
            'How_Did'=>$r->How_Did,
+           'age'=>$r->age,
            'ref'=>$r->ref,
            'What_database'=>$r->What_database,
            'lookingforholastic'=>$r->lookingforholastic,
            'mostinterested'=>$r->mostinterested,
            'status'=>$r->status,
            'assets'=>$r->assets,
-           'age'=>$r->age,
            'life_happiness'=>$r->life_happiness,
            'planning'=>$r->planning,
            'financial'=>$r->financial,
@@ -100,8 +100,59 @@ class DashboardController extends Controller
         );
            }
         
-         return Redirect::to('/advisor_Profile')->with($notification);
-
+         return Redirect::to('/Profile')->with($notification);
+    }
+    public function update_user_data(Request $r){            
+        $data = array( 
+            'category_id'=>$r->advisortype,  
+            'age'=>$r->age,
+            'question' =>json_encode(array(
+               'status'=>$r->status,
+                'Whatwouldyoulike'=>$r->Whatwouldyoulike,
+                'occupation'=>$r->occupation,    
+            )));
+           $user = DB::table('user_meta')->where('user_id',$r->user_id)->update($data);  
+           if($user){
+           $notification = array(
+            'message' => 'Profile data updated successfully!',
+            'alert-type' => 'success'
+            );
+           }else{
+                   
+           $notification = array(
+            'message' => 'Please Try again',
+            'alert-type' => 'error'
+        );
+           }
+        
+         return Redirect::to('/Profile')->with($notification);
     }
     
+    public function user_request(){
+        $advisor=UserRequest::where(['advisor_id'=>Auth::user()->id,'status'=>0])->get();
+        
+        
+         foreach($advisor as $user_details){
+             $ids[] =$user_details['user_id'];
+         }
+        // print_r($ids);die;
+        $value=  user::where(['role_id'=>3])->whereIn('id',$ids)->get();
+        // dd($value);
+        // die;
+        return view('Adviser.user_request',compact('value'));
+    }
+
+    public function accept_userreq(Request $r){
+        $advisor=Auth::user()->id;
+        $data=array('perent_id'=>$advisor);
+        $insert =User::where('id',$r->id)->update($data);
+        UserRequest::where(['advisor_id'=>$advisor,'user_id'=>$r->id])->update(['status'=>1]);
+        if($insert){
+            $notification = array(
+             'message' => 'Thanks',
+             'alert-type' => 'success'
+             );
+            }
+            return Redirect::to('/user_request')->with($notification);
+    }
 }

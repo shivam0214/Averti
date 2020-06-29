@@ -30,8 +30,7 @@
 
             <?php echo Form::label('email','Start Date Time'); ?>
 
-            <?php echo Form::date('start_time','', ['class'=>'form-control']); ?>
-
+            <input class="form-control" type="datetime-local" value=""  name="start_time" id="example-datetime-local-input">
             <?php echo Form::label('password',''); ?>
 
             <?php echo Form::password('password', ['class'=>'form-control']); ?>

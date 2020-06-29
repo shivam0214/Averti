@@ -26,6 +26,10 @@ public function questioon_view(){
 
 public function question(Request $r){
     $token = md5($r->email);
+    $check=User::where('email',$r->email)->count();
+    if($check>0){
+        return response()->json(['status'=>0,'msg'=>'Email Already Exist']);
+    }
     $form_data=array(
         'name'=>$r->firstname,
         'last_name'=>$r->lastname,
@@ -33,6 +37,7 @@ public function question(Request $r){
         'role_id'=>2,
         'perent_id'=>-1,
         'password'=>Hash::make($r->password),
+        'category_id'=>$r->advisortype,   
         'verify_key'=>$token
     );
    $usermeta = array( 
@@ -97,7 +102,10 @@ public function checkemail(Request $r){
 
     public function finadvisor(Request $r){
         $token = md5($r->email);
-       
+        $check=User::where('email',$r->email)->count();
+        if($check>0){
+            return response()->json(['status'=>0,'msg'=>'Email Already Exist']);
+        }
         $form_data=array(
             'name'=>$r->name,
             'email'=>$r->email,
@@ -105,6 +113,7 @@ public function checkemail(Request $r){
             'role_id'=>3,
             'verify_key'=>$token,
             'password'=>Hash::make($r->password),
+            'category_id'=>$r->advisortype,               
         );        
         $usermeta = array( 
             'phone_no'=>$r->phone_no,

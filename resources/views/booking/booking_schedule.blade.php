@@ -1,4 +1,9 @@
 @extends('layouts.app')
+@php
+@$bookingav = @$bookingav[0];
+@$bookingav['available'] = json_decode(@$bookingav['available'],true);
+@endphp
+
 @section('content')
 <div class="content-wrapper">
 	  <div class="container-full">
@@ -27,167 +32,79 @@
 		 <!-- Step wizard -->
 		  <div class="box box-default">
 			<div class="box-header with-border">
-			  <h4 class="box-title">Client Registration</h4>
-			  <h6 class="box-subtitle">You can find the <a href="http://www.jquery-steps.com/" target="_blank">offical website </a></h6>		
+			  <h4 class="box-title">Booking Availablily</h4>
+			  <h6 class="box-subtitle">You can add your Availablity</h6>		
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body wizard-content">
-				<form action="#" class="tab-wizard wizard-circle">
+				<form action="{{route('bookingsetting')}}" class="" method="post">
+				@csrf
+				<input type="hidden" value="{{@$bookingav['id']}}" name="id">
 					<!-- Step 1 -->
 					<h6>Client Information</h6>
 					<section>
 						<div class="row">
-							<div class="col-xl-12 col-12">
-								<div class="infoclient">
-								<ul>
-								<li>Name : Ajay Kumar 120</li>
-								<li>Conmpany : Ajay Company</li>
-								<li>EIN :</li>
-							</ul>
-								</div>
-
-							</div>
+							
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstName5">Languages (s) you and your staff speak ?</label>
-									<select id="multiple" multiple>
-										<option value="1" selected>Option 1</option>
-										<option value="2">Option 2</option>
-										<option value="3">Option 3</option>
+									@php $select = (!empty(@$bookingav['languages'])?json_decode(@$bookingav['languages'],true):[]) @endphp
+									<select id="multiple" multiple name="language[]">
+									@foreach (@$language as $record)
+									
+										<option value="{{$record['name']}}" @if(in_array($record['name'],@$select)) selected @endif>{{$record['name']}}</option>
+									@endforeach
 									  </select>
+									  
 									 </div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="firstName5">Who do you work with?</label>
-									<select id="multiple1" multiple>
-										<option value="1" selected>Option 1</option>
-										<option value="2">Option 2</option>
-										<option value="3">Option 3</option>
+									<label for="firstName5">Patient type </label>
+									@php $select =(!empty(@$bookingav['languages'])?json_decode(@$bookingav['patient_type'],true):[]) @endphp
+									<select id="multiple1" name="patient_type[]" multiple>
+										<option value="New_born_babys"  @if(in_array('New_born_babys',@$select)) selected @endif>New born babys</option>
+										<option value="Kids"  @if(in_array('Kids',$select)) selected @endif>Kids</option>
+										<option value="Teen"  @if(in_array('Teen',$select)) selected @endif>Teen</option>
 									  </select>
-									 </div>
+								</div>
 							</div>
+							
 						</div>
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="firstName5">Service experience? (choose all that apply)</label>
-									<select id="multiple2" multiple>
-										<option value="1" selected>Option 1</option>
-										<option value="2">Option 2</option>
-										<option value="3">Option 3</option>
+									<label for="firstName5">Doctor type</label>
+									
+									<select id="multiple2" name="doctor_type[]" multiple>
+									@php $select =  (!empty(@$bookingav['languages'])?json_decode(@$bookingav['doctor_type'],true):[]) @endphp
+										@foreach ($doctor as $v)
+											<option value="{{$v}}" @if(in_array($v,@$select)) selected @endif>{{str_replace('_',' ',$v)}}</option>
+										@endforeach
+										
+										
 									  </select>
 									 </div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label for="firstName5">Personality type?</label>
-									<select id="multiple3" multiple>
-										<option value="1" selected>Option 1</option>
-										<option value="2">Option 2</option>
-										<option value="3">Option 3</option>
+									<label for="firstName6">Patient Checking  location </label>
+									@php $select = (!empty(@$bookingav['languages'])?json_decode(@$bookingav['where'],true):[]) @endphp
+									<select id="multiple6" name="where[]" multiple >
+										<option value="Clinic" @if(in_array('Clinic',@$select)) selected @endif>Clinic</option>
+										<option value="Home" @if(in_array('Home',@$select)) selected @endif>Home</option>
+										<option value="Hospital" @if(in_array('Hospital',@$select)) selected @endif>Hospital</option>
+										<option value="Online" @if(in_array('Online',@$select)) selected @endif>Online</option>
 									  </select>
-									 </div>
+								</div>
 							</div>
+							
 						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="firstName5">What skill level should your clients have?</label>
-									<select id="multiple4" multiple>
-										<option value="1" selected>Option 1</option>
-										<option value="2">Option 2</option>
-										<option value="3">Option 3</option>
-									  </select>
-									 </div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="addressline2">Do you work with clients with medical conditions?</label>
-									<div class="c-inputs-stacked">
-										<div><input type="checkbox" id="checkbox_123">
-										<label for="checkbox_123" class="d-block">Yes</label></div>
-										<div><input type="checkbox" id="checkbox_234">
-										<label for="checkbox_234" class="d-block">No</label></div>
-									</div> </div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="firstName5">If Yes, what type?</label>
-									<select id="multiple5" multiple>
-										<option value="1" selected>Option 1</option>
-										<option value="2">Option 2</option>
-										<option value="3">Option 3</option>
-									  </select>
-									 </div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="firstName5">Where do you work with clients? (choose all that apply)</label>
-									<select id="multiple6" multiple>
-										<option value="1" selected>Option 1</option>
-										<option value="2">Option 2</option>
-										<option value="3">Option 3</option>
-									  </select>
-									 </div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="addressline2">Do your business help clients with these fitness goals?</label>
-									<div class="c-inputs-stacked">
-										<div><input type="checkbox" id="checkbox_123">
-										<label for="checkbox_123" class="d-block">Yes</label></div>
-										<div><input type="checkbox" id="checkbox_234">
-										<label for="checkbox_234" class="d-block">No</label></div>
-									</div> </div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label for="firstName5">Where do you work with clients? (choose all that apply)</label>
-									<select id="multiple7" multiple>
-										<option value="1" selected>Option 1</option>
-										<option value="2">Option 2</option>
-										<option value="3">Option 3</option>
-									  </select>
-									 </div>
-							</div>
-						</div>
-					</section>
-					<!-- Step 2 -->
-					<h6>Account Setup</h6>
-					<section>
 						<div class="row">
 							<div class="infoclient">
-								<p>Add your business hours to Valor Mixed Martial Arts NYC, so its easy to people to plan a visit. When you add business hours, Your page is also more likely to be suggested to people in your area.</p>
+								<p>Add your Per day Availablity</p>
 							</div>
-							<div class="col-12">
-								
-								<div class="form-group">
-									<label for="username123"> Sunday</label>
-								<div class="c-inputs-stacked">
-									
-									<div>
-									<input type="checkbox" id="checkbox_123">
-									<label for="checkbox_123" class="d-block">Open on selected hours</label>
-								</div>
-								<div>
-									<input type="checkbox" id="checkbox_234">
-									<label for="checkbox_234" class="d-block">Always Open</label>
-								</div>
-								<div>
-									<input type="checkbox" id="checkbox_345">
-									<label for="checkbox_345" class="d-block">No hours available</label>
-								</div>
-
-								<div>
-									<input type="checkbox" id="checkbox_345">
-									<label for="checkbox_345" class="d-block">Permanently Closed</label>
-								</div>
-								</div>
-							</div>
-							</div>
+							
 						</div>
 							<div class="dateandtimezone">
 								<div class="row">
@@ -196,9 +113,9 @@
 									<label for="username123"> Sunday</label>
 									<div class="row mt-10">
 										<div class="col-6">
-											<input type="text" placeholder="Appointment Time" id="timepicker">
+											<input type="text" placeholder="Appointment Start" name="hours[sun_start]" id="timepicker" value={{@$bookingav['available']['sun_start']}}>
 										</div>
-										<div class="col-6"><input type="text" placeholder="Appointment Time" id="timepicker"></div>
+										<div class="col-6"><input type="text" placeholder="Appointment End" name="hours[sun_end]" id="timepicker" value={{@$bookingav['available']['sun_end']}}></div>
 									</div>
 									
 								</div>
@@ -209,9 +126,9 @@
 									<label for="username123"> Monday</label>
 									<div class="row mt-10">
 										<div class="col-6">
-											<input type="text" placeholder="Appointment Time" id="timepicker">
+											<input type="text" placeholder="Appointment Start" name="hours[mon_start]" id="timepicker" value={{@$bookingav['available']['mon_start']}}>
 										</div>
-										<div class="col-6"><input type="text" placeholder="Appointment Time" id="timepicker"></div>
+										<div class="col-6"><input type="text" placeholder="Appointment End" name="hours[mon_end]" id="timepicker" value={{@$bookingav['available']['mon_end']}}></div>
 									</div>
 								</div>
 						</div>
@@ -220,9 +137,9 @@
 								<label for="username123"> Tuesday</label>
 								<div class="row mt-10">
 									<div class="col-6">
-										<input type="text" placeholder="Appointment Time" id="timepicker">
+										<input type="text" placeholder="Appointment Start" name="hours[tue_start]" id="timepicker" value={{@$bookingav['available']['tue_start']}}>
 									</div>
-									<div class="col-6"><input type="text" placeholder="Appointment Time" id="timepicker"></div>
+									<div class="col-6"><input type="text" placeholder="Appointment End" name="hours[tue_end]" id="timepicker" value={{@$bookingav['available']['tue_end']}}></div>
 								</div>
 								
 							</div>
@@ -233,9 +150,9 @@
 								<label for="username123"> Wednesday</label>
 								<div class="row mt-10">
 									<div class="col-6">
-										<input type="text" placeholder="Appointment Time" id="timepicker">
+										<input type="text" placeholder="Appointment Start" name="hours[wed_start]" id="timepicker" value={{@$bookingav['available']['wed_start']}}>
 									</div>
-									<div class="col-6"><input type="text" placeholder="Appointment Time" id="timepicker"></div>
+									<div class="col-6"><input type="text" placeholder="Appointment End" name="hours[wed_end]" id="timepicker" value={{@$bookingav['available']['wed_end']}}></div>
 								</div>
 								
 							</div>
@@ -245,9 +162,9 @@
 							<label for="username123"> Thursday</label>
 							<div class="row mt-10">
 								<div class="col-6">
-									<input type="text" placeholder="Appointment Time" id="timepicker">
+									<input type="text" placeholder="Appointment Start" name="hours[thu_start]" id="timepicker" value={{@$bookingav['available']['thu_start']}}>
 								</div>
-								<div class="col-6"><input type="text" placeholder="Appointment Time" id="timepicker"></div>
+								<div class="col-6"><input type="text" placeholder="Appointment End" name="hours[thu_end]" id="timepicker" value={{@$bookingav['available']['thu_end']}}></div>
 							</div>
 							
 						</div>
@@ -258,9 +175,9 @@
 							<label for="username123"> Friday</label>
 							<div class="row mt-10">
 								<div class="col-6">
-									<input type="text" placeholder="Appointment Time" id="timepicker">
+									<input type="text" placeholder="Appointment Start" name="hours[fri_start]"  id="timepicker" value={{@$bookingav['available']['fri_start']}}>
 								</div>
-								<div class="col-6"><input type="text" placeholder="Appointment Time" id="timepicker"></div>
+								<div class="col-6"><input type="text" placeholder="Appointment End"  name="hours[fir_end]" id="timepicker" value={{@$bookingav['available']['fir_end']}}></div>
 							</div>
 							
 						</div>
@@ -270,14 +187,14 @@
 						<label for="username123"> Saturday</label>
 						<div class="row mt-10">
 							<div class="col-6">
-								<input type="text" placeholder="Appointment Time" id="timepicker">
+								<input type="text" placeholder="Appointment Start" name="hours[set_start]" id="timepicker" value={{@$bookingav['available']['set_start']}}>
 							</div>
-							<div class="col-6"><input type="text" placeholder="Appointment Time" id="timepicker"></div>
+							<div class="col-6"><input type="text" placeholder="Appointment End" name="hours[sat_end]" id="timepicker" value={{@$bookingav['available']['sat_end']}}></div>
 						</div>
 						
 					</div>
 			</div>
-			<div class="col-6">
+			{{--  <div class="col-6">
 				<div class="form-group">
 					<label for="username123"> Time Zone</label>
 					<select class="custom-select form-control mt-10 p-10" id="Location1" name="location">
@@ -288,549 +205,12 @@
 					</select>
 					
 				</div>
-		</div>
+		</div>  --}}
+	
 	</div>
-					<div class="clearfix"></div>	
-					<div class="dayandothersec">
-						<div class="col-md-12">
-							<div class="form-group">
-								<label>User Group :</label>
-								<input type="text" class="form-control" id="datepicker">
-								<button type="button" class="button-nxt button-next" id="markcalendar">Mark Calender</button>
-							</div>
-						</div>
-						<div class="row">
-							
-							
-							<div class="col-md-6">
-								<div class="row">
-									<div class="col-xl-12 col-12">
-										<label> How much notice do you need for each booking?</label>
-									</div>
-									<div class="col-md-6">
-								<div class="form-group">
-									
-									<select class="custom-select form-control mt-10 p-10" id="Location1" name="location">
-										<option values="Days">Days</option>
-                          <option values="Weeks" selected="">Weeks</option>
-                          <option values="Months">Months</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									
-									<select class="custom-select form-control mt-10 p-10" id="Location1" name="location">
-										<option values="1">1</option>
-                                                    <option values="2">2</option>
-                                                    <option values="3">3</option>
-                                                    <option values="4">4</option>
-                                                    <option values="5">5</option>
-                                                    <option values="6">6</option>
-                                                    <option values="7">7</option>
-                                                    <option values="8">8</option>
-                                                    <option values="9" selected="">9</option>
-                                                    <option values="10">10</option>
-                                                    <option values="11">11</option>
-                                                    <option values="12">12</option>
-                                                    <option values="13">13</option>
-                                                    <option values="14">14</option>
-                                                    <option values="15">15</option>
-                                                    <option values="16">16</option>
-                                                    <option values="17">17</option>
-                                                    <option values="18">18</option>
-                                                    <option values="19">19</option>
-                                                    <option values="20">20</option>
-                                                    <option values="21">21</option>
-                                                    <option values="22">22</option>
-                                                    <option values="23">23</option>
-                                                    <option values="24">24</option>
-                                                    <option values="25">25</option>
-                                                    <option values="26">26</option>
-                                                    <option values="27">27</option>
-                                                    <option values="28">28</option>
-                                                    <option values="29">29</option>
-                                                    <option values="30">30</option>
-                                                    <option values="31">31</option>
-									</select>
-								</div>
-							</div>
-						</div>
-						</div>
-
-						<div class="col-md-6">
-							<div class="row">
-							<div class="col-xl-12 col-12">
-								<label>    How far in advance can a customer book/reserve?</label>
-							</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								
-								<select class="custom-select form-control mt-10 p-10" id="Location1" name="location">
-									<option values="Days">Days</option>
-                          <option values="Weeks" selected="">Weeks</option>
-                          <option values="Months">Months</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								
-								<select class="custom-select form-control mt-10 p-10" id="Location1" name="location">
-									<option values="1">1</option>
-                                                    <option values="2">2</option>
-                                                    <option values="3">3</option>
-                                                    <option values="4">4</option>
-                                                    <option values="5">5</option>
-                                                    <option values="6">6</option>
-                                                    <option values="7">7</option>
-                                                    <option values="8">8</option>
-                                                    <option values="9" selected="">9</option>
-                                                    <option values="10">10</option>
-                                                    <option values="11">11</option>
-                                                    <option values="12">12</option>
-                                                    <option values="13">13</option>
-                                                    <option values="14">14</option>
-                                                    <option values="15">15</option>
-                                                    <option values="16">16</option>
-                                                    <option values="17">17</option>
-                                                    <option values="18">18</option>
-                                                    <option values="19">19</option>
-                                                    <option values="20">20</option>
-                                                    <option values="21">21</option>
-                                                    <option values="22">22</option>
-                                                    <option values="23">23</option>
-                                                    <option values="24">24</option>
-                                                    <option values="25">25</option>
-                                                    <option values="26">26</option>
-                                                    <option values="27">27</option>
-                                                    <option values="28">28</option>
-                                                    <option values="29">29</option>
-                                                    <option values="30">30</option>
-                                                    <option values="31">31</option>
-								</select>
-							</div>
-						</div>
-					</div>
-					</div>
-
-						
-						</div>
-						</div>	
-						</div>
+	<input type="submit" class="btn btn-primary" name="submit" value="Submit">
 					</section>
-					<!-- Step 3 -->
-					<h6>Billing Setup</h6>
-					<section>
-						<div class="row">
-							<div class="col-md-12">
-								<div class="form-group">
-									<label for="addressline2">Do you travel to clients?</label>
-									<div class="c-inputs-stacked">
-										<div><input type="checkbox" id="checkbox_12">
-										<label for="checkbox_12" class="d-block">Yes</label></div>
-										<div><input type="checkbox" id="checkbox_13">
-										<label for="checkbox_13" class="d-block">No</label></div>
-									</div> </div>
-							</div>
-							<div class="col-md-12">							
-								<select class="custom-select form-control mt-10 p-10" id="Location1" name="location">
-									<option value="1">1 Mile</option>
-									<option value="3">3 Miles</option>
-									<option value="5">5 Miles</option>
-									<option value="10">10 Miles</option>
-									<option value="15" selected="">15 Miles</option>
-									<option value="20">20 Miles</option>
-								</select>
-							</div>
-							<div class="col-md-12 mt-15">	
-							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.010331064419!2d77.34433141508181!3d28.59946688243089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce505285428e5%3A0x69053149a3ac635b!2sNoida%2022%20Main%20Rd%2C%20Noida%2C%20Uttar%20Pradesh%20201301!5e0!3m2!1sen!2sin!4v1592720110458!5m2!1sen!2sin" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-						</div>
-							
-							  
-						<div class="modal fade" id="myModal">
-							<div class="modal-dialog modal-lg">
-							  <div class="modal-content">
-							    <button type="button" class="close" data-dismiss="modal">&times;</button>
-								<!-- Modal body -->
-								<div class="modal-body">
-									<div class="form-wizard">
-										<form action="" method="post" role="form">
-											<div class="form-wizard-header">
-												
-												<ul class="list-unstyled form-wizard-steps clearfix">
-													<li class="active"><span>1</span></li>
-													<li><span>2</span></li>
-													<li><span>3</span></li>
-												</ul>
-											</div>
-											<fieldset class="wizard-fieldset show">
-												
-												<div class="topsec">
-													<h4>Add Your Program</h4>
-													
-												</div>
-												<select class="custom-select form-control mt-10 p-10" id="Location1" name="location">
-													<option value="">Select City</option>
-													<option value="India">India</option>
-													<option value="USA">USA</option>
-													<option value="Dubai">Dubai</option>
-												</select>
-										
-												<input type="text"  value="new test by sam" class="mt-15" >
-												<div class="midcontent">
-												<p> <b>Upload an image that best represents your program.</b><br>
-													(Uploading a professional image of your program will appear on your profile and increase your chances of being picked by customers.)
-												  </p>
-												</div>
-										
-												<div class="row">
-												<div class="col-xl-10 col-10">
-													<div class="custom-file">
-													<input type="file" class="custom-file-input" id="customFile">
-													<label class="custom-file-label" for="customFile">Choose file</label>
-												</div></div>
-												<div class="col-xl-2 col-2">
-													<div class="picture"><i class="ti-image"></i></div>
-											</div>
-											</div>
-											<input type="text" name="frm_serviceprice" id="frm_serviceprice" value="$11" title="serviceprice" class="mt-15">
-											<textarea name="frm_servicedesc" id="frm_servicedesc" placeholder="Program Description" class="mt-15">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print.</textarea>
-											  
-												<div class="form-group clearfix">
-													<a href="javascript:;" class="form-wizard-previous-btn float-left">Previous</a>
-													<a href="javascript:;" class="form-wizard-next-btn float-right">Next</a>
-												</div>
-												 
-											</fieldset>	
-											<fieldset class="wizard-fieldset">
-												<div class="topsec">
-													<h4>Tell us more about your services</h4>
-													
-												</div>
-												
-												<div class="dateandtimezone">
-													<div class="row">
-												<div class="col-6">
-													<div class="form-group">
-														<label for="username123"> Sunday</label>
-														<div class="row">
-															<div class="col-6">
-																<input type="text" placeholder="Appointment Time" id="timepicker">
-															</div>
-															<div class="col-6"><input type="text" placeholder="Appointment Time" id="timepicker"></div>
-														</div>
-														
-													</div>
-													
-												</div>
-												<div class="col-6">
-													<div class="form-group">
-														<label for="username123"> Monday</label>
-														<div class="row">
-															<div class="col-6">
-																<input type="text" placeholder="Appointment Time" id="timepicker">
-															</div>
-															<div class="col-6"><input type="text" placeholder="Appointment Time" id="timepicker"></div>
-														</div>
-													</div>
-											</div>
-											<div class="col-6">
-												<div class="form-group">
-													<label for="username123"> Tuesday</label>
-													<div class="row">
-														<div class="col-6">
-															<input type="text" placeholder="Appointment Time" id="timepicker">
-														</div>
-														<div class="col-6"><input type="text" placeholder="Appointment Time" id="timepicker"></div>
-													</div>
-													
-												</div>
-												
-											</div>
-											<div class="col-6">
-												<div class="form-group">
-													<label for="username123"> Wednesday</label>
-													<div class="row">
-														<div class="col-6">
-															<input type="text" placeholder="Appointment Time" id="timepicker">
-														</div>
-														<div class="col-6"><input type="text" placeholder="Appointment Time" id="timepicker"></div>
-													</div>
-													
-												</div>
-										</div>
-										<div class="col-6">
-											<div class="form-group">
-												<label for="username123"> Thursday</label>
-												<div class="row">
-													<div class="col-6">
-														<input type="text" placeholder="Appointment Time" id="timepicker">
-													</div>
-													<div class="col-6"><input type="text" placeholder="Appointment Time" id="timepicker"></div>
-												</div>
-												
-											</div>
-											
-										</div>
-										<div class="col-6">
-											<div class="form-group">
-												<label for="username123"> Friday</label>
-												<div class="row">
-													<div class="col-6">
-														<input type="text" placeholder="Appointment Time" id="timepicker">
-													</div>
-													<div class="col-6"><input type="text" placeholder="Appointment Time" id="timepicker"></div>
-												</div>
-												
-											</div>
-									</div>
-									<div class="col-6">
-										<div class="form-group">
-											<label for="username123"> Saturday</label>
-											<div class="row">
-												<div class="col-6">
-													<input type="text" placeholder="Appointment Time" id="timepicker">
-												</div>
-												<div class="col-6"><input type="text" placeholder="Appointment Time" id="timepicker"></div>
-											</div>
-											
-										</div>
-								</div>
-							
-						</div>
-					</div>
-										<div class="clearfix"></div>	
-										<div class="dayandothersec">
-											<div class="row">
-											
-												
-											<div class="col-md-6">
-											<label for="username123"> Choose Provider Type</label>
-											<select id="multiple8" multiple>
-											<option value="1" selected>Option 1</option>
-											<option value="2">Option 2</option>
-											<option value="3">Option 3</option>
-											</select>
-											</div>
-											<div class="col-md-6">
-												<label for="username123"> Activity Designed For</label>
-												<select id="multiple9" multiple>
-												<option value="1" selected>Option 1</option>
-												<option value="2">Option 2</option>
-												<option value="3">Option 3</option>
-												</select>
-												</div>
-
-												<div class="col-md-6">
-													<label for="username123"> Choose Activity Type</label>
-													<select id="multiple10" multiple>
-													<option value="1" selected>Option 1</option>
-													<option value="2">Option 2</option>
-													<option value="3">Option 3</option>
-													</select>
-													</div>
-
-													<div class="col-md-6">
-														<label for="username123">Age Range</label>
-														<select id="multiple11" multiple>
-														<option value="1" selected>Option 1</option>
-														<option value="2">Option 2</option>
-														<option value="3">Option 3</option>
-														</select>
-														</div>
-
-														<div class="col-md-6">
-															<label for="username123">Activity For?</label>
-															<select id="multiple12" multiple>
-															<option value="1" selected>Option 1</option>
-															<option value="2">Option 2</option>
-															<option value="3">Option 3</option>
-															</select>
-															</div>
-
-															<div class="col-md-6">
-																<label for="username123">Participates Number</label>
-																<select id="multiple13" multiple>
-																<option value="1" selected>Option 1</option>
-																<option value="2">Option 2</option>
-																<option value="3">Option 3</option>
-																</select>
-																</div>
-
-																<div class="col-md-6">
-																	<label for="username123">Program Experience Level</label>
-																	<select id="multiple14" multiple>
-																	<option value="1" selected>Option 1</option>
-																	<option value="2">Option 2</option>
-																	<option value="3">Option 3</option>
-																	</select>
-																	</div>
-
-
-																	<div class="col-md-6">
-																		<label for="username123">Teaching Style</label>
-																		<select id="multiple15" multiple>
-																		<option value="1" selected>Option 1</option>
-																		<option value="2">Option 2</option>
-																		<option value="3">Option 3</option>
-																		</select>
-																		</div>
-
-																		<div class="col-md-6">
-																			<label for="username123">Activity Location</label>
-																			<select id="multiple16" multiple>
-																			<option value="1" selected>Option 1</option>
-																			<option value="2">Option 2</option>
-																			<option value="3">Option 3</option>
-																			</select>
-																			</div>
-
-																			<div class="col-md-6">
-																				<label for="username123">Activity Experience</label>
-																				<select id="multiple17" multiple>
-																				<option value="1" selected>Option 1</option>
-																				<option value="2">Option 2</option>
-																				<option value="3">Option 3</option>
-																				</select>
-																				</div>
 					
-											
-											</div>
-											</div>	
-											
-												<div class="form-group clearfix">
-													<a href="javascript:;" class="form-wizard-previous-btn float-left">Previous</a>
-													<a href="javascript:;" class="form-wizard-next-btn float-right">Next</a>
-												</div>
-											</fieldset>	
-											<fieldset class="wizard-fieldset">
-												<div class="topsec">
-													<h4>Tell us more about your services</h4>
-													
-												</div>
-												<h5>Set Your Terms</h5>
-												<div class="form-group">
-													Select the section you require your clients to agree to upon completing registration.
-													<div class="selectone">
-														<div class="c-inputs-stacked">
-															<input type="checkbox" id="checkbox_1">
-															<label for="checkbox_1" class="d-block">Terms, Conditions, FAQ</label>
-															<input type="checkbox" id="checkbox_2">
-															<label for="checkbox_2" class="d-block">Contract Terms</label>
-															<input type="checkbox" id="checkbox_3">
-															<label for="checkbox_3" class="d-block">Liability</label>
-														</div>
-													</div>
-													
-												</div>
-												
-												
-											
-												<div class="form-group clearfix">
-													<a href="javascript:;" class="form-wizard-previous-btn float-left">Previous</a>
-													<a href="javascript:;" class="form-wizard-submit float-right">Submit</a>
-												</div>
-											</fieldset>	
-										</form>
-									</div>
-								    
-									</div>
-								
-								
-								
-								
-							  </div>
-							</div>
-						  </div>
-							<div class="col-xl-3 col-4">
-							<div class="servicescontainer">
-								<div class="icons"><i class="ti-briefcase"></i></div>
-								<div class="servicesname">ATV TOURS
-									<span class="icon"><a data-toggle="modal" data-target="#myModal"><i class="ti-pencil-alt2"></i></a></span>
-									<span class="icon"><i class="ti-trash"></i></span>
-								</div>
-								<div class="subtitle">ajad Rawat</div>
-								<p>Lorem ipsum, or lipsum as it is sometimes known, i...</p>
-							</div></div>
-							<div class="col-xl-3 col-4">
-								<div class="servicescontainer">
-									<div class="icons"><i class="ti-briefcase"></i></div>
-									<div class="servicesname">ATV TOURS
-										<span class="icon"><i class="ti-pencil-alt2"></i></span>
-										<span class="icon"><i class="ti-trash"></i></span>
-									</div>
-									<div class="subtitle">ajad Rawat</div>
-									<p>Lorem ipsum, or lipsum as it is sometimes known, i...</p>
-								</div></div>
-
-								<div class="col-xl-3 col-4">
-									<div class="servicescontainer">
-										<div class="icons"><i class="ti-briefcase"></i></div>
-										<div class="servicesname">ATV TOURS
-											<span class="icon"><i class="ti-pencil-alt2"></i></span>
-											<span class="icon"><i class="ti-trash"></i></span>
-										</div>
-										<div class="subtitle">ajad Rawat</div>
-										<p>Lorem ipsum, or lipsum as it is sometimes known, i...</p>
-									</div></div>
-									<div class="col-xl-3 col-4">
-										<div class="servicescontainer">
-											<div class="icons"><i class="ti-briefcase"></i></div>
-											<div class="servicesname">ATV TOURS
-												<span class="icon"><i class="ti-pencil-alt2"></i></span>
-												<span class="icon"><i class="ti-trash"></i></span>
-											</div>
-											<div class="subtitle">ajad Rawat</div>
-											<p>Lorem ipsum, or lipsum as it is sometimes known, i...</p>
-										</div></div>
-										<div class="col-xl-3 col-4">
-											<div class="servicescontainer">
-												<div class="icons"><i class="ti-briefcase"></i></div>
-												<div class="servicesname">ATV TOURS
-													<span class="icon"><i class="ti-pencil-alt2"></i></span>
-													<span class="icon"><i class="ti-trash"></i></span>
-												</div>
-												<div class="subtitle">ajad Rawat</div>
-												<p>Lorem ipsum, or lipsum as it is sometimes known, i...</p>
-											</div></div>
-			
-											<div class="col-xl-3 col-4">
-												<div class="servicescontainer">
-													<div class="icons"><i class="ti-briefcase"></i></div>
-													<div class="servicesname">ATV TOURS
-														<span class="icon"><i class="ti-pencil-alt2"></i></span>
-														<span class="icon"><i class="ti-trash"></i></span>
-													</div>
-													<div class="subtitle">ajad Rawat</div>
-													<p>Lorem ipsum, or lipsum as it is sometimes known, i...</p>
-												</div></div>
-												<div class="col-xl-3 col-4">
-													<div class="servicescontainer">
-														<div class="icons"><i class="ti-briefcase"></i></div>
-														<div class="servicesname">ATV TOURS
-															<span class="icon"><i class="ti-pencil-alt2"></i></span>
-															<span class="icon"><i class="ti-trash"></i></span>
-														</div>
-														<div class="subtitle">ajad Rawat</div>
-														<p>Lorem ipsum, or lipsum as it is sometimes known, i...</p>
-													</div></div>
-													<div class="col-xl-3 col-4">
-														<div class="servicescontainer">
-															<div class="icons"><i class="ti-briefcase"></i></div>
-															<div class="servicesname">ATV TOURS
-																<span class="icon"><i class="ti-pencil-alt2"></i></span>
-																<span class="icon"><i class="ti-trash"></i></span>
-															</div>
-															<div class="subtitle">ajad Rawat</div>
-															<p>Lorem ipsum, or lipsum as it is sometimes known, i...</p>
-														</div></div>
-						
-														
-							
-						</div>
-					</section>
-					<!-- Step 4 -->
 				
 				</form>
 			</div>

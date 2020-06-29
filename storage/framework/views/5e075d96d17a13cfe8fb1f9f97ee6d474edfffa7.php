@@ -4,8 +4,9 @@
 	    <div class="user-profile px-10 py-15">
 			<div class="d-flex align-items-center">			
 				<div class="image">
-				  <img src="#" class="avatar avatar-lg" alt="User Image">
-				</div>
+				  <img src="<?php echo ((Auth::user()->single->profile_image)!= NULL) ? url(Auth::user()->single->profile_image) : url(asset('assets/img/avatars/user.png')); ?>"
+          class="avatar avatar-lg" alt="User Image">
+        </div>
 				<div class="info ml-10">
 					<p class="mb-0">Welcome</p>
 					<h5 class="mb-0"><?php echo e(Auth::user()->name); ?></h5>
@@ -14,11 +15,12 @@
         </div>	
 		
       <!-- sidebar menu-->
-      <ul class="sidebar-menu" data-widget="tree">
-		<li>
+<ul class="sidebar-menu" data-widget="tree">
+ <?php if(Auth::user()->role_id==2): ?>
+        <li>
           <a href="<?php echo e(route('dashboard')); ?>">
             <i class="ti-dashboard"></i>
-			<span>Dashboard</span>
+      <span>Dashboard</span>
           </a>
         </li>
         <li class="treeview">
@@ -35,15 +37,22 @@
           </ul>
         </li>
         	
-		<li>
-          <a href="<?php echo e(route('mail')); ?>">
+		  <li>
+        <li>
+          <a href="<?php echo e(route('contacts')); ?>">
+            <i class="ti-menu-alt"></i>
+			    <span>Contacts</span>
+          </a>
+        </li>	
+	    <li>
+          <a href="<?php echo e(route('mailer.index')); ?>">
             <i class="ti-email"></i>
-			<span>Mailbox</span>
+            <span>Mailbox</span>
           </a>
         </li>
         <li>
           <a href="#">
-            <i class="ti-layout-grid2"></i>
+            <i class="ti-align-justify"></i>
 			<span>Task</span>
           </a>
         </li>
@@ -55,7 +64,7 @@
         </li>
         <li>
           <a href="<?php echo e(route('chat')); ?>">
-            <i class="mdi mdi-message-text"></i>
+            <i class="ti-comment-alt"></i>
 			<span>Chat</span>
           </a>
         </li>
@@ -75,7 +84,22 @@
             <li><a href="extra_taskboard.html"><i class="ti-more"></i>Todo</a></li>
           </ul>
         </li>
-        <li class="treeview">
+    
+      </li>
+      <li class="treeview">
+          <a href="#">
+            <i class="ti-receipt"></i>
+			<span>Sales</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo e(route('invoice')); ?>"><i class="ti-more"></i>Invoice</a></li>
+            <li><a href="<?php echo e(route('invoice_list')); ?>"><i class="ti-more"></i>Invoice List</a></li>
+          </ul>
+        </li>
+      <li class="treeview">
           <a href="#">
             <i class="ti-layout-grid2"></i>
 			<span>Booking</span>
@@ -88,6 +112,40 @@
             <li><a href="<?php echo e(route('booking')); ?>"><i class="ti-more"></i> Booking Schedule</a></li>
           </ul>
         </li>
+      <?php else: ?>
+       <li>
+          <a href="<?php echo e(route('advisor_request')); ?>">
+            <i class="ti-dashboard"></i>
+      <span>Reuest to Advisor</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?php echo e(route('chat')); ?>">
+            <i class="ti-comment-alt"></i>
+			<span>Chat</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="ti-bell"></i>
+			<span>Notification</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?php echo e(route('mailer.index')); ?>">
+            <i class="ti-email"></i>
+            <span>Mailbox</span>
+          </a>
+        </li>
+     
+  
+         <li>
+          <a href="<?php echo e(route('booknow')); ?>">
+            <i class="ti-dashboard"></i>
+      <span>Booking</span>
+          </a>
+        </li>
+<?php endif; ?>
       </ul>
       
     </section>

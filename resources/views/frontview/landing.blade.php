@@ -13,7 +13,7 @@ Averti Life Logistic Experts and Life Management Platform continuously track you
 
 						   </p>
 						<a href="{{route('find_advisor')}}" class="btnmy">Find My Advisor</a>
-                        <a href="#" class="btnmysm ml-10">Become a Advisor</a>
+                        <a href="{{route('advisor_question')}}" class="btnmysm ml-10">Become a Advisor</a>
 					</div>
 				</div>
 			</div>

@@ -16,16 +16,24 @@
 								<h4 class="modal-title" id="myLargeModalLabel">Compose New Message</h4>
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 							</div>
+							<form method="POST" action="{{route('mailer.store')}}" enctype="multipart/form-data">
+							@csrf
 							<div class="modal-body">
 								<div class="form-group">
-									<input class="form-control" placeholder="To:">
+									<input class="form-control" placeholder="To:" name="to">
 								  </div>
 								  <div class="form-group">
-									<input class="form-control" placeholder="Subject:">
+									<input class="form-control" placeholder="Subject:" name="subject">
 								  </div>
 								  <div class="form-group">
-										<textarea id="compose-textarea" class="form-control" style="height: 300px">
-										  <p>Your Message Here....</p>
+									<select class="form-control" placeholder="Template:" name="template">
+									<option value="0">Select Template</option>
+									<option value="welcome_to_user_subscribe">Welcome User Subscription</option>
+									</select>
+								  </div>
+
+								  <div class="form-group">
+										<textarea id="compose-textarea" class="form-control" style="height: 300px" name="body">
 										</textarea>
 								  </div>
 								  <div class="form-group">
@@ -44,6 +52,7 @@
 								<button type="reset" class="btn btn-danger"><i class="fa fa-times"></i> Discard</button>
 								<button type="button" class="btn btn-danger text-left" data-dismiss="modal">Close</button>
 							</div>
+							</form>
 						</div>
 						<!-- /.modal-content -->
 					</div>
@@ -60,105 +69,23 @@
 					</div>
 					<div class="box-body no-padding mailbox-nav">
 					  <ul class="nav nav-pills flex-column">
-						<li class="nav-item"><a class="nav-link active" href="javascript:void(0)"><i class="ion ion-ios-email-outline"></i> Inbox
-						  <span class="label label-success pull-right">12</span></a></li>
-						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-paper-airplane"></i> Sent</a></li>
+						<li class="nav-item"><a class="nav-link active" href="javascript:void(0)"><i class="ion ion-ios-email-outline"></i> Inbox </a></li>
+
+						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-paper-airplane"></i> Sent <span class="label label-success pull-right">{{$countSent}}</span></a></li>
+						
 						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-email-unread"></i> Drafts</a></li>
+
 						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-star"></i>  Starred <span class="label label-warning pull-right">14</span></a>
 						</li>
+
 						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-trash-a"></i> Trash</a></li>
+
 					  </ul>
 					</div>
 					<!-- /.box-body -->
 				  </div>
 				  <!-- /. box -->
-				  <div class="box">
-					<div class="box-header with-border">
-					  <h4 class="box-title">Labels</h4>
-					  <ul class="box-controls pull-right">
-						<li><a class="box-btn-slide" href="#"></a></li>	
-					  </ul>
-					</div>
-					<div class="box-body no-padding mailbox-nav">
-					  <ul class="nav nav-pills flex-column">
-						<li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-circle-o text-danger"></i> Important</a></li>
-						<li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-circle-o text-warning"></i> Promotions</a></li>
-						<li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-circle-o text-info"></i> Social</a></li>
-					  </ul>
-					</div>
-					<!-- /.box-body -->
-				  </div>
-				  <!-- /.box -->
 					
-					<div class="contact-bx">
-						<div class="media-list media-list-hover">
-							<div class="media py-10 px-0 align-items-center">
-							  <a class="avatar avatar-lg status-success" href="#">
-								<img src="{{asset('assets/img/avatars/1.jpg')}}" alt="...">
-							  </a>
-							  <div class="media-body">
-								<p class="font-size-16">
-								  <a href="#">Sarah Kortney</a>
-								</p>
-							  </div>
-							</div>
-
-							<div class="media py-10 px-0 align-items-center">
-							  <a class="avatar avatar-lg status-danger" href="#">
-								<img src="{{asset('assets/img/avatars/2.jpg')}}" alt="...">
-							  </a>
-							  <div class="media-body">
-								<p class="font-size-16">
-								  <a href="#">Tommy Nash</a>
-								</p>
-							  </div>
-							</div>
-
-							<div class="media py-10 px-0 align-items-center">
-							  <a class="avatar avatar-lg status-warning" href="#">
-								<img src="{{asset('assets/img/avatars/3.jpg')}}" alt="...">
-							  </a>
-							  <div class="media-body">
-								<p class="font-size-16">
-								  <a href="#">Kathryn Mengel</a>
-								</p>
-							  </div>
-							</div>
-
-							<div class="media py-10 px-0 align-items-center">
-							  <a class="avatar avatar-lg status-primary" href="#">
-								<img src="{{asset('assets/img/avatars/5.jpg')}}" alt="...">
-							  </a>
-							  <div class="media-body">
-								<p class="font-size-16">
-								  <a href="#">Mayra Sibley</a>
-								</p>
-							  </div>
-							</div>			
-
-							<div class="media py-10 px-0 align-items-center">
-							  <a class="avatar avatar-lg status-success" href="#">
-								<img src="{{asset('assets/img/avatars/1.jpg')}}" alt="...">
-							  </a>
-							  <div class="media-body">
-								<p class="font-size-16">
-								  <a href="#">Tommy Nash</a>
-								</p>
-							  </div>
-							</div>
-
-							<div class="media py-10 px-0 align-items-center">
-							  <a class="avatar avatar-lg status-danger" href="#">
-								<img src="{{asset('assets/img/avatars/2.jpg')}}" alt="...">
-							  </a>
-							  <div class="media-body">
-								<p class="font-size-16">
-								  <a href="#">Williemae Lagasse</a>
-								</p>
-							  </div>
-							</div>
-						  </div>
-					</div>
 				</div>
 				<!-- /.col -->
 				<div class="col-xl-6 col-lg-8 col-12">
@@ -181,33 +108,6 @@
 						</button>
 						<div class="btn-group">
 						  <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-trash"></i></button>
-						  <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-mail-reply"></i></button>
-						  <button type="button" class="btn btn-primary btn-sm"><i class="ion ion-share"></i></button>
-						</div>
-						<!-- /.btn-group -->
-						<div class="btn-group">
-						  <div class="btn-group">
-							<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-							  <i class="ion ion-flag margin-r-5"></i>
-							  <span class="caret"></span>
-							</button>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">Action</a>
-								<a class="dropdown-item" href="#">Another action</a>
-								<a class="dropdown-item" href="#">Something else here</a>
-							</div>
-						  </div>
-						  <div class="btn-group">
-							<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-							  <i class="ion ion-folder margin-r-5"></i>
-							  <span class="caret"></span>
-							</button>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">Action</a>
-								<a class="dropdown-item" href="#">Another action</a>
-								<a class="dropdown-item" href="#">Something else here</a>
-							</div>
-						  </div>
 						</div>
 						<!-- /.btn-group -->
 						<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
@@ -224,88 +124,20 @@
 						  <div class="table-responsive">
 							<table class="table table-hover table-striped">
 							  <tbody>
+							  @foreach($mailer as $val)
 							  <tr>
 								<td><input type="checkbox"></td>
 								<td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
 								<td>
-									<p class="mailbox-name mb-0 font-size-16 font-weight-600">Johen Doe</p>
-									<a class="mailbox-subject" href="#"><b>Lorem Ipsum</b> - There are many variations of Ipsum available...</a>
+									<p class="mailbox-name mb-0 font-size-16 font-weight-600">{{$val->fullname}}</p>
+									<a class="mailbox-subject" href="#">
+										{{$val->subject}}
+									</a>
 								</td>
 								<td class="mailbox-attachment"></td>
-								<td class="mailbox-date">2:45 PM</td>
+								<td class="mailbox-date">{{ date('H:i:s a', strtotime($val->created_at)) }}</td>
 							  </tr>
-							  <tr>
-								<td><input type="checkbox"></td>
-								<td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
-								<td>
-									<p class="mailbox-name mb-0 font-size-16 font-weight-600">Johen Doe</p>
-									<a class="mailbox-subject" href="#"><b>Lorem Ipsum</b> - There are many variations of Ipsum available...</a>
-								</td>
-								<td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-								<td class="mailbox-date">2:45 PM</td>
-							  </tr>
-							  <tr>
-								<td><input type="checkbox"></td>
-								<td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
-								<td>
-									<p class="mailbox-name mb-0 font-size-16 font-weight-600">Johen Doe</p>
-									<a class="mailbox-subject" href="#"><b>Lorem Ipsum</b> - There are many variations of Ipsum available...</a>
-								</td>
-								<td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-								<td class="mailbox-date">2:45 PM</td>
-
-							  </tr>
-							  <tr>
-								<td><input type="checkbox"></td>
-								<td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-								<td>
-									<p class="mailbox-name mb-0 font-size-16 font-weight-600">Johen Doe</p>
-									<a class="mailbox-subject" href="#"><b>Lorem Ipsum</b> - There are many variations of Ipsum available...</a>
-								</td>
-								<td class="mailbox-attachment"></td>
-								<td class="mailbox-date">2:45 PM</td>
-							  </tr>
-							 <tr>
-								<td><input type="checkbox"></td>
-								<td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-								<td>
-									<p class="mailbox-name mb-0 font-size-16 font-weight-600">Johen Doe</p>
-									<a class="mailbox-subject" href="#"><b>Lorem Ipsum</b> - There are many variations of Ipsum available...</a>
-								</td>
-								<td class="mailbox-attachment"></td>
-								<td class="mailbox-date">2:45 PM</td>
-							  </tr>
-							  <tr>
-								<td><input type="checkbox"></td>
-								<td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
-								<td>
-									<p class="mailbox-name mb-0 font-size-16 font-weight-600">Johen Doe</p>
-									<a class="mailbox-subject" href="#"><b>Lorem Ipsum</b> - There are many variations of Ipsum available...</a>
-								</td>
-								<td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-								<td class="mailbox-date">2:45 PM</td>
-							  </tr>
-							  <tr>
-								<td><input type="checkbox"></td>
-								<td class="mailbox-star"><a href="#"><i class="fa fa-star-o text-yellow"></i></a></td>
-								<td>
-									<p class="mailbox-name mb-0 font-size-16 font-weight-600">Johen Doe</p>
-									<a class="mailbox-subject" href="#"><b>Lorem Ipsum</b> - There are many variations of Ipsum available...</a>
-								</td>
-								<td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
-
-								<td class="mailbox-date">2:45 PM</td>
-							  </tr>
-							  <tr>
-								<td><input type="checkbox"></td>
-								<td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
-								<td>
-									<p class="mailbox-name mb-0 font-size-16 font-weight-600">Johen Doe</p>
-									<a class="mailbox-subject" href="#"><b>Lorem Ipsum</b> - There are many variations of Ipsum available...</a>
-								</td>
-								<td class="mailbox-attachment"></td>
-								<td class="mailbox-date">2:45 PM</td>
-							  </tr>
+							  @endforeach
 							  </tbody>
 							</table>
 						  </div>                
@@ -320,34 +152,7 @@
 						<button type="button" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
 						</button>
 						<div class="btn-group">
-						  <button type="button" class="btn btn-primary btn-sm"><i class="ion ion-trash-a"></i></button>
-						  <button type="button" class="btn btn-primary btn-sm"><i class="ion ion-reply"></i></button>
-						  <button type="button" class="btn btn-primary btn-sm"><i class="ion ion-share"></i></button>
-						</div>
-						<!-- /.btn-group -->
-						<div class="btn-group">
-						  <div class="btn-group">
-							<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-							  <i class="ion ion-flag margin-r-5"></i>
-							  <span class="caret"></span>
-							</button>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">Action</a>
-								<a class="dropdown-item" href="#">Another action</a>
-								<a class="dropdown-item" href="#">Something else here</a>
-							</div>
-						  </div>
-						  <div class="btn-group">
-							<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-							  <i class="ion ion-folder margin-r-5"></i>
-							  <span class="caret"></span>
-							</button>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">Action</a>
-								<a class="dropdown-item" href="#">Another action</a>
-								<a class="dropdown-item" href="#">Something else here</a>
-							</div>
-						  </div>
+						<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-trash"></i></button>
 						</div>
 						<!-- /.btn-group -->
 						<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
@@ -365,6 +170,8 @@
 				  <!-- /. box -->
 				</div>
 				<!-- /.col -->
+
+				<!-- Message Body content area -->
 				<div class="col-xl-4 col-12">
 				  <div class="box">
 					<div class="box-body pt-10">
@@ -387,10 +194,6 @@
 						<div class="btn-group">
 						  <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-container="body" title="Delete">
 							<i class="fa fa-trash-o"></i></button>
-						  <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-container="body" title="Reply">
-							<i class="fa fa-reply"></i></button>
-						  <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-container="body" title="Forward">
-							<i class="fa fa-share"></i></button>
 						</div>
 						</div>
 						<!-- /.btn-group -->

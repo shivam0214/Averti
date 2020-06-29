@@ -1,10 +1,11 @@
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} | {{Auth::user()['name']}}</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/averti1.jpg')}}">
 
 	<link rel="stylesheet" href="{{asset('assets/css/vendors_css.css')}}">
@@ -22,8 +23,9 @@
     <link rel='stylesheet' href="{{asset('assets/css/selectdropdown.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/css/jquery.timepicker.min.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/css/jquery-ui.css')}}">
-	<link rel="stylesheet" href="{{asset('assets/css/wizard.css')}}">
-    <link rel="icon" href="https://www.multipurposethemes.com/admin/florence-admin-template/images/favicon.ico">	
+  <link rel="stylesheet" href="{{asset('assets/css/wizard.css')}}">
+  <link rel="stylesheet" src="{{asset('assets/icons/material-design-iconic-font/css/materialdesignicons.css')}}"></link>	
+
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
     
@@ -59,7 +61,7 @@ border: 6px solid #f3f3f3;
 }
 </style>
 </head>
-<body class="hold-transition dark-skin sidebar-mini theme-primary">
+<body class="hold-transition @if(Auth::user()['role_id']==2) dark-skin @else light-skin @endif sidebar-mini theme-primary">
 
 @include('main.header')
 @include('main.sidebar') 
