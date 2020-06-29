@@ -25,7 +25,12 @@ class UserController extends Controller
         return view('mail.new_mail');
     }
     public function chat(){
-
-        return view('chat.chat');
+        if(Auth::user()['role_id']==3){
+        $users = User::where(['id'=>Auth::user()['perent_id'],'role_id'=>2])->get();
+        }
+        else{
+            $users = User::where(['perent_id'=>Auth::user()['id'],'role_id'=>3])->get();
+        }
+        return view('chat.chat',compact('users'));
     }
 }

@@ -23036,3 +23036,11 @@ img.away, img.busy, img.offline, img.online {
   z-index: -1; }
 
 /*# sourceMappingURL=style.css.map */
+ .text-white{
+	  color:#fff !important;
+  }
+  .hiddenfile {
+ width: 0px;
+ height: 0px;
+ overflow: hidden;
+}
