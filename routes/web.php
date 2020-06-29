@@ -88,6 +88,6 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 Route::group(['middleware' => ['auth']], function()
 {
 Route::get('Booknow','User\UserbookingController@index')->name('booknow');
-Route::post('savebook','User\UserbookingController@index')->name('savebook');
+Route::post('savebook','User\UserbookingController@savebook')->name('savebook');
 
 });

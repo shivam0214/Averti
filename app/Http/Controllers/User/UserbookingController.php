@@ -14,4 +14,7 @@ class UserbookingController extends Controller
         $bookingav = Bookingsetting::where('user_id',Auth::user()['perent_id'])->get();
         return view('booking.booking',compact('bookingav'));
     }
+    public function savebook(Request $r){
+        print_r($r->input());
+    }
 }
