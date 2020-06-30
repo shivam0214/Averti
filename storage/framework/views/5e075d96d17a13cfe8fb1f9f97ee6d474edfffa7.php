@@ -112,7 +112,14 @@
             <li><a href="<?php echo e(route('booking')); ?>"><i class="ti-more"></i> Booking Schedule</a></li>
           </ul>
         </li>
-      <?php else: ?>
+        <li>
+          <a href="<?php echo e(route('getmeeting')); ?>">
+            <i class="fa fa-video-camera"></i>
+			<span>Zoom Meeting</span>
+          </a>
+        </li>
+
+  <?php else: ?>
        <li>
           <a href="<?php echo e(route('advisor_request')); ?>">
             <i class="ti-dashboard"></i>

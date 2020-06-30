@@ -24,8 +24,7 @@ class DashboardController extends Controller
         $id = Auth::user()->id;
         $user = User::where('id',$id)->get();
         $user = $user[0];
-        $question_data= json_decode($user['single']->question);
-        
+        $question_data= json_decode($user['single']->question);                
         return view('advisor_profile.profile',compact('user','question_data'));
     }
     
@@ -51,10 +50,8 @@ class DashboardController extends Controller
                 $notification = array(
                  'message' => 'Profile data updated successfully!',
                  'alert-type' => 'success'
-                 );
-                 
-                }else{
-                        
+                 );             
+                }else{                        
                 $notification = array(
                  'message' => 'Please Try again',
                  'alert-type' => 'error'
@@ -87,6 +84,8 @@ class DashboardController extends Controller
            'when'=>$r->when,
            'services'=>$r->services)));
            $user = DB::table('user_meta')->where('user_id',$r->user_id)->update($data);  
+        //    print_r($user);
+        //    die;
            if($user){
            $notification = array(
             'message' => 'Profile data updated successfully!',
