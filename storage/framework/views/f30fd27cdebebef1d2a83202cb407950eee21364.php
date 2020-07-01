@@ -468,19 +468,19 @@
 														</div>
 														<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 															<div class="custom-checkbox">
-																<input name="risk" class="checkbox-custom" id="noti_16" value="Moderately Aggressive" <?php if(@$question_data->risk=='Moderately'): ?>selected <?php endif; ?> type="checkbox">
+																<input name="risk" class="checkbox-custom" id="noti_16" value="Moderately Aggressive" <?php if(@$question_data->risk=='Moderately'): ?>checked <?php endif; ?> type="checkbox">
 																<label class="checkbox-custom-label" for="noti_16">Moderately Aggressive</label>
 															</div>
 														</div>
 														<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 															<div class="custom-checkbox">
-																<input name="risk"<?php if(@$question_data->risk=='Moderate'): ?>selected <?php endif; ?> class="checkbox-custom" id="noti_17" value="Moderate" type="checkbox">
+																<input name="risk"<?php if(@$question_data->risk=='Moderate'): ?>checked <?php endif; ?> class="checkbox-custom" id="noti_17" value="Moderate" type="checkbox">
 																<label class="checkbox-custom-label" for="noti_17">Moderate</label>
 															</div>
 														</div>
 														<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 															<div class="custom-checkbox">
-																<input name="risk" class="checkbox-custom" id="noti_18" value="Conservative"<?php if(@$question_data->risk=='Conservative Source'): ?>selected <?php endif; ?> type="checkbox">
+																<input name="risk" class="checkbox-custom" id="noti_18" value="Conservative"<?php if(@$question_data->risk=='Conservative'): ?>checked <?php endif; ?> type="checkbox">
 																<label class="checkbox-custom-label" for="noti_18">Conservative</label>
 															</div>
 														</div>
