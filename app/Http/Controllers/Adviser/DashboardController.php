@@ -25,7 +25,9 @@ class DashboardController extends Controller
         $user = User::where('id',$id)->get();
         $user = $user[0];
         $question_data= json_decode($user['single']->question);                
+        //print_r($question_data);
         return view('advisor_profile.profile',compact('user','question_data'));
+        
     }
     
     public function update_profile(Request $r){
@@ -84,8 +86,6 @@ class DashboardController extends Controller
            'when'=>$r->when,
            'services'=>$r->services)));
            $user = DB::table('user_meta')->where('user_id',$r->user_id)->update($data);  
-        //    print_r($user);
-        //    die;
            if($user){
            $notification = array(
             'message' => 'Profile data updated successfully!',
@@ -134,10 +134,7 @@ class DashboardController extends Controller
          foreach($advisor as $user_details){
              $ids[] =$user_details['user_id'];
          }
-        // print_r($ids);die;
         $value=  user::where(['role_id'=>3])->whereIn('id',$ids)->get();
-        // dd($value);
-        // die;
         return view('Adviser.user_request',compact('value'));
     }
 

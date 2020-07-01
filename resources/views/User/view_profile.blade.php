@@ -467,6 +467,55 @@
 									</div>	
 									</div>
 								</div>	
+								
+								<div class="tab-pane" id="Video">
+									<div class="box">
+									<div class="col-12">
+										<div class="box-header with-border">
+											<h4 class="box-title">Video call details</h4>
+										</div>
+										<div class="box-body p-0">
+										<div class="media-list media-list-hover">
+											<a class="media media-single" href="#">
+											<h4 class="w-50 text-gray font-weight-500">10:10</h4>
+											<div class="media-body pl-15 bl-5 rounded border-primary">
+												<p>Today</p>
+											</div>
+											</a>
+
+											<a class="media media-single" href="#">
+											<h4 class="w-50 text-gray font-weight-500">08:40</h4>
+											<div class="media-body pl-15 bl-5 rounded border-success">
+												<p>Yesterday</p>
+											</div>
+											</a>
+
+											<a class="media media-single" href="#">
+											<h4 class="w-50 text-gray font-weight-500">07:10</h4>
+											<div class="media-body pl-15 bl-5 rounded border-info">
+												<p>02-05-2020</p>
+											</div>
+											</a>
+
+											<a class="media media-single" href="#">
+											<h4 class="w-50 text-gray font-weight-500">01:15</h4>
+											<div class="media-body pl-15 bl-5 rounded border-danger">
+												<p>29-04-2020</p>
+											</div>
+											</a>
+
+											<a class="media media-single" href="#">
+											<h4 class="w-50 text-gray font-weight-500">23:12</h4>
+											<div class="media-body pl-15 bl-5 rounded border-warning">
+												<p>26-04-2020</p>
+											</div>
+											</a>
+
+										</div>
+									</div>
+									</div>
+											</div>
+										</div>		
 								<div class="tab-pane" id="chat">
 									<div class="box">
 									<div class="col-12">
@@ -514,7 +563,9 @@
 									</div>
 									</div>
 											</div>
-										</div>		
+											
+										</div>
+												
 								</div>
 							<!-- /.tab-content -->
 						</div>

@@ -153,7 +153,7 @@
                   <input type="hidden" class="form-control" name="uuid" value="{{Auth::user()['uuid']}}">
 
                   {!! Form::hidden('user_id', $user->id) !!}
-                  
+
 			<div class="box-body">
 				<div class="row">
                     <div class="col-md-6">
