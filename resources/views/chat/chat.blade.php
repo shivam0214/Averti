@@ -1,10 +1,17 @@
 @extends('layouts.app')
 
 @section('content') 
-<?php
-use App\User_meta;
+<style>
 
-?>
+.d-flex.justify-content-between.align-items-center button {
+    float: left;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.d-flex.justify-content-between.align-items-center {display: flex !important;justify-content: flex-end !important;}
+
+</style>
 <div class="content-wrapper">
 <input type="hidden" id="current_user" value="{{ Auth::user()}}"/>
 
@@ -24,17 +31,22 @@ use App\User_meta;
 				</div>
 					<div class="box box-body">
 						<div class="d-flex justify-content-between align-items-center">
-						<form action="http://localhost:3000/uploadFile" id="data" method="post" enctype="multipart/form-data" class ="col-lg-9 col-md-7 col-12">
+						<form action="http://localhost:3000/uploadFile" id="data" method="post" enctype="multipart/form-data" class ="col-lg-12 col-md-12 col-12">
 							<input class="form-control b-0 py-10" id="m" autocomplete="off" type="text" placeholder="Say something...">
+							
 							<div class="d-flex justify-content-between align-items-center">
-							<img src ="" id="previewImg"  height="200" weight="200" class="hide">
+							<img src="" id="previewImg" height="200" weight="200" class="hide">
 							<div class="hiddenfile">
-								<input name="chatAttachment" type="file" id="fileinput" onchange="previewFile(this);"/>
+								<input name="chatAttachment" type="file" id="fileinput" onchange="previewFile(this);">
 								</div>
-								<button type="button"  onclick="browsefile()" class="waves-effect waves-circle btn btn-circle btn-primary">
+								<button type="button" onclick="browsefile()" class="waves-effect waves-circle btn btn-circle btn-primary">
 							<i class="fa fa-paperclip" aria-hidden="true"></i>
 								</button>
-								<button type="submit" class="waves-effect waves-circle btn btn-circle mr-10 btn-outline-primary">
+								<button type="button" class="waves-effect waves-circle btn btn-circle mr-10 btn-outline-primary">
+								<i class="fa fa-microphone" aria-hidden="true"></i>
+								</button><button type="button" class="waves-effect waves-circle btn btn-circle mr-10 btn-outline-primary">
+								<i class="fa fa-video-camera" aria-hidden="true"></i>
+								</button><button type="submit" class="waves-effect waves-circle btn btn-circle mr-10 btn-outline-primary">
 								<i class="fa fa-paper-plane" aria-hidden="true"></i>
 								</button>
 
