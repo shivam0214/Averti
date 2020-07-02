@@ -50,8 +50,8 @@
 									<?php $select = (!empty(@$bookingav['languages'])?json_decode(@$bookingav['languages'],true):[]) ?>
 									<select id="multiple" multiple name="language[]">
 									<?php $__currentLoopData = @$language; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $record): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-									
-										<option value="<?php echo e($record['name']); ?>" <?php if(in_array($record['name'],@$select)): ?> selected <?php endif; ?>><?php echo e($record['name']); ?></option>
+
+										<option value="<?php echo e($record['name']); ?>" <?php if(in_array($record['name'],$select)): ?> selected <?php endif; ?>><?php echo e($record['name']); ?></option>
 									<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 									  </select>
 									  
@@ -60,7 +60,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstName5">Patient type </label>
-									<?php $select =(!empty(@$bookingav['languages'])?json_decode(@$bookingav['patient_type'],true):[]) ?>
+									<?php @$select =(!empty(@$bookingav['languages'])?json_decode(@$bookingav['patient_type'],true):[]) ?>
 									<select id="multiple1" name="patient_type[]" multiple>
 										<option value="New_born_babys"  <?php if(in_array('New_born_babys',@$select)): ?> selected <?php endif; ?>>New born babys</option>
 										<option value="Kids"  <?php if(in_array('Kids',$select)): ?> selected <?php endif; ?>>Kids</option>
@@ -76,8 +76,8 @@
 									<label for="firstName5">Doctor type</label>
 									
 									<select id="multiple2" name="doctor_type[]" multiple>
-									<?php $select =  (!empty(@$bookingav['languages'])?json_decode(@$bookingav['doctor_type'],true):[]) ?>
-										<?php $__currentLoopData = $doctor; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $v): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+									<?php @$select =  (!empty(@$bookingav['languages'])?json_decode(@$bookingav['doctor_type'],true):[]) ?>
+										<?php $__currentLoopData = @$doctor; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $v): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 											<option value="<?php echo e($v); ?>" <?php if(in_array($v,@$select)): ?> selected <?php endif; ?>><?php echo e(str_replace('_',' ',$v)); ?></option>
 										<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 										
@@ -88,7 +88,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstName6">Patient Checking  location </label>
-									<?php $select = (!empty(@$bookingav['languages'])?json_decode(@$bookingav['where'],true):[]) ?>
+									<?php @$select = (!empty(@$bookingav['languages'])?json_decode(@$bookingav['where'],true):[]) ?>
 									<select id="multiple6" name="where[]" multiple >
 										<option value="Clinic" <?php if(in_array('Clinic',@$select)): ?> selected <?php endif; ?>>Clinic</option>
 										<option value="Home" <?php if(in_array('Home',@$select)): ?> selected <?php endif; ?>>Home</option>

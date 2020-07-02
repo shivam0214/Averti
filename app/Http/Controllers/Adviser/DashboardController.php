@@ -24,9 +24,10 @@ class DashboardController extends Controller
         $id = Auth::user()->id;
         $user = User::where('id',$id)->get();
         $user = $user[0];
-        $question_data= json_decode($user['single']->question);
-        
+        $question_data= json_decode($user['single']->question);                
+        //print_r($question_data);
         return view('advisor_profile.profile',compact('user','question_data'));
+        
     }
     
     public function update_profile(Request $r){
@@ -51,10 +52,8 @@ class DashboardController extends Controller
                 $notification = array(
                  'message' => 'Profile data updated successfully!',
                  'alert-type' => 'success'
-                 );
-                 
-                }else{
-                        
+                 );             
+                }else{                        
                 $notification = array(
                  'message' => 'Please Try again',
                  'alert-type' => 'error'
@@ -135,10 +134,7 @@ class DashboardController extends Controller
          foreach($advisor as $user_details){
              $ids[] =$user_details['user_id'];
          }
-        // print_r($ids);die;
         $value=  user::where(['role_id'=>3])->whereIn('id',$ids)->get();
-        // dd($value);
-        // die;
         return view('Adviser.user_request',compact('value'));
     }
 

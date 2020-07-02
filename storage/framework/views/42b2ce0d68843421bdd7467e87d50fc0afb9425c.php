@@ -1,5 +1,5 @@
 <?php
-$bookingav = $bookingav[0];
+@$bookingav = $bookingav[0];
 @$time= json_decode(@$bookingav['available'],true);
 
 @$sunday_satrt = date("H:i", strtotime($time['sun_start']));
@@ -58,6 +58,10 @@ table.table-responsive-sm {
     left: -4px !important;
     opacity: 1 !important;
 }
+.actions.clearfix ul li a {
+    color: #000 !important;
+    border: 1px solid #ff0303 !important;
+}
 </style>
 
 <?php $__env->startSection('content'); ?>
@@ -73,8 +77,9 @@ table.table-responsive-sm {
 						<nav>
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
-								<li class="breadcrumb-item" aria-current="page">Forms</li>
-								<li class="breadcrumb-item active" aria-current="page">Form Wizard</li>
+								<li class="breadcrumb-item" aria-current="page"> Service</li>
+								<li class="breadcrumb-item active" aria-current="page">You can find the offical website</li>
+								
 							</ol>
 						</nav>
 					</div>
@@ -88,17 +93,14 @@ table.table-responsive-sm {
 
 		 <!-- Step wizard -->
 		  <div class="box box-default">
-			<div class="box-header with-border">
-			  <h4 class="box-title">1.Service</h4>
-			  <h6 class="box-subtitle">You can find the offical website </h6>		
-			</div>
+			
 			<!-- /.box-header -->
 			<div class="box-body wizard-content stepdesign">
 				<form action="<?php echo e(route('savebook')); ?>" class="tab-wizard wizard-circle" method="post">
 					<!-- Step 1 -->
 					<h6>Client Information</h6>
 					<section>
-						<h3>Please select from services this provider offers</h3>
+						
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
@@ -123,8 +125,8 @@ table.table-responsive-sm {
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-									<label for="emailAddress1">Number of Persons - Available seats 1</label>
-									<input type="email" class="form-control" id="emailAddress1"> </div>
+									<label for="emailAddress1">Number of Persons</label>
+									<input type="number" class="form-control" id="emailAddress1" name="numberpersons"> </div>
 							</div>
 						</div>
 						<div class="row">
@@ -158,7 +160,7 @@ table.table-responsive-sm {
 					<h6> Time</h6>
                     <section>
 						<div class="informationhere">
-						<p>	Below you can find list of available time slots for Aerobics with {Ajay Kumar.}</p>
+						<p>	</p>
 						</div>
 						
 						<div class="row">
@@ -264,40 +266,39 @@ table.table-responsive-sm {
 					<h6>Details</h6>
 					<section>
 						<div class="informationhere">
-							<p>	You selected to book Aerobics with Ajay Kumar at 00:30 am on 2020-06-23. Price for the service is $4.<br/>
-								Please provide your details in the form below to proceed with the booking.</p>
+							<p></p>
 							</div>
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="int123">First Name:</label>
-									<input type="text" class="form-control" id="int123">
+									<input type="text" class="form-control" name="firstname" id="int123">
 								</div>
 							</div>
 							<div class="col-md-6">							
 								<div class="form-group">
 									<label for="int234">Last Name:</label>
-									<input type="text" class="form-control" id="int234" placeholder="" >
+									<input type="text" class="form-control" id="int234" name="lastname" placeholder="" >
 								</div>
 							</div>
 
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="int123">Phone:</label>
-									<input type="text" class="form-control" id="int123">
+									<input type="text" class="form-control" id="int123" name="phone">
 								</div>
 							</div>
 							<div class="col-md-6">							
 								<div class="form-group">
 									<label for="int234">Email:</label>
-									<input type="text" class="form-control" id="int234" placeholder="" >
+									<input type="text" class="form-control" id="int234" placeholder="" name="email">
 								</div>
 							</div>
 
 							<div class="col-md-12">							
 								<div class="form-group">
 									<label for="int234">Notes (medical issue, request, etc.)</label>
-									<textarea class="form-control" rows="5" id="comment"></textarea>
+									<textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
 								</div>
 							</div>
 						</div>
@@ -311,24 +312,24 @@ table.table-responsive-sm {
 								<div class="atmholder">
 								<div class="form-group">
 									<label for="decisions1">Card Holder Name</label>
-									<input type="text" class="form-control" id="emailAddress1"> 
+									<input type="text" class="form-control" name="cardname" id="emailAddress1"> 
 								</div>
 
 								<div class="form-group">
 									<label for="decisions1">Email</label>
-									<input type="email" class="form-control" id="emailAddress1"> 
+									<input type="email" class="form-control" name="cardemial" id="emailAddress1"> 
 								</div>
 
 								<div class="form-group">
 									<label for="decisions1">Card Number</label>
-									<input type="text" class="form-control" id="emailAddress1"> 
+									<input type="text" class="form-control" id="emailAddress1" name="cardnumber"> 
 								</div>
 
 								<div class="form-group">
 									<label for="decisions1">Expiry Month / Year</label>
 									<div class="row">
 										<div class="col-lg-5">
-											<select class="custom-select form-control" id="location2" name="location">
+											<select class="custom-select form-control" id="location2" name="month">
 												<option value="">Select City</option>
 												<option value="Amsterdam">India</option>
 												<option value="Berlin">USA</option>
@@ -336,7 +337,7 @@ table.table-responsive-sm {
 											</select>
 										</div>
 										<div class="col-lg-5">
-											<select class="custom-select form-control" id="location2" name="location">
+											<select class="custom-select form-control" id="location2" name="year">
 												<option value="">Select City</option>
 												<option value="Amsterdam">India</option>
 												<option value="Berlin">USA</option>
@@ -346,7 +347,7 @@ table.table-responsive-sm {
 
 										<div class="col-lg-2">
 											<div class="form-group">
-												<input type="text" class="form-control" id="emailAddress1" placeholder="CVV"> 
+										<input type="text" class="form-control" id="emailAddress1" name="cvv" placeholder="CVV"> 
 											</div>
 										</div>
 
@@ -354,7 +355,7 @@ table.table-responsive-sm {
 								</div>
 								<div class="form-group">
 									<div class="c-inputs-stacked">
-										<input type="checkbox" id="checkbox_1">
+										<input type="checkbox" name="checkterms" id="checkbox_1">
 										<label for="checkbox_1" class="d-block">Please Accept the terms and condition</label>
 
 									</div>
@@ -372,15 +373,9 @@ table.table-responsive-sm {
 							<div class="col-12">
 								<div class="form-group">
 									<label for="decisions1">Comments</label>
-									<textarea name="decisions" id="decisions1" rows="4" class="form-control"></textarea>
+									<textarea name="decisions" id="decisions1" name="description" rows="4" class="form-control"></textarea>
 								</div>
-								<div class="form-group">
-									<div class="c-inputs-stacked">
-										<input type="checkbox" id="checkbox_1">
-										<label for="checkbox_1" class="d-block">Click here to indicate that you have read and agree to the terms presented in the Terms and Conditions agreement</label>
-
-									</div>
-								</div>
+								
 							</div>
 						</div>
 					</section>
@@ -402,4 +397,6 @@ table.table-responsive-sm {
   <!-- /.content-wrapper -->
   
 <?php $__env->stopSection(); ?>
+
+
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH H:\updateDemitrius\Averti\Averti\resources\views/booking/booking.blade.php ENDPATH**/ ?>

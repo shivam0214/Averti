@@ -153,7 +153,7 @@
                   <input type="hidden" class="form-control" name="uuid" value="{{Auth::user()['uuid']}}">
 
                   {!! Form::hidden('user_id', $user->id) !!}
-                  
+
 			<div class="box-body">
 				<div class="row">
                     <div class="col-md-6">
@@ -467,19 +467,19 @@
 														</div>
 														<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 															<div class="custom-checkbox">
-																<input name="risk" class="checkbox-custom" id="noti_16" value="Moderately Aggressive" @if(@$question_data->risk=='Moderately')selected @endif type="checkbox">
+																<input name="risk" class="checkbox-custom" id="noti_16" value="Moderately Aggressive" @if(@$question_data->risk=='Moderately')checked @endif type="checkbox">
 																<label class="checkbox-custom-label" for="noti_16">Moderately Aggressive</label>
 															</div>
 														</div>
 														<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 															<div class="custom-checkbox">
-																<input name="risk"@if(@$question_data->risk=='Moderate')selected @endif class="checkbox-custom" id="noti_17" value="Moderate" type="checkbox">
+																<input name="risk"@if(@$question_data->risk=='Moderate')checked @endif class="checkbox-custom" id="noti_17" value="Moderate" type="checkbox">
 																<label class="checkbox-custom-label" for="noti_17">Moderate</label>
 															</div>
 														</div>
 														<div class="col-lg-6 col-mg-6 col-xs-12 col-sm-12">
 															<div class="custom-checkbox">
-																<input name="risk" class="checkbox-custom" id="noti_18" value="Conservative"@if(@$question_data->risk=='Conservative Source')selected @endif type="checkbox">
+																<input name="risk" class="checkbox-custom" id="noti_18" value="Conservative"@if(@$question_data->risk=='Conservative')checked @endif type="checkbox">
 																<label class="checkbox-custom-label" for="noti_18">Conservative</label>
 															</div>
 														</div>
