@@ -354,6 +354,7 @@
 						</div>
 						<div class="box-body">
 							<div class="row">
+						
 								<div class="col-lg-6 col-12">
 									<div id="progressbar2" class="mx-auto w-200 my-25 position-relative text-center"></div>
 									<h4 class="text-center">Male</h4>
@@ -376,12 +377,10 @@
 										</div>
 										<div class="timeline-body">
 											<div class="embed-responsive embed-responsive-16by9">
-												<iframe width="854" height="480" src="https://www.youtube.com/embed/k85mRPqvMbE" frameborder="0" allowfullscreen></iframe>
+											<a href="assets/vedio/revision.mp4" data-rel="lightcase"  class="av-icon" >
 											</div>									
 										</div>
-										<div class="timeline-footer">
-											<p class="pull-right"><i class="fa fa-clock-o"></i> 8 days ago</p>
-										</div>
+										
 									</div>
 								</div>
 												</div>								

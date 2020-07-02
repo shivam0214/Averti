@@ -9,7 +9,7 @@
 					<div class="banner-content">
 						<h2 class="banner-text">World's first total life <span>management system</span></h2>
 						<p class="banner-desc">
-Averti Life Logistic Experts and Life Management Platform continuously track your human needs and financial goals, sending information to your life logistics advisor to help them track issues related to helping you reach your full human potential.
+						Averti Life Logistic Experts and Life Management Platform continuously track your human needs and financial goals, sending information to your life logistics advisor to help them track issues related to helping you reach your full human potential.
 
 						   </p>
 						<a href="{{route('find_advisor')}}" class="btnmy">Find My Advisor</a>

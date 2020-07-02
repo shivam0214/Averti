@@ -8,6 +8,8 @@ use App\User;
 use App\User_meta;
 use Auth;
 use App\UserRequest;
+use App\Categories;
+
 use Redirect;
 
 class UserController extends Controller

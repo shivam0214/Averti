@@ -34,7 +34,6 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Phone Number</th> 
                                     <th scope="col">Status</th>                                  
-                                    <th scope="col">City</th>
                                     <th scope="col">Action</th>
                                   
                           </tr>
@@ -52,8 +51,7 @@
 											</td>
 								<td><a href="<?php echo e(route('view_profile',['id'=>$record->id])); ?>"><?php echo e($record['name']); ?> </a></td>
 								<td><?php echo e($record['single']['phone_no']); ?></td>
-								<td><span class="badge badge-pill badge-danger">Pending</span></td>
-								<td><?php echo e($record['single']['city']); ?></td>
+								<td><span class="badge badge-pill badge-success">Complete</span></td>
 								
                 
 								<td><button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#video-call"><i class="fa fa-video-camera"></i></button>

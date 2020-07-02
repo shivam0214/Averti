@@ -5,7 +5,7 @@
 			<div class="d-flex align-items-center">			
 				<div class="image">
 				  <img src="<?php echo ((Auth::user()->single->profile_image)!= NULL) ? url(Auth::user()->single->profile_image) : url(asset('assets/img/avatars/user.png')); ?>"
-          class="avatar avatar-lg" alt="User Image">
+          class="avatar avatar-lg">
         </div>
 				<div class="info ml-10">
 					<p class="mb-0">Welcome</p>

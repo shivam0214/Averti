@@ -14,7 +14,7 @@
 							<div class="logo-contact">
 								<a href="#"><img src="<?php echo e(asset('assets/images/averti.png')); ?>" alt="logo"></a>
 								<ul>
-									<li><a href="#">info@yourmail.com</a></li>
+									<li><a href="#">info@averti.com</a></li>
 									<li>+880 234 567890</li>
 								</ul>
 							</div>
@@ -45,8 +45,8 @@
 						</div>
 						<div class="footer-item footer-contact">
 							<h5>We Are Here!</h5>
-							<span>Los Angeles Office</span>
-							<p>1822 N Vermont Ave, Los Angeles CA 90027, USA</p>
+							<span>Office</span>
+							<p>641 S Street NW Washington DC 20001 - 3015768685 </p>
 							<a href="#">Find Us On Google Map</a>
 							<ul class="social-link-list d-flex flex-wrap">
 								<li><a href="#" class="facebook"><i class=" fab fa-facebook-f"></i></a></li>
