@@ -13,10 +13,11 @@
 				<div class="col-12 mb-3 pt-0 mt-0">
                     <span id="username"></span>
                 </div>
+				<div class="slimScrollDiv" style="overflow-y: scroll;width: 100%;height: 550px;">
 				<ul class="box box-transparent no-border" id="messages" >
 					
 					</ul>
-				
+				</div>
 					<div class="box box-body">
 						<div class="d-flex justify-content-between align-items-center">
 						<form action="http://localhost:3000/uploadFile" id="data" method="post" enctype="multipart/form-data" class ="col-lg-9 col-md-7 col-12">
