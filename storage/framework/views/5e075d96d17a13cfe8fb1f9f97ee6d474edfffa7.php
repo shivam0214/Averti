@@ -69,21 +69,6 @@
           </a>
         </li>
   
-		<li class="treeview">
-          <a href="#">
-            <i class="ti-layout-grid2"></i>
-			<span>Apps</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="extra_calendar.html"><i class="ti-more"></i>Calendar</a></li>
-            <li><a href="contact_app.html"><i class="ti-more"></i>Contact List</a></li>
-            <li><a href="contact_app_chat.html"><i class="ti-more"></i>Chat</a></li>
-            <li><a href="extra_taskboard.html"><i class="ti-more"></i>Todo</a></li>
-          </ul>
-        </li>
     
       </li>
       <li class="treeview">
@@ -112,7 +97,14 @@
             <li><a href="<?php echo e(route('booking')); ?>"><i class="ti-more"></i> Booking Schedule</a></li>
           </ul>
         </li>
-      <?php else: ?>
+        <li>
+          <a href="<?php echo e(route('getmeeting')); ?>">
+            <i class="fa fa-video-camera"></i>
+			<span>Zoom Meeting</span>
+          </a>
+        </li>
+
+  <?php else: ?>
        <li>
           <a href="<?php echo e(route('advisor_request')); ?>">
             <i class="ti-dashboard"></i>

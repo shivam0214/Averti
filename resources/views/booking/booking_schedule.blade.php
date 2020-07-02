@@ -51,8 +51,8 @@
 									@php $select = (!empty(@$bookingav['languages'])?json_decode(@$bookingav['languages'],true):[]) @endphp
 									<select id="multiple" multiple name="language[]">
 									@foreach (@$language as $record)
-									
-										<option value="{{$record['name']}}" @if(in_array($record['name'],@$select)) selected @endif>{{$record['name']}}</option>
+
+										<option value="{{$record['name']}}" @if(in_array($record['name'],$select)) selected @endif>{{$record['name']}}</option>
 									@endforeach
 									  </select>
 									  
@@ -61,7 +61,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstName5">Patient type </label>
-									@php $select =(!empty(@$bookingav['languages'])?json_decode(@$bookingav['patient_type'],true):[]) @endphp
+									@php @$select =(!empty(@$bookingav['languages'])?json_decode(@$bookingav['patient_type'],true):[]) @endphp
 									<select id="multiple1" name="patient_type[]" multiple>
 										<option value="New_born_babys"  @if(in_array('New_born_babys',@$select)) selected @endif>New born babys</option>
 										<option value="Kids"  @if(in_array('Kids',$select)) selected @endif>Kids</option>
@@ -77,8 +77,8 @@
 									<label for="firstName5">Doctor type</label>
 									
 									<select id="multiple2" name="doctor_type[]" multiple>
-									@php $select =  (!empty(@$bookingav['languages'])?json_decode(@$bookingav['doctor_type'],true):[]) @endphp
-										@foreach ($doctor as $v)
+									@php @$select =  (!empty(@$bookingav['languages'])?json_decode(@$bookingav['doctor_type'],true):[]) @endphp
+										@foreach (@$doctor as $v)
 											<option value="{{$v}}" @if(in_array($v,@$select)) selected @endif>{{str_replace('_',' ',$v)}}</option>
 										@endforeach
 										
@@ -89,7 +89,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 									<label for="firstName6">Patient Checking  location </label>
-									@php $select = (!empty(@$bookingav['languages'])?json_decode(@$bookingav['where'],true):[]) @endphp
+									@php @$select = (!empty(@$bookingav['languages'])?json_decode(@$bookingav['where'],true):[]) @endphp
 									<select id="multiple6" name="where[]" multiple >
 										<option value="Clinic" @if(in_array('Clinic',@$select)) selected @endif>Clinic</option>
 										<option value="Home" @if(in_array('Home',@$select)) selected @endif>Home</option>

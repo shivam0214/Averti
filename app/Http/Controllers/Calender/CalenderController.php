@@ -26,7 +26,10 @@ class CalenderController extends Controller
 
 $response = curl_exec($curl);
 curl_close($curl);
-
+$meetings = Meeting::where(['user_id'=>Auth::user()['id'],'status'=>'waiting'])->orderBy('id','desc')->get();
+foreach($meetings as $met){
+  $meeting[] = '';
+}
     return view('Calendar.calendar');
   }
 

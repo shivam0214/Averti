@@ -117,7 +117,6 @@
 	<!-- END MODAL -->
 @endsection
 @section('js_foot')
-
 <script>
 
 

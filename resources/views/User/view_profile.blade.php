@@ -384,39 +384,138 @@
 								</div>
 								<!-- /.tab-pane -->
 								<div class="tab-pane" id="mail">
-								<div class="modal-header">
-								<h4 class="modal-title" id="myLargeModalLabel">Compose New Message</h4>
-							</div>
-							<div class="modal-body">
-								<div class="form-group">
-									<input class="form-control" placeholder="To:">
-								  </div>
-								  <div class="form-group">
-									<input class="form-control" placeholder="Subject:">
-								  </div>
-								  <div class="form-group">
-										<textarea id="compose-textarea" class="form-control" style="height: 300px">
-										  <p>Your Message Here....</p>
-										</textarea>
-								  </div>
-								  <div class="form-group">
-									<div class="btn btn-info btn-file">
-									  <i class="fa fa-paperclip"></i> Attachment
-									  <input type="file" name="attachment">
+									<div class="modal-header">
+										<h4 class="modal-title" id="myLargeModalLabel">Compose New Message</h4>
 									</div>
-									<p class="help-block">Max. 32MB</p>
-								  </div>
-							</div>
-							<div class="modal-footer">
-								<div class="pull-right">
-									<button type="button" class="btn btn-default"><i class="fa fa-pencil"></i> Draft</button>
-									<button type="submit" class="btn btn-success"><i class="fa fa-envelope-o"></i> Send</button>
+									<div class="modal-body">
+											<div class="form-group">
+												<input class="form-control" placeholder="To:">
+											</div>
+											<div class="form-group">
+												<input class="form-control" placeholder="Subject:">
+											</div>
+											<div class="form-group">
+													<textarea id="compose-textarea" class="form-control" style="height: 300px">
+													<p>Your Message Here....</p>
+													</textarea>
+											</div>
+											<div class="form-group">
+												<div class="btn btn-info btn-file">
+												<i class="fa fa-paperclip"></i> Attachment
+												<input type="file" name="attachment">
+												</div>
+												<p class="help-block">Max. 32MB</p>
+											</div>
+									</div>
+									<div class="modal-footer">
+									<div class="pull-right">
+										<button type="button" class="btn btn-default"><i class="fa fa-pencil"></i> Draft</button>
+										<button type="submit" class="btn btn-success"><i class="fa fa-envelope-o"></i> Send</button>
+									</div>
+									<button type="reset" class="btn btn-danger"><i class="fa fa-times"></i> Discard</button>
+									<button type="button" class="btn btn-danger text-left" data-dismiss="modal">Close</button>
+									</div>
 								</div>
-								<button type="reset" class="btn btn-danger"><i class="fa fa-times"></i> Discard</button>
-								<button type="button" class="btn btn-danger text-left" data-dismiss="modal">Close</button>
-							</div>
-						</div>
-						
+								<div class="tab-pane" id="whatsapp">
+									<div class="modal-header">
+										<h4 class="modal-title" id="myLargeModalLabel">Message</h4>
+									</div>
+									<div class="modal-body">
+											<div class="form-group">
+												<input class="form-control" placeholder="To:">
+											</div>
+											<div class="publisher publisher-multi b-1 mb-30">
+													<textarea class="publisher-input auto-expand" rows="4" placeholder="Type Message Here..."></textarea>
+													<div class="flexbox">
+														<div class="gap-items">
+																<span class="publisher-btn file-group">
+																<i class="fa fa-image file-browser"></i>
+																<input type="file">
+																</span>
+																<a class="publisher-btn" href="#"><i class="fa fa-map-marker"></i></a>
+																<a class="publisher-btn" href="#"><i class="fa fa-smile-o"></i></a>
+														</div>
+														<button class="btn btn-sm btn-bold btn-primary">Send</button>
+													</div>
+												</div>		
+									</div>
+								</div>
+								<div class="tab-pane" id="file">
+								<div class="modal-header">
+										<h4 class="modal-title" id="myLargeModalLabel">Upload File</h4>
+									</div>
+									<div class="modal-body">
+											<div class="form-group">
+												<input class="form-control" placeholder="Title">
+											</div>
+												
+											<div class="publisher publisher-multi b-1 mb-30">
+													<textarea class="publisher-input auto-expand" rows="4" placeholder="Description"></textarea>
+													<div class="form-group">
+												<div class="btn btn-info btn-file">
+												<i class="fa fa-paperclip"></i> File
+												<input type="file" name="attachment">
+												</div>
+											</div>
+									</div>	
+
+									<div class="modal-footer">
+									<div class="pull-right">
+										<button type="submit" class="btn btn-primary"> Save</button>
+									</div>
+									<button type="reset" class="btn btn-danger"> Close</button>
+									</div>	
+									</div>
+								</div>	
+								
+								<div class="tab-pane" id="Video">
+									<div class="box">
+									<div class="col-12">
+										<div class="box-header with-border">
+											<h4 class="box-title">Video call details</h4>
+										</div>
+										<div class="box-body p-0">
+										<div class="media-list media-list-hover">
+											<a class="media media-single" href="#">
+											<h4 class="w-50 text-gray font-weight-500">10:10</h4>
+											<div class="media-body pl-15 bl-5 rounded border-primary">
+												<p>Today</p>
+											</div>
+											</a>
+
+											<a class="media media-single" href="#">
+											<h4 class="w-50 text-gray font-weight-500">08:40</h4>
+											<div class="media-body pl-15 bl-5 rounded border-success">
+												<p>Yesterday</p>
+											</div>
+											</a>
+
+											<a class="media media-single" href="#">
+											<h4 class="w-50 text-gray font-weight-500">07:10</h4>
+											<div class="media-body pl-15 bl-5 rounded border-info">
+												<p>02-05-2020</p>
+											</div>
+											</a>
+
+											<a class="media media-single" href="#">
+											<h4 class="w-50 text-gray font-weight-500">01:15</h4>
+											<div class="media-body pl-15 bl-5 rounded border-danger">
+												<p>29-04-2020</p>
+											</div>
+											</a>
+
+											<a class="media media-single" href="#">
+											<h4 class="w-50 text-gray font-weight-500">23:12</h4>
+											<div class="media-body pl-15 bl-5 rounded border-warning">
+												<p>26-04-2020</p>
+											</div>
+											</a>
+
+										</div>
+									</div>
+									</div>
+											</div>
+										</div>		
 								<div class="tab-pane" id="chat">
 									<div class="box">
 									<div class="col-12">
@@ -464,7 +563,9 @@
 									</div>
 									</div>
 											</div>
-										</div>		
+											
+										</div>
+												
 								</div>
 							<!-- /.tab-content -->
 						</div>

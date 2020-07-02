@@ -15,6 +15,7 @@
 		</div>
 		<!-- Main content -->
 		<section class="content">
+		<h4>{{(count($value)==0)?"No Request Found":''}}</h4>
 		@foreach ($value as $r_user)
 
 			<div class="row">
