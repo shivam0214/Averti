@@ -25,7 +25,7 @@ class MailerController extends Controller
     public function index()
     {
         //
-        $mailer = Mailer::where('user_id',Auth::user()->id)->orderBy('created_at', 'desc')->get();
+        $mailer = Mailer::where([['user_id','=',Auth::user()->id],['is_status','=',0]])->orderBy('created_at', 'desc')->get();
         // dd($mailer);
         $countSent = $mailer->count();
         return view('mail.new_mail',compact('countSent','mailer'));
@@ -133,5 +133,15 @@ class MailerController extends Controller
     public function destroy(Mailer $mailer)
     {
         //
+    }
+
+    public function trash(Request $request)
+    {
+        // dd($request->mails_id);
+        $IDs = explode(',',trim($request->mails_id));
+        DB::table('mails')->whereIn('id', $IDs)->update(['is_status' => 4]);
+        
+        return response()->json(['success'=>'Mails Deleted','total'=>count($IDs)]);
+        exit;
     }
 }

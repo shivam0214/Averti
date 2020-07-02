@@ -104,13 +104,13 @@
 					<div class="box-body">
 					  <div class="mailbox-controls">
 						<!-- Check all button -->
-						<button type="button" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
+						<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
 						</button>
 						<div class="btn-group">
-						  <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-trash"></i></button>
+						  <button type="button" class="btn btn-primary btn-sm" onClick="Delete()"><i class="fa fa-trash"></i></button>
 						</div>
 						<!-- /.btn-group -->
-						<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
+						<button type="button" class="btn btn-primary btn-sm"><a href="{{ route('mailer.index') }}"><i class="fa fa-refresh"></i></a></button>
 						<div class="pull-right">
 						  <div class="btn-group">
 							<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-left"></i></button>
@@ -126,7 +126,7 @@
 							  <tbody>
 							  @foreach($mailer as $val)
 							  <tr>
-								<td><input type="checkbox"></td>
+								<td><input type="checkbox" class="checkbox_mail" name="check[]" value="{{$val->id}}"></td>
 								<td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
 								<td>
 									<p class="mailbox-name mb-0 font-size-16 font-weight-600">{{$val->fullname}}</p>
@@ -149,10 +149,10 @@
 					<div class="box-footer">
 					  <div class="mailbox-controls">
 						<!-- Check all button -->
-						<button type="button" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
+						<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
 						</button>
 						<div class="btn-group">
-						<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-trash"></i></button>
+						<button type="button" class="btn btn-primary btn-sm" title="Delete Selected Mail"><i class="fa fa-trash"></i></button>
 						</div>
 						<!-- /.btn-group -->
 						<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
@@ -254,5 +254,27 @@
 		<!-- /.content -->
 	  </div>
   </div>
-  
 @endsection
+<script>
+function Delete(){
+	var chkArray = [];
+	$("input[name='check[]']:checked").map(function() {
+		chkArray.push(this.value);
+	}).get();
+	var selected;
+	selected = chkArray.join(',') + ",";
+	if(selected.length > 1){
+		$.ajax({
+            type: "POST",
+            url: '/trash',
+            data: {mails_id: selected,"_token": "{{ csrf_token() }}"},
+            success: function( msg ) {
+
+                // $("#ajaxResponse").append("<div>"+msg+"</div>");
+            }
+        });
+		// alert('Selecionar todos?'+selected);
+	} else { alert('Remover'); }       
+
+}
+</script>
