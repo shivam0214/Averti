@@ -129,12 +129,13 @@ class DashboardController extends Controller
     
     public function user_request(){
         $advisor=UserRequest::where(['advisor_id'=>Auth::user()->id,'status'=>0])->get();
-        
-        
-         foreach($advisor as $user_details){
+        $ids = [];
+        foreach($advisor as $user_details){
              $ids[] =$user_details['user_id'];
          }
-        $value=  user::where(['role_id'=>3])->whereIn('id',$ids)->get();
+         
+        $value= user::where(['role_id'=>3])->whereIn('id',$ids)->get();
+        
         return view('Adviser.user_request',compact('value'));
     }
 

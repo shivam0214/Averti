@@ -54,5 +54,9 @@ class User extends Authenticatable
         return $this->belongsToMany('App\UserRequest','id','advisor_id');
     }
 
+    public function catname(){
+        return $this->belongsTo('App\Categories','id','category_id');
+    }
+
     
 }

@@ -175,7 +175,7 @@
 										@foreach ($users as $record)
 											<div class="media py-10 px-0 align-items-center chat_list" onclick="openRoom({{$record['id']}})">
 											  <a class="avatar avatar-lg status-success" href="#">
-												<img src="{{asset('assets/img/avatars/1.jpg')}}" alt="...">
+												<img src="{{$record['single']['profile_image']}}" alt="...">
 											  </a>
 											  <div class="media-body">
 												<p class="font-size-16">
@@ -238,11 +238,11 @@
 			var li = ''; var img ='';
 			img+= '<img src="'+data.img_URL+'" height="200" weight="200">';
 			if(current_user.id == data.sender_id){
-								li+='<li><div class="card d-inline-block mb-3 float-left mr-2"><div class="position-absolute pt-1 pr-2 r-0"><span class="text-extra-small text-muted">'+ formatAMPM(new Date())+'</span></div><div class="card-body"><div class="d-flex flex-row pb-2"><a class="d-flex" href="#"><img alt="Profile" src="http://localhost:8000/assets/img/avatars/1.jpg" class="avatar mr-10"></a><div class="d-flex flex-grow-1 min-width-zero"><div class="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between"><div class="min-width-zero"><p class="mb-0 font-size-16 ">'+current_user.name+'</p></div></div></div></div><div class="chat-text-left pl-55"><p class="mb-0 text-semi-muted">'+img+'<br/>'+data.message_text+' </p></div></div></div></li>'
+								li+='<li><div class="card d-inline-block mb-3 float-right mr-2"><div class="position-absolute pt-1 pr-2 r-0"><span class="text-extra-small text-muted">'+ formatAMPM(new Date())+'</span></div><div class="card-body"><div class="d-flex flex-row pb-2"><a class="d-flex" href="#"><img alt="Profile" src="http://localhost:8000/assets/img/avatars/1.jpg" class="avatar mr-10"></a><div class="d-flex flex-grow-1 min-width-zero"><div class="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between"><div class="min-width-zero"><p class="mb-0 font-size-16 ">'+current_user.name+'</p></div></div></div></div><div class="chat-text-left pl-55"><p class="mb-0 text-semi-muted">'+img+'<br/>'+data.message_text+' </p></div></div></div></li>'
 						
 							}
 							else if(current_user.id == data.receiver_id){
-								li+='<li><div class="card d-inline-block mb-3 float-right mr-2 bg-primary"><div class="position-absolute pt-1 pr-2 r-0"><span class="text-extra-small text-white">'+formatAMPM(new Date())+'</span></div><div class="card-body"><div class="d-flex flex-row pb-2"><a class="d-flex" href="#"><img alt="Profile" src="http://localhost:8000/assets/img/avatars/1.jpg" class="avatar mr-10"></a><div class="d-flex flex-grow-1 min-width-zero"><div class="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between"><div class="min-width-zero"><p class="mb-0 font-size-16 text-white">'+activeUserName+'</p></div></div></div></div><div class="chat-text-left pl-55"><p class="mb-0 text-semi-muted text-white">'+img+'<br/>'+data.message_text+'</p></div></div></div></li>'
+								li+='<li><div class="card d-inline-block mb-3 float-left mr-2 bg-primary"><div class="position-absolute pt-1 pr-2 r-0"><span class="text-extra-small text-white">'+formatAMPM(new Date())+'</span></div><div class="card-body"><div class="d-flex flex-row pb-2"><a class="d-flex" href="#"><img alt="Profile" src="http://localhost:8000/assets/img/avatars/1.jpg" class="avatar mr-10"></a><div class="d-flex flex-grow-1 min-width-zero"><div class="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between"><div class="min-width-zero"><p class="mb-0 font-size-16 text-white">'+activeUserName+'</p></div></div></div></div><div class="chat-text-left pl-55"><p class="mb-0 text-semi-muted text-white">'+img+'<br/>'+data.message_text+'</p></div></div></div></li>'
 						
 							
 							}
@@ -274,11 +274,11 @@
 			if(data[i].attachment_url)
 			img+= '<img src="'+data[i].attachment_url+'" height="200" weight="200">';
 							if(current_user.id == data[i].sender_id){
-								li+='<li><div class="card d-inline-block mb-3 float-left mr-2"><div class="position-absolute pt-1 pr-2 r-0"><span class="text-extra-small text-muted">'+ formatAMPM(new Date(data[i].created_date))+'</span></div><div class="card-body"><div class="d-flex flex-row pb-2"><a class="d-flex" href="#"><img alt="Profile" src="http://localhost:8000/assets/img/avatars/1.jpg" class="avatar mr-10"></a><div class="d-flex flex-grow-1 min-width-zero"><div class="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between"><div class="min-width-zero"><p class="mb-0 font-size-16 ">'+current_user.name+'</p></div></div></div></div><div class="chat-text-left pl-55"><p class="mb-0 text-semi-muted">'+img+'<br/>'+data[i].message_text+' </p></div></div></div></li>'
+								li+='<li><div class="card d-inline-block mb-3 float-right mr-2"><div class="position-absolute pt-1 pr-2 r-0"><span class="text-extra-small text-muted">'+ formatAMPM(new Date(data[i].created_date))+'</span></div><div class="card-body"><div class="d-flex flex-row pb-2"><a class="d-flex" href="#"><img alt="Profile" src="http://localhost:8000/assets/img/avatars/1.jpg" class="avatar mr-10"></a><div class="d-flex flex-grow-1 min-width-zero"><div class="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between"><div class="min-width-zero"><p class="mb-0 font-size-16 ">'+current_user.name+'</p></div></div></div></div><div class="chat-text-left pl-55"><p class="mb-0 text-semi-muted">'+img+'<br/>'+data[i].message_text+' </p></div></div></div></li>'
 						
 							}
 							else if(current_user.id == data[i].receiver_id){
-								li+='<li><div class="card d-inline-block mb-3 float-right mr-2 bg-primary"><div class="position-absolute pt-1 pr-2 r-0"><span class="text-extra-small text-white">'+formatAMPM(new Date(data[i].created_date))+'</span></div><div class="card-body"><div class="d-flex flex-row pb-2"><a class="d-flex" href="#"><img alt="Profile" src="http://localhost:8000/assets/img/avatars/1.jpg" class="avatar mr-10"></a><div class="d-flex flex-grow-1 min-width-zero"><div class="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between"><div class="min-width-zero"><p class="mb-0 font-size-16 text-white">'+activeUserName+'</p></div></div></div></div><div class="chat-text-left pl-55"><p class="mb-0 text-semi-muted text-white">'+img+'<br/>'+data[i].message_text+'</p></div></div></div></li>'
+								li+='<li><div class="card d-inline-block mb-3 float-left mr-2 bg-primary"><div class="position-absolute pt-1 pr-2 r-0"><span class="text-extra-small text-white">'+formatAMPM(new Date(data[i].created_date))+'</span></div><div class="card-body"><div class="d-flex flex-row pb-2"><a class="d-flex" href="#"><img alt="Profile" src="http://localhost:8000/assets/img/avatars/1.jpg" class="avatar mr-10"></a><div class="d-flex flex-grow-1 min-width-zero"><div class="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between"><div class="min-width-zero"><p class="mb-0 font-size-16 text-white">'+activeUserName+'</p></div></div></div></div><div class="chat-text-left pl-55"><p class="mb-0 text-semi-muted text-white">'+img+'<br/>'+data[i].message_text+'</p></div></div></div></li>'
 						
 							
 							}
