@@ -115,7 +115,6 @@
 	<!-- END MODAL -->
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('js_foot'); ?>
-
 <script>
 
 

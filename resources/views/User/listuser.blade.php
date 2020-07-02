@@ -34,7 +34,7 @@
                                     <th scope="col">Profile</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Phone Number</th> 
-                                    <th scope="col">Type</th>                                  
+                                    <th scope="col">Advisor Type</th>                                  
                                     <th scope="col">Action</th>
                                   
                           </tr>
@@ -52,11 +52,11 @@
 											</td>
 								<td><a href="{{ route('view_profile',['id'=>$record->id]) }}">{{$record['name']}} </a></td>
 								<td>{{$record['single']['phone_no']}}</td>
-								<td><span class="badge badge-pill badge-success">Complete</span></td>
+								<td>{{$record['catname']['category_name']}}</span></td>
 								
                 
 								<td><button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#video-call"><i class="fa fa-video-camera"></i></button>
-                                        <button type="button" class="btn btn-success waves-effect waves-light"><i class="fa fa-edit"></i></button>
+                                        <a class="btn btn-success waves-effect waves-light" href="{{ route('view_profile',['id'=>$record->id]) }}"><i class="fa fa-edit"></i></a>
                                       <button type="button" class="btn btn-danger waves-effect waves-light"><i class="fa fa-trash"></i></button></td>
 							</tr>
               @endforeach

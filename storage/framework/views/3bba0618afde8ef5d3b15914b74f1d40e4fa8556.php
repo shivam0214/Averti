@@ -61,7 +61,7 @@
 					<div class="fb-right">
 						<ul>
 							<li><a href="#">Privacy & Policy</a></li>
-							<li><a href="#">Faq </a></li>
+							<li><a href="<?php echo e(route('faq')); ?>">Faq </a></li>
 							<li><a href="#">Terms & Conditions</a></li>
 						</ul>
 					</div>
@@ -88,6 +88,10 @@
   	<script src="<?php echo e(asset('assets/frontassets/js/waypoints.min.js')); ?>"></script>
   	<script src="<?php echo e(asset('assets/frontassets/js/bootstrap.min.js')); ?>"></script>
   	<script src="<?php echo e(asset('assets/frontassets/js/isotope.pkgd.min.js')); ?>"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js'></script>
+	  <script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js'></script>
+	 
   	<script src="<?php echo e(asset('assets/frontassets/js/wow.min.js')); ?>"></script>
     <script src="<?php echo e(asset('assets/frontassets/js/theia-sticky-sidebar.js')); ?>"></script>
 	<script src="<?php echo e(asset('assets/frontassets/js/swiper.min.js')); ?>"></script>

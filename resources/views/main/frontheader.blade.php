@@ -46,19 +46,21 @@
 							</a>
 							<div class="main-menu-area d-flex align-items-center">
 								<ul class="main-menu d-flex align-items-center">
-									<li><a  href="{{route('advisor_question')}}">For Advisors</a> </li>
-									<li><a  href="{{route('find_advisor')}}">For Clients</a> </li>
+									<li><a  href="{{route('for_advisor')}}">For Advisors</a> </li>
+									<li><a  href="{{route('for_client')}}">For Clients</a> </li>
                                     
-									<li><a href="#">Pages</a>
-										<ul class="submenu">
+									<li><a href="{{route('pricing')}}">Pricing</a>
+										<!-- <ul class="submenu">
 											<li><a href="#">Shop</a></li>
 											<li><a href="#">Search Page</a></li>
 											<li><a href="#">Search None Page</a></li>
 											<li><a href="#">Coming Soon</a></li>
 											<li><a href="#">404</a></li>
-										</ul>
+										</ul> -->
 									</li>
-									<li><a href="#">Contact</a></li>
+                                    <li><a href="{{route('about_us')}}">About Us</a></li>
+
+									<li><a href="{{route('contact_us')}}">Contact</a></li>
                                     <li><a  href="/login">Sig In</a> </li>
 								</ul>
 							</div>

@@ -55,7 +55,7 @@ class User extends Authenticatable
     }
 
     public function catname(){
-        return $this->belongsTo('App\Categories','id','category_id');
+        return $this->belongsTo('App\Categories','category_id','id');
     }
 
     

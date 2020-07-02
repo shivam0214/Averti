@@ -137,4 +137,23 @@ public function checkemail(Request $r){
             return response()->json(['status'=>0,'msg'=>'Please try again']);
         }
     }
+    public function about_us(){
+        return view('frontview.about_us');
+    }
+    public function contact_us(){
+        return view('frontview.contact_us');
+    }
+    public function for_client(){
+        return view('frontview.for_client');
+    }
+    public function for_advisor(){
+        return view('frontview.for_advisor');
+    }
+    public function pricing(){
+        return view('frontview.pricing');
+    }
+    public function faq(){
+        return view('frontview.faq');
+    }
+
 }

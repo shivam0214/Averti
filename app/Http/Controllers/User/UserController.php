@@ -16,14 +16,15 @@ class UserController extends Controller
 {
     
     public function user(){
-        $users = User::where(['perent_id'=>Auth::user()['id'],'role_id'=>3])->get();
+        $users = User::where(['perent_id'=>Auth::user()['id'],'role_id'=>3])->get();         
         return view('User.listuser',compact('users'));
     }
     public function add_user(){
         return view('User.adduser');
     }
     public function contacts(){
-        return view('User.contacts');
+        $contacts = User::where(['perent_id'=>Auth::user()['id'],'role_id'=>3])->get();         
+        return view('User.contacts',compact('contacts'));
     }
     public function view_profile($id){
         $data = User::where('id',$id)->get();
