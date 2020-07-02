@@ -51,6 +51,7 @@ Route::get('/dashboard/User/ViewUser', 'User\UserController@view_profile')->name
 // Route::get('/Mail', 'User\UserController@mail')->name('mail');
 Route::get('/Chat', 'User\UserController@chat')->name('chat');
 Route::resource("mailer",'MailerController');
+Route::post('/trash','MailerController@trash');
 
 Route::get('/dashboard/User/ViewUser/{id}', 'User\UserController@view_profile')->name('view_profile');
 Route::get('/dashboard/ContactList', 'User\UserController@contacts')->name('contacts');

@@ -67,6 +67,10 @@ class UserController extends Controller
         return view('mail.new_mail');
     }
     public function chat(){
+        $img = User_meta::where('user_id',Auth::user()['id'])->get();
+        
+        Auth::user()['profile'] = $img[0]['profile_image'];
+        
         if(Auth::user()['role_id']==3){
         $users = User::where(['id'=>Auth::user()['perent_id'],'role_id'=>2])->get();
         }
