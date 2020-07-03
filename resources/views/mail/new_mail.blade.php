@@ -311,6 +311,7 @@ function getMessage(val){
 			console.log(msg);
 			$("#subject").html("<h4>"+msg.mail.subject+"</h4>");
 			$("#mails").html("To: "+msg.mail.to);
+			$("#body").html(msg.mail.body);
 
 		}
 	});
