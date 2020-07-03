@@ -110,6 +110,12 @@
                         </tr>
                         <tr>
                             <td bgcolor="#ffffff" align="left" style="padding:0; color: #666666; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400;-webkit-font-smoothing:antialiased;">
+                            {{$body}}
+                            </td>
+                          </tr>
+
+                        <tr>
+                            <td bgcolor="#ffffff" align="left" style="padding:0; color: #666666; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400;-webkit-font-smoothing:antialiased;">
                               <p style="margin:0;color:#585858;font-size:14px;font-weight:400;line-height:170%;">Thank you for choosing Averti.</p>
                               <p style="margin:0;margin-top:20px;line-height:0;"></p>
                               <p style="margin:0;color:#585858;font-size:14px;font-weight:400;line-height:170%;">Please confirm that is your e-mail address by clicking on the button below </p>

@@ -77,26 +77,30 @@ class MailerEmail extends Mailable
         // return $this->view('view.name');
         
         if(count($this->data)>0){
+            //This condition is used for attachment is ther in mail
             return $this->from(Auth::user()->email, Auth::user()->name)
             ->subject($this->subject)
-            ->markdown('mail.welcome_to_user_subscribe')
+            ->markdown('mail.mail_container')
             ->attach($this->data['filepath'].'/'.$this->data['filename'], [
                 'as' => $this->data['filename'],
                 'mime' => $this->data['filetype'],
             ])
             ->with([
                 'body' => $this->view,
-                'data' => $this->data
+                'name' => 'Toshu Nigam',
+                'link' => 'http://averti.ayanshtechnology.com/mailer',
             ]);
 
         }else{
 
             return $this->from(Auth::user()->email, Auth::user()->name)
             ->subject($this->subject)
-            ->markdown('mail.welcome_to_user_subscribe')
+            // ->markdown('mail.welcome_to_user_subscribe')
+            ->markdown('mail.mail_container')
             ->with([
                 'body' => $this->view,
-                'data' => array('type'=>'toshu','verify_key'=>'abcdefghijklmnopqrstuvwxyz')
+                'name' => 'Toshu Nigam',
+                'link' => 'http://averti.ayanshtechnology.com/mailer',
             ]);
         }
     }
