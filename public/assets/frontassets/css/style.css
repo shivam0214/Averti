@@ -6422,7 +6422,10 @@ span.date {
   width: 20%;
 }
 
-.topbanner{background:url(../images/banner/topbanner.jpg) no-repeat;padding: 160px 0px;background-position: center center;background-size: cover;}
+.topbanner{
+background:url(../images/banner/topbanner.jpg) no-repeat;
+padding: 160px 0px;
+background-position: center center;background-size: cover;}
 .user{background:url(../images/banner/user.jpg) no-repeat;padding: 160px 0px;background-position: center center;background-size: cover;}
 .circlbg span {
   background: #3a4d56;
@@ -7762,7 +7765,7 @@ p {
     line-height: 32px;
 }
 .banner {
-  background: url(../images/banner/1592229174549.jpg) no-repeat;
+  background: url(../images/banner/banner-bg.jpg) no-repeat;
   height: 900px;
   background-size: cover;
   background-position: left;
