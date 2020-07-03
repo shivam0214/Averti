@@ -25,7 +25,7 @@ class MailerController extends Controller
     public function index()
     {
         //
-        $mailer = Mailer::where([['user_id','=',Auth::user()->id],['is_status','=',0]])->orderBy('created_at', 'desc')->get();
+        $mailer = Mailer::where([['user_id','=',Auth::user()->id],['is_status','=',0]])->orderBy('created_at', 'desc')->simplePaginate(50);
         // dd($mailer);
         $countSent = $mailer->count();
         return view('mail.new_mail',compact('countSent','mailer'));
@@ -143,5 +143,20 @@ class MailerController extends Controller
         
         return response()->json(['success'=>'Mails Deleted','total'=>count($IDs)]);
         exit;
+    }
+
+    public function starred(Request $request){
+        DB::table('mails')->where('id', $request->mails_id)->update(['is_starred' => $request->is_starred]);
+        
+        return response()->json(['success'=>'success','error'=>1]);
+        exit;
+    }
+
+    public function getmessage(Request $request){
+        $sql="SELECT m.id, m.fullname, m.subject, m.body, m.from, m.to, m.cc, m.is_attachment, m.is_starred, m.is_status, m.created_at, ma.filename, ma.filesize, ma.filetype FROM mails m LEFT JOIN mail_attachment ma ON m.id=ma.mail_id WHERE m.user_id=".Auth::user()->id." AND m.id=".$request->mailid;
+        $mail = DB::select($sql);
+        return response()->json(['success'=>'success','error'=>1,'mail'=>$mail[0]]);
+        exit;
+
     }
 }
