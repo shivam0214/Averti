@@ -78,6 +78,9 @@ Route::post('post/zoom','ZoomController@store')->name('zoomcreatepost');
 Route::get('meetings/{mid}','ZoomController@host')->name('allmeeting');
 Route::get('getmeeting','ZoomController@getmeeting')->name('getmeeting');
 Route::get('status/{mid}','ZoomController@status')->name('status');
+Route::get('invite/{mid}','ZoomController@invite')->name('invite');
+Route::post('sendinvite','ZoomController@sendinvite')->name('sendinvite');
+Route::get('invited','ZoomController@invited')->name('invited');
 });
 
 /** Front page Route**/

@@ -5,7 +5,7 @@
 			<div class="d-flex align-items-center">			
 				<div class="image">
 				  <img src="<?php echo ((Auth::user()->single->profile_image)!= NULL) ? url(Auth::user()->single->profile_image) : url(asset('assets/img/avatars/user.png')); ?>"
-          class="avatar avatar-lg" alt="User Image">
+          class="avatar avatar-lg">
         </div>
 				<div class="info ml-10">
 					<p class="mb-0">Welcome</p>
@@ -34,6 +34,7 @@
           <ul class="treeview-menu">
             <li><a href="<?php echo e(route('add_user')); ?>"><i class="ti-more"></i>Add User</a></li>
             <li><a href="<?php echo e(route('user')); ?>"><i class="ti-more"></i>List User</a></li>
+            <li><a href="<?php echo e(route('user_request')); ?>"><i class="ti-more"></i>User Requests</a></li>
           </ul>
         </li>
         	
@@ -68,7 +69,21 @@
 			<span>Chat</span>
           </a>
         </li>
-  
+        <li class="treeview">
+          <a href="#">
+            <i class="ti-receipt"></i>
+			<span>Meet</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a  id="createzoom2" onclick="$('#modal-right').modal('show');" href="javascript:void(0)"><i class="ti-more"></i>Create Meeting</a></li>
+            <li><a href="<?php echo e(route('getmeeting')); ?>"><i class="ti-more"></i>All Meetings</a></li>
+            <li><a href="<?php echo e(route('calender')); ?>"><i class="ti-more"></i>Event</a></li>
+            <li><a href="javascript:void(0)" onclick="Calendly.showPopupWidget('https://calendly.com/shivam-sam');return false;"><i class="ti-more"></i>Calendly api</a></li>
+          </ul>
+        </li>
     
       </li>
       <li class="treeview">
@@ -97,12 +112,7 @@
             <li><a href="<?php echo e(route('booking')); ?>"><i class="ti-more"></i> Booking Schedule</a></li>
           </ul>
         </li>
-        <li>
-          <a href="<?php echo e(route('getmeeting')); ?>">
-            <i class="fa fa-video-camera"></i>
-			<span>Zoom Meeting</span>
-          </a>
-        </li>
+       
 
   <?php else: ?>
        <li>
@@ -130,7 +140,12 @@
           </a>
         </li>
      
-  
+  <li>
+          <a href="<?php echo e(route('invited')); ?>">
+            <i class="ti-dashboard"></i>
+      <span>Meeting Invitation</span>
+          </a>
+        </li>
          <li>
           <a href="<?php echo e(route('booknow')); ?>">
             <i class="ti-dashboard"></i>
