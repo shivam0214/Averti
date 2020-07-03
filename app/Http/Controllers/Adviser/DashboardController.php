@@ -152,4 +152,7 @@ class DashboardController extends Controller
             }
             return Redirect::to('/user_request')->with($notification);
     }
+    public function mail_template(){
+        return view('Mail.template');
+    }
 }
