@@ -6272,7 +6272,8 @@ p {
   text-align: right;
   margin-top: 6px;
   padding-left: 5px; }
-@charset "UTF-8";
+
+
 #app {
   padding: 50px 0;
 }
@@ -6423,10 +6424,13 @@ span.date {
 }
 
 .topbanner{
-background:url(../images/banner/topbanner.jpg) no-repeat;
+background:url(/assets/images/banner/topbanner.jpg) no-repeat;
 padding: 160px 0px;
 background-position: center center;background-size: cover;}
-.user{background:url(../images/banner/user.jpg) no-repeat;padding: 160px 0px;background-position: center center;background-size: cover;}
+.user{
+  background:url(/assets/images/banner/user.jpg) no-repeat;
+  padding: 160px 0px;
+  background-position: center center;background-size: cover;}
 .circlbg span {
   background: #3a4d56;
   width: 20px;

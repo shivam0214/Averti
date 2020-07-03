@@ -15,14 +15,20 @@
             <ul class="m-menu">
                         <li><a  href="<?php echo e(route('advisor_question')); ?>">For Advisors</a> </li>
                             <li><a  href="<?php echo e(route('find_advisor')); ?>">For Clients</a> </li>
-                <li><a href="#">Pages</a>
-                    <ul class="m-submenu">
-                        <li><a href="#">Case Study</a></li>
-                        <li><a href="#">Case Study Details</a></li>
-                    </ul>
-                </li>
-            <li><a href="#">Contact</a></li>
-                            <li><a  href="#">Sig In</a> </li>
+                            <li><a href="<?php echo e(route('pricing')); ?>">Pricing</a>
+										<!-- <ul class="submenu">
+											<li><a href="#">Shop</a></li>
+											<li><a href="#">Search Page</a></li>
+											<li><a href="#">Search None Page</a></li>
+											<li><a href="#">Coming Soon</a></li>
+											<li><a href="#">404</a></li>
+										</ul> -->
+									</li>
+                                    <li><a href="<?php echo e(route('about_us')); ?>">About Us</a></li>
+
+									<li><a href="<?php echo e(route('contact_us')); ?>">Contact</a></li>
+
+                            <li><a  href="/login">Sign In</a> </li>
             </ul>
             <ul class="social-link-list d-flex flex-wrap">
                 <li><a href="#" class="facebook"><i class=" fab fa-facebook-f"></i></a></li>
@@ -61,7 +67,7 @@
                                     <li><a href="<?php echo e(route('about_us')); ?>">About Us</a></li>
 
 									<li><a href="<?php echo e(route('contact_us')); ?>">Contact</a></li>
-                                    <li><a  href="/login">Sig In</a> </li>
+                                    <li><a  href="/login">Sign In</a> </li>
 								</ul>
 							</div>
 						</div>

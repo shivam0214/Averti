@@ -88,8 +88,8 @@
 										<div class="form-group">
 											<div class="row">
 												<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12">
-													<select name="advisortype" id="SelectLm" class="form-control-sm form-control" required>
-														<option value="" >Choose your Advisor Type</option>
+													<select name="advisortype" id="SelectLm" class="form-control-sm form-control">
+														<option value="">Choose your Advisor Type</option>
 														
 														<?php $__currentLoopData = $cat; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $record): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 															<option value="<?php echo e($record['id']); ?>"><?php echo e($record['category_name']); ?></option>
