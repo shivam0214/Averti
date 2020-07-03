@@ -66,7 +66,7 @@
 						</ul>
 					</div>
 					<div class="fb-left">
-						<p>Copyright 2020  &copy; <a href="#">Domain. </a> Design & Developed by  <a href="http://webfyclients.com/" target="_blank"> Webfyclients</a></p>
+						<p>Copyright 2020  &copy; Design & Developed by  <a href="http://webfyclients.com/" target="_blank"> Webfyclients</a></p>
 					</div>
 				</div>
 			</div>

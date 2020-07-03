@@ -52,9 +52,7 @@
 											</td>
 								<td><a href="{{ route('view_profile',['id'=>$record->id]) }}">{{$record['name']}} </a></td>
 								<td>{{$record['single']['phone_no']}}</td>
-								<td>{{$record['catname']['category_name']}}</span></td>
-								
-                
+								<td>{{$record['catname']['category_name']}}</td>
 								<td><button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#video-call"><i class="fa fa-video-camera"></i></button>
                                         <a class="btn btn-success waves-effect waves-light" href="{{ route('view_profile',['id'=>$record->id]) }}"><i class="fa fa-edit"></i></a>
                                       <button type="button" class="btn btn-danger waves-effect waves-light"><i class="fa fa-trash"></i></button></td>

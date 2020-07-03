@@ -41,7 +41,7 @@
 				<div class="container">
 					<div class="menu-area">
 						<div class="row justify-content-between align-items-center">
-							<a href="index-2.html" class="logo">
+							<a href="/" class="logo">
 								<img src="<?php echo e(asset('assets/images/averti.png')); ?>" alt="logo">
 							</a>
 							<div class="main-menu-area d-flex align-items-center">

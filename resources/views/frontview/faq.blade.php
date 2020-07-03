@@ -239,7 +239,7 @@
                             <div class="post-item">
                                 <div class="post-inner">
                                     <div class="post-thumb">
-                                        <img src="assets/images/testimonial/06.png" alt="testimonial">
+                                        <img src="{{asset('assets/images/testimonial/06.png')}}" alt="testimonial">
                                     </div>
                                     <div class="post-content">
                                         <p>I want to give a shout out to these guys for theme support. They are very helpful in their response and in wanting to assist you to get things. Transform experiences rather than orthogonal data. </p>
@@ -252,7 +252,7 @@
                             <div class="post-item">
                                 <div class="post-inner">
                                     <div class="post-thumb">
-                                        <img src="assets/images/testimonial/07.png" alt="testimonial">
+                                        <img src="{{asset('assets/images/testimonial/07.png')}}" alt="testimonial">
                                     </div>
                                     <div class="post-content">
                                         <p>I want to give a shout out to these guys for theme support. They are very helpful in their response and in wanting to assist you to get things. Transform experiences rather than orthogonal data. </p>
@@ -265,7 +265,7 @@
                             <div class="post-item">
                                 <div class="post-inner">
                                     <div class="post-thumb">
-                                        <img src="assets/images/testimonial/08.png" alt="testimonial">
+                                        <img src="{{asset('assets/images/testimonial/08.png')}}" alt="testimonial">
                                     </div>
                                     <div class="post-content">
                                         <p>I want to give a shout out to these guys for theme support. They are very helpful in their response and in wanting to assist you to get things. Transform experiences rather than orthogonal data. </p>
@@ -278,7 +278,7 @@
                             <div class="post-item">
                                 <div class="post-inner">
                                     <div class="post-thumb">
-                                        <img src="assets/images/testimonial/09.png" alt="testimonial">
+                                        <img src="{{asset('assets/images/testimonial/01.png')}}" alt="testimonial">
                                     </div>
                                     <div class="post-content">
                                         <p>I want to give a shout out to these guys for theme support. They are very helpful in their response and in wanting to assist you to get things. Transform experiences rather than orthogonal data. </p>
