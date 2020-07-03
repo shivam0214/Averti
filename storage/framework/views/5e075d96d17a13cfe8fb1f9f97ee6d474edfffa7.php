@@ -5,7 +5,7 @@
 			<div class="d-flex align-items-center">			
 				<div class="image">
 				  <img src="<?php echo ((Auth::user()->single->profile_image)!= NULL) ? url(Auth::user()->single->profile_image) : url(asset('assets/img/avatars/user.png')); ?>"
-          class="avatar avatar-lg" alt="User Image">
+          class="avatar avatar-lg">
         </div>
 				<div class="info ml-10">
 					<p class="mb-0">Welcome</p>
@@ -68,7 +68,21 @@
 			<span>Chat</span>
           </a>
         </li>
-  
+        <li class="treeview">
+          <a href="#">
+            <i class="ti-receipt"></i>
+			<span>Meet</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="ti-more"></i>Zoom Meeting</a></li>
+            <li><a href="#"><i class="ti-more"></i>Event</a></li>
+            <li><a href="#"><i class="ti-more"></i>Calendly api</a></li>
+
+          </ul>
+        </li>
     
       </li>
       <li class="treeview">

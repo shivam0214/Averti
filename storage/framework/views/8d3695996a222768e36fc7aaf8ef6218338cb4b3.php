@@ -16,18 +16,19 @@
 				<div class="col-lg-9 col-md-8">
 					<div class="box">
 					  <div class="media-list media-list-divided media-list-hover">
+					  	<?php $__currentLoopData = $contacts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $record): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 						<div class="media align-items-center">
 						  <span class="badge badge-dot badge-success"></span>
 						  <a class="avatar avatar-lg status-success" href="#">
-							<img src="<?php echo e(asset('assets/img/avatars/1.jpg')); ?>" alt="...">
+						  <img src="<?php echo (($record['single']['profile_image'])!= NULL) ? url($record['single']['profile_image']) : url(asset('assets/img/avatars/user.png')); ?>" alt="&#xf013;" height="50px" width="50px">
 						  </a>
 
 						  <div class="media-body">
 							<p>
-							  <a href="#"><strong>Aaron</strong></a>
+							  <a href="#"><strong><?php echo e($record['name']); ?></strong></a>
 							  <small class="sidetitle">Online</small>
 							</p>
-							<p>+017896552</p>
+							<p>+<?php echo e($record['single']['phone_no']); ?></p>
 
 							<nav class="nav mt-2">
 							  <a class="nav-link" href="#"><i class="fa fa-facebook"></i></a>
@@ -40,149 +41,11 @@
 						  <div class="media-right gap-items">
 							<a class="action lead" href="#" data-toggle="tooltip" title="Phone"><i class="fa fa-phone" aria-hidden="true"></i></a>
 							<a class="action lead" href="<?php echo e(route('chat')); ?>" data-toggle="tooltip" title="Message"><i class="fa fa-fw fa-comments"></i></a>
-                            <a class="action lead" href="<?php echo e(route('mail')); ?>" data-toggle="tooltip" title="Mail"><i class="ti-email"></i></i> </a>
+                            <a class="action lead" href="<?php echo e(route('mailer.index')); ?>" data-toggle="tooltip" title="Mail"><i class="ti-email"></i></i> </a>
                             <a class="action lead" href="#" data-toggle="tooltip" title="Remove"><i class="fa fa-fw fa-remove"></i> </a>
-
-
-							
 						  </div>
 						</div>
-
-						<div class="media align-items-center">
-
-						  <span class="badge badge-dot badge-warning"></span>	
-
-						  <a class="avatar avatar-lg" href="#">
-							<img src="<?php echo e(asset('assets/img/avatars/2.jpg')); ?>" alt="...">
-						  </a>
-
-						  <div class="media-body">
-							<p>
-							  <a href="#"><strong>Isaiah</strong></a>
-							  <small class="sidetitle">Last seen: 2 hours ago</small>
-							</p>
-							<p>+018967552</p>
-
-							<nav class="nav mt-2">
-							  <a class="nav-link" href="#"><i class="fa fa-facebook"></i></a>
-							  <a class="nav-link" href="#"><i class="fa fa-twitter"></i></a>
-							  <a class="nav-link" href="#"><i class="fa fa-github"></i></a>
-							  <a class="nav-link" href="#"><i class="fa fa-linkedin"></i></a>
-							</nav>
-						  </div>
-
-						  <div class="media-right gap-items">
-							<a class="action lead" href="#" data-toggle="tooltip" title="Phone"><i class="fa fa-phone" aria-hidden="true"></i></a>
-							<a class="action lead" href="<?php echo e(route('chat')); ?>" data-toggle="tooltip" title="Message">            <i class="fa fa-fw fa-comments"></i></a>
-                            <a class="action lead" href="<?php echo e(route('mail')); ?>" data-toggle="tooltip" title="Mail"><i class="ti-email"></i></i> </a>
-                            <a class="action lead" href="#" data-toggle="tooltip" title="Remove"><i class="fa fa-fw fa-remove"></i> </a>
-
-                            
-						  </div>
-						</div>
-
-						<div class="media align-items-center">
-
-						  <span class="badge badge-dot badge-success"></span>	
-
-						  <a class="avatar avatar-lg status-warning" href="#">
-							<img src="<?php echo e(asset('assets/img/avatars/3.jpg')); ?>" alt="...">
-						  </a>
-
-						  <div class="media-body">
-							<p>
-							  <a href="#"><strong>Cameron</strong></a>
-							  <small class="sidetitle">Last seen: 12 min ago</small>
-							</p>
-							<p>+017896482</p>
-
-							<nav class="nav mt-2">
-							  <a class="nav-link" href="#"><i class="fa fa-facebook"></i></a>
-							  <a class="nav-link" href="#"><i class="fa fa-twitter"></i></a>
-							  <a class="nav-link" href="#"><i class="fa fa-github"></i></a>
-							  <a class="nav-link" href="#"><i class="fa fa-linkedin"></i></a>
-							</nav>
-						  </div>
-
-						  <div class="media-right gap-items">
-							<a class="action lead" href="#" data-toggle="tooltip" title="Phone"><i class="fa fa-phone" aria-hidden="true"></i></a>
-							<a class="action lead" href="<?php echo e(route('chat')); ?>" data-toggle="tooltip" title="Message">            <i class="fa fa-fw fa-comments"></i></a>
-                            <a class="action lead" href="<?php echo e(route('mail')); ?>" data-toggle="tooltip" title="Mail"><i class="ti-email"></i></i> </a>
-
-                            <a class="action lead" href="#" data-toggle="tooltip" title="Remove"><i class="fa fa-fw fa-remove"></i> </a>
-
-                            
-						  </div>
-						</div>
-
-						<div class="media align-items-center">
-
-						  <span class="badge badge-dot badge-danger"></span>	
-
-						  <a class="avatar avatar-lg status-success" href="#">
-							<img src="<?php echo e(asset('assets/img/avatars/1.jpg')); ?>" alt="...">
-						  </a>
-
-						  <div class="media-body">
-							<p>
-							  <a href="#"><strong>Eli</strong></a>
-							  <small class="sidetitle">Offline</small>
-							</p>
-							<p>+017896425</p>
-
-							<nav class="nav mt-2">
-							  <a class="nav-link" href="#"><i class="fa fa-facebook"></i></a>
-							  <a class="nav-link" href="#"><i class="fa fa-twitter"></i></a>
-							  <a class="nav-link" href="#"><i class="fa fa-github"></i></a>
-							  <a class="nav-link" href="#"><i class="fa fa-linkedin"></i></a>
-							</nav>
-						  </div>
-
-						  <div class="media-right gap-items">
-							<a class="action lead" href="#" data-toggle="tooltip" title="Phone"><i class="fa fa-phone" aria-hidden="true"></i></a>
-							<a class="action lead" href="<?php echo e(route('chat')); ?>" data-toggle="tooltip" title="Message">            <i class="fa fa-fw fa-comments"></i></a>
-                            <a class="action lead" href="<?php echo e(route('mail')); ?>" data-toggle="tooltip" title="Mail"><i class="ti-email"></i></i> </a>
-
-                            <a class="action lead" href="#" data-toggle="tooltip" title="Remove"><i class="fa fa-fw fa-remove"></i> </a>
-
-                            
-						  </div>
-						</div>
-
-						<div class="media align-items-center">
-
-						  <span class="badge badge-dot badge-success"></span>	
-
-						  <a class="avatar avatar-lg status-success" href="#">
-							<img src="<?php echo e(asset('assets/img/avatars/5.jpg')); ?>" alt="...">
-						  </a>
-
-						  <div class="media-body">
-							<p>
-							  <a href="#"><strong>Charles</strong></a>
-							  <small class="sidetitle">Last seen: yesterday</small>
-							</p>
-							<p>+017898552</p>
-
-							<nav class="nav mt-2">
-							  <a class="nav-link" href="#"><i class="fa fa-facebook"></i></a>
-							  <a class="nav-link" href="#"><i class="fa fa-twitter"></i></a>
-							  <a class="nav-link" href="#"><i class="fa fa-github"></i></a>
-							  <a class="nav-link" href="#"><i class="fa fa-linkedin"></i></a>
-							</nav>
-						  </div>
-
-						  <div class="media-right gap-items">
-							<a class="action lead" href="#" data-toggle="tooltip" title="Phone"><i class="fa fa-phone" aria-hidden="true"></i></a>
-                            <a class="action lead" href="<?php echo e(route('chat')); ?>" data-toggle="tooltip" title="Message">            <i class="fa fa-fw fa-comments"></i></a>
-                            <a class="action lead" href="<?php echo e(route('mail')); ?>" data-toggle="tooltip" title="Mail"><i class="ti-email"></i></i> </a>
-
-                            <a class="action lead" href="#" data-toggle="tooltip" title="Remove"><i class="fa fa-fw fa-remove"></i> </a>
-
-							
-						  </div>
-						</div>
-
+						<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 					  </div>
 					</div>
 				</div>

@@ -1,4 +1,15 @@
 <?php $__env->startSection('content'); ?> 
+<style>
+
+.d-flex.justify-content-between.align-items-center button {
+    float: left;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.d-flex.justify-content-between.align-items-center {display: flex !important;justify-content: flex-end !important;}
+
+</style>
 <div class="content-wrapper">
 <input type="hidden" id="current_user" value="<?php echo e(Auth::user()); ?>"/>
 
@@ -11,23 +22,29 @@
 				<div class="col-12 mb-3 pt-0 mt-0">
                     <span id="username"></span>
                 </div>
+				<div class="slimScrollDiv" style="overflow-y: scroll;width: 100%;height: 550px;">
 				<ul class="box box-transparent no-border" id="messages" >
 					
 					</ul>
-				
+				</div>
 					<div class="box box-body">
 						<div class="d-flex justify-content-between align-items-center">
-						<form action="http://localhost:3000/uploadFile" id="data" method="post" enctype="multipart/form-data" class ="col-lg-9 col-md-7 col-12">
+						<form action="http://localhost:3000/uploadFile" id="data" method="post" enctype="multipart/form-data" class ="col-lg-12 col-md-12 col-12">
 							<input class="form-control b-0 py-10" id="m" autocomplete="off" type="text" placeholder="Say something...">
+							
 							<div class="d-flex justify-content-between align-items-center">
-							<img src ="" id="previewImg"  height="200" weight="200" class="hide">
+							<img src="" id="previewImg" height="200" weight="200" class="hide">
 							<div class="hiddenfile">
-								<input name="chatAttachment" type="file" id="fileinput" onchange="previewFile(this);"/>
+								<input name="chatAttachment" type="file" id="fileinput" onchange="previewFile(this);">
 								</div>
-								<button type="button"  onclick="browsefile()" class="waves-effect waves-circle btn btn-circle btn-primary">
+								<button type="button" onclick="browsefile()" class="waves-effect waves-circle btn btn-circle btn-primary">
 							<i class="fa fa-paperclip" aria-hidden="true"></i>
 								</button>
-								<button type="submit" class="waves-effect waves-circle btn btn-circle mr-10 btn-outline-primary">
+								<button type="button" class="waves-effect waves-circle btn btn-circle mr-10 btn-outline-primary">
+								<i class="fa fa-microphone" aria-hidden="true"></i>
+								</button><button type="button" data-toggle="modal" data-target="#modal-right_2" class="waves-effect waves-circle btn btn-circle mr-10 btn-outline-primary">
+								<i class="fa fa-video-camera" aria-hidden="true"></i>
+								</button><button type="submit" class="waves-effect waves-circle btn btn-circle mr-10 btn-outline-primary">
 								<i class="fa fa-paper-plane" aria-hidden="true"></i>
 								</button>
 
@@ -172,7 +189,7 @@
 										<?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $record): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 											<div class="media py-10 px-0 align-items-center chat_list" onclick="openRoom(<?php echo e($record['id']); ?>)">
 											  <a class="avatar avatar-lg status-success" href="#">
-												<img src="<?php echo e(asset('assets/img/avatars/1.jpg')); ?>" alt="...">
+												<img src="<?php echo e($record['single']['profile_image']); ?>" class="img" alt="...">
 											  </a>
 											  <div class="media-body">
 												<p class="font-size-16">
@@ -202,12 +219,33 @@
 		<!-- /.content -->
 	  </div>
   </div>
+  <div class="modal modal-right fade" id="modal-right_2" tabindex="-1">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h3 class="modal-title">Video Calling</h3>
+			<button type="button" class="close" data-dismiss="modal">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		  <div class="modal-body">
+		  <img src="<?php echo e(asset('assets/images/advisor/video_call.jpg')); ?>" alt="..." class="m-10">
+				<textarea class="publisher-input auto-expand" rows="4" placeholder="Type notes here..."></textarea>
+		  </div>
+		  <div class="modal-footer modal-footer-uniform">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			
+		</div>
+	  </div>
+	</div>
+
    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 	    <script>
      var socket = io('http://localhost:3000/');
 	 var current_user = JSON.parse($("#current_user").val());
 	 var activeUserName = '';
+	 var activeimg = ""
 	 //var imgURL ='';
       $(function () {	
         $('form#data').submit(function(e){
@@ -235,11 +273,11 @@
 			var li = ''; var img ='';
 			img+= '<img src="'+data.img_URL+'" height="200" weight="200">';
 			if(current_user.id == data.sender_id){
-								li+='<li><div class="card d-inline-block mb-3 float-left mr-2"><div class="position-absolute pt-1 pr-2 r-0"><span class="text-extra-small text-muted">'+ formatAMPM(new Date())+'</span></div><div class="card-body"><div class="d-flex flex-row pb-2"><a class="d-flex" href="#"><img alt="Profile" src="http://localhost:8000/assets/img/avatars/1.jpg" class="avatar mr-10"></a><div class="d-flex flex-grow-1 min-width-zero"><div class="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between"><div class="min-width-zero"><p class="mb-0 font-size-16 ">'+current_user.name+'</p></div></div></div></div><div class="chat-text-left pl-55"><p class="mb-0 text-semi-muted">'+img+'<br/>'+data.message_text+' </p></div></div></div></li>'
+								li+='<li><div class="card d-inline-block mb-3 float-right mr-2"><div class="position-absolute pt-1 pr-2 r-0"><span class="text-extra-small text-muted">'+ formatAMPM(new Date())+'</span></div><div class="card-body"><div class="d-flex flex-row pb-2"><a class="d-flex" href="#"><img alt="Profile" src="'+current_user.profile+'" class="avatar mr-10"></a><div class="d-flex flex-grow-1 min-width-zero"><div class="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between"><div class="min-width-zero"><p class="mb-0 font-size-16 ">'+current_user.name+'</p></div></div></div></div><div class="chat-text-left pl-55"><p class="mb-0 text-semi-muted">'+img+'<br/>'+data.message_text+' </p></div></div></div></li>'
 						
 							}
 							else if(current_user.id == data.receiver_id){
-								li+='<li><div class="card d-inline-block mb-3 float-right mr-2 bg-primary"><div class="position-absolute pt-1 pr-2 r-0"><span class="text-extra-small text-white">'+formatAMPM(new Date())+'</span></div><div class="card-body"><div class="d-flex flex-row pb-2"><a class="d-flex" href="#"><img alt="Profile" src="http://localhost:8000/assets/img/avatars/1.jpg" class="avatar mr-10"></a><div class="d-flex flex-grow-1 min-width-zero"><div class="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between"><div class="min-width-zero"><p class="mb-0 font-size-16 text-white">'+activeUserName+'</p></div></div></div></div><div class="chat-text-left pl-55"><p class="mb-0 text-semi-muted text-white">'+img+'<br/>'+data.message_text+'</p></div></div></div></li>'
+								li+='<li><div class="card d-inline-block mb-3 float-left mr-2 bg-primary"><div class="position-absolute pt-1 pr-2 r-0"><span class="text-extra-small text-white">'+formatAMPM(new Date())+'</span></div><div class="card-body"><div class="d-flex flex-row pb-2"><a class="d-flex" href="#"><img alt="Profile" src="'+activeimg+'" class="avatar mr-10"></a><div class="d-flex flex-grow-1 min-width-zero"><div class="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between"><div class="min-width-zero"><p class="mb-0 font-size-16 text-white">'+activeUserName+'</p></div></div></div></div><div class="chat-text-left pl-55"><p class="mb-0 text-semi-muted text-white">'+img+'<br/>'+data.message_text+'</p></div></div></div></li>'
 						
 							
 							}
@@ -254,6 +292,8 @@
             // });
 		$(".chat_list").on('click', function () {
 			activeUserName = $(this).find(".hover-primary").text();
+			activeimg = $(this).find(".img").attr('src');
+			
 			 socket.emit('username', activeUserName);
             $(".chat_list").removeClass("active_chat")
             $(this).addClass("active_chat")
@@ -271,11 +311,11 @@
 			if(data[i].attachment_url)
 			img+= '<img src="'+data[i].attachment_url+'" height="200" weight="200">';
 							if(current_user.id == data[i].sender_id){
-								li+='<li><div class="card d-inline-block mb-3 float-left mr-2"><div class="position-absolute pt-1 pr-2 r-0"><span class="text-extra-small text-muted">'+ formatAMPM(new Date(data[i].created_date))+'</span></div><div class="card-body"><div class="d-flex flex-row pb-2"><a class="d-flex" href="#"><img alt="Profile" src="http://localhost:8000/assets/img/avatars/1.jpg" class="avatar mr-10"></a><div class="d-flex flex-grow-1 min-width-zero"><div class="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between"><div class="min-width-zero"><p class="mb-0 font-size-16 ">'+current_user.name+'</p></div></div></div></div><div class="chat-text-left pl-55"><p class="mb-0 text-semi-muted">'+img+'<br/>'+data[i].message_text+' </p></div></div></div></li>'
+								li+='<li><div class="card d-inline-block mb-3 float-right mr-2"><div class="position-absolute pt-1 pr-2 r-0"><span class="text-extra-small text-muted">'+ formatAMPM(new Date(data[i].created_date))+'</span></div><div class="card-body"><div class="d-flex flex-row pb-2"><a class="d-flex" href="#"><img alt="Profile" src="'+current_user.profile+'" class="avatar mr-10"></a><div class="d-flex flex-grow-1 min-width-zero"><div class="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between"><div class="min-width-zero"><p class="mb-0 font-size-16 ">'+current_user.name+'</p></div></div></div></div><div class="chat-text-left pl-55"><p class="mb-0 text-semi-muted">'+img+'<br/>'+data[i].message_text+' </p></div></div></div></li>'
 						
 							}
 							else if(current_user.id == data[i].receiver_id){
-								li+='<li><div class="card d-inline-block mb-3 float-right mr-2 bg-primary"><div class="position-absolute pt-1 pr-2 r-0"><span class="text-extra-small text-white">'+formatAMPM(new Date(data[i].created_date))+'</span></div><div class="card-body"><div class="d-flex flex-row pb-2"><a class="d-flex" href="#"><img alt="Profile" src="http://localhost:8000/assets/img/avatars/1.jpg" class="avatar mr-10"></a><div class="d-flex flex-grow-1 min-width-zero"><div class="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between"><div class="min-width-zero"><p class="mb-0 font-size-16 text-white">'+activeUserName+'</p></div></div></div></div><div class="chat-text-left pl-55"><p class="mb-0 text-semi-muted text-white">'+img+'<br/>'+data[i].message_text+'</p></div></div></div></li>'
+								li+='<li><div class="card d-inline-block mb-3 float-left mr-2 bg-primary"><div class="position-absolute pt-1 pr-2 r-0"><span class="text-extra-small text-white">'+formatAMPM(new Date(data[i].created_date))+'</span></div><div class="card-body"><div class="d-flex flex-row pb-2"><a class="d-flex" href="#"><img alt="Profile" src="'+activeimg+'" class="avatar mr-10"></a><div class="d-flex flex-grow-1 min-width-zero"><div class="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between"><div class="min-width-zero"><p class="mb-0 font-size-16 text-white">'+activeUserName+'</p></div></div></div></div><div class="chat-text-left pl-55"><p class="mb-0 text-semi-muted text-white">'+img+'<br/>'+data[i].message_text+'</p></div></div></div></li>'
 						
 							
 							}

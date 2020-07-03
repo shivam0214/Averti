@@ -14,7 +14,7 @@
 							<div class="logo-contact">
 								<a href="#"><img src="{{asset('assets/images/averti.png')}}" alt="logo"></a>
 								<ul>
-									<li><a href="#">info@yourmail.com</a></li>
+									<li><a href="#">info@averti.com</a></li>
 									<li>+880 234 567890</li>
 								</ul>
 							</div>
@@ -45,8 +45,8 @@
 						</div>
 						<div class="footer-item footer-contact">
 							<h5>We Are Here!</h5>
-							<span>Los Angeles Office</span>
-							<p>1822 N Vermont Ave, Los Angeles CA 90027, USA</p>
+							<span>Office</span>
+							<p>641 S Street NW Washington DC 20001 - 3015768685 </p>
 							<a href="#">Find Us On Google Map</a>
 							<ul class="social-link-list d-flex flex-wrap">
 								<li><a href="#" class="facebook"><i class=" fab fa-facebook-f"></i></a></li>
@@ -61,12 +61,12 @@
 					<div class="fb-right">
 						<ul>
 							<li><a href="#">Privacy & Policy</a></li>
-							<li><a href="#">Faq </a></li>
+							<li><a href="{{route('faq')}}">Faq </a></li>
 							<li><a href="#">Terms & Conditions</a></li>
 						</ul>
 					</div>
 					<div class="fb-left">
-						<p>Copyright 2020  &copy; <a href="#">Domain. </a> Design & Developed by  <a href="http://webfyclients.com/" target="_blank"> Webfyclients</a></p>
+						<p>Copyright 2020  &copy; Design & Developed by  <a href="http://webfyclients.com/" target="_blank"> Webfyclients</a></p>
 					</div>
 				</div>
 			</div>
@@ -88,6 +88,10 @@
   	<script src="{{asset('assets/frontassets/js/waypoints.min.js')}}"></script>
   	<script src="{{asset('assets/frontassets/js/bootstrap.min.js')}}"></script>
   	<script src="{{asset('assets/frontassets/js/isotope.pkgd.min.js')}}"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js'></script>
+	  <script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js'></script>
+	 
   	<script src="{{asset('assets/frontassets/js/wow.min.js')}}"></script>
     <script src="{{asset('assets/frontassets/js/theia-sticky-sidebar.js')}}"></script>
 	<script src="{{asset('assets/frontassets/js/swiper.min.js')}}"></script>

@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Calender;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Zenapply\Calendly\Calendly;
+use App\Meeting;
+use App\User;
+use Auth;
+
 
 class CalenderController extends Controller
 {

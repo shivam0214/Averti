@@ -9,6 +9,9 @@ use App\Libraries\Zooms\Myzoom;
 use Auth;
 use App\Meeting;
 use App\Libraries\Functions;
+use App\User;
+use Mail;
+use App\Mail\SendEmail;
 class ZoomController extends Controller
 {
     public function index(Request $r){
@@ -37,7 +40,31 @@ class ZoomController extends Controller
     }
     public function status(Request $r){
         $mtng = Meeting::where(['meeting_id'=>$r->mid])->update(['status'=>'complete']);
-        return redirect('/getmeeting');
+        return redirect('/getmeeting'); 
+    }
+
+    public function invite(Request $r){
+        $users = User::where(['perent_id'=>Auth::user()['id'],'role_id'=>3])->get();
+        $mid = $r->mid;
+        return view('zoom.invite',compact('users','mid'));
+    }
+    public function sendinvite(Request $r){
+        $users = $r->users;
+        $title = $r->topic; 
+        $mtng = Meeting::where(['meeting_id'=>$r->mid])->get();
+        $emailsusers = User::whereIn('id',$users)->get();
+        $subject = "Averti meeting by ". Auth::user()['name'];
+        foreach($emailsusers as $user){
+            $user['mid'] = $r->mid;
+            $user['time'] = $mtng[0]->start_time;
+            $ss = Mail::to($user->email)->send(new SendEmail($subject,'emails.email',$user));
+        }
+
+        if($ss){
+            return response()->json(['status'=>1,'msg'=>'Invite send']);
+        }else{
+            return response()->json(['status'=>0,'msg'=>'Please try again']);
+        }
         
     }
 }

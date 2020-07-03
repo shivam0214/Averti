@@ -76,7 +76,7 @@ public function question(Request $r){
     $data['type']='Welcome To Advisor Verification';
     $subject ="Welcome to Averti verification";
    
-   $ss = Mail::to($r->email)->send(new SendEmail($subject,'verify',$data));
+   $ss = Mail::to($r->email)->send(new SendEmail($subject,'mail.verify',$data));
   
         if($set){
             return response()->json(['status'=>1,'msg'=>'Please check your email and Verify the email']);
@@ -130,11 +130,30 @@ public function checkemail(Request $r){
             $data['verify_key'] = $token;    
             $data['type']='Welcome To User Verification';
             $subject ="Welcome to Averti verification";
-        $ss = Mail::to($r->email)->send(new SendEmail($subject,'verify',$data));
+        $ss = Mail::to($r->email)->send(new SendEmail($subject,'mail.verify',$data));
         if($set){
             return response()->json(['status'=>1,'msg'=>'Please check your email and Verify the email']);
         }else{
             return response()->json(['status'=>0,'msg'=>'Please try again']);
         }
     }
+    public function about_us(){
+        return view('frontview.about_us');
+    }
+    public function contact_us(){
+        return view('frontview.contact_us');
+    }
+    public function for_client(){
+        return view('frontview.for_client');
+    }
+    public function for_advisor(){
+        return view('frontview.for_advisor');
+    }
+    public function pricing(){
+        return view('frontview.pricing');
+    }
+    public function faq(){
+        return view('frontview.faq');
+    }
+
 }

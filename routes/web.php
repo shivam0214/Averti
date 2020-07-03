@@ -11,6 +11,13 @@
 |
 */
 Route::get('/', 'Frontform\FrontformController@index')->name('index');
+Route::get('About_Us', 'Frontform\FrontformController@about_us')->name('about_us');
+Route::get('Contact_US', 'Frontform\FrontformController@contact_us')->name('contact_us');
+Route::get('For-client', 'Frontform\FrontformController@for_client')->name('for_client');
+Route::get('For-advisor', 'Frontform\FrontformController@for_advisor')->name('for_advisor');
+Route::get('Pricing', 'Frontform\FrontformController@pricing')->name('pricing');
+Route::get('Faq', 'Frontform\FrontformController@faq')->name('faq');
+
 
 /* Route::get('/', function() {
     return view('index');
@@ -73,6 +80,9 @@ Route::post('post/zoom','ZoomController@store')->name('zoomcreatepost');
 Route::get('meetings/{mid}','ZoomController@host')->name('allmeeting');
 Route::get('getmeeting','ZoomController@getmeeting')->name('getmeeting');
 Route::get('status/{mid}','ZoomController@status')->name('status');
+Route::get('invite/{mid}','ZoomController@invite')->name('invite');
+Route::post('sendinvite','ZoomController@sendinvite')->name('sendinvite');
+Route::get('invited','ZoomController@invited')->name('invited');
 });
 
 /** Front page Route**/

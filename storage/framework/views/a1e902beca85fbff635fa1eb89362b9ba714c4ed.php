@@ -6,9 +6,9 @@
 				<div class="row padding-x">
 					<div class="banner-content">
 						<h2 class="banner-text">World's first total life <span>management system</span></h2>
-						<p class="banner-desc">
-Averti Life Logistic Experts and Life Management Platform continuously track your human needs and financial goals, sending information to your life logistics advisor to help them track issues related to helping you reach your full human potential.
-
+						<p class="banner-desc"><h5>
+						Averti Life Logistic Experts and Life Management Platform continuously track your human needs and financial goals, sending information to your life logistics advisor to help them track issues related to helping you reach your full human potential.
+						</h5>
 						   </p>
 						<a href="<?php echo e(route('find_advisor')); ?>" class="btnmy">Find My Advisor</a>
                         <a href="<?php echo e(route('advisor_question')); ?>" class="btnmysm ml-10">Become a Advisor</a>
@@ -31,9 +31,9 @@ Averti Life Logistic Experts and Life Management Platform continuously track you
 							<p>The challenges that professionals face today we believe can only be solved through human-centric technology driven solutions. We have created a system that addresses the entire life experience landscape.</p>
 						</div>
 					</div>
-					<div class="col-lg-4 col-md-6">
+					<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
 					   
-						<div class="single-box single-box-2 bg-5">
+						<div class="single-box single-box-2 bg-6">
 						     <img src="<?php echo e(asset('assets/images/about/NOC.png')); ?>">
 						
 							<h3>Real-Time Monitoring</h3>
@@ -65,7 +65,7 @@ Averti Life Logistic Experts and Life Management Platform continuously track you
 						<img src="<?php echo e(asset('assets/images/about/01.jpg')); ?>" alt="about">
 						<div class="about-video">
 							<span>Watch Video</span>
-							<a href="assets/vedio/revision.mp4" data-rel="lightcase"  class="av-icon" >
+							<a href="<?php echo e(asset('assets/vedio/revision.mp4')); ?>" data-rel="lightcase"  class="av-icon" >
 								<div class="pulse1"></div>
 								<i class="fas fa-play"></i>
 							</a>
@@ -224,7 +224,7 @@ Invite clients online in minutes.</li>
 							<img src="<?php echo e(asset('assets/images/service/icon/Service-Icon-01.png')); ?>" alt="services">
 						</div>
 						<div class="post-content">
-							<h5>Audit & Assurance</h5>
+							<h4>Video & Audio Call</h4>
 							<p>Conveniently engineer top-line testing procedure before diverse niche markets.</p>
 						</div>
 					</div>
@@ -235,7 +235,7 @@ Invite clients online in minutes.</li>
 							<img src="<?php echo e(asset('assets/images/service/icon/Service-Icon-02.png')); ?>" alt="services">
 						</div>
 						<div class="post-content">
-							<h5>Risk Management</h5>
+							<h4>Voice Management Panel</h4>
 							<p>Conveniently engineer top-line testing procedure before diverse niche markets.</p>
 						</div>
 					</div>
@@ -246,7 +246,7 @@ Invite clients online in minutes.</li>
 							<img src="<?php echo e(asset('assets/images/service/icon/Service-Icon-03.png')); ?>" alt="services">
 						</div>
 						<div class="post-content">
-							<h5>Value Create</h5>
+							<h4>Dialer Management Admin</h4>
 							<p>Conveniently engineer top-line testing procedure before diverse niche markets.</p>
 						</div>
 					</div>
@@ -257,7 +257,7 @@ Invite clients online in minutes.</li>
 							<img src="<?php echo e(asset('assets/images/service/icon/Service-Icon-04.png')); ?>" alt="services">
 						</div>
 						<div class="post-content">
-							<h5>Strategy Planning</h5>
+							<h4>Strategy Planning</h4>
 							<p>Conveniently engineer top-line testing procedure before diverse niche markets.</p>
 						</div>
 					</div>
@@ -268,7 +268,7 @@ Invite clients online in minutes.</li>
 							<img src="<?php echo e(asset('assets/images/service/icon/Service-Icon-05.png')); ?>" alt="services">
 						</div>
 						<div class="post-content">
-							<h5>Taxes & Efficiency</h5>
+							<h4>Taxes & Efficiency</h4>
 							<p>Conveniently engineer top-line testing procedure before diverse niche markets.</p>
 						</div>
 					</div>
@@ -279,7 +279,7 @@ Invite clients online in minutes.</li>
 							<img src="<?php echo e(asset('assets/images/service/icon/Service-Icon-06.png')); ?>" alt="services">
 						</div>
 						<div class="post-content">
-							<h5>Financial Services</h5>
+							<h4>Financial Services</h4>
 							<p>Conveniently engineer top-line testing procedure before diverse niche markets.</p>
 						</div>
 					</div>

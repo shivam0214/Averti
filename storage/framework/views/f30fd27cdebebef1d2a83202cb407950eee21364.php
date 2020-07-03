@@ -8,7 +8,7 @@
 					<div class="d-inline-block align-items-center">
 						<nav>
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item active" aria-current="page"><h3 class="page-title"><?php echo e(auth::user()['name']); ?>'s Profile</h3></li>
+								<li class="breadcrumb-item active" aria-current="page"><h3 class="page-title"><?php echo e(auth::user()['name']); ?>s Profile</h3></li>
 							</ol>
 						</nav>
 					</div>
@@ -560,7 +560,7 @@
 							</div>
 						</div>
 						<?php endif; ?>
-						<?php if(Auth::user()->role_id==3): ?>
+					<?php if(Auth::user()->role_id==3): ?>
 						<div class="tab-pane" id="info">
                             <div class="box">           
                             <form role="form" method="post" action="<?php echo e(route('update_user_data')); ?>">
