@@ -17,7 +17,8 @@
                             <tr>
                             <th scope="col">Meeting ID</th>
                             <th scope="col">Topic</th>
-                            <th scope="col">Time</th>
+                            <th scope="col">status</th>
+                            <th scope="col">Date - Time</th>
                             <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -27,8 +28,10 @@
                             <tr>
                             <th scope="row"><?php echo e($record['meeting_id']); ?></th>
                             <td><?php echo e($record['topic']); ?></td>
-                            <td><?php echo e($record['start_time']); ?></td>
-                            <td><a href="<?php echo e(route('allmeeting',$record['meeting_id'])); ?>">Start</a></td>
+                            <td><?php echo e($record['status']); ?></td>
+                            <td><?php echo e(date('Y-m-d',strtotime($record['start_time']))); ?>  <?php echo e(date('H-i a',strtotime($record['start_time']))); ?></td>
+                            <td><a href="javascript:void(0)" role="<?php echo e($record['meeting_id']); ?>" class="btn btn-primary waves-effect waves-light invite" >Invite</a> <a  class="btn btn-primary waves-effect waves-light" href="<?php echo e(route('allmeeting',$record['meeting_id'])); ?>">Start</a></td>
+                            
                             </tr>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         
@@ -39,5 +42,8 @@
                     </section>
     </div>
 </div>
+<script>
+
+</script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH G:\averti\resources\views/zoom/list.blade.php ENDPATH**/ ?>

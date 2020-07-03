@@ -34,6 +34,7 @@
           <ul class="treeview-menu">
             <li><a href="{{route('add_user')}}"><i class="ti-more"></i>Add User</a></li>
             <li><a href="{{route('user')}}"><i class="ti-more"></i>List User</a></li>
+            <li><a href="{{route('user_request')}}"><i class="ti-more"></i>User Requests</a></li>
           </ul>
         </li>
         	
@@ -92,10 +93,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="ti-more"></i>Zoom Meeting</a></li>
-            <li><a href="#"><i class="ti-more"></i>Event</a></li>
-            <li><a href="#"><i class="ti-more"></i>Calendly api</a></li>
-
+            <li><a  id="createzoom2" onclick="$('#modal-right').modal('show');" href="javascript:void(0)"><i class="ti-more"></i>Create Meeting</a></li>
+            <li><a href="{{route('getmeeting')}}"><i class="ti-more"></i>All Meetings</a></li>
+            <li><a href="{{route('calender')}}"><i class="ti-more"></i>Event</a></li>
+            <li><a href="javascript:void(0)" onclick="Calendly.showPopupWidget('https://calendly.com/shivam-sam');return false;"><i class="ti-more"></i>Calendly api</a></li>
           </ul>
         </li>
     
@@ -126,12 +127,7 @@
             <li><a href="{{route('booking')}}"><i class="ti-more"></i> Booking Schedule</a></li>
           </ul>
         </li>
-        <li>
-          <a href="{{route('getmeeting')}}">
-            <i class="fa fa-video-camera"></i>
-			<span>Zoom Meeting</span>
-          </a>
-        </li>
+       
 
   @else
        <li>
@@ -159,7 +155,12 @@
           </a>
         </li>
      
-  
+  <li>
+          <a href="{{route('invited')}}">
+            <i class="ti-dashboard"></i>
+      <span>Meeting Invitation</span>
+          </a>
+        </li>
          <li>
           <a href="{{route('booknow')}}">
             <i class="ti-dashboard"></i>

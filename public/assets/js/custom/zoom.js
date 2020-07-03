@@ -1,4 +1,4 @@
-$('#createzoom').click(function(){
+$('#createzoom,#createzoom2').click(function(){
     
     $.ajax({
         url:'/create/zoom',
@@ -7,6 +7,19 @@ $('#createzoom').click(function(){
          $("#modal-right").html(response);
           }
       });
+});
+
+$('.invite').click(function(){
+    mid= $(this).attr('role');
+       
+    $('#invite').modal('show');
+  $.ajax({
+      url:'/invite/'+mid,
+      type:'GET',
+      success: function (response) {
+      $("#invitecontent").html(response);
+        }
+    }); 
 });
 
 $('#create_meetingform').submit(function(e) {
