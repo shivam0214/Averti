@@ -170,7 +170,7 @@
 										</div>
 									</fieldset>
 									<fieldset>
-										<h4>Advisor Username</h4>
+										<h4>Password</h4>
 										{{--  <div class="form-group">
 											<div class="row">
 												<div class="col-lg-12 col-mg-12 col-xs-12 col-sm-12">
@@ -482,7 +482,7 @@
 										</div>
 									</fieldset>
 									<fieldset>
-										<h4>As, we've found three great advisor matches for you!</h4>
+										<h4>Are You Ready For A Become A Advisor!</h4>
 										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 										{{--  <div class="form-group">
 											<input type="text" name="phone" placeholder="Phone2" class="f1-email form-control" id="located">

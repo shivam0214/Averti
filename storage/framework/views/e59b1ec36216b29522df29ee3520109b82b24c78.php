@@ -13,6 +13,7 @@
 		</div>
 		<!-- Main content -->
 		<section class="content">
+		<h4><?php echo e((count($value)==0)?"No Request Found":''); ?></h4>
 		<?php $__currentLoopData = $value; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $r_user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
 			<div class="row">
