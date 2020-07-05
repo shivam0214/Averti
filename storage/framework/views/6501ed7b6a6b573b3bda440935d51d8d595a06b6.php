@@ -45,13 +45,28 @@
 			    <span>Contacts</span>
           </a>
         </li>	
-	    <li>
-          <a href="<?php echo e(route('mailer.index')); ?>">
+        <li class="treeview">
+          <a href="#">
             <i class="ti-email"></i>
+			<span>Email</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+          <li>
+          <a href="<?php echo e(route('mailer.index')); ?>">
+            <i class="ti-more"></i>
             <span>Mailbox</span>
           </a>
         </li>
-        <li>
+     
+            <li><a href="<?php echo e(route('mail_template')); ?>"><i class="ti-more"></i>Template</a></li>
+            <li><a href="<?php echo e(route('mailtemplist')); ?>"><i class="ti-more"></i>Template List</a></li>
+          </ul>
+        </li>
+        
+	      <li>
           <a href="#">
             <i class="ti-align-justify"></i>
 			<span>Task</span>

@@ -40,11 +40,11 @@ $('#create_meetingform').submit(function(e) {
               },
             success: function (response) {
               if(response.status==1){
-                $('#modal-right').modal('hide');
-                toastr.success(response.message);
+                $('#invite').modal('hide');
+                toastr.success(response.msg);
                 setTimeout(function(){ window.location.href = "/getmeeting"; }, 3000);
               }else{
-                toastr.error(response.message);
+                toastr.error(response.msg);
               }
              
             }

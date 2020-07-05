@@ -74,7 +74,7 @@
 					<div class="post-content">
 						<h5 class="subtitle">Hello! & Welcome to</h5>
 						<h2>Digitalization is at the 
-<span class="color">heart of our Seven-Year Plan</span>.</h2>
+							<span class="color">heart of our Seven-Year Plan</span>.</h2>
 						<p>Our goal is to fully digitalize each step of the life management experience so data can flow seamlessly, providing end-to-end behavioral insight for clients, partners and other family stakeholders. This means they can stay ahead of complexities, capture and share data across the entire human behavioral landscape to enable smarter, faster and more effective decisions, ensuring life and financial stability.
 </p>
 						<p>Averti's Technology and Proprietary System currently requires approval  select an option below to start the approval process!
@@ -337,10 +337,10 @@ Invite clients online in minutes.</li>
 					      			<div class="post-item-inner">
 					      				<div class="post-thumb">
 					      					<div class="company-logo">
-					      						<a href="#"><img src="<?php echo e(asset('assets/images/case/logo/01.png')); ?>" alt="case"></a>
+					      						<a href="#"><img src="<?php echo e(asset('assets/images/progress/01.png')); ?>" alt="case"></a>
 					      					</div>
 					      					<div class="company-name">
-					      						<h3><a href="#">Augeo Limited</a></h3>
+					      						<h3><a href="#">Super Admin</a></h3>
 					      					</div>
 					      				</div>
 					      				<div class="post-content">
@@ -381,10 +381,10 @@ Invite clients online in minutes.</li>
 									<div class="post-item-inner">
 										<div class="post-thumb">
 											<div class="company-logo">
-												<a href="#"><img src="<?php echo e(asset('assets/images/case/logo/02.png')); ?>" alt="case"></a>
+												<a href="#"><img src="<?php echo e(asset('assets/images/banner/plan-img.jpg')); ?>" alt="case"></a>
 											</div>
 											<div class="company-name">
-												<h3><a href="#">Dirrty Town Corporation</a></h3>
+												<h3><a href="#"> Our Advisor</a></h3>
 											</div>
 										</div>
 										<div class="post-content">
@@ -425,10 +425,10 @@ Invite clients online in minutes.</li>
 									<div class="post-item-inner">
 										<div class="post-thumb">
 											<div class="company-logo">
-												<a href="#"><img src="<?php echo e(asset('assets/images/case/logo/03.png')); ?>" alt="case"></a>
+												<a href="#"><img src="<?php echo e(asset('assets/images/advisor/video_call.jpg')); ?>" alt="case"></a>
 											</div>
 											<div class="company-name">
-												<h3><a href="#">Hunna Group Of Co.</a></h3>
+												<h3><a href="#">Video Deatils</a></h3>
 											</div>
 										</div>
 										<div class="post-content">

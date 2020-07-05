@@ -37,16 +37,16 @@
             leaveUrl: document.getElementById('rurl').value,
             role: parseInt(document.getElementById('meeting_role').value, 10)
         };
+        
         var signature = ZoomMtg.generateSignature({
             meetingNumber: meetConfig.meetingNumber,
             apiKey: meetConfig.apiKey,
             apiSecret: meetConfig.apiSecret,
             role: meetConfig.role,
-            success: function(res){
-                console.log(res.result);
-                
+            success: function(res){        
             }
         });
+      
         ZoomMtg.init({
             leaveUrl: document.getElementById('rurl').value,
             isSupportAV: true,

@@ -63,7 +63,7 @@
                 <tr>
                     <td align="center" valign="top" style="padding: 40px 10px 10px 10px;">
                         <a href="#" target="_blank" style="text-decoration: none;">
-							<span style="display: block; font-family: 'Poppins', sans-serif; color: #3e8ef7; font-size: 36px;" border="0"><b>Averti</b> <?php echo e(Auth::user()['name']); ?></span>
+							<span style="display: block; font-family: 'Poppins', sans-serif; color: #3e8ef7; font-size: 36px;" border="0"><b>Averti </b> <?php echo e(Auth::user()['name']); ?></span>
                         </a>
                     </td>
                 </tr>
@@ -86,7 +86,7 @@
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                 <tr>
                     <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px;">
-                      <h1 style="font-size: 36px; font-weight: 600; margin: 0; font-family: 'Poppins', sans-serif;">Welcome!</h1>
+                      <h1 style="font-size: 36px; font-weight: 600; margin: 0; font-family: 'Poppins', sans-serif;">Welcome! TO Averti</h1>
                     </td>
                 </tr>
             </table>

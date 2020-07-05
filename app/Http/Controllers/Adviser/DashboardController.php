@@ -153,6 +153,9 @@ class DashboardController extends Controller
             return Redirect::to('/user_request')->with($notification);
     }
     public function mail_template(){
-        return view('Mail.template');
+        return view('mail.template');
+    }
+    public function mail_temp_list(){
+        return view('mail.list');
     }
 }

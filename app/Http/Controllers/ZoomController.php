@@ -22,7 +22,7 @@ class ZoomController extends Controller
     public function store(Request $r){
         $d = new Myzoom;
         $jdata = $d->createAMeeting($r->input());
-        return Functions::save_meeting( $jdata);
+        return Functions::save_meeting($jdata);
     }
     public function getmeeting(){
         $meetings = Meeting::where(['user_id'=>Auth::user()['id'],'status'=>'waiting'])->orderBy('id','desc')->get();
@@ -60,7 +60,7 @@ class ZoomController extends Controller
             $ss = Mail::to($user->email)->send(new SendEmail($subject,'emails.email',$user));
         }
 
-        if($ss){
+        if(!$ss){
             return response()->json(['status'=>1,'msg'=>'Invite send']);
         }else{
             return response()->json(['status'=>0,'msg'=>'Please try again']);

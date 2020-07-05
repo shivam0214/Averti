@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content') 
-
 <div class="content-wrapper">
 	  <div class="container-full">
 		<!-- Content Header (Page header) -->
@@ -12,105 +11,79 @@
 				</div>
 			</div>
 		</div>
+<section class="content">
+		  <div class="row">
+			<div class="col-12">          
 
-		<!-- Main content -->
-		<section class="content">
-			
 			  <div class="box">
-				<div class="box-header with-border">
-				  <h4 class="box-title text-center">We included several modern account management email templates to help you communicate with your users.</h4>          
+				<div class="box-header">
+				  <h4 class="box-title">CK Editor<br>
+					<small>Advanced and full of features</small>
+				  </h4>
+				</div>
+				<!-- /.box-header -->
+				<div class="box-body">
+				  <form>
+					<div class="form-group">
+						<label>Subject</label>
+						<input class="form-control" type="text" placeholder="Enter your Subject">
+					  </div>
+						<textarea id="editor1" name="editor1" rows="10" cols="80"></textarea>		
+						<div class="text-xs-right mt-20">
+							<button type="submit" class="btn btn-rounded btn-info">Submit</button>
+						</div>
+				  </form>
 				</div>
 			  </div>
-			
-			<div class="row">
-				<div class="col-md-12 col-lg-4">
-				  <div class="box">
-					<div class="box-header with-border">
-					  <h4 class="box-title d-block text-center">Welcome Email</h4>          
+			  <!-- /.box -->
+			  <div class="box">
+				<div class="box-body">
+					<h4 class="box-title">Info Table</h4>
+					<h6 class="box-subtitle mb-20">To use add class <code>.bg-info</code> in the <code>&lt;thead&gt;</code> and add class <code>.b-1 .border-info</code> in <code>&lt;table&gt;</code></h6>
+					<div class="table-responsive">
+						<table class="table b-1 border-info">
+							<thead class="bg-info">
+								<tr>
+									<th>#</th>
+									<th>First Name</th>
+									<th>Last Name</th>
+									<th>Username</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>Nigam</td>
+									<td>Eichmann</td>
+									<td>@Sonu</td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>Deshmukh</td>
+									<td>Prohaska</td>
+									<td>@Genelia</td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>Roshan</td>
+									<td>Rogahn</td>
+									<td>@Hritik</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
-					<div class="box-body">
-						<a class="d-block" href="#" target="_blank">
-						  <img src="{{asset('assets/images/preview/email-welcome.png')}}" alt="welcome email page">
-						</a>
-					</div>
-					<!-- /.box-body -->
-				  </div>
-				  <!-- /.box -->
-				</div>
-				<div class="col-md-12 col-lg-4">
-				  <div class="box">
-					<div class="box-header with-border">
-					  <h4 class="box-title d-block text-center">Verify Emial</h4>          
-					</div>
-					<div class="box-body">
-						<a class="d-block" href="#" target="_blank">
-						  <img src="{{asset('assets/images/preview/email-verify-email.png')}}" alt="Verify Emial page">
-						</a>
-					</div>
-					<!-- /.box-body -->
-				  </div>
-				  <!-- /.box -->
-				</div>
-				<div class="col-md-12 col-lg-4">
-				  <div class="box">
-					<div class="box-header with-border">
-					  <h4 class="box-title d-block text-center">Change Password</h4>          
-					</div>
-					<div class="box-body">
-						<a class="d-block" href="#" target="_blank">
-						  <img src="{{asset('assets/images/preview/email-change-pass.png')}}" alt="Change Password page">
-						</a>
-					</div>
-					<!-- /.box-body -->
-				  </div>
-				  <!-- /.box -->
-				</div>
-				<div class="col-md-12 col-lg-4">
-				  <div class="box">
-					<div class="box-header with-border">
-					  <h4 class="box-title d-block text-center">User Updates</h4>          
-					</div>
-					<div class="box-body">
-						<a class="d-block" href="#" target="_blank">
-						  <img src="{{asset('assets/images/preview/email-update.png')}}" alt="User Updates page">
-						</a>
-					</div>
-					<!-- /.box-body -->
-				  </div>
-				  <!-- /.box -->
-				</div>
-				<div class="col-md-12 col-lg-4">
-				  <div class="box">
-					<div class="box-header with-border">
-					  <h4 class="box-title d-block text-center">Expired Card</h4>          
-					</div>
-					<div class="box-body">
-						<a class="d-block" href="#" target="_blank">
-						  <img src="{{asset('assets/images/preview/email-expired-card.png')}}" alt="Expired Card page">
-						</a>
-					</div>
-					<!-- /.box-body -->
-				  </div>
-				  <!-- /.box -->
-				</div>
-				<div class="col-md-12 col-lg-4">
-				  <div class="box">
-					<div class="box-header with-border">
-					  <h4 class="box-title d-block text-center">Closed Account</h4>          
-					</div>
-					<div class="box-body">
-						<a class="d-block" href="#" target="_blank">
-						  <img src="{{asset('assets/images/preview/email-closed-account.png')}}" alt="Closed Account page">
-						</a>
-					</div>
-					<!-- /.box-body -->
-				  </div>
-				  <!-- /.box -->
 				</div>
 			</div>
+			 
+			  <!-- /.box -->
 
+			</div>
+			<!-- /.col-->
+		  </div>
+		  <!-- ./row -->
 		</section>
-		<!-- /.content -->
+
+
 	  </div>
   </div>
   

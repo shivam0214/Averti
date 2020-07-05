@@ -10,7 +10,8 @@ Class Functions{
 
     public static function save_meeting($jdata){
         $data = json_decode($jdata,true);
-        if(@$data['id']){
+      //  print_r($data);die;
+        if($data['id']!=''){
             $save = array(
                 'user_id'=>Auth::user()['id'],
                 'uuid'=>$data['uuid'],

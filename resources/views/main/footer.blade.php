@@ -282,11 +282,12 @@
 	<script src="{{asset('assets/vendor_components/apexcharts-bundle/dist/apexcharts.js')}}"></script>
 	<script src="{{asset('assets/vendor_components/progressbar.js-master/dist/progressbar.js')}}"></script>	
 	<script src="{{asset('assets/vendor_components/sweetalert/sweetalert.min.js')}}"></script>
+		<script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
 	<script src="{{asset('assets/js/template.js')}}"></script>
 	<script src="{{asset('assets/js/pages/dashboard.js')}}"></script>
 	<script src="{{asset('assets/js/demo.js')}}"></script>
 	<script src="{{asset('assets/vendor_plugins/iCheck/icheck.js')}}"></script>
-	<script src="{{asset('assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
+	
 	<script src="{{asset('assets/js/pages/mailbox.js')}}"></script>
 	<script src="{{asset('assets/js/pages/form-compose.js')}}"></script>
 	<script src="{{asset('assets/js/pages/data-table.js')}}"></script>
@@ -299,27 +300,24 @@
 	<script src="{{asset('assets/js/pages/app-chat.js')}}"></script>
 	<script src="{{asset('assets/vendor_components/Magnific-Popup-master/dist/jquery.magnific-popup.min.js')}}"></script>
 	<script src="{{asset('assets/vendor_components/Magnific-Popup-master/dist/jquery.magnific-popup-init.js')}}"></script>
-	<script src="{{asset('assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
-	<script src="{{asset('assets/js/pages/mailbox.js')}}"></script>
+	
+	
 	<script src="{{asset('assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
 	<script src="{{asset('assets/vendor_plugins/timepicker/bootstrap-timepicker.min.js')}}"></script>
 	<script src="{{asset('assets/js/pages/advanced-form-element.js')}}"></script>
 	<script src="{{asset('assets/vendor_components/jquery-steps-master/build/jquery.steps.js')}}"></script>
-	<script src="{{asset('assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
-	<script src="{{asset('assets/js/pages/mailbox.js')}}"></script>
+	
+	
 	<script src="{{asset('assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js')}}"></script>
 	<script src="{{asset('assets/vendor_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js')}}"></script>
 	<script src="{{asset('assets/vendor_components/select2/dist/js/select2.full.js')}}"></script>
 	<script src="{{asset('assets/vendor_plugins/input-mask/jquery.inputmask.js')}}"></script>
 	<script src="{{asset('assets/vendor_plugins/input-mask/jquery.inputmask.date.extensions.js')}}"></script>
 	<script src="{{asset('assets/vendor_plugins/input-mask/jquery.inputmask.extensions.js')}}"></script>
-	<script src="{{asset('assets/vendor_components/moment/min/moment.min.js')}}"></script>
 	<script src="{{asset('assets/vendor_components/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
-	<script src="{{asset('assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
 	<script src="{{asset('assets/vendor_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js')}}"></script>
-	<script src="{{asset('assets/vendor_plugins/timepicker/bootstrap-timepicker.min.js')}}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	{{--  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  --}}
 	<script src="{{asset('assets/js/script.js')}}"></script>
 	<script src="{{asset('assets/js/pages/steps.js')}}"></script>
 	<script src="{{asset('assets/js/jquery.timepicker.min.js')}}"></script>
@@ -327,17 +325,10 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="{{asset('assets/js/pages/c3-bar-pie.js')}}"></script>
 	<script src="{{asset('assets/js/script.js')}}"></script>
-	<script src="{{asset('assets/icons/feather-icons/feather.min.js')}}"></script>	
 	<script src="{{asset('assets/vendor_components/c3/d3.min.js')}}"></script>
 	<script src="{{asset('assets/vendor_components/c3/c3.min.js')}}"></script>
 	<script src="{{asset('assets/js/pages/invoice.js')}}"></script>
 	<script src="{{asset('assets/vendor_plugins/JqueryPrintArea/demo/jquery.PrintArea.js')}}"></script>
-	<script src="{{asset('assets/icons/feather-icons/feather.min.js')}}"></script>
-	<script src="{{asset('assets/vendor_components/datatable/datatables.min.js')}}"></script>
-	<script src="{{asset('assets/js/pages/data-table.js')}}"></script>
-
-
-	<script src="{{asset('assets/vendor_components/sweetalert/sweetalert.min.js')}}"></script>
 	<script src="{{asset('assets/vendor_components/sweetalert/jquery.sweet-alert.custom.js')}}"></script>
 	/* custom js added by sam*/
 	<script src="{{asset('assets/js/custom/zoom.js')}}"></script>
@@ -345,7 +336,7 @@
 	<script src="https://api.vsee.com/js/vseepresence.js"></script>
 
 	<script>
-	
+	 CKEDITOR.replace( 'editor1' );
   $( function() {
 
   $( "#datepicker" ).datepicker({minDate: 0,});

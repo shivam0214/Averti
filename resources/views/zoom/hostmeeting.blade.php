@@ -2,8 +2,8 @@
 <head>
     <title>{{ config('app.name', 'Laravel') }} | {{Auth::user()['name']}}</title>
     <meta charset="utf-8" />
-    <link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.7.5/css/bootstrap.css"/>
-    <link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.7.5/css/react-select.css"/>
+    <link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.7.9/css/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="https://source.zoom.us/1.7.9/css/react-select.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -50,14 +50,15 @@
 </nav>
 
 
-<script src="https://source.zoom.us/1.7.5/lib/vendor/react.min.js"></script>
-<script src="https://source.zoom.us/1.7.5/lib/vendor/react-dom.min.js"></script>
-<script src="https://source.zoom.us/1.7.5/lib/vendor/redux.min.js"></script>
-<script src="https://source.zoom.us/1.7.5/lib/vendor/redux-thunk.min.js"></script>
-<script src="https://source.zoom.us/1.7.5/lib/vendor/jquery.min.js"></script>
-<script src="https://source.zoom.us/1.7.5/lib/vendor/lodash.min.js"></script>
+ <script src="https://source.zoom.us/1.7.9/lib/vendor/react.min.js"></script>
+    <script src="https://source.zoom.us/1.7.9/lib/vendor/react-dom.min.js"></script>
+    <script src="https://source.zoom.us/1.7.9/lib/vendor/redux.min.js"></script>
+    <script src="https://source.zoom.us/1.7.9/lib/vendor/redux-thunk.min.js"></script>
+    <script src="https://source.zoom.us/1.7.9/lib/vendor/jquery.min.js"></script>
+    <script src="https://source.zoom.us/1.7.9/lib/vendor/lodash.min.js"></script>
 
-<script src="https://source.zoom.us/zoom-meeting-1.7.5.min.js"></script>
+    <!-- import ZoomMtg -->
+    <script src="https://source.zoom.us/zoom-meeting-1.7.9.min.js"></script>
 <script src="{{ asset('js/tool.js')}}"></script>
 <script src="{{ asset('js/index.js')}}"></script>
 

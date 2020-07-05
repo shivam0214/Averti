@@ -40,7 +40,8 @@ Route::get('/Profile', 'Adviser\DashboardController@advisor_profile')->name('adv
 Route::post('/update_profile', 'Adviser\DashboardController@update_profile')->name('update_profile');
 Route::post('/update_advisor_data', 'Adviser\DashboardController@update_advisor_data')->name('update_advisor_data');
 Route::post('/update_user_data', 'Adviser\DashboardController@update_user_data')->name('update_user_data');
-Route::get('/Template', 'Adviser\DashboardController@mail_template')->name('mail_template');
+Route::get('/template', 'Adviser\DashboardController@mail_template')->name('mail_template');
+Route::get('/template_list', 'Adviser\DashboardController@mail_temp_list')->name('mailtemplist');
 
 Route::get('/contact', 'Adviser\ContactController@index')->name('contact');
 Route::get('/dashboard/event', 'Calender\CalenderController@home')->name('calender');
