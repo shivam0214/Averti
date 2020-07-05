@@ -158,4 +158,9 @@ class DashboardController extends Controller
     public function mail_temp_list(){
         return view('mail.list');
     }
+    public function groups(){
+        $contacts = User::where(['perent_id'=>Auth::user()['id'],'role_id'=>3])->get();         
+
+        return view('Mail.group',compact('contacts'));
+    }
 }

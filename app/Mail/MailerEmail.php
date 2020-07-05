@@ -88,7 +88,7 @@ class MailerEmail extends Mailable
             ->with([
                 'body' => $this->view,
                 'name' => 'Toshu Nigam',
-                'link' => 'http://averti.ayanshtechnology.com/mailer',
+                'link' => 'http://averti.ayanshtechnology.com',
             ]);
 
         }else{
@@ -100,7 +100,7 @@ class MailerEmail extends Mailable
             ->with([
                 'body' => $this->view,
                 'name' => 'Toshu Nigam',
-                'link' => 'http://averti.ayanshtechnology.com/mailer',
+                'link' => 'http://averti.ayanshtechnology.com',
             ]);
         }
     }

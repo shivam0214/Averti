@@ -43,6 +43,8 @@ Route::post('/update_user_data', 'Adviser\DashboardController@update_user_data')
 Route::get('/template', 'Adviser\DashboardController@mail_template')->name('mail_template');
 Route::get('/template_list', 'Adviser\DashboardController@mail_temp_list')->name('mailtemplist');
 
+Route::get('/Group', 'Adviser\DashboardController@groups')->name('groups');
+
 Route::get('/contact', 'Adviser\ContactController@index')->name('contact');
 Route::get('/dashboard/event', 'Calender\CalenderController@home')->name('calender');
 Route::get('/dashboard/calender', 'Calender\CalenderController@text')->name('text');

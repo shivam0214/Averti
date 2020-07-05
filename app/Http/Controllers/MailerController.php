@@ -59,34 +59,42 @@ class MailerController extends Controller
         if($request->hasfile('attachment'))
         {
             $file = $request->file('attachment');
+            $size = $file->getClientSize();
             // dump($file->getClientSize());
             // dd($file);
             $name=time().$file->getClientOriginalName();
             $file->move(base_path().'/uploads/', $name);
             $is_attached=1;
-        }
-        // dd('no file');
-        $mailer = new Mailer();
-        $mailer->user_id = Auth::user()->id;
-        $mailer->subject = $request->subject;
-        $mailer->to      = $request->to;
-        $mailer->body    = $request->body;
-        $mailer->is_attachment = $is_attached;
-        $mailer->save();
-        $lastkey = $mailer->id;
-        if($is_attached===1){
-            $insertAttachment['user_id']=Auth::user()->id;
-            $insertAttachment['mail_id']=$lastkey;
             $insertAttachment['filename']=$name;
             $insertAttachment['filepath']=base_path().'/uploads/';
-            $insertAttachment['filesize']='888888';
+            $insertAttachment['filesize']=$size;
             $insertAttachment['filetype']=$file->getClientMimeType();
-            $insertAttachment['created_at']=date('Y-m-d H:i:s');
-            DB::table('mail_attachment')->insert($insertAttachment);
+        }
+        $TO = explode(',',$request->to);
+        foreach($TO as $to){
+            if(empty(Mail::to(trim($to))->send(new MailerEmail($request->subject,$request->body,$insertAttachment)))){
+                $mailer = new Mailer();
+                $mailer->user_id = Auth::user()->id;
+                $mailer->subject = $request->subject;
+                $mailer->to      = trim($to);
+                $mailer->body    = $request->body;
+                $mailer->is_attachment = $is_attached;
+                $mailer->save();
+                $lastkey = $mailer->id;
+                if($is_attached===1){
+                    $insertAttachment['user_id']=Auth::user()->id;
+                    $insertAttachment['mail_id']=$lastkey;
+                    $insertAttachment['created_at']=date('Y-m-d H:i:s');
+                    DB::table('mail_attachment')->insert($insertAttachment);
+                }
+        
+            }else{
+                //Mail not send messahe goes here
+            }
         }
 
-
-        $response = Mail::to($request->to)->send(new MailerEmail($request->subject,$request->body,$insertAttachment)); 
+        // $response = Mail::to($request->to)->send(new MailerEmail($request->subject,$request->body,$insertAttachment)); 
+        // dd($response);
         return redirect()->route('mailer.index');
     }
 

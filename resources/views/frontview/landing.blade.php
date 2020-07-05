@@ -67,7 +67,7 @@
 						<img src="{{asset('assets/images/about/01.jpg')}}" alt="about">
 						<div class="about-video">
 							<span>Watch Video</span>
-							<a href="{{asset('assets/vedio/revision.mp4')}}" data-rel="lightcase"  class="av-icon" >
+							<a href="{{asset('assets/vedio/123.mp4')}}" data-rel="lightcase"  class="av-icon" >
 								<div class="pulse1"></div>
 								<i class="fas fa-play"></i>
 							</a>
@@ -92,7 +92,7 @@
 <div class="container-fluid">
 <div class="row">
 <video autoplay="" muted="" loop="" id="myVideo">
-            <source src="{{asset('assets/vedio/revision.mp4')}}" type="video/mp4">
+            <source src="{{asset('assets/vedio/123.mp4')}}" type="video/mp4">
           </video>
 </div>
 </div>
@@ -226,7 +226,7 @@ Invite clients online in minutes.</li>
 							<img src="{{asset('assets/images/service/icon/Service-Icon-01.png')}}" alt="services">
 						</div>
 						<div class="post-content">
-							<h4>Video & Audio Call</h4>
+							<h4>Video &  Audio Call</h4>
 							<p>Conveniently engineer top-line testing procedure before diverse niche markets.</p>
 						</div>
 					</div>
@@ -383,7 +383,7 @@ Invite clients online in minutes.</li>
 									<div class="post-item-inner">
 										<div class="post-thumb">
 											<div class="company-logo">
-												<a href="#"><img src="{{asset('assets/images/banner/plan-img.jpg')}}" alt="case"></a>
+												<a href="#"><img src="{{asset('assets/images/blog/03.jpg')}}" alt="case"></a>
 											</div>
 											<div class="company-name">
 												<h3><a href="#"> Our Advisor</a></h3>
@@ -430,7 +430,7 @@ Invite clients online in minutes.</li>
 												<a href="#"><img src="{{asset('assets/images/advisor/video_call.jpg')}}" alt="case"></a>
 											</div>
 											<div class="company-name">
-												<h3><a href="#">Video Deatils</a></h3>
+												<h3><a href="#">Video Calling</a></h3>
 											</div>
 										</div>
 										<div class="post-content">
@@ -479,7 +479,7 @@ Invite clients online in minutes.</li>
 		<div class="container">
 			<div class="section-header">
 				<h2>Support By Real People</h2>
-				<p>Need A Help? Just Call Us at <span> + (123) 180-567-8990</span> or email us  <a href="#"><span class="__cf_email__" data-cfemail="b9d0d7dfd6f9d8cfdccbcdd097dad6d4">[email&#160;protected]</span></a></p>
+				<p>Need A Help? Just Call Us at <span> + (123) 180-567-8990</span> or email us  <a href="#"><span class="__cf_email__" data-cfemail="b9d0d7dfd6f9d8cfdccbcdd097dad6d4">[averti@info.com&#160;]</span></a></p>
 			</div>
 			<div class="section-wrapper">
 				<div class="contact-member">
@@ -646,7 +646,7 @@ Invite clients online in minutes.</li>
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-4 col-md-6">
-						<div class="single-box single-box-2 bg-4">
+						<div class="single-box single-box-2 bg-6">
 							<img src="{{asset('assets/images/banner/1.png')}}">
 							<div class="no">1</div>
 							<h5>ALIGNMENT</h5>
@@ -654,7 +654,7 @@ Invite clients online in minutes.</li>
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-6">
-						<div class="single-box single-box-2 bg-5">
+						<div class="single-box single-box-2 bg-6">
 							<img src="{{asset('assets/images/banner/3.png')}}">
 							<div class="no">2</div>
 						
