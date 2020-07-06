@@ -12,9 +12,9 @@ global.fullpath = "";
 global.messageId;
 global.imgURL = "";
 app.use(express.static('public'));
-app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
-});
+// app.get('/', function(req, res){
+//   res.sendFile(__dirname + '/index.html');
+// });
 
 app.post('/uploadFile',function(req, res){
     upload(req,res,function(err) { 
@@ -27,9 +27,9 @@ app.post('/uploadFile',function(req, res){
             res.send(err) 
         } 
         else { 
-/*   db.query('update message set attachment_url =? where id =?',[fullpath,messageId],(err, result)=>{
+  db.query('update message set attachment_url =? where id =?',[fullpath,messageId],(err, result)=>{
 	  global.imgURL ='';
-  }) */
+  }) 
             // SUCCESS, image successfully uploaded 
             res.send("Success, Image uploaded!") 
         } 

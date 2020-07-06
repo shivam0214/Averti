@@ -31,7 +31,7 @@
                
                
                   <h4>Where are you located?</h4>
-                  <h5>Zoe has great advisors all across the country.</h5>
+                  <h5>Averti has great advisors all across the country.</h5>
                   <div class="form-group">
 
                   <input type="text" name="located" placeholder="10583" class="f1-email form-control" id="located">
@@ -103,7 +103,7 @@
                 </fieldset>
                <fieldset>
                     <div class="icongol"><img src="<?php echo e(asset('assets/frontassets/images/banner/mission-accomplished.png')); ?>"></div>
-                    <h4>What would you like to accomplish (Max 3)</h4>
+                    <h4>What would you like to accomplish</h4>
                     <h5>Your needs are matched with the advisor's specialties.</h5>
                     <div id="affected2" name="Whatwouldyoulike">
 
