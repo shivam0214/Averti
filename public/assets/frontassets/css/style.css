@@ -14407,9 +14407,6 @@ img {
   .padding-x {
     padding: 0 15px; } }
 
-/* div#scrollbar::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #fff; } */
 
 div#scrollbar::-webkit-scrollbar {
   width: 6px;
