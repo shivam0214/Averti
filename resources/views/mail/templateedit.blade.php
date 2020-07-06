@@ -21,13 +21,17 @@
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
-					<form method="POST" action="{{route('savetemplate')}}" enctype="multipart/form-data">
-					@csrf
+					<form method="POST" action="{{route('updatetemplate',['templateid'=>$detail[0]['id']])}}" enctype="multipart/form-data">
+
+					  @csrf
+					{{ method_field('PUT')}}
 					<div class="form-group">
 						<label>Template Title</label>
-						<input class="form-control" type="text" name="title" placeholder="Enter your Title" value="">
+						<input class="form-control" type="text" name="title" placeholder="Enter your Title" value="{{old('title',$detail[0]['title'])}}">
 					  </div>
-						<textarea id="editor1" name="body" rows="10" cols="80"></textarea>		
+						<textarea id="editor1" name="body" rows="10" cols="80">
+						{{old('body',$detail[0]['body'])}}
+						</textarea>		
 						<div class="text-xs-right mt-20">
 							<button type="submit" class="btn btn-rounded btn-info">Submit</button>
 						</div>
