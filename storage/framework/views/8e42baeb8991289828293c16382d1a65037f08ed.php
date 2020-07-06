@@ -52,7 +52,7 @@
 								<td><a href="<?php echo e(route('view_profile',['id'=>$record->id])); ?>"><?php echo e($record['name']); ?> </a></td>
 								<td><?php echo e($record['single']['phone_no']); ?></td>
 								<td><?php echo e($record['catname']['category_name']); ?></td>
-								<td><button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#video-call"><i class="fa fa-video-camera"></i></button>
+								<td><button type="button" data-toggle="modal" data-target="#modal-right_2" class="btn btn-primary waves-effect waves-light" data-target="#video-call"><i class="fa fa-video-camera"></i></button>
                                         <a class="btn btn-success waves-effect waves-light" href="<?php echo e(route('view_profile',['id'=>$record->id])); ?>"><i class="fa fa-edit"></i></a>
                                       <button type="button" class="btn btn-danger waves-effect waves-light"><i class="fa fa-trash"></i></button></td>
 							</tr>
@@ -64,10 +64,32 @@
 						</div>	
 					</div>
 				</div>
-			</div>
+			</div>	
+		
+  		
 		</section>
+	
 	</div>
 </div>
+<div class="modal modal-right fade" id="modal-right_2" tabindex="-1">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h3 class="modal-title">Video Calling</h3>
+			<button type="button" class="close" data-dismiss="modal">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		  <div class="modal-body">
+		  <img src="<?php echo e(asset('assets/images/advisor/video_call.jpg')); ?>" alt="..." class="m-10">
+				<textarea class="publisher-input auto-expand" rows="4" placeholder="Type notes here..."></textarea>
+		  </div>
+		  <div class="modal-footer modal-footer-uniform">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			
+		</div>
+	  </div>
+	</div>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH G:\averti\resources\views/User/listuser.blade.php ENDPATH**/ ?>

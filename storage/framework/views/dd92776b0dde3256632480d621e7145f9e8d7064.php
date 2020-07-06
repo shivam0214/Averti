@@ -47,7 +47,7 @@
 
 <!-- HIDDEN PREHEADER TEXT -->
 <div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: 'Poppins', sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
-    Hi <?php echo e($data->name); ?> this is the Zoom meeting invite for you.
+    
 </div>
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -109,6 +109,7 @@
               <!-- COPY -->
               <tr>
                 <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 20px 30px; color: #666666; font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 400; line-height: 25px;">
+                <p> Hi <?php echo e($data->name); ?> this is the Zoom meeting invite for you.</p>
                   <p style="margin: 0;">Please Join meeting by click on this link.  </p>
                   <p style="margin: 0;">Meeting time is <?php echo e(date('Y-m-d',strtotime($data['time']))); ?>  <?php echo e(date('H-i a',strtotime($data['time']))); ?></p>
                 </td>

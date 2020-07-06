@@ -28,11 +28,11 @@
                         
                         @foreach ($meetings as $record)
                             <tr>
-                            <th scope="row">{{$record['meeting_id']}}</th>
+                            <th scope="row">{{str_replace("'",'',$record['meeting_id'])}}</th>
                             <td>{{$record['topic']}}</td>
                             <td>{{$record['status']}}</td>
                             <td>{{date('Y-m-d',strtotime($record['start_time']))}}  {{date('H-i a',strtotime($record['start_time']))}}</td>
-                            <td><a href="javascript:void(0)" role="{{$record['meeting_id']}}" class="btn btn-primary waves-effect waves-light invite" >Invite</a> <a  class="btn btn-primary waves-effect waves-light" href="{{route('allmeeting',$record['meeting_id'])}}">Start</a></td>
+                            <td><a href="javascript:void(0)" role="{{$record['id']}}" class="btn btn-primary waves-effect waves-light invite" >Invite</a> <a  class="btn btn-primary waves-effect waves-light" href="{{route('allmeeting',$record['id'])}}">Start</a></td>
                             
                             </tr>
                         @endforeach

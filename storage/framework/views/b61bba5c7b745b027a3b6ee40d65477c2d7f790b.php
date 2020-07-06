@@ -38,7 +38,7 @@
                 
           <input type="hidden" value="oncall/<?php echo e($id); ?>" id="url">
 			<input type="hidden" value="/status/<?php echo e($id); ?>" id="rurl">
-			<input type="hidden" value="<?php echo e($id); ?>" id="meeting_number">
+			<input type="hidden" value="<?php echo e($mid); ?>" id="meeting_number">
 			<input type="hidden" value="<?php echo e($p); ?>" id="meeting_pwd">
             <input type="hidden" value="<?php echo e($role); ?>" id="meeting_role">
                 

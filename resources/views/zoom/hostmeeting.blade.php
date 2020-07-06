@@ -38,7 +38,7 @@
                 
           <input type="hidden" value="oncall/{{$id}}" id="url">
 			<input type="hidden" value="/status/{{$id}}" id="rurl">
-			<input type="hidden" value="{{$id}}" id="meeting_number">
+			<input type="hidden" value="{{$mid}}" id="meeting_number">
 			<input type="hidden" value="{{$p}}" id="meeting_pwd">
             <input type="hidden" value="{{$role}}" id="meeting_role">
                 

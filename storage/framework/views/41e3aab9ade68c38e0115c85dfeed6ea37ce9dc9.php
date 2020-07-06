@@ -31,7 +31,7 @@
                
                
                   <h4>Where are you located?</h4>
-                  <h5>Zoe has great advisors all across the country.</h5>
+                  <h5>Averti has great advisors all across the country.</h5>
                   <div class="form-group">
 
                   <input type="text" name="located" placeholder="10583" class="f1-email form-control" id="located">
@@ -50,12 +50,12 @@
                   <h5>Each stage of your life is financially unique.</h5>
                   <div id="affected" name="age">
 
-                  <input type="radio" name="age" value="29" title="Under 30">
-                  <input type="radio" name="age" value="30" title="30s">
-                  <input type="radio" name="age" value="40" title="40s">
-                  <input type="radio" name="age" value="50" title="50s">
-                  <input type="radio" name="age" value="60" title="60s">
-                  <input type="radio" name="age" value="70" title="70+">
+                  <input type="radio" name="age" value="21-29" title="Under 30">
+                  <input type="radio" name="age" value="30-39" title="30s">
+                  <input type="radio" name="age" value="40-49" title="40s">
+                  <input type="radio" name="age" value="50-59" title="50s">
+                  <input type="radio" name="age" value="60-69" title="60s">
+                  <input type="radio" name="age" value="70+" title="70+">
                   </div>
                   <div class="f1-buttons">
                   <button type="button" class="btn btn-previous">Previous</button>
@@ -103,7 +103,7 @@
                 </fieldset>
                <fieldset>
                     <div class="icongol"><img src="<?php echo e(asset('assets/frontassets/images/banner/mission-accomplished.png')); ?>"></div>
-                    <h4>What would you like to accomplish (Max 3)</h4>
+                    <h4>What would you like to accomplish</h4>
                     <h5>Your needs are matched with the advisor's specialties.</h5>
                     <div id="affected2" name="Whatwouldyoulike">
 

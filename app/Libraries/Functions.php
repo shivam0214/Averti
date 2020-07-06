@@ -2,6 +2,7 @@
 namespace App\Libraries;
 use App\Meeting;
 use Auth;
+use DB;
 Class Functions{
 
     public function test(){
@@ -15,7 +16,7 @@ Class Functions{
             $save = array(
                 'user_id'=>Auth::user()['id'],
                 'uuid'=>$data['uuid'],
-                'meeting_id'=>$data['id'],
+                'meeting_id'=>"'".$data['id']."'",
                 'host_id'=>$data['host_id'],
                 'topic'=>$data['topic'],
                 'status'=>$data['status'],
@@ -28,13 +29,15 @@ Class Functions{
                 'settings'=>json_encode($data['settings']),
                 'allresult'=>$jdata
              );
-            if(Meeting::create($save)){
-                $notification = array(
+            
+           $lastid = Meeting::create($save);
+            if($lastid->id){
+$notification = array(
                     'status'=>1,
                     'message' => 'Zoom meeting created',
                     'alert-type' => 'success'
                     );
-            }
+            
             }else{
             $notification = array(
                 'status'=>0,
@@ -42,7 +45,7 @@ Class Functions{
                 'alert-type' => 'error'
                 );
         }
-        
+        }
         return response()->json($notification);
     }
 }
