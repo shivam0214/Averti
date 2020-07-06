@@ -62,6 +62,7 @@
         </li>
      
             <li><a href="<?php echo e(route('mail_template')); ?>"><i class="ti-more"></i>Template</a></li>
+            <li><a href="<?php echo e(route('mailtemplist')); ?>"><i class="ti-more"></i>Template List</a></li>
             <li><a href="<?php echo e(route('groups')); ?>"><i class="ti-more"></i>Group</a></li>
           </ul>
         </li>
