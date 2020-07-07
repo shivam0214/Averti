@@ -29,7 +29,7 @@
 				</div>
 					<div class="box box-body">
 						<div class="d-flex justify-content-between align-items-center">
-						<form action="http://localhost:3000/uploadFile" id="data" method="post" enctype="multipart/form-data" class ="col-lg-9 col-md-12 col-12">
+						<form action="http://localhost:3000/uploadFile" id="data" method="post" enctype="multipart/form-data" class ="col-lg-12 col-md-12 col-12">
 							<input class="form-control b-0 py-10" id="m" autocomplete="off" type="text" placeholder="Say something...">
 							
 							<div class="d-flex justify-content-between align-items-center">
@@ -42,7 +42,7 @@
 								</button>
 								<button type="button" class="waves-effect waves-circle btn btn-circle mr-10 btn-outline-primary">
 								<i class="fa fa-microphone" aria-hidden="true"></i>
-								</button><button type="button" class="waves-effect waves-circle btn btn-circle mr-10 btn-outline-primary">
+								</button><button type="button" data-toggle="modal" data-target="#modal-right_2" class="waves-effect waves-circle btn btn-circle mr-10 btn-outline-primary">
 								<i class="fa fa-video-camera" aria-hidden="true"></i>
 								</button><button type="submit" class="waves-effect waves-circle btn btn-circle mr-10 btn-outline-primary">
 								<i class="fa fa-paper-plane" aria-hidden="true"></i>
@@ -219,6 +219,26 @@
 		<!-- /.content -->
 	  </div>
   </div>
+  <div class="modal modal-right fade" id="modal-right_2" tabindex="-1">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h3 class="modal-title">Video Calling</h3>
+			<button type="button" class="close" data-dismiss="modal">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		  <div class="modal-body">
+		  <img src="<?php echo e(asset('assets/images/advisor/video_call.jpg')); ?>" alt="..." class="m-10">
+				<textarea class="publisher-input auto-expand" rows="4" placeholder="Type notes here..."></textarea>
+		  </div>
+		  <div class="modal-footer modal-footer-uniform">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			
+		</div>
+	  </div>
+	</div>
+
    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 	    <script>

@@ -11,6 +11,7 @@ use App\Meeting;
 use App\Libraries\Functions;
 use App\User;
 use Mail;
+use App\Invitemeeting;
 use App\Mail\SendEmail;
 class ZoomController extends Controller
 {
@@ -31,15 +32,16 @@ class ZoomController extends Controller
 
     public function host(Request $r){
         $loggedinUser = Auth::user();
-        $mtng = Meeting::where(['meeting_id'=>$r->mid])->get();
-        $id = $mtng[0]->meeting_id;
+        $mtng = Meeting::where(['id'=>$r->mid])->get();
+        $mid = str_replace("'","",$mtng[0]->meeting_id);
         $p = $mtng[0]->password;
-        $role = ($loggedinUser['role_id']==2)?1:0;
+        $role = ($loggedinUser['role_id']==2)?0:1;
         $name = $loggedinUser['firstname'];
-       return view('zoom.hostmeeting',compact('id','p','role','name'));
+        $id = $r->mid;
+       return view('zoom.hostmeeting',compact('mid','p','role','name','id'));
     }
     public function status(Request $r){
-        $mtng = Meeting::where(['meeting_id'=>$r->mid])->update(['status'=>'complete']);
+        $mtng = Meeting::where(['id'=>$r->mid])->update(['status'=>'complete']);
         return redirect('/getmeeting'); 
     }
 
@@ -51,10 +53,11 @@ class ZoomController extends Controller
     public function sendinvite(Request $r){
         $users = $r->users;
         $title = $r->topic; 
-        $mtng = Meeting::where(['meeting_id'=>$r->mid])->get();
+        $mtng = Meeting::where(['id'=>$r->mid])->get();
         $emailsusers = User::whereIn('id',$users)->get();
         $subject = "Averti meeting by ". Auth::user()['name'];
         foreach($emailsusers as $user){
+            Invitemeeting::create(['user_id'=>$user['id'],'advisor_id'=>Auth::user()['id'],'mid'=>$r->mid]);
             $user['mid'] = $r->mid;
             $user['time'] = $mtng[0]->start_time;
             $ss = Mail::to($user->email)->send(new SendEmail($subject,'emails.email',$user));
@@ -67,4 +70,12 @@ class ZoomController extends Controller
         }
         
     }
+    public function invited(){
+        $invites = Invitemeeting::where('user_id',Auth::user()['id'])->orderBy('id','desc')->get();
+       /*  foreach($invites as $i){
+            print_r($i->user->single);die;
+        } */
+        return view('zoom.invited',compact('invites'));
+    }
+
 }
