@@ -37,9 +37,9 @@
 								<tr>
 									<td>{{++$k}}</td>
 									<td>{{$val->title}}</td>
-									<td ><a href="{{route('templateedit',['templateid'=>$val->id])}}" class="btn btn-circle btn-success btn-xs mr-10" data-toggle="tooltip" data-original-title="Edit">
+									<td id="delete{{$val->id}}"><a href="{{route('templateedit',['templateid'=>$val->id])}}" class="btn btn-circle btn-success btn-xs mr-10" data-toggle="tooltip" data-original-title="Edit">
 										<i class="ti-marker-alt"></i>
-									</a><a href="javascript:void(0)" class="btn btn-circle btn-danger btn-xs" title="" data-toggle="tooltip" data-original-title="Delete"><i class="ti-trash"></i></a></td>
+									</a><a href="javascript:void(0)" onClick="deleteTemplate({{$val->id}})" class="btn btn-circle btn-danger btn-xs" title="" data-toggle="tooltip" data-original-title="Delete"><i class="ti-trash"></i></a></td>
 								</tr>
 							@endforeach
 							</tbody>
@@ -62,3 +62,19 @@
   </div>
   
 @endsection('content')
+<script>
+function deleteTemplate(val){
+	// alert(val);
+	$.ajax({
+		type: "DELETE",
+		url: '/deletetemplate',
+		data: {templateid: val,"_token": "{{ csrf_token() }}"},
+		success: function( msg ) 
+		{
+			console.log(msg);
+			$("#delete"+val).parent('tr').hide();
+		}
+	});
+
+}
+</script>

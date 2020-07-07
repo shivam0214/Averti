@@ -44,8 +44,23 @@ class MailTemplateController extends Controller
         return redirect()->route('mailtemplate')->with('messgae','Mail Template is updated successfully.');
         
     }
-    public function delete(Request $request){
-        return redirect()->route('mailtemplate')->with('messgae','Mail Template is deleted successfully.');
 
+    public function delete(Request $request){
+        $template = Mailtemplate::find($request->templateid);
+        $template->delete();
+        return response()->json([
+            'message' => 'Data deleted successfully!'
+        ]);
+        exit;
     }
+
+    public function getTemplateBody(Request $request){
+        $detail = Mailtemplate::where('id',$request->templateid)->get();
+        return response()->json([
+            'message' => 'Data deleted successfully!',
+            'result'    => $detail
+        ]);
+        exit;
+    }
+
 }

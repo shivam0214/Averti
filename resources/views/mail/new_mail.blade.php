@@ -26,9 +26,11 @@
 									<input class="form-control" placeholder="Subject:" name="subject">
 								  </div>
 								  <div class="form-group">
-									<select class="form-control" placeholder="Template:" name="template">
+									<select class="form-control" placeholder="Template:" name="template" id="templatebody" onChange="getBody(this.value)">
 									<option value="0">Select Template</option>
-									<option value="welcome_to_user_subscribe">Welcome User Subscription</option>
+									@foreach($templates as $template)
+										<option value="{{$template->id}}">{{$template->title}}</option>
+									@endforeach
 									</select>
 								  </div>
 
@@ -316,5 +318,22 @@ function getMessage(val){
 		}
 	});
 
+}
+
+function getBody(id)
+// $('#templatebody').change(function(){
+        // var id = $(this).val();
+		alert(id);
+    /* $.ajax({
+        type: "GET",
+        url: '/gettemplatebody',
+		data: {templateid: id,"_token": "{{ csrf_token() }}"},
+		success: function( data ) {
+              alert(data);
+
+            document.getElementByName("body").innerHTML = data.result;
+        }
+    }); */
+// });
 }
 </script>
