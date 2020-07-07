@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+const cors = require('cors');
 var port = process.env.PORT || 3000;
 const db = require('./config/db');
 const path = require("path") 
@@ -15,7 +16,7 @@ app.use(express.static('public'));
 // app.get('/', function(req, res){
 //   res.sendFile(__dirname + '/index.html');
 // });
-
+app.use(cors());
 app.post('/uploadFile',function(req, res){
     upload(req,res,function(err) { 
   
