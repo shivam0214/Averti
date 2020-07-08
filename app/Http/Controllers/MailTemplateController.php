@@ -58,7 +58,7 @@ class MailTemplateController extends Controller
         $detail = Mailtemplate::where('id',$request->templateid)->get();
         return response()->json([
             'message' => 'Data deleted successfully!',
-            'result'    => $detail
+            'result'    => $detail[0]->body
         ]);
         exit;
     }

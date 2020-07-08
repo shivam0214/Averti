@@ -319,21 +319,17 @@ function getMessage(val){
 	});
 
 }
+function getBody(id){
+	console.log(id)
+	$.ajax({
+	type: "GET",
+	url: '/gettemplatebody',
+	data: {templateid: id,"_token": "{{ csrf_token() }}"},
+	success: function( data ) {
+		// console.log(data);
+		document.getElementById("compose-textarea").innerHTML = data.result;
+	}
+	});
 
-function getBody(id)
-// $('#templatebody').change(function(){
-        // var id = $(this).val();
-		alert(id);
-    /* $.ajax({
-        type: "GET",
-        url: '/gettemplatebody',
-		data: {templateid: id,"_token": "{{ csrf_token() }}"},
-		success: function( data ) {
-              alert(data);
-
-            document.getElementByName("body").innerHTML = data.result;
-        }
-    }); */
-// });
 }
 </script>

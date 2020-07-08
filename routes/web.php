@@ -64,7 +64,7 @@ Route::post('/savetemplate', 'MailTemplateController@store')->name('savetemplate
 Route::get('/templateedit/{templateid}', 'MailTemplateController@edit')->name('templateedit');
 Route::put('/updatetemplate/{templateid}', 'MailTemplateController@update')->name('updatetemplate');
 Route::delete('/deletetemplate', 'MailTemplateController@delete')->name('deletetemplate');
-Route::get('/gettemplatebody', 'MailTemplateController@delete')->name('gettemplatebody');
+Route::get('/gettemplatebody', 'MailTemplateController@getTemplateBody')->name('gettemplatebody');
 
 Route::get('/dashboard/User/ViewUser/{id}', 'User\UserController@view_profile')->name('view_profile');
 Route::get('/dashboard/ContactList', 'User\UserController@contacts')->name('contacts');
