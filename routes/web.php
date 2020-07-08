@@ -58,6 +58,13 @@ Route::resource("mailer",'MailerController');
 Route::post('/trash','MailerController@trash');
 Route::post('/starred','MailerController@starred');
 Route::get('/getmail','MailerController@getmessage');
+Route::get('/mailtemplate', 'MailTemplateController@index')->name('mailtemplate');
+Route::get('/addtemplate', 'MailTemplateController@create')->name('addtemplate');
+Route::post('/savetemplate', 'MailTemplateController@store')->name('savetemplate');
+Route::get('/templateedit/{templateid}', 'MailTemplateController@edit')->name('templateedit');
+Route::put('/updatetemplate/{templateid}', 'MailTemplateController@update')->name('updatetemplate');
+Route::delete('/deletetemplate', 'MailTemplateController@delete')->name('deletetemplate');
+Route::get('/gettemplatebody', 'MailTemplateController@delete')->name('gettemplatebody');
 
 Route::get('/dashboard/User/ViewUser/{id}', 'User\UserController@view_profile')->name('view_profile');
 Route::get('/dashboard/ContactList', 'User\UserController@contacts')->name('contacts');

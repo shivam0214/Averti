@@ -28,7 +28,9 @@ class MailerController extends Controller
         $mailer = Mailer::where([['user_id','=',Auth::user()->id],['is_status','=',0]])->orderBy('created_at', 'desc')->simplePaginate(50);
         // dd($mailer);
         $countSent = $mailer->count();
-        return view('mail.new_mail',compact('countSent','mailer'));
+
+        $templates = DB::select("SELECT id, `title` FROM mailtemplate WHERE user_id=".Auth::user()->id);
+        return view('mail.new_mail',compact('countSent','mailer','templates'));
 
     }
 
