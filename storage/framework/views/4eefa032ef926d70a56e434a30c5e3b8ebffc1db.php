@@ -24,8 +24,14 @@
 									<input class="form-control" placeholder="Subject:" name="subject">
 								  </div>
 								  <div class="form-group">
+									<select class="form-control" placeholder="Template:" name="template">
+									<option value="0">Select Template</option>
+									<option value="welcome_to_user_subscribe">Welcome User Subscription</option>
+									</select>
+								  </div>
+
+								  <div class="form-group">
 										<textarea id="compose-textarea" class="form-control" style="height: 300px" name="body">
-										  
 										</textarea>
 								  </div>
 								  <div class="form-group">
@@ -61,105 +67,23 @@
 					</div>
 					<div class="box-body no-padding mailbox-nav">
 					  <ul class="nav nav-pills flex-column">
-						<li class="nav-item"><a class="nav-link active" href="javascript:void(0)"><i class="ion ion-ios-email-outline"></i> Inbox
-						  <span class="label label-success pull-right">12</span></a></li>
-						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-paper-airplane"></i> Sent</a></li>
+						<li class="nav-item"><a class="nav-link active" href="javascript:void(0)"><i class="ion ion-ios-email-outline"></i> Inbox </a></li>
+
+						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-paper-airplane"></i> Sent <span class="label label-success pull-right"><?php echo e($countSent); ?></span></a></li>
+						
 						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-email-unread"></i> Drafts</a></li>
+
 						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-star"></i>  Starred <span class="label label-warning pull-right">14</span></a>
 						</li>
+
 						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-trash-a"></i> Trash</a></li>
+
 					  </ul>
 					</div>
 					<!-- /.box-body -->
 				  </div>
 				  <!-- /. box -->
-				  <div class="box">
-					<div class="box-header with-border">
-					  <h4 class="box-title">Labels</h4>
-					  <ul class="box-controls pull-right">
-						<li><a class="box-btn-slide" href="#"></a></li>	
-					  </ul>
-					</div>
-					<div class="box-body no-padding mailbox-nav">
-					  <ul class="nav nav-pills flex-column">
-						<li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-circle-o text-danger"></i> Important</a></li>
-						<li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-circle-o text-warning"></i> Promotions</a></li>
-						<li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-circle-o text-info"></i> Social</a></li>
-					  </ul>
-					</div>
-					<!-- /.box-body -->
-				  </div>
-				  <!-- /.box -->
 					
-					<div class="contact-bx">
-						<div class="media-list media-list-hover">
-							<div class="media py-10 px-0 align-items-center">
-							  <a class="avatar avatar-lg status-success" href="#">
-								<img src="<?php echo e(asset('assets/img/avatars/1.jpg')); ?>" alt="...">
-							  </a>
-							  <div class="media-body">
-								<p class="font-size-16">
-								  <a href="#">Sarah Kortney</a>
-								</p>
-							  </div>
-							</div>
-
-							<div class="media py-10 px-0 align-items-center">
-							  <a class="avatar avatar-lg status-danger" href="#">
-								<img src="<?php echo e(asset('assets/img/avatars/2.jpg')); ?>" alt="...">
-							  </a>
-							  <div class="media-body">
-								<p class="font-size-16">
-								  <a href="#">Tommy Nash</a>
-								</p>
-							  </div>
-							</div>
-
-							<div class="media py-10 px-0 align-items-center">
-							  <a class="avatar avatar-lg status-warning" href="#">
-								<img src="<?php echo e(asset('assets/img/avatars/3.jpg')); ?>" alt="...">
-							  </a>
-							  <div class="media-body">
-								<p class="font-size-16">
-								  <a href="#">Kathryn Mengel</a>
-								</p>
-							  </div>
-							</div>
-
-							<div class="media py-10 px-0 align-items-center">
-							  <a class="avatar avatar-lg status-primary" href="#">
-								<img src="<?php echo e(asset('assets/img/avatars/5.jpg')); ?>" alt="...">
-							  </a>
-							  <div class="media-body">
-								<p class="font-size-16">
-								  <a href="#">Mayra Sibley</a>
-								</p>
-							  </div>
-							</div>			
-
-							<div class="media py-10 px-0 align-items-center">
-							  <a class="avatar avatar-lg status-success" href="#">
-								<img src="<?php echo e(asset('assets/img/avatars/1.jpg')); ?>" alt="...">
-							  </a>
-							  <div class="media-body">
-								<p class="font-size-16">
-								  <a href="#">Tommy Nash</a>
-								</p>
-							  </div>
-							</div>
-
-							<div class="media py-10 px-0 align-items-center">
-							  <a class="avatar avatar-lg status-danger" href="#">
-								<img src="<?php echo e(asset('assets/img/avatars/2.jpg')); ?>" alt="...">
-							  </a>
-							  <div class="media-body">
-								<p class="font-size-16">
-								  <a href="#">Williemae Lagasse</a>
-								</p>
-							  </div>
-							</div>
-						  </div>
-					</div>
 				</div>
 				<!-- /.col -->
 				<div class="col-xl-6 col-lg-8 col-12">
@@ -178,44 +102,16 @@
 					<div class="box-body">
 					  <div class="mailbox-controls">
 						<!-- Check all button -->
-						<button type="button" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
+						<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
 						</button>
 						<div class="btn-group">
-						  <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-trash"></i></button>
-						  <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-mail-reply"></i></button>
-						  <button type="button" class="btn btn-primary btn-sm"><i class="ion ion-share"></i></button>
+						  <button type="button" class="btn btn-primary btn-sm" onClick="Delete()"><i class="fa fa-trash"></i></button>
 						</div>
 						<!-- /.btn-group -->
-						<div class="btn-group">
-						  <div class="btn-group">
-							<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-							  <i class="ion ion-flag margin-r-5"></i>
-							  <span class="caret"></span>
-							</button>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">Action</a>
-								<a class="dropdown-item" href="#">Another action</a>
-								<a class="dropdown-item" href="#">Something else here</a>
-							</div>
-						  </div>
-						  <div class="btn-group">
-							<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-							  <i class="ion ion-folder margin-r-5"></i>
-							  <span class="caret"></span>
-							</button>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">Action</a>
-								<a class="dropdown-item" href="#">Another action</a>
-								<a class="dropdown-item" href="#">Something else here</a>
-							</div>
-						  </div>
-						</div>
-						<!-- /.btn-group -->
-						<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
+						<button type="button" class="btn btn-primary btn-sm"><a href="<?php echo e(route('mailer.index')); ?>"><i class="fa fa-refresh"></i></a></button>
 						<div class="pull-right">
 						  <div class="btn-group">
-							<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-left"></i></button>
-							<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-right"></i></button>
+							  
 						  </div>
 						  <!-- /.btn-group -->
 						</div>
@@ -227,16 +123,26 @@
 							  <tbody>
 							  <?php $__currentLoopData = $mailer; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 							  <tr>
-								<td><input type="checkbox"></td>
-								<td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
+								<td><input type="checkbox" class="checkbox_mail" name="check[]" value="<?php echo e($val->id); ?>"></td>
+								<td class="mailbox-star" id="starred<?php echo e($val->id); ?>">
+									<?php if($val->is_starred=='0'): ?>
+										<a onClick="starred(<?php echo e($val->id); ?>,1)"><i class="fa text-yellow fa-star-o"></i></a>
+									<?php else: ?>
+										<a onClick="starred(<?php echo e($val->id); ?>,0)"><i class="fa text-yellow fa-star"></i></a>
+									<?php endif; ?>
+								</td>
 								<td>
 									<p class="mailbox-name mb-0 font-size-16 font-weight-600"><?php echo e($val->fullname); ?></p>
-									<a class="mailbox-subject" href="#">
-										<?php echo e($val->body); ?>
+									<a class="mailbox-subject" href="javascript:void(0)" onClick="getMessage(<?php echo e($val->id); ?>)">
+										<?php echo e($val->subject); ?>
 
 									</a>
 								</td>
-								<td class="mailbox-attachment"></td>
+								<td class="mailbox-attachment">
+								<?php if($val->is_attachment=='1'): ?>
+									<i class="fa fa-paperclip"></i>
+								<?php endif; ?>
+								</td>
 								<td class="mailbox-date"><?php echo e(date('H:i:s a', strtotime($val->created_at))); ?></td>
 							  </tr>
 							  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -251,44 +157,19 @@
 					<div class="box-footer">
 					  <div class="mailbox-controls">
 						<!-- Check all button -->
-						<button type="button" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
+						<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
 						</button>
 						<div class="btn-group">
-						  <button type="button" class="btn btn-primary btn-sm"><i class="ion ion-trash-a"></i></button>
-						  <button type="button" class="btn btn-primary btn-sm"><i class="ion ion-reply"></i></button>
-						  <button type="button" class="btn btn-primary btn-sm"><i class="ion ion-share"></i></button>
-						</div>
-						<!-- /.btn-group -->
-						<div class="btn-group">
-						  <div class="btn-group">
-							<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-							  <i class="ion ion-flag margin-r-5"></i>
-							  <span class="caret"></span>
-							</button>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">Action</a>
-								<a class="dropdown-item" href="#">Another action</a>
-								<a class="dropdown-item" href="#">Something else here</a>
-							</div>
-						  </div>
-						  <div class="btn-group">
-							<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-							  <i class="ion ion-folder margin-r-5"></i>
-							  <span class="caret"></span>
-							</button>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">Action</a>
-								<a class="dropdown-item" href="#">Another action</a>
-								<a class="dropdown-item" href="#">Something else here</a>
-							</div>
-						  </div>
+						<button type="button" class="btn btn-primary btn-sm" title="Delete Selected Mail"><i class="fa fa-trash"></i></button>
 						</div>
 						<!-- /.btn-group -->
 						<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
 						<div class="pull-right">
 						  <div class="btn-group">
-							<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-left"></i></button>
-							<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-right"></i></button>
+						  <?php echo e($mailer->links()); ?>
+
+							<!-- <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-left"></i></button>
+							<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-right"></i></button> -->
 						  </div>
 						  <!-- /.btn-group -->
 						</div>
@@ -299,17 +180,24 @@
 				  <!-- /. box -->
 				</div>
 				<!-- /.col -->
+
+				<!-- Message Body content area -->
 				<div class="col-xl-4 col-12">
 				  <div class="box">
 					<div class="box-body pt-10">
-					  <div class="mailbox-read-info">
+					  <div class="mailbox-read-info" id="subject">
 						<h4>Your message title goes here</h4>
 					  </div>
 					  <div class="mailbox-read-info clearfix mb-20">
-						<div class="float-left mr-10"><a href="#"><img src="<?php echo e(asset('assets/img/avatars/4.jpg')); ?>" alt="user" width="40" class="rounded-circle"></a></div>
+						<div class="float-left mr-10">
+							<a href="#">
+								<img src="<?php echo e(asset('assets/img/avatars/4.jpg')); ?>" alt="user" width="40" class="rounded-circle">
+							</a>
+						</div>
 						<h5 class="no-margin"> Pavan kumar<br>
-							 <small>From: jonathan@domain.com</small>
-						  <span class="mailbox-read-time pull-right">22 JUL. 2019 08:03 PM</span></h5>
+							<small id="mails">To: jonathan@domain.com</small>
+							<span class="mailbox-read-time pull-right">22 JUL. 2019 08:03 PM</span>
+						</h5>
 					  </div>
 					  <!-- /.mailbox-read-info -->
 					  <div class="mailbox-controls with-border clearfix">                
@@ -317,54 +205,41 @@
 						  <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Print">
 						  <i class="fa fa-print"></i></button>
 						</div>
-						<div class="float-right">
-						<div class="btn-group">
-						  <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-container="body" title="Delete">
-							<i class="fa fa-trash-o"></i></button>
-						  <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-container="body" title="Reply">
-							<i class="fa fa-reply"></i></button>
-						  <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-container="body" title="Forward">
-							<i class="fa fa-share"></i></button>
-						</div>
-						</div>
+
+						<!-- <div class="float-right">
+							<div class="btn-group">
+							<button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-container="body" title="Delete">
+								<i class="fa fa-trash-o"></i></button>
+							</div>
+						</div> -->
 						<!-- /.btn-group -->
 
 					  </div>
 					  <!-- /.mailbox-controls -->
-					  <div class="mailbox-read-message read-mail-bx">
-						<p>Dear USer,</p>
-
-						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.</p>
-
-						<p>enean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar.</p>
-
-						<p>Thanks,<br>Jane</p>
+					  <div class="mailbox-read-message read-mail-bx" id="body">
+					  <h4>Your content goes here</h4>
 					  </div>
 					  <!-- /.mailbox-read-message -->
 					</div>
 					<!-- /.box-body -->
 					<div class="box-footer">
-						<h5><i class="fa fa-paperclip m-r-10 m-b-10"></i> Attachments <span>(3)</span></h5>
-					  <ul class="mailbox-attachments clearfix">
-						<li>
-						  <div class="mailbox-attachment-info">
-							<a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> Mag.pdf</a>
-								<span class="mailbox-attachment-size">
-								  5,215 KB
-								  <a href="#" class="btn btn-primary btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
-								</span>
-						  </div>
-						</li>
-						<li>
-						  <div class="mailbox-attachment-info">
-							<a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> Documents.docx</a>
-								<span class="mailbox-attachment-size">
-								  2,145 KB
-								  <a href="#" class="btn btn-primary btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
-								</span>
-						  </div>
-						</li>
-					  </ul>
+						<h5>
+							<i class="fa fa-paperclip m-r-10 m-b-10"></i>
+							Attachments 
+							<span>(3)</span>
+						</h5>
+						<ul class="mailbox-attachments clearfix">
+							<li>
+								<div class="mailbox-attachment-info">
+									<a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> Mag.pdf</a>
+								</div>
+							</li>
+							<li>
+								<div class="mailbox-attachment-info">
+									<a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> Documents.docx</a>
+								</div>
+							</li>
+						</ul>
 					</div>
 					<!-- /.box-footer -->
 					<div class="box-footer">
@@ -385,7 +260,62 @@
 		<!-- /.content -->
 	  </div>
   </div>
-  
 <?php $__env->stopSection(); ?>
+<script>
+function Delete(){
+	var chkArray = [];
+	$("input[name='check[]']:checked").map(function() {
+		chkArray.push(this.value);
+	}).get();
+	var selected;
+	selected = chkArray.join(',') + ",";
+	if(selected.length > 1){
+		$.ajax({
+            type: "POST",
+            url: '/trash',
+            data: {mails_id: selected,"_token": "<?php echo e(csrf_token()); ?>"},
+            success: function( msg ) {
+                // $("#ajaxResponse").append("<div>"+msg+"</div>");
+            }
+        });
+		// alert('Selecionar todos?'+selected);
+	} else { alert('Remover'); }       
 
+}
+
+function starred(val,star){
+	// alert(val+"::"+star)
+	$.ajax({
+		type: "POST",
+		url: '/starred',
+		data: {mails_id: val,is_starred:star,"_token": "<?php echo e(csrf_token()); ?>"},
+		success: function( msg ) 
+		{
+			// alert(val+"::"+star)
+			/* if(star==1){
+				$(this).('i.text-yellow').addClass('fa-star-o');
+			}else{
+				$(this).('i.text-yellow').addClass('fa-star');
+			} */
+		}
+	});
+}
+
+function getMessage(val){
+	$.ajax({
+		type: "GET",
+		url: '/getmail',
+		data: {mailid: val,"_token": "<?php echo e(csrf_token()); ?>"},
+		success: function( msg ) 
+		{
+			console.log(msg);
+			$("#subject").html("<h4>"+msg.mail.subject+"</h4>");
+			$("#mails").html("To: "+msg.mail.to);
+			$("#body").html(msg.mail.body);
+
+		}
+	});
+
+}
+</script>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH G:\averti\resources\views/mail/new_mail.blade.php ENDPATH**/ ?>
