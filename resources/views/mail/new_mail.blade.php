@@ -77,10 +77,14 @@
 						
 						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-email-unread"></i> Drafts</a></li>
 
-						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-star"></i>  Starred <span class="label label-warning pull-right">14</span></a>
+						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-star"></i>  Starred <span class="label label-warning pull-right" id="starredcount">
+							{{$starred}}
+						</span></a>
 						</li>
 
-						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-trash-a"></i> Trash</a></li>
+						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-trash-a"></i> Trash <span class="label label-danger pull-right" id="trashcount">
+							{{$trash}}
+						</span></a></li>
 
 					  </ul>
 					</div>
@@ -278,6 +282,7 @@ function Delete(){
             data: {mails_id: selected,"_token": "{{ csrf_token() }}"},
             success: function( msg ) {
                 // $("#ajaxResponse").append("<div>"+msg+"</div>");
+				$("#trashcount").html(msg.trash);
             }
         });
 		// alert('Selecionar todos?'+selected);
@@ -294,11 +299,7 @@ function starred(val,star){
 		success: function( msg ) 
 		{
 			// alert(val+"::"+star)
-			/* if(star==1){
-				$(this).('i.text-yellow').addClass('fa-star-o');
-			}else{
-				$(this).('i.text-yellow').addClass('fa-star');
-			} */
+			$("#starredcount").html(msg.starred);
 		}
 	});
 }

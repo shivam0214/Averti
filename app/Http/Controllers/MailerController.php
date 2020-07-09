@@ -26,11 +26,25 @@ class MailerController extends Controller
     {
         //
         $mailer = Mailer::where([['user_id','=',Auth::user()->id],['is_status','=',0]])->orderBy('created_at', 'desc')->simplePaginate(50);
-        // dd($mailer);
         $countSent = $mailer->count();
 
         $templates = DB::select("SELECT id, `title` FROM mailtemplate WHERE user_id=".Auth::user()->id);
-        return view('mail.new_mail',compact('countSent','mailer','templates'));
+        
+        $starred = 0;
+        $sql="SELECT COUNT(*) AS `starred` FROM mails WHERE is_starred=1 AND user_id=".Auth::user()->id." GROUP BY is_starred";
+        $starredResult = DB::select($sql);
+        if(count($starredResult)>0)
+        {
+            $starred = $starredResult[0]->starred;
+        }
+
+        $trash = 0;
+        $trashResult = DB::select("SELECT COUNT(*) AS `count` FROM mails WHERE is_status=4 AND user_id=".Auth::user()->id." GROUP BY is_status");
+        if(count($trashResult)>0)
+        {
+            $trash = $trashResult[0]->count;
+        }
+        return view('mail.new_mail',compact('countSent','mailer','templates','starred','trash'));
 
     }
 
@@ -150,15 +164,26 @@ class MailerController extends Controller
         // dd($request->mails_id);
         $IDs = explode(',',trim($request->mails_id));
         DB::table('mails')->whereIn('id', $IDs)->update(['is_status' => 4]);
+
+        $trash = 0;
+        $trashResult = DB::select("SELECT COUNT(*) AS `count` FROM mails WHERE is_status=4 AND user_id=".Auth::user()->id." GROUP BY is_status");
+        if(count($trashResult)>0)
+        {
+            $trash = $trashResult[0]->count;
+        }
+
         
-        return response()->json(['success'=>'Mails Deleted','total'=>count($IDs)]);
+        return response()->json(['success'=>'Mails Deleted','total'=>count($IDs),'trash'=>$trash]);
         exit;
     }
 
     public function starred(Request $request){
         DB::table('mails')->where('id', $request->mails_id)->update(['is_starred' => $request->is_starred]);
-        
-        return response()->json(['success'=>'success','error'=>1]);
+
+        $sql="SELECT COUNT(*) AS `starred` FROM mails WHERE is_starred=1 AND user_id=".Auth::user()->id." GROUP BY is_starred";
+        $starred = DB::select($sql);
+
+        return response()->json(['success'=>'success','error'=>1,'starred'=>$starred[0]->starred]);
         exit;
     }
 
