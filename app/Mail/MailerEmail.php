@@ -95,7 +95,6 @@ class MailerEmail extends Mailable
 
             return $this->from(Auth::user()->email, Auth::user()->name)
             ->subject($this->subject)
-            // ->markdown('mail.welcome_to_user_subscribe')
             ->markdown('mail.mail_container')
             ->with([
                 'body' => $this->view,
