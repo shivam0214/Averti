@@ -61,8 +61,8 @@
           </a>
         </li>
      
-            <li><a href="<?php echo e(route('mail_template')); ?>"><i class="ti-more"></i>Template</a></li>
-            <li><a href="<?php echo e(route('mailtemplist')); ?>"><i class="ti-more"></i>Template List</a></li>
+            <li><a href="<?php echo e(route('addtemplate')); ?>"><i class="ti-more"></i>Template</a></li>
+            <li><a href="<?php echo e(route('mailtemplate')); ?>"><i class="ti-more"></i>Template List</a></li>
             <li><a href="<?php echo e(route('groups')); ?>"><i class="ti-more"></i>Group</a></li>
           </ul>
         </li>
@@ -128,13 +128,11 @@
             <li><a href="<?php echo e(route('booking')); ?>"><i class="ti-more"></i> Booking Schedule</a></li>
           </ul>
         </li>
-       
-
-  <?php else: ?>
+      <?php else: ?>
        <li>
           <a href="<?php echo e(route('advisor_request')); ?>">
             <i class="ti-dashboard"></i>
-      <span>Reuest to Advisor</span>
+      <span>Request to Advisor</span>
           </a>
         </li>
         <li>

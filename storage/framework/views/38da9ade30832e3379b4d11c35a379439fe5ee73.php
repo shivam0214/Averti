@@ -29,7 +29,7 @@
 				</div>
 					<div class="box box-body">
 						<div class="d-flex justify-content-between align-items-center">
-						<form action="http://localhost:3000/uploadFile" id="data" method="post" enctype="multipart/form-data" class ="col-lg-12 col-md-12 col-12">
+						<form id="data" method="post" enctype="multipart/form-data" class ="col-lg-12 col-md-12 col-12">
 							<input class="form-control b-0 py-10" id="m" autocomplete="off" type="text" placeholder="Say something...">
 							
 							<div class="d-flex justify-content-between align-items-center">
@@ -252,17 +252,19 @@
 			e.preventDefault();  
 		  var formData = new FormData(this);
 		  $("#previewImg").addClass('hide');
-    $.ajax({
-        url: 'http://localhost:3000/uploadFile',
-        type: 'POST',
-        data: formData,
-        success: function (data) {
-            alert(data)
-        },
-        cache: false,
-        contentType: false,
-        processData: false
-    });
+		  if($("#fileinput").val()){
+			$.ajax({
+				url: 'http://localhost:3000/uploadFile',
+				type: 'POST',
+				data: formData,
+				success: function (data) {
+					console.log(data)
+				},
+				cache: false,
+				contentType: false,
+				processData: false
+			});
+		}
           socket.emit('chat message', {msg:$('#m').val(),user_id:current_user.id});
           $('#m').val('');
 		  this.reset();

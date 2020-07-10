@@ -128,13 +128,11 @@
             <li><a href="{{route('booking')}}"><i class="ti-more"></i> Booking Schedule</a></li>
           </ul>
         </li>
-       
-
-  @else
+      @else
        <li>
           <a href="{{route('advisor_request')}}">
             <i class="ti-dashboard"></i>
-      <span>Reuest to Advisor</span>
+      <span>Request to Advisor</span>
           </a>
         </li>
         <li>

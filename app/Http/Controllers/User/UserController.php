@@ -54,7 +54,7 @@ class UserController extends Controller
             $userrequests = UserRequest::create($form_data);
             if($userrequests){
             $notification = array(
-                 'message' => 'Sent Request',
+                 'message' => 'Request Send',
                  'alert-type' => 'success'
                  );
             }
