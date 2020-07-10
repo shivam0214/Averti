@@ -214,8 +214,7 @@
 
 						<!-- <div class="float-right">
 							<div class="btn-group">
-							<button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-container="body" title="Delete">
-								<i class="fa fa-trash-o"></i></button>
+								<button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></button>
 							</div>
 						</div> -->
 						<!-- /.btn-group -->
@@ -234,17 +233,8 @@
 							Attachments 
 							<span>(3)</span>
 						</h5>
-						<ul class="mailbox-attachments clearfix">
-							<li>
-								<div class="mailbox-attachment-info">
-									<a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> Mag.pdf</a>
-								</div>
-							</li>
-							<li>
-								<div class="mailbox-attachment-info">
-									<a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> Documents.docx</a>
-								</div>
-							</li>
+						<ul class="mailbox-attachments clearfix" id="attachments">
+							<!-- Attachment files list goes here from ajax -->
 						</ul>
 					</div>
 					<!-- /.box-footer -->
@@ -253,8 +243,6 @@
 						<button type="button" class="btn btn-success"><i class="fa fa-reply"></i> Reply</button>
 						<button type="button" class="btn btn-info"><i class="fa fa-share"></i> Forward</button>
 					  </div>
-					  <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
-					  <button type="button" class="btn btn-warning"><i class="fa fa-print"></i></button>
 					</div>
 					<!-- /.box-footer -->
 				  </div>
@@ -315,6 +303,12 @@ function getMessage(val){
 			$("#subject").html("<h4>"+msg.mail.subject+"</h4>");
 			$("#mails").html("To: "+msg.mail.to);
 			$("#body").html(msg.mail.body);
+			// msg.mail.attach.forEach(ele=>{
+				if(msg.mail.filename!==null && msg.mail.filename !==undefined){
+					$("#attachments").html("<li><div class=\"mailbox-attachment-info\"><a href=\"{{ asset("+msg.mail.filepath+msg.mail.filename+") }}\" class=\"mailbox-attachment-name\"><i class=\"fa fa-paperclip\"></i> "+msg.mail.filename+"</a></div></li>");
+				}
+
+			// })
 
 		}
 	});
