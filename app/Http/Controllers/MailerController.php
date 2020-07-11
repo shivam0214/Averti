@@ -196,6 +196,10 @@ class MailerController extends Controller
         $mail = DB::select($sql);
         return response()->json(['success'=>'success','error'=>1,'mail'=>$mail[0]]);
         exit;
-
+        
+    }
+    public function downloadAttachment(Request $request){
+        return response()->download(storage_path('/storage/app/public/attachments/'. $request->filename));
+        exit;
     }
 }
