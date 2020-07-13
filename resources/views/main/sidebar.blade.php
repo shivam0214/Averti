@@ -64,6 +64,8 @@
             <li><a href="{{route('addtemplate')}}"><i class="ti-more"></i>Template</a></li>
             <li><a href="{{route('mailtemplate')}}"><i class="ti-more"></i>Template List</a></li>
             <li><a href="{{route('groups')}}"><i class="ti-more"></i>Group</a></li>
+            <li><a href="{{route('setting')}}"><i class="ti-more"></i>Setting</a></li>
+
           </ul>
         </li>
         
