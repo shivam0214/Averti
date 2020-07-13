@@ -55,6 +55,8 @@ Route::resource("mailer",'MailerController');
 Route::post('/trash','MailerController@trash');
 Route::post('/starred','MailerController@starred');
 Route::get('/getmail','MailerController@getmessage');
+Route::get('/mailsetting', 'MailerController@getMailSetting')->name('mailsetting');
+Route::post('/savemailsetting', 'MailerController@saveMailSettings')->name('savemailsetting');
 Route::get('/mailtemplate', 'MailTemplateController@index')->name('mailtemplate');
 Route::get('/addtemplate', 'MailTemplateController@create')->name('addtemplate');
 Route::post('/savetemplate', 'MailTemplateController@store')->name('savetemplate');

@@ -195,8 +195,46 @@ class MailerController extends Controller
         exit;
         
     }
+
     public function downloadAttachment(Request $request){
         return response()->download(storage_path('/storage/app/public/attachments/'. $request->filename));
         exit;
+    }
+
+    public function getMailSetting(Request $request){
+        $settings = DB::table('mailers')->where('user_id',Auth::user()->id)->first();
+        return view('mail.setting',compact('settings'));
+    }
+
+    public function saveMailSettings(Request $request)
+    {
+        $validatedData = $request->validate([
+            'vendor' => 'required',
+            'host' => 'required',
+            'username' => 'required|max:255',
+            'password' => 'required',
+            'port' => 'required',
+            'encryption' => 'required|not_in:0'
+        ]);
+        
+        $data['vendor']=$request->vendor;
+        $data['host']=$request->host;
+        $data['username']=$request->username;
+        $data['password']=$request->password;
+        $data['port']=$request->port;
+        $data['encryption']=$request->encryption;
+        $count = DB::table('mailers')->where('user_id',Auth::user()->id)->count();
+        // dd($count);
+        if($count==0){
+            $data['created_at']=date('Y-m-d H:i:s');
+            DB::table('mailers')->insert($data);
+            $msg = 'Mail setting is added successfully.';
+        }else{
+            $data['updated_at']=date('Y-m-d H:i:s');
+            DB::table('mailers')->where('user_id',Auth::user()->id)->limit(1)->update($data);
+            $msg = 'Mail setting is updated successfully.';
+        }
+        return redirect('mailsetting/')->with('msg', $msg);
+
     }
 }
