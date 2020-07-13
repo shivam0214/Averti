@@ -53,14 +53,12 @@ class GroupMailController extends Controller
     public function groups(Request $r){
         $groups = Group::all();
         $contacts = User::where(['perent_id'=>Auth::user()['id'],'role_id'=>3])->get(); 
-                      
         return view('mail.group',compact('groups','contacts'));
     }
     
     public function group_list(Request $r)
     {    
-    $user_email = User::where('id',$r->id)->get('email');
-    $data=array('user_email'=>$user_email,'user_id'=>$r->id,'group_id'=>$r->groupid);
+    $data=array('user_id'=>$r->id,'group_id'=>$r->groupid);
     $check=User_group::where(['group_id'=>$r->groupid,'user_id'=>$r->id])->count();
     if($check>0){
         $notification = array(
@@ -70,6 +68,7 @@ class GroupMailController extends Controller
     }
     else{
     $add_data=User_group::create($data);
+
     if($add_data){
         $notification = array(
          'message' => 'User added successfully!',
@@ -80,7 +79,8 @@ class GroupMailController extends Controller
          'message' => 'Please Try again',
          'alert-type' => 'error'
      );
-    }}
+    }
+}
     return Redirect::to('/Group')->with($notification);
     }
    
@@ -95,6 +95,8 @@ class GroupMailController extends Controller
     }  
   
     public function group_compose_mail(Request $r){
+        $templates = DB::select("SELECT id, `title` FROM mailtemplate WHERE user_id=".Auth::user()->id);
+
         $groups_usermail=User_group::where('group_id',$r->gmid)->get();
         $ids=[] ;
             foreach($groups_usermail as $user_details){
@@ -106,7 +108,7 @@ class GroupMailController extends Controller
          $myemails .= $email['email'].',';
             }
             $myemails = rtrim($myemails);
-            return view('mail.group_mail',compact('myemails'));        
+            return view('mail.group_mail',compact('myemails','templates'));        
     }
-
+    
 }

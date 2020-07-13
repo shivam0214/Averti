@@ -54,19 +54,18 @@ $('#create_meetingform').submit(function(e) {
 $('.user_list').click(function(){
    gid= $(this).attr('role');
      $('#myModal2').modal('show');
-     $('#groupid').val(gid); 
+     $('.groupid').val(gid); 
 });
 
 
 $('.group_mail').click(function(){
   gmid= $(this).attr('role');
     $('#mail_modal').modal('show');
-   // $('#group_mailid').val(gmid); 
  $.ajax({
   url:'/group_mail/'+gmid,
   type:'GET',
   success: function (response) {
-  $("#group_mail_box").html(response);
+  $(".group_mail_box").html(response);
     }
  });
 });

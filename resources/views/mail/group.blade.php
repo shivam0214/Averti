@@ -89,9 +89,10 @@
 			  <!-- /.box -->
 			</div>
 			<!-- /Popup Model For Mail -->
-				<div class="modal fade bs-example-modal-lg group_mail" id="mail_modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+				<div class="modal fade bs-example-modal-lg" id="mail_modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
 					<div class="modal-dialog modal-lg">
-						<div class="modal-content"  id="group_mail_box">
+						<div class="modal-content group_mail_box">
+
 						</div>
 					</div>
 				</div>
@@ -111,7 +112,7 @@
 		                          @foreach ($contacts as $records)
 								  <form class="form-horizontal" role="form"  method="post" action="{{route('group_list')}}">
 									@csrf
-									<input type="hidden" name="groupid" id="groupid" value="">
+									<input type="hidden" name="groupid" class="groupid" value="">
                                     <div class="media align-items-center">
                                   <a class="avatar avatar-lg status-success" href="#">
 								  <input type="hidden" value="{{$records->id}}" name="id">

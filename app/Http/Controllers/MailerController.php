@@ -176,17 +176,14 @@ class MailerController extends Controller
             $trash = $trashResult[0]->count;
         }
 
-        
         return response()->json(['success'=>'Mails Deleted','total'=>count($IDs),'trash'=>$trash]);
         exit;
     }
 
     public function starred(Request $request){
         DB::table('mails')->where('id', $request->mails_id)->update(['is_starred' => $request->is_starred]);
-
         $sql="SELECT COUNT(*) AS `starred` FROM mails WHERE is_starred=1 AND user_id=".Auth::user()->id." GROUP BY is_starred";
         $starred = DB::select($sql);
-
         return response()->json(['success'=>'success','error'=>1,'starred'=>$starred[0]->starred]);
         exit;
     }

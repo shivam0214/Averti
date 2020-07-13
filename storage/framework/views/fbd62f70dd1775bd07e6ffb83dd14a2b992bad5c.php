@@ -1,11 +1,12 @@
-							<div class="modal-header">
-								<h4 class="modal-title" id="myLargeModalLabel">Compose New Message</h4>
+                        <form method="POST" action="<?php echo e(route('mailer.store')); ?>" enctype="multipart/form-data">
+							<?php echo csrf_field(); ?>
+						
+                            <div class="modal-header" >
+								<h4 class="modal-title" >Compose New Message</h4>
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 							</div>
-							<form method="POST" action="#" enctype="multipart/form-data">
-							<?php echo csrf_field(); ?>
 							<div class="modal-body">
-							<input type="hidden" name="gmid" id="gmid" value="#">
+							<input type="hidden" name="gmid" class="gmid" value="">
 
 								<div class="form-group">
 									<input class="form-control" placeholder="To:" name="to" value="<?php echo e($myemails); ?>">
@@ -14,10 +15,13 @@
 									<input class="form-control" placeholder="Subject:" name="subject">
 								  </div>
 								  <div class="form-group">
-									<select class="form-control" placeholder="Template:" name="template" id="templatebody" onChange="getBody(this.value)">
+                                  <select class="form-control" placeholder="Template:" name="template" id="templatebody" onChange="getBody(this.value)">
 									<option value="0">Select Template</option>
+									<?php $__currentLoopData = $templates; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $template): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+										<option value="<?php echo e($template->id); ?>"><?php echo e($template->title); ?></option>
+									<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 									</select>
-								  </div>
+								   </div>
 
 								  <div class="form-group">
 										<textarea id="compose-textarea" class="form-control" style="height: 300px" name="body">

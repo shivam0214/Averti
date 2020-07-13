@@ -202,9 +202,9 @@
 								<img src="<?php echo e(asset('assets/img/avatars/4.jpg')); ?>" alt="user" width="40" class="rounded-circle">
 							</a>
 						</div>
-						<h5 class="no-margin"> Pavan kumar<br>
-							<small id="mails">To: jonathan@domain.com</small>
-							<span class="mailbox-read-time pull-right">22 JUL. 2019 08:03 PM</span>
+						<h5 class="no-margin" id="mails"> <!-- Pavan kumar --><br>
+							<!-- <small>To: jonathan@domain.com</small> -->
+							
 						</h5>
 					  </div>
 					  <!-- /.mailbox-read-info -->
@@ -216,8 +216,7 @@
 
 						<!-- <div class="float-right">
 							<div class="btn-group">
-							<button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-container="body" title="Delete">
-								<i class="fa fa-trash-o"></i></button>
+								<button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></button>
 							</div>
 						</div> -->
 						<!-- /.btn-group -->
@@ -236,17 +235,8 @@
 							Attachments 
 							<span>(3)</span>
 						</h5>
-						<ul class="mailbox-attachments clearfix">
-							<li>
-								<div class="mailbox-attachment-info">
-									<a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> Mag.pdf</a>
-								</div>
-							</li>
-							<li>
-								<div class="mailbox-attachment-info">
-									<a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> Documents.docx</a>
-								</div>
-							</li>
+						<ul class="mailbox-attachments clearfix" id="attachments">
+							<!-- Attachment files list goes here from ajax -->
 						</ul>
 					</div>
 					<!-- /.box-footer -->
@@ -255,8 +245,6 @@
 						<button type="button" class="btn btn-success"><i class="fa fa-reply"></i> Reply</button>
 						<button type="button" class="btn btn-info"><i class="fa fa-share"></i> Forward</button>
 					  </div>
-					  <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
-					  <button type="button" class="btn btn-warning"><i class="fa fa-print"></i></button>
 					</div>
 					<!-- /.box-footer -->
 				  </div>
@@ -315,8 +303,20 @@ function getMessage(val){
 		{
 			console.log(msg);
 			$("#subject").html("<h4>"+msg.mail.subject+"</h4>");
-			$("#mails").html("To: "+msg.mail.to);
+			$("#mails").html(msg.mail.to);
+			$("#mails").append("<br /><span class='mailbox-read-time'>"+msg.mail.created_at+"</span>");
+			
 			$("#body").html(msg.mail.body);
+			// msg.mail.attach.forEach(ele=>{
+				if(msg.mail.filename!==null && msg.mail.filename !==undefined){
+					var downld = "<?php echo e(asset('')); ?>";
+					var sds = downld+'storage/app/'+msg.mail.filepath+msg.mail.filename;
+					// console.log(sds);
+					// console.log("<?php echo e(route('downloadattachment',"+msg.mail.filename+")); ?>");
+					$("#attachments").html('<li><div class="mailbox-attachment-info"><a href=\"#\" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> '+msg.mail.filename+'</a></div></li>');
+				}
+
+			// })
 
 		}
 	});

@@ -49,6 +49,7 @@ Route::get('/dashboard/User/ListUser', 'User\UserController@user')->name('user')
 Route::get('/dashboard/User/AddUser', 'User\UserController@add_user')->name('add_user');
 Route::get('/dashboard/User/ViewUser', 'User\UserController@view_profile')->name('view_profile');
 // Route::get('/Mail', 'User\UserController@mail')->name('mail');
+
 Route::get('/Chat', 'User\UserController@chat')->name('chat');
 Route::resource("mailer",'MailerController');
 Route::post('/trash','MailerController@trash');
@@ -84,6 +85,8 @@ Route::post('/add_group', 'GroupMailController@add_group')->name('add_group');
 Route::get('/show_list/{id}', 'GroupMailController@show_list')->name('show_list');
 Route::post('/group_list', 'GroupMailController@group_list')->name('group_list');
 Route::get('/group_mail/{gmid}', 'GroupMailController@group_compose_mail')->name('group_compose_mail');
+Route::post('/savetemplate', 'GroupMailController@store')->name('savetemplate');
+
 
 Route::get('/Mail', 'User\UserController@mail')->name('mail');
 Route::get('/Chat', 'User\UserController@chat')->name('chat');
