@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\DB;
 use Auth;
 use Config;
 
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
+
 class MailerController extends Controller
 {
     public function __construct()
@@ -76,13 +79,14 @@ class MailerController extends Controller
         {
             $file = $request->file('attachment');
             $size = $file->getClientSize();
-            // dump($file->getClientSize());
-            // dd($file);
             $name=time().$file->getClientOriginalName();
-            $file->move(base_path().'/uploads/', $name);
+            Storage::put('public/attachments/'.$name, $name);
+            // dump($name);
+            // dd($NAME);
+            // $file->move(base_path().'/uploads/', $name);
             $is_attached=1;
             $insertAttachment['filename']=$name;
-            $insertAttachment['filepath']=base_path().'/uploads/';
+            $insertAttachment['filepath']='public/attachments/';
             $insertAttachment['filesize']=$size;
             $insertAttachment['filetype']=$file->getClientMimeType();
         }
@@ -188,10 +192,14 @@ class MailerController extends Controller
     }
 
     public function getmessage(Request $request){
-        $sql="SELECT m.id, m.fullname, m.subject, m.body, m.from, m.to, m.cc, m.is_attachment, m.is_starred, m.is_status, m.created_at, ma.filename, ma.filesize, ma.filetype FROM mails m LEFT JOIN mail_attachment ma ON m.id=ma.mail_id WHERE m.user_id=".Auth::user()->id." AND m.id=".$request->mailid;
+        $sql="SELECT m.id, m.fullname, m.subject, m.body, m.from, m.to, m.cc, m.is_attachment, m.is_starred, m.is_status, m.created_at, ma.filepath, ma.filename, ma.filesize, ma.filetype FROM mails m LEFT JOIN mail_attachment ma ON m.id=ma.mail_id WHERE m.user_id=".Auth::user()->id." AND m.id=".$request->mailid;
         $mail = DB::select($sql);
         return response()->json(['success'=>'success','error'=>1,'mail'=>$mail[0]]);
         exit;
-
+        
+    }
+    public function downloadAttachment(Request $request){
+        return response()->download(storage_path('/storage/app/public/attachments/'. $request->filename));
+        exit;
     }
 }
