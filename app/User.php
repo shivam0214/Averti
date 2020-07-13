@@ -58,5 +58,6 @@ class User extends Authenticatable
         return $this->belongsTo('App\Categories','category_id','id');
     }
 
+   
     
 }

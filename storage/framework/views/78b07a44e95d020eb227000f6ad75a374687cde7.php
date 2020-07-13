@@ -75,10 +75,16 @@
 						
 						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-email-unread"></i> Drafts</a></li>
 
-						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-star"></i>  Starred <span class="label label-warning pull-right">14</span></a>
+						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-star"></i>  Starred <span class="label label-warning pull-right" id="starredcount">
+							<?php echo e($starred); ?>
+
+						</span></a>
 						</li>
 
-						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-trash-a"></i> Trash</a></li>
+						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-trash-a"></i> Trash <span class="label label-danger pull-right" id="trashcount">
+							<?php echo e($trash); ?>
+
+						</span></a></li>
 
 					  </ul>
 					</div>
@@ -278,6 +284,7 @@ function Delete(){
             data: {mails_id: selected,"_token": "<?php echo e(csrf_token()); ?>"},
             success: function( msg ) {
                 // $("#ajaxResponse").append("<div>"+msg+"</div>");
+				$("#trashcount").html(msg.trash);
             }
         });
 		// alert('Selecionar todos?'+selected);
@@ -294,11 +301,7 @@ function starred(val,star){
 		success: function( msg ) 
 		{
 			// alert(val+"::"+star)
-			/* if(star==1){
-				$(this).('i.text-yellow').addClass('fa-star-o');
-			}else{
-				$(this).('i.text-yellow').addClass('fa-star');
-			} */
+			$("#starredcount").html(msg.starred);
 		}
 	});
 }
@@ -319,22 +322,18 @@ function getMessage(val){
 	});
 
 }
+function getBody(id){
+	console.log(id)
+	$.ajax({
+	type: "GET",
+	url: '/gettemplatebody',
+	data: {templateid: id,"_token": "<?php echo e(csrf_token()); ?>"},
+	success: function( data ) {
+		// console.log(data);
+		document.getElementById("compose-textarea").innerHTML = data.result;
+	}
+	});
 
-function getBody(id)
-// $('#templatebody').change(function(){
-        // var id = $(this).val();
-		alert(id);
-    /* $.ajax({
-        type: "GET",
-        url: '/gettemplatebody',
-		data: {templateid: id,"_token": "<?php echo e(csrf_token()); ?>"},
-		success: function( data ) {
-              alert(data);
-
-            document.getElementByName("body").innerHTML = data.result;
-        }
-    }); */
-// });
 }
 </script>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH H:\updateDemitrius\Averti\Averti\resources\views/mail/new_mail.blade.php ENDPATH**/ ?>

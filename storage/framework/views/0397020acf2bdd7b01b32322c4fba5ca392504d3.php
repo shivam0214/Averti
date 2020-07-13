@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@section('content') 
+<?php $__env->startSection('content'); ?> 
 <div class="content-wrapper">
 	  <div class="container-full">
 		<!-- Content Header (Page header) -->
@@ -29,8 +28,8 @@
 					<h4 class="modal-title" id="myModalLabel">Add Group</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 				</div>					
-				<form class="form-horizontal" role="form"  method="post" action="{{route('add_group')}}">
-				@csrf
+				<form class="form-horizontal" role="form"  method="post" action="<?php echo e(route('add_group')); ?>">
+				<?php echo csrf_field(); ?>
 				<div class="modal-body">
 
 						<div class="form-group">
@@ -59,23 +58,23 @@
                             <div class="col-lg-12 col-md-12">
                                 <div class="box">
                                 <div class="media-list media-list-divided media-list-hover">
-                                    @foreach ($groups as $record)
+                                    <?php $__currentLoopData = $groups; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $record): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <div class="media align-items-center">
                                     <a class="avatar avatar-lg status-success" href="#">
-                                    <img src="{{asset('assets/img/avatars/user.png')}}" alt="&#xf013;" height="50px" width="50px">
+                                    <img src="<?php echo e(asset('assets/img/avatars/user.png')); ?>" alt="&#xf013;" height="50px" width="50px">
                                     </a>
                                    <div class="media-body">
                                         <p>
-                                        <a href="{{ route('show_list',['id'=>$record->id]) }}"><strong>{{$record['group_name']}}</strong></a>
+                                        <a href="<?php echo e(route('show_list',['id'=>$record->id])); ?>"><strong><?php echo e($record['group_name']); ?></strong></a>
                                         </p>
 									</div>
 									<div class="media-right gap-items">
-									<a class="action lead user_list"  role="{{$record['id']}}" href="javascript:void(0)" title="Add User"><i class="fa fa-user-plus"></i></i> </a>
-                                        <a class="action lead group_mail" role="{{$record['id']}}" href="javascript:void(0)"  alt="default" title="Mail"><i class="ti-email"></i></i> </a>
+									<a class="action lead user_list"  role="<?php echo e($record['id']); ?>" href="javascript:void(0)" title="Add User"><i class="fa fa-user-plus"></i></i> </a>
+                                        <a class="action lead group_mail" role="<?php echo e($record['id']); ?>" href="javascript:void(0)"  alt="default" title="Mail"><i class="ti-email"></i></i> </a>
                                         <a class="action lead" href="#" data-toggle="tooltip" title="Remove"><i class="fa fa-fw fa-remove"></i> </a>
                                     </div>
                                     </div>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
                                 </div>
                             </div>
@@ -108,20 +107,20 @@
                             <div class="col-lg-12 col-md-12">
                                 <div class="box">
                                 <div class="media-list media-list-divided media-list-hover">
-		                          @foreach ($contacts as $records)
-								  <form class="form-horizontal" role="form"  method="post" action="{{route('group_list')}}">
-									@csrf
+		                          <?php $__currentLoopData = $contacts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $records): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+								  <form class="form-horizontal" role="form"  method="post" action="<?php echo e(route('group_list')); ?>">
+									<?php echo csrf_field(); ?>
 									<input type="hidden" name="groupid" id="groupid" value="">
                                     <div class="media align-items-center">
                                   <a class="avatar avatar-lg status-success" href="#">
-								  <input type="hidden" value="{{$records->id}}" name="id">
+								  <input type="hidden" value="<?php echo e($records->id); ?>" name="id">
                                     <img src="<?php echo (($records['single']['profile_image'])!= NULL) ? url($records['single']['profile_image']) : url(asset('assets/img/avatars/user.png')); ?>" alt="&#xf013;" height="50px" width="50px">
                                     </a>
                                     <div class="media-body">
                                         <p>
-                                        <a href="#"><strong>{{$records['name']}}</strong></a>
+                                        <a href="#"><strong><?php echo e($records['name']); ?></strong></a>
                                         </p>
-                                        <p><strong>{{$records['email']}}</strong></p>
+                                        <p><strong><?php echo e($records['email']); ?></strong></p>
                                     </div>
                                     <div class="media-right gap-items">
 									<button type="submit" class="btn btn-success" >Add</button>
@@ -129,7 +128,7 @@
                                     </div>
 									</form>
 
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
                                 </div>
                             </div>			
@@ -147,4 +146,5 @@
 </section>
 </div>
 </div>
-@endsection('content')
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH H:\updateDemitrius\Averti\Averti\resources\views/mail/group.blade.php ENDPATH**/ ?>

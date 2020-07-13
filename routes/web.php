@@ -40,10 +40,6 @@ Route::get('/Profile', 'Adviser\DashboardController@advisor_profile')->name('adv
 Route::post('/update_profile', 'Adviser\DashboardController@update_profile')->name('update_profile');
 Route::post('/update_advisor_data', 'Adviser\DashboardController@update_advisor_data')->name('update_advisor_data');
 Route::post('/update_user_data', 'Adviser\DashboardController@update_user_data')->name('update_user_data');
-Route::get('/template', 'Adviser\DashboardController@mail_template')->name('mail_template');
-Route::get('/template_list', 'Adviser\DashboardController@mail_temp_list')->name('mailtemplist');
-
-Route::get('/Group', 'Adviser\DashboardController@groups')->name('groups');
 
 Route::get('/contact', 'Adviser\ContactController@index')->name('contact');
 Route::get('/dashboard/event', 'Calender\CalenderController@home')->name('calender');
@@ -77,6 +73,16 @@ Route::post('/advisor_request_send', 'User\UserController@advisor_request_send')
 Route::get('/user_request', 'Adviser\DashboardController@user_request')->name('user_request');
 Route::post('/accept_request', 'Adviser\DashboardController@accept_userreq')->name('accept_userreq');
 
+/*Group Mail Controller*/
+Route::get('/template', 'GroupMailController@mail_template')->name('mail_template');
+Route::get('/template_list', 'GroupMailController@mail_temp_list')->name('mailtemplist');
+Route::get('/setting', 'GroupMailController@setting')->name('setting');
+
+Route::get('/Group', 'GroupMailController@groups')->name('groups');
+Route::post('/add_group', 'GroupMailController@add_group')->name('add_group');
+Route::get('/show_list/{id}', 'GroupMailController@show_list')->name('show_list');
+Route::post('/group_list', 'GroupMailController@group_list')->name('group_list');
+Route::get('/group_mail/{gmid}', 'GroupMailController@group_compose_mail')->name('group_compose_mail');
 
 Route::get('/Mail', 'User\UserController@mail')->name('mail');
 Route::get('/Chat', 'User\UserController@chat')->name('chat');
