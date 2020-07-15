@@ -19,7 +19,7 @@ class GroupMailController extends Controller
         return view('mail.list');
     }
     public function setting(){
-        return view('mail.setting');
+        // return view('mail.setting');
     }
 
     public function add_group(Request $r){
