@@ -66,6 +66,11 @@ Route::delete('/deletetemplate', 'MailTemplateController@delete')->name('deletet
 Route::get('/gettemplatebody', 'MailTemplateController@getTemplateBody')->name('gettemplatebody');
 Route::get('/downloadattachment/{filename}', 'MailTemplateController@downloadAttachment')->name('downloadattachment');
 
+/* INBOUND EMAILS APIs GOES HERE */
+Route::get('/inboundmails', 'InboundMailController@getInbox')->name('inboundmails');
+
+/* END INBOUND EMAILS~~~~~~~~ */
+
 Route::get('/dashboard/User/ViewUser/{id}', 'User\UserController@view_profile')->name('view_profile');
 Route::get('/dashboard/ContactList', 'User\UserController@contacts')->name('contacts');
 

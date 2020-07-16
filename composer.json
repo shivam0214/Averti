@@ -18,6 +18,7 @@
         "laravelcollective/html": "^6.0",
         "spatie/laravel-permission": "^3.6",
         "unisharp/laravel-filemanager": "^2.1",
+        "webklex/laravel-imap": "^1.4",
         "yajra/laravel-datatables-oracle": "^9.8",
         "zenapply/php-calendly": "^1.0"
     },
