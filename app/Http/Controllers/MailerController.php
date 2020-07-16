@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Auth;
 use Config;
+use App\User;
+use App\Group;
+use App\User_group;
+
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 
@@ -26,7 +30,6 @@ class MailerController extends Controller
      */
     public function index()
     {
-        //
         $mailer = Mailer::where([['user_id','=',Auth::user()->id],['is_status','=',0]])->orderBy('created_at', 'desc')->simplePaginate(50);
         $countSent = $mailer->count();
 
@@ -46,8 +49,29 @@ class MailerController extends Controller
         {
             $trash = $trashResult[0]->count;
         }
-        return view('mail.new_mail',compact('countSent','mailer','templates','starred','trash'));
+        $groups = Group::where(['advisor_id'=>Auth::user()->id])->get();
 
+        $contacts = User::where(['perent_id'=>Auth::user()['id'],'role_id'=>3])->get(); 
+        return view('mail.new_mail',compact('countSent','mailer','templates','starred','trash','contacts','groups'));
+    }
+    
+    public function getMails(Request $r){
+        $groups_usermail=User_group::where('group_id',$r->group_id)->get();
+        $ids=[] ;
+            foreach($groups_usermail as $user_details){
+            $ids[] =$user_details['user_id'];
+            }
+        $value= user::where(['role_id'=>3])->whereIn('id',$ids)->get();
+        $myemails = '';
+        foreach($value as $email){
+         $myemails .= $email['email'].',';
+            }
+            $myemails = rtrim($myemails);
+            return response()->json([
+                'message' => 'Mails here',
+                'mail_result'    => $myemails
+            ]);
+            exit;
     }
 
     /**

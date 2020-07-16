@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content') 
 <div class="content-wrapper">
 	  <div class="container-full">
@@ -19,8 +18,19 @@
 							<form method="POST" action="{{route('mailer.store')}}" enctype="multipart/form-data">
 							@csrf
 							<div class="modal-body">
+					
 								<div class="form-group">
-									<input class="form-control" placeholder="To:" name="to">
+									<select class="form-control" placeholder="Group:" name="group" onChange="getgroup(this.value)">
+									<option value="0">Select Group</option>
+									@foreach ($groups as $record)
+										<option value="{{$record['id']}}">{{$record['group_name']}}</option>
+										@endforeach
+
+									</select>
+								  </div>
+
+								<div class="form-group">
+									<input class="form-control" placeholder="To:" name="to" id="to" >
 								  </div>
 								  <div class="form-group">
 									<input class="form-control" placeholder="Subject:" name="subject">
@@ -90,8 +100,26 @@
 					</div>
 					<!-- /.box-body -->
 				  </div>
+				  
 				  <!-- /. box -->
-					
+				  <div class="contact-bx">
+				  	@foreach ($contacts as $records)
+						<div class="media-list media-list-hover">
+							<div class="media py-10 px-0 align-items-center">
+							  <a class="avatar avatar-lg status-success" href="#">
+							  <img src="<?php echo (($records['single']['profile_image'])!= NULL) ? url($records['single']['profile_image']) : url(asset('assets/img/avatars/user.png')); ?>" alt="&#xf013;" height="50px" width="50px">
+							  </a>
+							  <div class="media-body">
+								<p class="font-size-16">
+								  <a href="#">{{$records['name']}}</a>
+								</p>
+							  </div>
+							</div>
+						</div>
+					@endforeach
+	
+					</div>
+			
 				</div>
 				<!-- /.col -->
 				<div class="col-xl-6 col-lg-8 col-12">
@@ -303,7 +331,6 @@ function getMessage(val){
 			$("#subject").html("<h4>"+msg.mail.subject+"</h4>");
 			$("#mails").html(msg.mail.to);
 			$("#mails").append("<br /><span class='mailbox-read-time'>"+msg.mail.created_at+"</span>");
-			
 			$("#body").html(msg.mail.body);
 			// msg.mail.attach.forEach(ele=>{
 				if(msg.mail.filename!==null && msg.mail.filename !==undefined){
@@ -331,6 +358,18 @@ function getBody(id){
 		document.getElementById("compose-textarea").innerHTML = data.result;
 	}
 	});
+}
 
+function getgroup(id){
+//	console.log(id);
+$.ajax({
+	type: "GET",
+	url: '/getMails',
+	data: {group_id: id,"_token": "{{ csrf_token() }}"},
+	success: function( data ) {
+		 console.log(data);
+		$("#to").val(data.mail_result)
+	}
+	});
 }
 </script>
