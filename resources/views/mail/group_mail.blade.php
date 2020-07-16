@@ -1,7 +1,6 @@
                         <form method="POST" action="{{route('mailer.store')}}" enctype="multipart/form-data">
 							@csrf
-						
-                            <div class="modal-header" >
+						    <div class="modal-header" >
 								<h4 class="modal-title" >Compose New Message</h4>
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 							</div>
@@ -10,8 +9,8 @@
 
 								<div class="form-group">
 									<input class="form-control" placeholder="To:" name="to" value="{{$myemails}}">
-								  </div>
-								  <div class="form-group">
+								</div>
+								<div class="form-group">
 									<input class="form-control" placeholder="Subject:" name="subject">
 								  </div>
 								  <div class="form-group">

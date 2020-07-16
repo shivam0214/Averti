@@ -92,12 +92,6 @@
 								<input type="tel" class="form-control" placeholder="Phone">
 							</div>
 						</div>
-						<div class="form-group">
-							<label class="col-md-12">Address</label>
-							<div class="col-md-12">
-								<textarea class="form-control" placeholder=""></textarea>
-							</div>
-						</div>
 					</form>
 				</div>
 				<div class="modal-footer">

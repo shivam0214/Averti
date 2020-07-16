@@ -15,12 +15,4 @@ class User_group extends Model
         return $this->belongsTo('App\User_meta','user_id','user_id');
     }
 
-//     public function emailids(){
-//        $myemails = '';
-//         foreach($emails as $email){
-//             $myemails .= $email.',';
-//         }
-//         $myemails = rtrim($myemails);
-// /* it will give you results like this  sam@gmail.com,jais@gmail.com,km@gmao.com */
-//     }
 }
