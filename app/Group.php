@@ -8,5 +8,5 @@ class Group extends Model
 {
     protected $table = 'groups';
 
-    protected $fillable = ['group_name'];
+    protected $fillable = ['advisor_id','group_name'];
 }

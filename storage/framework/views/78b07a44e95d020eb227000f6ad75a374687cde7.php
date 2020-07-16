@@ -17,8 +17,19 @@
 							<form method="POST" action="<?php echo e(route('mailer.store')); ?>" enctype="multipart/form-data">
 							<?php echo csrf_field(); ?>
 							<div class="modal-body">
+					
 								<div class="form-group">
-									<input class="form-control" placeholder="To:" name="to">
+									<select class="form-control" placeholder="Group:" name="group" onChange="getgroup(this.value)">
+									<option value="0">Select Group</option>
+									<?php $__currentLoopData = $groups; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $record): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+										<option value="<?php echo e($record['id']); ?>"><?php echo e($record['group_name']); ?></option>
+										<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+									</select>
+								  </div>
+
+								<div class="form-group">
+									<input class="form-control" placeholder="To:" name="to" id="to" >
 								  </div>
 								  <div class="form-group">
 									<input class="form-control" placeholder="Subject:" name="subject">
@@ -90,8 +101,26 @@
 					</div>
 					<!-- /.box-body -->
 				  </div>
+				  
 				  <!-- /. box -->
-					
+				  <div class="contact-bx">
+				  	<?php $__currentLoopData = $contacts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $records): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+						<div class="media-list media-list-hover">
+							<div class="media py-10 px-0 align-items-center">
+							  <a class="avatar avatar-lg status-success" href="#">
+							  <img src="<?php echo (($records['single']['profile_image'])!= NULL) ? url($records['single']['profile_image']) : url(asset('assets/img/avatars/user.png')); ?>" alt="&#xf013;" height="50px" width="50px">
+							  </a>
+							  <div class="media-body">
+								<p class="font-size-16">
+								  <a href="#"><?php echo e($records['name']); ?></a>
+								</p>
+							  </div>
+							</div>
+						</div>
+					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+	
+					</div>
+			
 				</div>
 				<!-- /.col -->
 				<div class="col-xl-6 col-lg-8 col-12">
@@ -305,7 +334,6 @@ function getMessage(val){
 			$("#subject").html("<h4>"+msg.mail.subject+"</h4>");
 			$("#mails").html(msg.mail.to);
 			$("#mails").append("<br /><span class='mailbox-read-time'>"+msg.mail.created_at+"</span>");
-			
 			$("#body").html(msg.mail.body);
 			// msg.mail.attach.forEach(ele=>{
 				if(msg.mail.filename!==null && msg.mail.filename !==undefined){
@@ -333,7 +361,20 @@ function getBody(id){
 		document.getElementById("compose-textarea").innerHTML = data.result;
 	}
 	});
+}
 
+function getgroup(id){
+//	console.log(id);
+$.ajax({
+	type: "GET",
+	url: '/getMails',
+	data: {group_id: id,"_token": "<?php echo e(csrf_token()); ?>"},
+	success: function( data ) {
+		 console.log(data);
+		$("#to").val(data.mail_result)
+	}
+	});
 }
 </script>
+
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH H:\updateDemitrius\Averti\Averti\resources\views/mail/new_mail.blade.php ENDPATH**/ ?>

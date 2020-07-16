@@ -6,9 +6,7 @@
 			<div class="d-flex align-items-center">
 				<div class="mr-auto">
 					<h3 class="page-title">User Request</h3>
-					
 				</div>
-				
 			</div>
 		</div>
 		<!-- Main content -->

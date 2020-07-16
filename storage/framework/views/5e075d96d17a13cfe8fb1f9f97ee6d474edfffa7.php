@@ -64,7 +64,7 @@
             <li><a href="<?php echo e(route('addtemplate')); ?>"><i class="ti-more"></i>Template</a></li>
             <li><a href="<?php echo e(route('mailtemplate')); ?>"><i class="ti-more"></i>Template List</a></li>
             <li><a href="<?php echo e(route('groups')); ?>"><i class="ti-more"></i>Group</a></li>
-            <li><a href="<?php echo e(route('setting')); ?>"><i class="ti-more"></i>Setting</a></li>
+            <li><a href="<?php echo e(route('mailsetting')); ?>"><i class="ti-more"></i>Mail Setting</a></li>
 
           </ul>
         </li>

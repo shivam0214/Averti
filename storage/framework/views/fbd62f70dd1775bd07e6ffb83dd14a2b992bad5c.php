@@ -1,7 +1,6 @@
                         <form method="POST" action="<?php echo e(route('mailer.store')); ?>" enctype="multipart/form-data">
 							<?php echo csrf_field(); ?>
-						
-                            <div class="modal-header" >
+						    <div class="modal-header" >
 								<h4 class="modal-title" >Compose New Message</h4>
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 							</div>
@@ -10,8 +9,8 @@
 
 								<div class="form-group">
 									<input class="form-control" placeholder="To:" name="to" value="<?php echo e($myemails); ?>">
-								  </div>
-								  <div class="form-group">
+								</div>
+								<div class="form-group">
 									<input class="form-control" placeholder="Subject:" name="subject">
 								  </div>
 								  <div class="form-group">

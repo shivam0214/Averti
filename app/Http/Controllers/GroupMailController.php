@@ -23,7 +23,7 @@ class GroupMailController extends Controller
     }
 
     public function add_group(Request $r){
-        $check=Group::where('group_name',$r->group_name)->count();
+          $check=Group::where(['advisor_id'=>Auth::user()->id,'group_name'=>$r->group_name])->count();
         if($check>0){
             $notification = array(
                 'message' => 'This group name already created try another name',
@@ -32,7 +32,10 @@ class GroupMailController extends Controller
         }       
         else
         {
-            $data=array('group_name'=>$r->group_name);
+            $data=array('advisor_id'=>Auth::user()->id,'group_name'=>$r->group_name);
+            // print_r($data);
+            // die;
+         
             $add_group=Group::create($data);
             if($add_group){
                 $notification = array(
@@ -50,7 +53,7 @@ class GroupMailController extends Controller
     }
 
     public function groups(Request $r){
-        $groups = Group::all();
+        $groups = Group::where(['advisor_id'=>Auth::user()->id])->get();
         $contacts = User::where(['perent_id'=>Auth::user()['id'],'role_id'=>3])->get(); 
         return view('mail.group',compact('groups','contacts'));
     }

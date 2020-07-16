@@ -153,4 +153,5 @@ class DashboardController extends Controller
             }
             return Redirect::to('/user_request')->with($notification);
     }
+
   }
