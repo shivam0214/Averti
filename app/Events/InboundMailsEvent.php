@@ -1,64 +1,45 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Events;
 
-use Illuminate\Http\Request;
+use Illuminate\Broadcasting\Channel;
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Broadcasting\PresenceChannel;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
 use Webklex\IMAP\Client;
 use App\Mailer;
 use Auth;
-use App\Events\InboundMailsEvent;
 
-class InboundMailController extends Controller
+class InboundMailsEvent
 {
-    //
-    public function getMails(Request $request)
+    use Dispatchable, InteractsWithSockets, SerializesModels;
+
+    /**
+     * Create a new event instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        // dd('hi there');
-        $oClient = new Client([
-            'host'          => 'imap.gmail.com',
-            'port'          => 993,
-            'encryption'    => 'ssl',
-            'validate_cert' => false,
-            'username'      => 'sonamistytyagi786@gmail.com',
-            'password'      => 't0shU@8376979391',
-            'protocol'      => 'imap'
-        ]);
-        // Alternative by using the Facade
-        // $oClient = Webklex\IMAP\Facades\Client::account('default');
-       
-        
-        //Connect to the IMAP Server
-        $oClient->connect();
-        
-        //Get all Mailboxes
-        /** @var \Webklex\IMAP\Support\FolderCollection $aFolder */
-        $aFolder = $oClient->getFolders();
-        
-        //Loop through every Mailbox
-        /** @var \Webklex\IMAP\Folder $oFolder */
-        foreach($aFolder as $oFolder){
-        
-            //Get all Messages of the current Mailbox $oFolder
-            /** @var \Webklex\IMAP\Support\MessageCollection $aMessage */
-            $aMessage = $oFolder->messages()->all()->limit(10, 2)->get();
-            
-            /** @var \Webklex\IMAP\Message $oMessage */
-            foreach($aMessage as $oMessage){
-                echo $oMessage->getSubject().'<br />';
-                echo 'Attachments: '.$oMessage->getAttachments()->count().'<br />';
-                echo $oMessage->getHTMLBody(true);
-                
-                //Move the current Message to 'INBOX.read'
-                /* if($oMessage->moveToFolder('INBOX.read') == true){
-                    echo 'Message has ben moved';
-                }else{
-                    echo 'Message could not be moved';
-                } */
-            }
-        }
+        //
+        $this->getInbox();
     }
 
-    public function getInbox(Request $request)
+    /**
+     * Get the channels the event should broadcast on.
+     *
+     * @return \Illuminate\Broadcasting\Channel|array
+     */
+    public function broadcastOn()
+    {
+        // return new PrivateChannel('channel-name');
+    }
+
+    public function getInbox()
     {
         // dd('hi there');
         $oClient = new Client([
@@ -83,10 +64,10 @@ class InboundMailController extends Controller
             //Get all Messages of the current Mailbox
             /** @var \Webklex\IMAP\Support\MessageCollection $oMessage */
 
-            $aMessage = $oFolder->query()->since(now()->subDays(1))->limit(10, 1)->get();
+            $aMessage = $oFolder->query()->since(now()->subDays(1))->get();
             /** @var \Webklex\IMAP\Message $oMessage */
             foreach ($aMessage as $oMessage) {
-                dump($oMessage->uid);
+                // dump($oMessage->uid);
                 // dump($oMessage->message_id);
                 // dump($oMessage->from[0]->mail);
                 // dump($oMessage->date->toDateTimeString());
@@ -125,9 +106,4 @@ class InboundMailController extends Controller
         }
     }
 
-    public function getInboxEvent()
-    {
-        event(new InboundMailsEvent());
-        return redirect()->back();
-    }
 }

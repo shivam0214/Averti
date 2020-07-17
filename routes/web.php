@@ -69,7 +69,7 @@ Route::get('/gettemplatebody', 'MailTemplateController@getTemplateBody')->name('
 Route::get('/downloadattachment/{filename}', 'MailTemplateController@downloadAttachment')->name('downloadattachment');
 
 /* INBOUND EMAILS APIs GOES HERE */
-Route::get('/inboundmails', 'InboundMailController@getInbox')->name('inboundmails');
+Route::get('/inboundmails', 'InboundMailController@getInboxEvent')->name('inboundmails');
 
 /* END INBOUND EMAILS~~~~~~~~ */
 
