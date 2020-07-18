@@ -144,7 +144,7 @@
 						  <button type="button" class="btn btn-primary btn-sm" onClick="Delete()"><i class="fa fa-trash"></i></button>
 						</div>
 						<!-- /.btn-group -->
-						<button type="button" class="btn btn-primary btn-sm"><a href="{{ route('mailer.index') }}"><i class="fa fa-refresh"></i></a></button>
+						<button type="button" class="btn btn-primary btn-sm"><a href="{{ route('inboundmails') }}"><i class="fa fa-refresh"></i></a></button>
 						<div class="pull-right">
 						  <div class="btn-group">
 							  {{-- $mailer->links() --}}
