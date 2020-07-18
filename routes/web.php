@@ -83,12 +83,12 @@ Route::post('/accept_request', 'Adviser\DashboardController@accept_userreq')->na
 Route::get('/template', 'GroupMailController@mail_template')->name('mail_template');
 Route::get('/template_list', 'GroupMailController@mail_temp_list')->name('mailtemplist');
 Route::get('/setting', 'GroupMailController@setting')->name('setting');
+Route::get('/add_to_group_users/{group_users_id}', 'GroupMailController@add_to_group_users')->name('add_to_group_users');
 
 Route::get('/Group', 'GroupMailController@groups')->name('groups');
 Route::post('/add_group', 'GroupMailController@add_group')->name('add_group');
 Route::get('/show_list/{id}', 'GroupMailController@show_list')->name('show_list');
 Route::post('/group_list', 'GroupMailController@group_list')->name('group_list');
-Route::get('/group_mail/{gmid}', 'GroupMailController@group_compose_mail')->name('group_compose_mail');
 Route::post('/savetemplate', 'GroupMailController@store')->name('savetemplate');
 
 

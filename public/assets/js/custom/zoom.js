@@ -51,21 +51,14 @@ $('#create_meetingform').submit(function(e) {
       });
   });
 
-$('.user_list').click(function(){
-   gid= $(this).attr('role');
-     $('#myModal2').modal('show');
-     $('.groupid').val(gid); 
-});
-
-
-$('.group_mail').click(function(){
-  gmid= $(this).attr('role');
-    $('#mail_modal').modal('show');
+$('.add_user_to_groups').click(function(){
+  group_users_id= $(this).attr('role');
+    $('#myModal2').modal('show');
  $.ajax({
-  url:'/group_mail/'+gmid,
+  url:'/add_to_group_users/'+group_users_id,
   type:'GET',
   success: function (response) {
-  $(".group_mail_box").html(response);
+    $(".user_list").html(response);
     }
  });
 });

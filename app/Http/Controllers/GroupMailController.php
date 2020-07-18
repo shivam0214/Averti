@@ -18,10 +18,6 @@ class GroupMailController extends Controller
     public function mail_temp_list(){
         return view('mail.list');
     }
-    public function setting(){
-        // return view('mail.setting');
-    }
-
     public function add_group(Request $r){
           $check=Group::where(['advisor_id'=>Auth::user()->id,'group_name'=>$r->group_name])->count();
         if($check>0){
@@ -33,9 +29,6 @@ class GroupMailController extends Controller
         else
         {
             $data=array('advisor_id'=>Auth::user()->id,'group_name'=>$r->group_name);
-            // print_r($data);
-            // die;
-         
             $add_group=Group::create($data);
             if($add_group){
                 $notification = array(
@@ -57,11 +50,21 @@ class GroupMailController extends Controller
         $contacts = User::where(['perent_id'=>Auth::user()['id'],'role_id'=>3])->get(); 
         return view('mail.group',compact('groups','contacts'));
     }
+    public function add_to_group_users(Request $r){
+        $group_users_id=$r->group_users_id;
+        $check=User_group::where(['group_id'=>$group_users_id])->get();
+        $ids=[];
+        foreach($check as $user_ids){
+            $ids[]=$user_ids['user_id'];
+        }
+        $contacts=User::whereNotIn('id',$ids)->where(['perent_id'=>Auth::user()['id'],'role_id'=>3])->get();       
+        return view('mail.add_user_to_group',compact('contacts','group_users_id'));
+    }
     
     public function group_list(Request $r)
     {    
-    $data=array('user_id'=>$r->id,'group_id'=>$r->groupid);
-    $check=User_group::where(['group_id'=>$r->groupid,'user_id'=>$r->id])->count();
+    $data=array('user_id'=>$r->id,'group_id'=>$r->group_users_id);
+    $check=User_group::where(['group_id'=>$r->group_users_id,'user_id'=>$r->id])->count();
     if($check>0){
         $notification = array(
             'message' => 'This user is already added on this group',
@@ -70,7 +73,6 @@ class GroupMailController extends Controller
     }
     else{
     $add_data=User_group::create($data);
-
     if($add_data){
         $notification = array(
          'message' => 'User added successfully!',
@@ -89,28 +91,16 @@ class GroupMailController extends Controller
     public function show_list($id){
         $groups_user=User_group::where('group_id',$id)->get();
         $ids=[] ;
-                foreach($groups_user as $user_details){
+            foreach($groups_user as $user_details){
             $ids[] =$user_details['user_id'];
         }
         $value= user::where(['role_id'=>3])->whereIn('id',$ids)->get();
-            return view('mail.show_list',compact('value')) ;
+        $group_names=Group::where('id',$id)->get();
+        foreach($group_names as $user_group){
+            $group_name =$user_group['group_name'];
+        }
+       // print_r($group_name);die;
+       
+            return view('mail.show_list',compact('value','group_name')) ;
     }  
-  
-    public function group_compose_mail(Request $r){
-        $templates = DB::select("SELECT id, `title` FROM mailtemplate WHERE user_id=".Auth::user()->id);
-
-        $groups_usermail=User_group::where('group_id',$r->gmid)->get();
-        $ids=[] ;
-            foreach($groups_usermail as $user_details){
-            $ids[] =$user_details['user_id'];
-            }
-        $value= user::where(['role_id'=>3])->whereIn('id',$ids)->get();
-        $myemails = '';
-        foreach($value as $email){
-         $myemails .= $email['email'].',';
-            }
-            $myemails = rtrim($myemails);
-            return view('mail.group_mail',compact('myemails','templates'));        
-    }
-    
 }

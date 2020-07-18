@@ -5,7 +5,7 @@
 		<div class="content-header">
 			<div class="d-flex align-items-center">
 				<div class="mr-auto">
-					<h3 class="page-title">Group User</h3>
+					<h3 class="page-title"> <?php echo e($group_name); ?>  Group User</h3>
 				</div>
 				
 			</div>
@@ -14,6 +14,12 @@
 		<section class="content">
 		    <div class="col-10">
 			  <div class="box box-default">
+			  <!-- /.box-header -->
+				<div class="box-header with-border">
+				<h3>
+				<a href="<?php echo e(route('groups')); ?>"  class="d-block"><i class="ti-arrow-left"></i></a>
+				</h3>
+				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
 					<!-- Nav tabs -->
