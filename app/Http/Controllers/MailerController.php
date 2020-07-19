@@ -33,6 +33,8 @@ class MailerController extends Controller
         $mailer = Mailer::where([['user_id','=',Auth::user()->id],['is_status','=',0]])->orderBy('created_at', 'desc')->simplePaginate(50);
         $countSent = $mailer->count();
 
+        $countMails = DB::select("SELECT COUNT(is_status) total, CASE WHEN is_status=0 THEN 'sent' WHEN is_status=1 THEN 'inbox' WHEN is_status=2 THEN 'draft' WHEN is_status=4 THEN 'trash' ELSE 'NA' END AS labels FROM mails WHERE user_id='".Auth::user()->id."' GROUP BY is_status ORDER BY is_status ASC");
+
         $templates = DB::select("SELECT id, `title` FROM mailtemplate WHERE user_id=".Auth::user()->id);
         
         $starred = 0;
@@ -43,16 +45,17 @@ class MailerController extends Controller
             $starred = $starredResult[0]->starred;
         }
 
-        $trash = 0;
-        $trashResult = DB::select("SELECT COUNT(*) AS `count` FROM mails WHERE is_status=4 AND user_id=".Auth::user()->id." GROUP BY is_status");
-        if(count($trashResult)>0)
+        $draft = 0;
+        $draftResult = DB::select("SELECT COUNT(*) AS `count` FROM mails WHERE is_status=2 AND user_id=".Auth::user()->id." GROUP BY is_status");
+        if(count($draftResult)>0)
         {
-            $trash = $trashResult[0]->count;
+            $trash = $draftResult[0]->count;
         }
+
         $groups = Group::where(['advisor_id'=>Auth::user()->id])->get();
 
         $contacts = User::where(['perent_id'=>Auth::user()['id'],'role_id'=>3])->get(); 
-        return view('mail.new_mail',compact('countSent','mailer','templates','starred','trash','contacts','groups'));
+        return view('mail.new_mail',compact('countMails','countSent','mailer','templates','starred','draft','contacts','groups'));
     }
     
     public function getMails(Request $r){

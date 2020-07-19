@@ -72,25 +72,27 @@ class InboundMailsEvent
                 // dump($oMessage->from[0]->mail);
                 // dump($oMessage->date->toDateTimeString());
                 // dump($oMessage->to[0]->mail);
-
-                $mailer = new Mailer();
-                $mailer->user_id = Auth::user()->id;
-                $mailer->subject = $oMessage->subject;
-                $mailer->to      = trim($oMessage->to[0]->mail);
-                $mailer->from    = trim($oMessage->from[0]->mail);
-                $mailer->body    = $oMessage->getHTMLBody(true);
-                $mailer->is_status = 1;
-                $mailer->created_at = $oMessage->date->toDateTimeString();
-                $mailer->uid        = $oMessage->uid;
-                $mailer->message_id = $oMessage->message_id;
-                if($oMessage->getAttachments()->count()>0)
-                {
-                    $mailer->is_attachment = 1;
-                }else{
-                    $mailer->is_attachment = 0;
+                $uidCount = Mailer::where('uid','=',$oMessage->uid)->get();
+                if($uidCount->count()==0){
+                    $mailer = new Mailer();
+                    $mailer->user_id = Auth::user()->id;
+                    $mailer->subject = $oMessage->subject;
+                    $mailer->to      = trim($oMessage->to[0]->mail);
+                    $mailer->from    = trim($oMessage->from[0]->mail);
+                    $mailer->body    = $oMessage->getHTMLBody(true);
+                    $mailer->is_status = 1;
+                    $mailer->created_at = $oMessage->date->toDateTimeString();
+                    $mailer->uid        = $oMessage->uid;
+                    $mailer->message_id = $oMessage->message_id;
+                    if($oMessage->getAttachments()->count()>0)
+                    {
+                        $mailer->is_attachment = 1;
+                    }else{
+                        $mailer->is_attachment = 0;
+                    }
+    
+                    $mailer->save();
                 }
-
-                $mailer->save();
                 // echo $oMessage->subject . '<br />';
                 // echo 'Attachments: ' . $oMessage->getAttachments()->count() . '<br />';
                 // echo $oMessage->getHTMLBody(true);

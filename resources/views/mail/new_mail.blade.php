@@ -81,11 +81,11 @@
 					</div>
 					<div class="box-body no-padding mailbox-nav">
 					  <ul class="nav nav-pills flex-column">
-						<li class="nav-item"><a class="nav-link active" href="javascript:void(0)"><i class="ion ion-ios-email-outline"></i> Inbox </a></li>
+						<li class="nav-item"><a class="nav-link active" href="javascript:void(0)"><i class="ion ion-ios-email-outline"></i> Inbox <span class="label label-info pull-right">{{$countMails[1]->total}}</span></a></li>
 
-						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-paper-airplane"></i> Sent <span class="label label-success pull-right">{{$countSent}}</span></a></li>
+						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-paper-airplane"></i> Sent <span class="label label-success pull-right">{{$countMails[0]->total}}</span></a></li>
 						
-						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-email-unread"></i> Drafts</a></li>
+						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-email-unread"></i> Drafts <span class="label label-primary pull-right">{{$draft}}</span></a></li>
 
 						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-star"></i>  Starred <span class="label label-warning pull-right" id="starredcount">
 							{{$starred}}
@@ -93,7 +93,7 @@
 						</li>
 
 						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-trash-a"></i> Trash <span class="label label-danger pull-right" id="trashcount">
-							{{$trash}}
+							{{$countMails[2]->total}}
 						</span></a></li>
 
 					  </ul>
@@ -121,16 +121,18 @@
 					</div>
 			
 				</div>
+				
 				<!-- /.col -->
 				<div class="col-xl-6 col-lg-8 col-12">
+					<span id="syncInboxResponse"></span>
 				  <div class="box">
 					<div class="box-header with-border">
 					  <h4 class="box-title">Inbox</h4>
 						<div class="box-controls pull-right">
 						<div class="box-header-actions">
-						  <div class="lookup lookup-sm lookup-right d-none d-lg-block">
+						  <!-- <div class="lookup lookup-sm lookup-right d-none d-lg-block">
 							<input type="text" name="s" placeholder="Search">
-						  </div>
+						  </div> -->
 						</div>
 					  </div>
 					</div>
@@ -144,7 +146,7 @@
 						  <button type="button" class="btn btn-primary btn-sm" onClick="Delete()"><i class="fa fa-trash"></i></button>
 						</div>
 						<!-- /.btn-group -->
-						<button type="button" class="btn btn-primary btn-sm"><a href="{{ route('inboundmails') }}"><i class="fa fa-refresh"></i></a></button>
+						<button type="button" class="btn btn-primary btn-sm"><a href="javascript:void(0)" onClick="syncInbox()"><i class="fa fa-refresh"></i></a></button>
 						<div class="pull-right">
 						  <div class="btn-group">
 							  {{-- $mailer->links() --}}
@@ -225,7 +227,7 @@
 					  <div class="mailbox-read-info clearfix mb-20">
 						<div class="float-left mr-10">
 							<a href="#">
-								<img src="{{asset('assets/img/avatars/4.jpg')}}" alt="user" width="40" class="rounded-circle">
+								<img src="{{asset('assets/img/avatars/user.png')}}" alt="user" width="40" class="rounded-circle">
 							</a>
 						</div>
 						<h5 class="no-margin" id="mails"> <!-- Pavan kumar --><br>
@@ -257,9 +259,9 @@
 					<!-- /.box-body -->
 					<div class="box-footer">
 						<h5>
-							<i class="fa fa-paperclip m-r-10 m-b-10"></i>
+							<!-- <i class="fa fa-paperclip m-r-10 m-b-10"></i>
 							Attachments 
-							<span>(3)</span>
+							<span>(3)</span> -->
 						</h5>
 						<ul class="mailbox-attachments clearfix" id="attachments">
 							<!-- Attachment files list goes here from ajax -->
@@ -362,14 +364,27 @@ function getBody(id){
 
 function getgroup(id){
 //	console.log(id);
-$.ajax({
-	type: "GET",
-	url: '/getMails',
-	data: {group_id: id,"_token": "{{ csrf_token() }}"},
-	success: function( data ) {
-		 console.log(data);
-		$("#to").val(data.mail_result)
-	}
+	$.ajax({
+		type: "GET",
+		url: '/getmails',
+		data: {group_id: id,"_token": "{{ csrf_token() }}"},
+		success: function( data ) {
+			console.log(data);
+			$("#to").val(data.mail_result)
+		}
+	});
+}
+
+function syncInbox(){
+	$.ajax({
+		type: "GET",
+		url: '/inboundmails',
+		data: {"_token": "{{ csrf_token() }}"},
+		success: function( data ) {
+			console.log(data);
+			$('#syncInboxResponse').html('<div class="alert alert-warning alert-dismissible fade show" role="alert">'+data.success+'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+
+		}
 	});
 }
 </script>

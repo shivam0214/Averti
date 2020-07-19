@@ -128,6 +128,8 @@ class InboundMailController extends Controller
     public function getInboxEvent()
     {
         event(new InboundMailsEvent());
-        return redirect()->back();
+        return response()->json(['success'=>'Inbox syncing is initiated it may takes few minutes to sync with your system','error'=>1]);
+        exit;
+        // return redirect()->back();
     }
 }
