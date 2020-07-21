@@ -100,6 +100,12 @@ Route::post('/savetemplate', 'GroupMailController@store')->name('savetemplate');
 Route::get('/Mail', 'User\UserController@mail')->name('mail');
 Route::get('/Chat', 'User\UserController@chat')->name('chat');
 
+
+/** Health Staff Route*/ 
+Route::get('/add_staff', 'Adviser\Health_staffController@add_staff')->name('add_staff');
+Route::post('/add_staff_details', 'Adviser\Health_staffController@add_staff_details')->name('add_staff_details');
+
+
 /* Booking */ 
 Route::get('/Booking', 'Adviser\BookingController@booking')->name('booking');
 Route::post('/booking','Adviser\BookingController@bookingsetting')->name('bookingsetting');

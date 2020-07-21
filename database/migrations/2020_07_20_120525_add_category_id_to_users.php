@@ -14,7 +14,7 @@ class AddCategoryIdToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('category_id')->after('role_id');
+            $table->integer('category_id')->nullable()->default(0)->after('role_id');
         });
     }
 

@@ -102,7 +102,8 @@
             <li><a href="javascript:void(0)" onclick="Calendly.showPopupWidget('https://calendly.com/shivam-sam');return false;"><i class="ti-more"></i>Calendly api</a></li>
           </ul>
         </li>
-    
+
+        
       </li>
       <li class="treeview">
           <a href="#">
@@ -130,6 +131,12 @@
             <li><a href="<?php echo e(route('booking')); ?>"><i class="ti-more"></i> Booking Schedule</a></li>
           </ul>
         </li>
+        <li>
+          <a href="<?php echo e(route('add_staff')); ?>">
+            <i class="ti-menu-alt"></i>
+			    <span>Staff</span>
+          </a>
+        </li>	
       <?php else: ?>
        <li>
           <a href="<?php echo e(route('advisor_request')); ?>">
