@@ -146,7 +146,7 @@
 						  <button type="button" class="btn btn-primary btn-sm" onClick="Delete()"><i class="fa fa-trash"></i></button>
 						</div>
 						<!-- /.btn-group -->
-						<button type="button" class="btn btn-primary btn-sm"><a href="javascript:void(0)" onClick="syncInbox()"><i class="fa fa-refresh"></i></a></button>
+						<button type="button" class="btn btn-primary btn-sm" onClick="syncInbox()"><i class="fa fa-refresh"></i></button>
 						<div class="pull-right">
 						  <div class="btn-group">
 							  {{-- $mailer->links() --}}
@@ -180,7 +180,7 @@
 									<i class="fa fa-paperclip"></i>
 								@endif
 								</td>
-								<td class="mailbox-date">{{ date('H:i:s a', strtotime($val->created_at)) }}</td>
+								<td class="mailbox-date">{{-- date('H:i:s a', strtotime($val->created_at)) --}}{{ Carbon\Carbon::parse($val->created_at)->diffForHumans() }}</td>
 							  </tr>
 							  @endforeach
 							  </tbody>
@@ -376,13 +376,17 @@ function getgroup(id){
 }
 
 function syncInbox(){
+	$( "i.fa-refresh" ).addClass("fa-spin");
+	$('#syncInboxResponse').html('<div class="alert alert-warning alert-dismissible fade show" role="alert">Inbox syncing is initiated it may takes few minutes to sync with your system.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
 	$.ajax({
 		type: "GET",
 		url: '/inboundmails',
 		data: {"_token": "{{ csrf_token() }}"},
 		success: function( data ) {
 			console.log(data);
-			$('#syncInboxResponse').html('<div class="alert alert-warning alert-dismissible fade show" role="alert">'+data.success+'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+			$( "i.fa-refresh" ).removeClass("fa-spin");
+			$('#syncInboxResponse').html('<div class="alert alert-success alert-dismissible fade show" role="alert">'+data.success+'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+
 
 		}
 	});
