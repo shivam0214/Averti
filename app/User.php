@@ -53,11 +53,10 @@ class User extends Authenticatable
     public function req_userata(){
         return $this->belongsToMany('App\UserRequest','id','advisor_id');
     }
-
     public function catname(){
         return $this->belongsTo('App\Categories','category_id','id');
     }
-
-   
-    
+    public function staff_details(){
+        return $this->belongsTo('App\Professional','id','user_id');
+    }    
 }

@@ -95,6 +95,7 @@ Route::post('/add_group', 'GroupMailController@add_group')->name('add_group');
 Route::get('/show_list/{id}', 'GroupMailController@show_list')->name('show_list');
 Route::post('/group_list', 'GroupMailController@group_list')->name('group_list');
 Route::post('/savetemplate', 'GroupMailController@store')->name('savetemplate');
+Route::get('/mail', 'GroupMailController@mail')->name('mail');
 
 
 Route::get('/Mail', 'User\UserController@mail')->name('mail');
@@ -104,6 +105,10 @@ Route::get('/Chat', 'User\UserController@chat')->name('chat');
 /** Health Staff Route*/ 
 Route::get('/add_staff', 'Adviser\Health_staffController@add_staff')->name('add_staff');
 Route::post('/add_staff_details', 'Adviser\Health_staffController@add_staff_details')->name('add_staff_details');
+Route::get('/staff_list', 'Adviser\Health_staffController@staff_list')->name('staff_list');
+Route::get('/staff_profile/{id}', 'Adviser\Health_staffController@view_staff')->name('view_staff');
+Route::post('/update_details', 'Adviser\Health_staffController@update_details')->name('update_details');
+Route::get('/delete_data/{id}', 'Adviser\Health_staffController@delete_data')->name('delete_data');
 
 
 /* Booking */ 

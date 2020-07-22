@@ -18,6 +18,10 @@ class GroupMailController extends Controller
     public function mail_temp_list(){
         return view('mail.list');
     }
+    public function mail(){
+        return view('mail.mail');
+    }
+    
     public function add_group(Request $r){
           $check=Group::where(['advisor_id'=>Auth::user()->id,'group_name'=>$r->group_name])->count();
         if($check>0){

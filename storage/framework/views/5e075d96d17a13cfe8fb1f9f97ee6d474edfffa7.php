@@ -131,12 +131,23 @@
             <li><a href="<?php echo e(route('booking')); ?>"><i class="ti-more"></i> Booking Schedule</a></li>
           </ul>
         </li>
-        <li>
-          <a href="<?php echo e(route('add_staff')); ?>">
-            <i class="ti-menu-alt"></i>
-			    <span>Staff</span>
+        <li class="treeview">
+          <a href="#">
+            <i class="ti-layout-grid2"></i>
+			<span>Staff</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
           </a>
-        </li>	
+          <ul class="treeview-menu">
+          <li>
+          <a href="<?php echo e(route('add_staff')); ?>"><i class="ti-more"></i>Add Staff Details</a>
+        </li>            
+        <li><a href="<?php echo e(route('staff_list')); ?>"><i class="ti-more"></i>Staff List</a></li>
+          </ul>
+        </li>
+      
+        	
       <?php else: ?>
        <li>
           <a href="<?php echo e(route('advisor_request')); ?>">
