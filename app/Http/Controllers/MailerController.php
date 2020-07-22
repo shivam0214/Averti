@@ -30,8 +30,11 @@ class MailerController extends Controller
      */
     public function index()
     {
-        $mailer = Mailer::where([['user_id','=',Auth::user()->id],['is_status','=',0]])->orderBy('created_at', 'desc')->simplePaginate(50);
-        $countSent = $mailer->count();
+        $inboxlist = Mailer::where([['user_id','=',Auth::user()->id],['is_status','=',1]])->orderBy('created_at', 'desc')->simplePaginate(50);
+        $sentlist = Mailer::where([['user_id','=',Auth::user()->id],['is_status','=',0]])->orderBy('created_at', 'desc')->simplePaginate(50);
+        $draftlist = Mailer::where([['user_id','=',Auth::user()->id],['is_status','=',2]])->orderBy('created_at', 'desc')->simplePaginate(50);
+        $trashlist = Mailer::where([['user_id','=',Auth::user()->id],['is_status','=',4]])->orderBy('created_at', 'desc')->simplePaginate(50);
+        $starredlist = Mailer::where([['user_id','=',Auth::user()->id],['is_starred','=',1]])->orderBy('created_at', 'desc')->simplePaginate(50);
 
         $countMails = DB::select("SELECT COUNT(is_status) total, CASE WHEN is_status=0 THEN 'sent' WHEN is_status=1 THEN 'inbox' WHEN is_status=2 THEN 'draft' WHEN is_status=4 THEN 'trash' ELSE 'NA' END AS labels FROM mails WHERE user_id='".Auth::user()->id."' GROUP BY is_status ORDER BY is_status ASC");
 
@@ -55,7 +58,7 @@ class MailerController extends Controller
         $groups = Group::where(['advisor_id'=>Auth::user()->id])->get();
 
         $contacts = User::where(['perent_id'=>Auth::user()['id'],'role_id'=>3])->get(); 
-        return view('mail.new_mail',compact('countMails','countSent','mailer','templates','starred','draft','contacts','groups'));
+        return view('mail.new_mail',compact('inboxlist','sentlist','draftlist','trashlist','starredlist','countMails','templates','starred','draft','contacts','groups'));
     }
     
     public function getMails(Request $r){

@@ -92,7 +92,7 @@
 							{{$starred}}
 						</span></a>
 						</li>
-						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#trash" role="tab"><i class="ion ion-trash-a"></i> Trash <span class="label label-danger pull-right" id="trashcount">
+						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#trash" role="tab"><i class="ion ion-trash-a"></i> Trash <span class="label label-danger pull-right" id="trashcount">{{$countMails[2]->total}}
 						</span></a></li>						
 					  </ul>
 					</div>
@@ -148,7 +148,7 @@
 									<button type="button" class="btn btn-primary btn-sm" onClick="Delete()"><i class="fa fa-trash"></i></button>
 									</div>
 									<!-- /.btn-group -->
-									<button type="button" class="btn btn-primary btn-sm"><a href="javascript:void(0)" onClick="syncInbox()"><i class="fa fa-refresh"></i></a></button>
+									<button type="button" class="btn btn-primary btn-sm" onClick="syncInbox()"><i class="fa fa-refresh"></i></button>
 									<div class="pull-right">
 									<div class="btn-group">
 										{{-- $mailer->links() --}}
@@ -161,28 +161,28 @@
 									<div class="table-responsive">
 										<table class="table table-hover table-striped">
 										<tbody>
-										@foreach($mailer as $val)
+										@foreach($inboxlist as $inbox)
 										<tr>
-											<td><input type="checkbox" class="checkbox_mail" name="check[]" value="{{$val->id}}"></td>
-											<td class="mailbox-star" id="starred{{$val->id}}">
-												@if($val->is_starred=='0')
-													<a onClick="starred({{$val->id}},1)"><i class="fa text-yellow fa-star-o"></i></a>
+											<td><input type="checkbox" class="checkbox_mail" name="check[]" value="{{$inbox->id}}"></td>
+											<td class="mailbox-star" id="starred{{$inbox->id}}">
+												@if($inbox->is_starred=='0')
+													<a onClick="starred({{$inbox->id}},1)"><i class="fa text-yellow fa-star-o"></i></a>
 												@else
-													<a onClick="starred({{$val->id}},0)"><i class="fa text-yellow fa-star"></i></a>
+													<a onClick="starred({{$inbox->id}},0)"><i class="fa text-yellow fa-star"></i></a>
 												@endif
 											</td>
 											<td>
-												<p class="mailbox-name mb-0 font-size-16 font-weight-600">{{$val->fullname}}</p>
-												<a class="mailbox-subject" href="javascript:void(0)" onClick="getMessage({{$val->id}})">
-													{{$val->subject}}
+												<p class="mailbox-name mb-0 font-size-16 font-weight-600">{{$inbox->fullname}}</p>
+												<a class="mailbox-subject" href="javascript:void(0)" onClick="getMessage({{$inbox->id}})">
+													{{$inbox->subject}}
 												</a>
 											</td>
 											<td class="mailbox-attachment">
-											@if($val->is_attachment=='1')
+											@if($inbox->is_attachment=='1')
 												<i class="fa fa-paperclip"></i>
 											@endif
 											</td>
-											<td class="mailbox-date">{{ date('H:i:s a', strtotime($val->created_at)) }}</td>
+											<td class="mailbox-date">{{ $inbox->created_at->diffForHumans() }}</td>
 										</tr>
 										@endforeach
 										</tbody>
@@ -195,19 +195,9 @@
 								<!-- /.box-body -->
 								<div class="box-footer">
 								<div class="mailbox-controls">
-									<!-- Check all button -->
-									<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
-									</button>
-									<div class="btn-group">
-									<button type="button" class="btn btn-primary btn-sm" title="Delete Selected Mail"><i class="fa fa-trash"></i></button>
-									</div>
-									<!-- /.btn-group -->
-									<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
 									<div class="pull-right">
 									<div class="btn-group">
-									{{ $mailer->links() }}
-										<!-- <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-left"></i></button>
-										<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-right"></i></button> -->
+									{{ $inboxlist->links() }}
 									</div>
 									<!-- /.btn-group -->
 									</div>
@@ -218,6 +208,7 @@
 								<!-- /. box -->
 
 							</div>
+<!-- SENTBOX SENTBOX SENTBOX SENTBOX SENTBOX SENTBOX SENTBOX SENTBOX SENTBOX SENTBOX SENTBOX -->							
 							<div class="tab-pane" id="sentbox" role="tabpanel">
 							<div class="box">
 
@@ -242,18 +233,36 @@
 										<button type="button" class="btn btn-primary btn-sm" onClick="Delete()"><i class="fa fa-trash"></i></button>
 										</div>
 										<!-- /.btn-group -->
-										<button type="button" class="btn btn-primary btn-sm"><a href="javascript:void(0)" onClick="syncInbox()"><i class="fa fa-refresh"></i></a></button>
-										<div class="pull-right">
-										<div class="btn-group">
-											{{-- $mailer->links() --}}
-										</div>
-										<!-- /.btn-group -->
-										</div>
-										<!-- /.pull-right -->
 									</div>
 									<div class="mailbox-messages inbox-bx">
 										<div class="table-responsive">
 											<table class="table table-hover table-striped">
+											<tbody>
+												@foreach($sentlist as $sent)
+												<tr>
+													<td><input type="checkbox" class="checkbox_mail" name="check[]" value="{{$sent->id}}"></td>
+													<td class="mailbox-star" id="starred{{$sent->id}}">
+														@if($sent->is_starred=='0')
+															<a onClick="starred({{$sent->id}},1)"><i class="fa text-yellow fa-star-o"></i></a>
+														@else
+															<a onClick="starred({{$sent->id}},0)"><i class="fa text-yellow fa-star"></i></a>
+														@endif
+													</td>
+													<td>
+														<p class="mailbox-name mb-0 font-size-16 font-weight-600">{{$sent->fullname}}</p>
+														<a class="mailbox-subject" href="javascript:void(0)" onClick="getMessage({{$sent->id}})">
+															{{$sent->subject}}
+														</a>
+													</td>
+													<td class="mailbox-attachment">
+													@if($sent->is_attachment=='1')
+														<i class="fa fa-paperclip"></i>
+													@endif
+													</td>
+													<td class="mailbox-date">{{ $sent->created_at->diffForHumans() }}</td>
+												</tr>
+												@endforeach
+												</tbody>
 											</table>
 										</div>                
 										<!-- /.table -->
@@ -263,20 +272,10 @@
 									<!-- /.box-body -->
 									<div class="box-footer">
 									<div class="mailbox-controls">
-										<!-- Check all button -->
-										<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
-										</button>
-										<div class="btn-group">
-										<button type="button" class="btn btn-primary btn-sm" title="Delete Selected Mail"><i class="fa fa-trash"></i></button>
-										</div>
-										<!-- /.btn-group -->
-										<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
 										<div class="pull-right">
-										<div class="btn-group">
-										{{ $mailer->links() }}
-											<!-- <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-left"></i></button>
-											<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-right"></i></button> -->
-										</div>
+											<div class="btn-group">
+												{{ $sentlist->links() }}
+											</div>
 										<!-- /.btn-group -->
 										</div>
 										<!-- /.pull-right -->
@@ -284,9 +283,8 @@
 									</div>
 									</div>
 									<!-- /. box -->
-
-
 							</div>
+<!-- DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT -->
 							<div class="tab-pane" id="drafts" role="tabpanel">
 							<div class="box">
 
@@ -294,9 +292,6 @@
 								<h4 class="box-title">Drafts</h4>
 									<div class="box-controls pull-right">
 									<div class="box-header-actions">
-									<!-- <div class="lookup lookup-sm lookup-right d-none d-lg-block">
-										<input type="text" name="s" placeholder="Search">
-									</div> -->
 									</div>
 								</div>
 								</div>
@@ -311,18 +306,37 @@
 									<button type="button" class="btn btn-primary btn-sm" onClick="Delete()"><i class="fa fa-trash"></i></button>
 									</div>
 									<!-- /.btn-group -->
-									<button type="button" class="btn btn-primary btn-sm"><a href="javascript:void(0)" onClick="syncInbox()"><i class="fa fa-refresh"></i></a></button>
-									<div class="pull-right">
-									<div class="btn-group">
-										{{-- $mailer->links() --}}
-									</div>
-									<!-- /.btn-group -->
-									</div>
 									<!-- /.pull-right -->
 								</div>
 								<div class="mailbox-messages inbox-bx">
 									<div class="table-responsive">
 										<table class="table table-hover table-striped">
+										<tbody>
+												@foreach($draftlist as $draft)
+												<tr>
+													<td><input type="checkbox" class="checkbox_mail" name="check[]" value="{{$draft->id}}"></td>
+													<td class="mailbox-star" id="starred{{$draft->id}}">
+														@if($draft->is_starred=='0')
+															<a onClick="starred({{$draft->id}},1)"><i class="fa text-yellow fa-star-o"></i></a>
+														@else
+															<a onClick="starred({{$draft->id}},0)"><i class="fa text-yellow fa-star"></i></a>
+														@endif
+													</td>
+													<td>
+														<p class="mailbox-name mb-0 font-size-16 font-weight-600">{{$draft->fullname}}</p>
+														<a class="mailbox-subject" href="javascript:void(0)" onClick="getMessage({{$draft->id}})">
+															{{$draft->subject}}
+														</a>
+													</td>
+													<td class="mailbox-attachment">
+													@if($draft->is_attachment=='1')
+														<i class="fa fa-paperclip"></i>
+													@endif
+													</td>
+													<td class="mailbox-date">{{ $draft->created_at->diffForHumans() }}</td>
+												</tr>
+												@endforeach
+												</tbody>
 										</table>
 									</div>                
 									<!-- /.table -->
@@ -332,19 +346,9 @@
 								<!-- /.box-body -->
 								<div class="box-footer">
 								<div class="mailbox-controls">
-									<!-- Check all button -->
-									<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
-									</button>
-									<div class="btn-group">
-									<button type="button" class="btn btn-primary btn-sm" title="Delete Selected Mail"><i class="fa fa-trash"></i></button>
-									</div>
-									<!-- /.btn-group -->
-									<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
 									<div class="pull-right">
 									<div class="btn-group">
-									{{ $mailer->links() }}
-										<!-- <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-left"></i></button>
-										<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-right"></i></button> -->
+									{{ $draftlist->links() }}
 									</div>
 									<!-- /.btn-group -->
 									</div>
@@ -355,6 +359,7 @@
 								<!-- /. box -->
 
 								</div>
+<!-- STARRED	STARRED STARRED STARRED STARRED STARRED STARRED STARRED STARRED STARRED STARRED STARRED -->								
 							<div class="tab-pane" id="starred" role="tabpanel">
 							<div class="box">
 
@@ -378,20 +383,36 @@
 									<div class="btn-group">
 									<button type="button" class="btn btn-primary btn-sm" onClick="Delete()"><i class="fa fa-trash"></i></button>
 									</div>
-									<!-- /.btn-group -->
-									<button type="button" class="btn btn-primary btn-sm"><a href="javascript:void(0)" onClick="syncInbox()"><i class="fa fa-refresh"></i></a></button>
-									<div class="pull-right">
-									<div class="btn-group">
-										{{-- $mailer->links() --}}
-									</div>
-									<!-- /.btn-group -->
-									</div>
-									<!-- /.pull-right -->
 								</div>
 								<div class="mailbox-messages inbox-bx">
 									<div class="table-responsive">
 										<table class="table table-hover table-striped">
-										
+										<tbody>
+												@foreach($starredlist as $star)
+												<tr>
+													<td><input type="checkbox" class="checkbox_mail" name="check[]" value="{{$star->id}}"></td>
+													<td class="mailbox-star" id="starred{{$star->id}}">
+														@if($star->is_starred=='0')
+															<a onClick="starred({{$star->id}},1)"><i class="fa text-yellow fa-star-o"></i></a>
+														@else
+															<a onClick="starred({{$star->id}},0)"><i class="fa text-yellow fa-star"></i></a>
+														@endif
+													</td>
+													<td>
+														<p class="mailbox-name mb-0 font-size-16 font-weight-600">{{$star->fullname}}</p>
+														<a class="mailbox-subject" href="javascript:void(0)" onClick="getMessage({{$star->id}})">
+															{{$star->subject}}
+														</a>
+													</td>
+													<td class="mailbox-attachment">
+													@if($star->is_attachment=='1')
+														<i class="fa fa-paperclip"></i>
+													@endif
+													</td>
+													<td class="mailbox-date">{{ $star->created_at->diffForHumans() }}</td>
+												</tr>
+												@endforeach
+												</tbody>
 										</table>
 									</div>                
 									<!-- /.table -->
@@ -401,19 +422,9 @@
 								<!-- /.box-body -->
 								<div class="box-footer">
 								<div class="mailbox-controls">
-									<!-- Check all button -->
-									<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
-									</button>
-									<div class="btn-group">
-									<button type="button" class="btn btn-primary btn-sm" title="Delete Selected Mail"><i class="fa fa-trash"></i></button>
-									</div>
-									<!-- /.btn-group -->
-									<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
 									<div class="pull-right">
 									<div class="btn-group">
-									{{ $mailer->links() }}
-										<!-- <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-left"></i></button>
-										<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-right"></i></button> -->
+									{{ $starredlist->links() }}
 									</div>
 									<!-- /.btn-group -->
 									</div>
@@ -422,9 +433,8 @@
 								</div>
 								</div>
 								<!-- /. box -->
-
-
 							</div>
+<!-- TRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASH -->
 							<div class="tab-pane" id="trash" role="tabpanel">
 							<div class="box">
 
@@ -445,22 +455,38 @@
 								<!-- Check all button -->
 								<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
 								</button>
-								<div class="btn-group">
+								<!-- <div class="btn-group">
 								<button type="button" class="btn btn-primary btn-sm" onClick="Delete()"><i class="fa fa-trash"></i></button>
-								</div>
-								<!-- /.btn-group -->
-								<button type="button" class="btn btn-primary btn-sm"><a href="javascript:void(0)" onClick="syncInbox()"><i class="fa fa-refresh"></i></a></button>
-								<div class="pull-right">
-								<div class="btn-group">
-									{{-- $mailer->links() --}}
-								</div>
-								<!-- /.btn-group -->
-								</div>
-								<!-- /.pull-right -->
+								</div> -->
 							</div>
 							<div class="mailbox-messages inbox-bx">
 								<div class="table-responsive">
 									<table class="table table-hover table-striped">
+									<tbody>
+												@foreach($trashlist as $trash)
+												<tr>
+													<td class="mailbox-star" id="starred{{$trash->id}}">
+														@if($trash->is_starred=='0')
+															<a onClick="starred({{$trash->id}},1)"><i class="fa text-yellow fa-star-o"></i></a>
+														@else
+															<a onClick="starred({{$trash->id}},0)"><i class="fa text-yellow fa-star"></i></a>
+														@endif
+													</td>
+													<td>
+														<p class="mailbox-name mb-0 font-size-16 font-weight-600">{{$trash->fullname}}</p>
+														<a class="mailbox-subject" href="javascript:void(0)" onClick="getMessage({{$trash->id}})">
+															{{$trash->subject}}
+														</a>
+													</td>
+													<td class="mailbox-attachment">
+													@if($trash->is_attachment=='1')
+														<i class="fa fa-paperclip"></i>
+													@endif
+													</td>
+													<td class="mailbox-date">{{ $trash->created_at->diffForHumans() }}</td>
+												</tr>
+												@endforeach
+												</tbody>
 									</table>
 								</div>                
 								<!-- /.table -->
@@ -470,19 +496,9 @@
 							<!-- /.box-body -->
 							<div class="box-footer">
 							<div class="mailbox-controls">
-								<!-- Check all button -->
-								<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
-								</button>
-								<div class="btn-group">
-								<button type="button" class="btn btn-primary btn-sm" title="Delete Selected Mail"><i class="fa fa-trash"></i></button>
-								</div>
-								<!-- /.btn-group -->
-								<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
 								<div class="pull-right">
 								<div class="btn-group">
-								{{ $mailer->links() }}
-									<!-- <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-left"></i></button>
-									<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-right"></i></button> -->
+								{{ $trashlist->links() }}
 								</div>
 								<!-- /.btn-group -->
 								</div>
@@ -657,13 +673,16 @@ function getgroup(id){
 }
 
 function syncInbox(){
+	$('i.fa-refresh').addClass('fa-spin');
+	$('#syncInboxResponse').html('<div class="alert alert-warning alert-dismissible fade show" role="alert">Inbox syncing is initiated. It may take few minutes to sync.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
 	$.ajax({
 		type: "GET",
 		url: '/inboundmails',
 		data: {"_token": "{{ csrf_token() }}"},
 		success: function( data ) {
 			console.log(data);
-			$('#syncInboxResponse').html('<div class="alert alert-warning alert-dismissible fade show" role="alert">'+data.success+'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+			$('i.fa-refresh').removeClass('fa-spin');
+			$('#syncInboxResponse').html('<div class="alert alert-success alert-dismissible fade show" role="alert">'+data.success+'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
 
 		}
 	});
