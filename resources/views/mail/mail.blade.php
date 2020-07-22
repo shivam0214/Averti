@@ -79,23 +79,21 @@
 						<li><a class="box-btn-slide" href="#"></a></li>	
 					  </ul>
 					</div>
+					
 					<div class="box-body no-padding mailbox-nav">
 					  <ul class="nav nav-pills flex-column">
-						<li class="nav-item"><a class="nav-link active" href="javascript:void(0)"><i class="ion ion-ios-email-outline"></i> Inbox <span class="label label-info pull-right">{{$countMails[1]->total}}</span></a></li>
+						<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#inbox" role="tab"><i class="ion ion-ios-email-outline"></i> Inbox <span class="label label-info pull-right">{{$countMails[1]->total}}</span></a></li>
 
-						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-paper-airplane"></i> Sent <span class="label label-success pull-right">{{$countMails[0]->total}}</span></a></li>
+						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#sentbox" role="tab"><i class="ion ion-paper-airplane"></i> Sent <span class="label label-success pull-right">{{$countMails[0]->total}}</span></a></li>
 						
-						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-email-unread"></i> Drafts <span class="label label-primary pull-right">{{$draft}}</span></a></li>
+						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#drafts" role="tab"><i class="ion ion-email-unread"></i> Drafts <span class="label label-primary pull-right">{{$draft}}</span></a></li>
 
-						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-star"></i>  Starred <span class="label label-warning pull-right" id="starredcount">
+						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#starred" role="tab"><i class="ion ion-star"></i>  Starred <span class="label label-warning pull-right" id="starredcount">
 							{{$starred}}
 						</span></a>
 						</li>
-
-						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-trash-a"></i> Trash <span class="label label-danger pull-right" id="trashcount">
-							{{$countMails[2]->total}}
-						</span></a></li>
-
+						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#trash" role="tab"><i class="ion ion-trash-a"></i> Trash <span class="label label-danger pull-right" id="trashcount">
+						</span></a></li>						
 					  </ul>
 					</div>
 					<!-- /.box-body -->
@@ -125,96 +123,379 @@
 				<!-- /.col -->
 				<div class="col-xl-6 col-lg-8 col-12">
 					<span id="syncInboxResponse"></span>
-				  <div class="box">
-					<div class="box-header with-border">
-					  <h4 class="box-title">Inbox</h4>
-						<div class="box-controls pull-right">
-						<div class="box-header-actions">
-						  <!-- <div class="lookup lookup-sm lookup-right d-none d-lg-block">
-							<input type="text" name="s" placeholder="Search">
-						  </div> -->
+					<div class="tab-content">
+					<div class="tab-pane active" id="inbox" role="tabpanel">
+							<div class="box">
+
+								<div class="box-header with-border">
+								<h4 class="box-title">Inbox</h4>
+									<div class="box-controls pull-right">
+									<div class="box-header-actions">
+									<!-- <div class="lookup lookup-sm lookup-right d-none d-lg-block">
+										<input type="text" name="s" placeholder="Search">
+									</div> -->
+									</div>
+								</div>
+								</div>
+								<!-- /.box-header -->
+								<div class="box-body">
+
+								<div class="mailbox-controls">
+									<!-- Check all button -->
+									<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
+									</button>
+									<div class="btn-group">
+									<button type="button" class="btn btn-primary btn-sm" onClick="Delete()"><i class="fa fa-trash"></i></button>
+									</div>
+									<!-- /.btn-group -->
+									<button type="button" class="btn btn-primary btn-sm"><a href="javascript:void(0)" onClick="syncInbox()"><i class="fa fa-refresh"></i></a></button>
+									<div class="pull-right">
+									<div class="btn-group">
+										{{-- $mailer->links() --}}
+									</div>
+									<!-- /.btn-group -->
+									</div>
+									<!-- /.pull-right -->
+								</div>
+								<div class="mailbox-messages inbox-bx">
+									<div class="table-responsive">
+										<table class="table table-hover table-striped">
+										<tbody>
+										@foreach($mailer as $val)
+										<tr>
+											<td><input type="checkbox" class="checkbox_mail" name="check[]" value="{{$val->id}}"></td>
+											<td class="mailbox-star" id="starred{{$val->id}}">
+												@if($val->is_starred=='0')
+													<a onClick="starred({{$val->id}},1)"><i class="fa text-yellow fa-star-o"></i></a>
+												@else
+													<a onClick="starred({{$val->id}},0)"><i class="fa text-yellow fa-star"></i></a>
+												@endif
+											</td>
+											<td>
+												<p class="mailbox-name mb-0 font-size-16 font-weight-600">{{$val->fullname}}</p>
+												<a class="mailbox-subject" href="javascript:void(0)" onClick="getMessage({{$val->id}})">
+													{{$val->subject}}
+												</a>
+											</td>
+											<td class="mailbox-attachment">
+											@if($val->is_attachment=='1')
+												<i class="fa fa-paperclip"></i>
+											@endif
+											</td>
+											<td class="mailbox-date">{{ date('H:i:s a', strtotime($val->created_at)) }}</td>
+										</tr>
+										@endforeach
+										</tbody>
+										</table>
+									</div>                
+									<!-- /.table -->
+								</div>
+								<!-- /.mail-box-messages -->
+								</div>
+								<!-- /.box-body -->
+								<div class="box-footer">
+								<div class="mailbox-controls">
+									<!-- Check all button -->
+									<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
+									</button>
+									<div class="btn-group">
+									<button type="button" class="btn btn-primary btn-sm" title="Delete Selected Mail"><i class="fa fa-trash"></i></button>
+									</div>
+									<!-- /.btn-group -->
+									<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
+									<div class="pull-right">
+									<div class="btn-group">
+									{{ $mailer->links() }}
+										<!-- <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-left"></i></button>
+										<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-right"></i></button> -->
+									</div>
+									<!-- /.btn-group -->
+									</div>
+									<!-- /.pull-right -->
+								</div>
+								</div>
+								</div>
+								<!-- /. box -->
+
+							</div>
+							<div class="tab-pane" id="sentbox" role="tabpanel">
+							<div class="box">
+
+									<div class="box-header with-border">
+									<h4 class="box-title">Sentbox</h4>
+										<div class="box-controls pull-right">
+										<div class="box-header-actions">
+										<!-- <div class="lookup lookup-sm lookup-right d-none d-lg-block">
+											<input type="text" name="s" placeholder="Search">
+										</div> -->
+										</div>
+									</div>
+									</div>
+									<!-- /.box-header -->
+									<div class="box-body">
+
+									<div class="mailbox-controls">
+										<!-- Check all button -->
+										<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
+										</button>
+										<div class="btn-group">
+										<button type="button" class="btn btn-primary btn-sm" onClick="Delete()"><i class="fa fa-trash"></i></button>
+										</div>
+										<!-- /.btn-group -->
+										<button type="button" class="btn btn-primary btn-sm"><a href="javascript:void(0)" onClick="syncInbox()"><i class="fa fa-refresh"></i></a></button>
+										<div class="pull-right">
+										<div class="btn-group">
+											{{-- $mailer->links() --}}
+										</div>
+										<!-- /.btn-group -->
+										</div>
+										<!-- /.pull-right -->
+									</div>
+									<div class="mailbox-messages inbox-bx">
+										<div class="table-responsive">
+											<table class="table table-hover table-striped">
+											</table>
+										</div>                
+										<!-- /.table -->
+									</div>
+									<!-- /.mail-box-messages -->
+									</div>
+									<!-- /.box-body -->
+									<div class="box-footer">
+									<div class="mailbox-controls">
+										<!-- Check all button -->
+										<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
+										</button>
+										<div class="btn-group">
+										<button type="button" class="btn btn-primary btn-sm" title="Delete Selected Mail"><i class="fa fa-trash"></i></button>
+										</div>
+										<!-- /.btn-group -->
+										<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
+										<div class="pull-right">
+										<div class="btn-group">
+										{{ $mailer->links() }}
+											<!-- <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-left"></i></button>
+											<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-right"></i></button> -->
+										</div>
+										<!-- /.btn-group -->
+										</div>
+										<!-- /.pull-right -->
+									</div>
+									</div>
+									</div>
+									<!-- /. box -->
+
+
+							</div>
+							<div class="tab-pane" id="drafts" role="tabpanel">
+							<div class="box">
+
+								<div class="box-header with-border">
+								<h4 class="box-title">Drafts</h4>
+									<div class="box-controls pull-right">
+									<div class="box-header-actions">
+									<!-- <div class="lookup lookup-sm lookup-right d-none d-lg-block">
+										<input type="text" name="s" placeholder="Search">
+									</div> -->
+									</div>
+								</div>
+								</div>
+								<!-- /.box-header -->
+								<div class="box-body">
+
+								<div class="mailbox-controls">
+									<!-- Check all button -->
+									<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
+									</button>
+									<div class="btn-group">
+									<button type="button" class="btn btn-primary btn-sm" onClick="Delete()"><i class="fa fa-trash"></i></button>
+									</div>
+									<!-- /.btn-group -->
+									<button type="button" class="btn btn-primary btn-sm"><a href="javascript:void(0)" onClick="syncInbox()"><i class="fa fa-refresh"></i></a></button>
+									<div class="pull-right">
+									<div class="btn-group">
+										{{-- $mailer->links() --}}
+									</div>
+									<!-- /.btn-group -->
+									</div>
+									<!-- /.pull-right -->
+								</div>
+								<div class="mailbox-messages inbox-bx">
+									<div class="table-responsive">
+										<table class="table table-hover table-striped">
+										</table>
+									</div>                
+									<!-- /.table -->
+								</div>
+								<!-- /.mail-box-messages -->
+								</div>
+								<!-- /.box-body -->
+								<div class="box-footer">
+								<div class="mailbox-controls">
+									<!-- Check all button -->
+									<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
+									</button>
+									<div class="btn-group">
+									<button type="button" class="btn btn-primary btn-sm" title="Delete Selected Mail"><i class="fa fa-trash"></i></button>
+									</div>
+									<!-- /.btn-group -->
+									<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
+									<div class="pull-right">
+									<div class="btn-group">
+									{{ $mailer->links() }}
+										<!-- <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-left"></i></button>
+										<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-right"></i></button> -->
+									</div>
+									<!-- /.btn-group -->
+									</div>
+									<!-- /.pull-right -->
+								</div>
+								</div>
+								</div>
+								<!-- /. box -->
+
+								</div>
+							<div class="tab-pane" id="starred" role="tabpanel">
+							<div class="box">
+
+								<div class="box-header with-border">
+								<h4 class="box-title">Starred Message</h4>
+									<div class="box-controls pull-right">
+									<div class="box-header-actions">
+									<!-- <div class="lookup lookup-sm lookup-right d-none d-lg-block">
+										<input type="text" name="s" placeholder="Search">
+									</div> -->
+									</div>
+								</div>
+								</div>
+								<!-- /.box-header -->
+								<div class="box-body">
+
+								<div class="mailbox-controls">
+									<!-- Check all button -->
+									<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
+									</button>
+									<div class="btn-group">
+									<button type="button" class="btn btn-primary btn-sm" onClick="Delete()"><i class="fa fa-trash"></i></button>
+									</div>
+									<!-- /.btn-group -->
+									<button type="button" class="btn btn-primary btn-sm"><a href="javascript:void(0)" onClick="syncInbox()"><i class="fa fa-refresh"></i></a></button>
+									<div class="pull-right">
+									<div class="btn-group">
+										{{-- $mailer->links() --}}
+									</div>
+									<!-- /.btn-group -->
+									</div>
+									<!-- /.pull-right -->
+								</div>
+								<div class="mailbox-messages inbox-bx">
+									<div class="table-responsive">
+										<table class="table table-hover table-striped">
+										
+										</table>
+									</div>                
+									<!-- /.table -->
+								</div>
+								<!-- /.mail-box-messages -->
+								</div>
+								<!-- /.box-body -->
+								<div class="box-footer">
+								<div class="mailbox-controls">
+									<!-- Check all button -->
+									<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
+									</button>
+									<div class="btn-group">
+									<button type="button" class="btn btn-primary btn-sm" title="Delete Selected Mail"><i class="fa fa-trash"></i></button>
+									</div>
+									<!-- /.btn-group -->
+									<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
+									<div class="pull-right">
+									<div class="btn-group">
+									{{ $mailer->links() }}
+										<!-- <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-left"></i></button>
+										<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-right"></i></button> -->
+									</div>
+									<!-- /.btn-group -->
+									</div>
+									<!-- /.pull-right -->
+								</div>
+								</div>
+								</div>
+								<!-- /. box -->
+
+
+							</div>
+							<div class="tab-pane" id="trash" role="tabpanel">
+							<div class="box">
+
+							<div class="box-header with-border">
+							<h4 class="box-title">Trash</h4>
+								<div class="box-controls pull-right">
+								<div class="box-header-actions">
+								<!-- <div class="lookup lookup-sm lookup-right d-none d-lg-block">
+									<input type="text" name="s" placeholder="Search">
+								</div> -->
+								</div>
+							</div>
+							</div>
+							<!-- /.box-header -->
+							<div class="box-body">
+
+							<div class="mailbox-controls">
+								<!-- Check all button -->
+								<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
+								</button>
+								<div class="btn-group">
+								<button type="button" class="btn btn-primary btn-sm" onClick="Delete()"><i class="fa fa-trash"></i></button>
+								</div>
+								<!-- /.btn-group -->
+								<button type="button" class="btn btn-primary btn-sm"><a href="javascript:void(0)" onClick="syncInbox()"><i class="fa fa-refresh"></i></a></button>
+								<div class="pull-right">
+								<div class="btn-group">
+									{{-- $mailer->links() --}}
+								</div>
+								<!-- /.btn-group -->
+								</div>
+								<!-- /.pull-right -->
+							</div>
+							<div class="mailbox-messages inbox-bx">
+								<div class="table-responsive">
+									<table class="table table-hover table-striped">
+									</table>
+								</div>                
+								<!-- /.table -->
+							</div>
+							<!-- /.mail-box-messages -->
+							</div>
+							<!-- /.box-body -->
+							<div class="box-footer">
+							<div class="mailbox-controls">
+								<!-- Check all button -->
+								<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
+								</button>
+								<div class="btn-group">
+								<button type="button" class="btn btn-primary btn-sm" title="Delete Selected Mail"><i class="fa fa-trash"></i></button>
+								</div>
+								<!-- /.btn-group -->
+								<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
+								<div class="pull-right">
+								<div class="btn-group">
+								{{ $mailer->links() }}
+									<!-- <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-left"></i></button>
+									<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-right"></i></button> -->
+								</div>
+								<!-- /.btn-group -->
+								</div>
+								<!-- /.pull-right -->
+							</div>
+							</div>
+							</div>
+							<!-- /. box -->
+
+
+							</div>
 						</div>
-					  </div>
-					</div>
-					<!-- /.box-header -->
-					<div class="box-body">
-					  <div class="mailbox-controls">
-						<!-- Check all button -->
-						<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
-						</button>
-						<div class="btn-group">
-						  <button type="button" class="btn btn-primary btn-sm" onClick="Delete()"><i class="fa fa-trash"></i></button>
-						</div>
-						<!-- /.btn-group -->
-						<button type="button" class="btn btn-primary btn-sm"><a href="javascript:void(0)" onClick="syncInbox()"><i class="fa fa-refresh"></i></a></button>
-						<div class="pull-right">
-						  <div class="btn-group">
-							  {{-- $mailer->links() --}}
-						  </div>
-						  <!-- /.btn-group -->
-						</div>
-						<!-- /.pull-right -->
-					  </div>
-					  <div class="mailbox-messages inbox-bx">
-						  <div class="table-responsive">
-							<table class="table table-hover table-striped">
-							  <tbody>
-							  @foreach($mailer as $val)
-							  <tr>
-								<td><input type="checkbox" class="checkbox_mail" name="check[]" value="{{$val->id}}"></td>
-								<td class="mailbox-star" id="starred{{$val->id}}">
-									@if($val->is_starred=='0')
-										<a onClick="starred({{$val->id}},1)"><i class="fa text-yellow fa-star-o"></i></a>
-									@else
-										<a onClick="starred({{$val->id}},0)"><i class="fa text-yellow fa-star"></i></a>
-									@endif
-								</td>
-								<td>
-									<p class="mailbox-name mb-0 font-size-16 font-weight-600">{{$val->fullname}}</p>
-									<a class="mailbox-subject" href="javascript:void(0)" onClick="getMessage({{$val->id}})">
-										{{$val->subject}}
-									</a>
-								</td>
-								<td class="mailbox-attachment">
-								@if($val->is_attachment=='1')
-									<i class="fa fa-paperclip"></i>
-								@endif
-								</td>
-								<td class="mailbox-date">{{ date('H:i:s a', strtotime($val->created_at)) }}</td>
-							  </tr>
-							  @endforeach
-							  </tbody>
-							</table>
-						  </div>                
-						<!-- /.table -->
-					  </div>
-					  <!-- /.mail-box-messages -->
-					</div>
-					<!-- /.box-body -->
-					<div class="box-footer">
-					  <div class="mailbox-controls">
-						<!-- Check all button -->
-						<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
-						</button>
-						<div class="btn-group">
-						<button type="button" class="btn btn-primary btn-sm" title="Delete Selected Mail"><i class="fa fa-trash"></i></button>
-						</div>
-						<!-- /.btn-group -->
-						<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
-						<div class="pull-right">
-						  <div class="btn-group">
-						  {{ $mailer->links() }}
-							<!-- <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-left"></i></button>
-							<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-right"></i></button> -->
-						  </div>
-						  <!-- /.btn-group -->
-						</div>
-						<!-- /.pull-right -->
-					  </div>
-					</div>
-				  </div>
-				  <!-- /. box -->
-				</div>
+				 </div>
 				<!-- /.col -->
 
 				<!-- Message Body content area -->
