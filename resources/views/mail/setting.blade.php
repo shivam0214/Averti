@@ -14,7 +14,7 @@
 		<div class="col-md-10 col-12">
 			<div class="box box-default">
 			<div class="box-header with-border">
-			<h4 class="box-title">Setting</h4>
+			<h4 class="box-title">Configure Your Mails Setting.</h4>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
@@ -26,14 +26,18 @@
 				<!-- Tab panes -->
 				<div class="tab-content">
 					<div class="tab-pane active" id="sending" role="tabpanel">
-					<form action="{{ route('savemailsetting') }}" method="post">
+					<form action="{{ route('saveoutboundmailsetting') }}" method="post">
 					{{ csrf_field() }}
 					{{ method_field('post') }}
 
 					<div class="box-body">
 						<div class="form-group">
 							<label>Vendor:</label>
-							<input type="text" class="form-control" placeholder="SMTP" name="vendor" value="{{old('vendor',$settings->vendor)}}">
+							@if(!is_null($inboundsettings))
+							<input type="text" class="form-control" placeholder="SMTP" name="vendor" value="{{old('vendor',$outboundsettings->vendor)}}">
+							@else
+							<input type="text" class="form-control" placeholder="SMTP" name="vendor" value="">
+							@endif
 							@if ($errors->has('vendor'))
 								<span class="help-block alert-danger">
 									<strong>{{ $errors->first('vendor') }}</strong>
@@ -42,7 +46,11 @@
 						</div>
 						<div class="form-group">
 							<label>Host:</label>
-							<input type="text" class="form-control" placeholder="Host" name="host" value="{{old('host',$settings->host)}}">
+							@if(!is_null($inboundsettings))
+							<input type="text" class="form-control" placeholder="Host" name="host" value="{{old('host',$outboundsettings->host)}}">
+							@else
+							<input type="text" class="form-control" placeholder="Host" name="host" value="">
+							@endif
 							@if ($errors->has('host'))
 								<span class="help-block alert-danger">
 									<strong>{{ $errors->first('host') }}</strong>
@@ -51,7 +59,11 @@
 						</div>
 						<div class="form-group">
 							<label>Username:</label>
-							<input type="text" class="form-control" placeholder="Enter Username" name="username" value="{{old('username',$settings->username)}}">
+							@if(!is_null($inboundsettings))
+							<input type="text" class="form-control" placeholder="Enter Username" name="username" value="{{old('username',$outboundsettings->username)}}">
+							@else
+							<input type="text" class="form-control" placeholder="Enter Username" name="username" value="">
+							@endif
 							@if ($errors->has('username'))
 								<span class="help-block alert-danger">
 									<strong>{{ $errors->first('username') }}</strong>
@@ -59,8 +71,12 @@
 							@endif
 						</div>
 						<div class="form-group">
-							<label>Password:</label>							
-							<input type="password" class="form-control" placeholder="Enter Password" name="password" value="{{old('password',$settings->password)}}">
+							<label>Password:</label>			
+							@if(!is_null($inboundsettings))				
+							<input type="password" class="form-control" placeholder="Enter Password" name="password" value="{{old('password',$outboundsettings->password)}}">
+							@else
+							<input type="password" class="form-control" placeholder="Enter Password" name="password" value="">
+							@endif
 							@if ($errors->has('password'))
 								<span class="help-block alert-danger">
 									<strong>{{ $errors->first('password') }}</strong>
@@ -68,8 +84,12 @@
 							@endif
 						</div>
 						<div class="form-group">
-							<label>Port</label>							
-							<input type="text" class="form-control" placeholder="Enter Port" name="port" value="{{old('port',$settings->port)}}">
+							<label>Port</label>						
+							@if(!is_null($inboundsettings))	
+							<input type="text" class="form-control" placeholder="Enter Port" name="port" value="{{old('port',$outboundsettings->port)}}">
+							@else
+							<input type="text" class="form-control" placeholder="Enter Port" name="port" value="">
+							@endif
 							@if ($errors->has('port'))
 								<span class="help-block alert-danger">
 									<strong>{{ $errors->first('port') }}</strong>
@@ -80,8 +100,13 @@
 							<label>Encryption:</label>
 							<select class="form-control" id="encryption" name="encryption">
 								<option value="">Select Encryption</option>
-								<option value="ssl" {{ $settings->encryption == 'ssl' ? 'selected="selected"' : '' }}>SSL</option>
-								<option value="tls" {{ $settings->encryption == 'tls' ? 'selected="selected"' : '' }}>TLS</option>
+								@if(!is_null($inboundsettings))
+								<option value="ssl" {{ $outboundsettings->encryption == 'ssl' ? 'selected="selected"' : '' }}>SSL</option>
+								<option value="tls" {{ $outboundsettings->encryption == 'tls' ? 'selected="selected"' : '' }}>TLS</option>
+								@else
+								<option value="ssl">SSL</option>
+								<option value="tls">TLS</option>
+								@endif
 								<option value="none">None</option>
 							</select>
 							@if ($errors->has('encryption'))
@@ -90,6 +115,24 @@
 								</span>
 							@endif
 						</div>
+						<div class="form-group">
+							<label>Velidate Cert:</label>
+							<select class="form-control" id="validate_cert" name="validate_cert">
+								@if(!is_null($inboundsettings))
+								<option value="true" {{ $outboundsettings->validate_cert == 'true' ? 'selected="selected"' : '' }}>TRUE</option>
+								<option value="false" {{ $outboundsettings->validate_cert == 'false' ? 'selected="selected"' : '' }}>FALSE</option>
+								@else
+								<option value="true">TRUE</option>
+								<option value="false">FALSE</option>
+								@endif
+							</select>
+							@if ($errors->has('validate_cert'))
+								<span class="help-block alert-danger">
+									<strong>{{ $errors->first('validate_cert') }}</strong>
+								</span>
+							@endif
+						</div>
+
 					</div>
 					<!-- /.box-body -->
 					<div class="box-footer">
@@ -97,16 +140,21 @@
 					</div>
 				</form>
 			</div>
+
 			<div class="tab-pane" id="receiving" role="tabpanel">
-					<form action="{{ route('savemailsetting') }}" method="post">
+					<form action="{{ route('saveinboundmailsetting') }}" method="post">
 					{{ csrf_field() }}
 					{{ method_field('post') }}
 
 					<div class="box-body">
 						<div class="form-group">
 							<label>Vendor:</label>
-							<input type="text" class="form-control" placeholder="SMTP" name="vendor" value="{{old('vendor',$settings->vendor)}}">
-							@if ($errors->has('vendor'))
+							@if(!is_null($inboundsettings))
+							<input type="text" class="form-control" placeholder="IMAP" name="vendor" value="{{old('vendor',$inboundsettings->vendor)}}">
+							@else
+							<input type="text" class="form-control" placeholder="IMAP" name="vendor" value="">
+							@endif
+							@if (!is_null($errors) && $errors->has('vendor'))
 								<span class="help-block alert-danger">
 									<strong>{{ $errors->first('vendor') }}</strong>
 								</span>
@@ -114,7 +162,11 @@
 						</div>
 						<div class="form-group">
 							<label>Host:</label>
-							<input type="text" class="form-control" placeholder="Host" name="host" value="{{old('host',$settings->host)}}">
+							@if(!is_null($inboundsettings))
+							<input type="text" class="form-control" placeholder="Host" name="host" value="{{old('host',$inboundsettings->host)}}">
+							@else
+							<input type="text" class="form-control" placeholder="Host" name="host" value="">
+							@endif
 							@if ($errors->has('host'))
 								<span class="help-block alert-danger">
 									<strong>{{ $errors->first('host') }}</strong>
@@ -123,7 +175,11 @@
 						</div>
 						<div class="form-group">
 							<label>Username:</label>
-							<input type="text" class="form-control" placeholder="Enter Username" name="username" value="{{old('username',$settings->username)}}">
+							@if(!is_null($inboundsettings))
+							<input type="text" class="form-control" placeholder="Enter Username" name="username" value="{{old('username',$inboundsettings->username)}}">
+							@else
+							<input type="text" class="form-control" placeholder="Enter Username" name="username" value="">
+							@endif
 							@if ($errors->has('username'))
 								<span class="help-block alert-danger">
 									<strong>{{ $errors->first('username') }}</strong>
@@ -131,8 +187,12 @@
 							@endif
 						</div>
 						<div class="form-group">
-							<label>Password:</label>							
-							<input type="password" class="form-control" placeholder="Enter Password" name="password" value="{{old('password',$settings->password)}}">
+							<label>Password:</label>		
+							@if(!is_null($inboundsettings))					
+							<input type="password" class="form-control" placeholder="Enter Password" name="password" value="{{old('password',$inboundsettings->password)}}">
+							@else
+							<input type="password" class="form-control" placeholder="Enter Password" name="password" value="">
+							@endif
 							@if ($errors->has('password'))
 								<span class="help-block alert-danger">
 									<strong>{{ $errors->first('password') }}</strong>
@@ -140,8 +200,12 @@
 							@endif
 						</div>
 						<div class="form-group">
-							<label>Port</label>							
-							<input type="text" class="form-control" placeholder="Enter Port" name="port" value="{{old('port',$settings->port)}}">
+							<label>Port</label>			
+							@if(!is_null($inboundsettings))				
+							<input type="text" class="form-control" placeholder="Enter Port" name="port" value="{{old('port',$inboundsettings->port)}}">
+							@else
+							<input type="text" class="form-control" placeholder="Enter Port" name="port" value="">
+							@endif
 							@if ($errors->has('port'))
 								<span class="help-block alert-danger">
 									<strong>{{ $errors->first('port') }}</strong>
@@ -152,8 +216,13 @@
 							<label>Encryption:</label>
 							<select class="form-control" id="encryption" name="encryption">
 								<option value="">Select Encryption</option>
-								<option value="ssl" {{ $settings->encryption == 'ssl' ? 'selected="selected"' : '' }}>SSL</option>
-								<option value="tls" {{ $settings->encryption == 'tls' ? 'selected="selected"' : '' }}>TLS</option>
+								@if(!is_null($inboundsettings))
+								<option value="ssl" {{ $inboundsettings->encryption == 'ssl' ? 'selected="selected"' : '' }}>SSL</option>
+								<option value="tls" {{ $inboundsettings->encryption == 'tls' ? 'selected="selected"' : '' }}>TLS</option>
+								@else
+								<option value="ssl">SSL</option>
+								<option value="tls">TLS</option>
+								@endif
 								<option value="none">None</option>
 							</select>
 							@if ($errors->has('encryption'))
@@ -162,6 +231,24 @@
 								</span>
 							@endif
 						</div>
+						<div class="form-group">
+							<label>Velidate Cert:</label>
+							<select class="form-control" id="validate_cert" name="validate_cert">
+							@if(!is_null($inboundsettings))
+								<option value="true" {{ $inboundsettings->validate_cert == 'true' ? 'selected="selected"' : '' }}>TRUE</option>
+								<option value="false" {{ $inboundsettings->validate_cert == 'false' ? 'selected="selected"' : '' }}>FALSE</option>
+								@else
+								<option value="true">TRUE</option>
+								<option value="false">FALSE</option>
+								@endif
+							</select>
+							@if ($errors->has('validate_cert'))
+								<span class="help-block alert-danger">
+									<strong>{{ $errors->first('validate_cert') }}</strong>
+								</span>
+							@endif
+						</div>
+
 					</div>
 					<!-- /.box-body -->
 					<div class="box-footer">

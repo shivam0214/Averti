@@ -42,14 +42,15 @@ class InboundMailsEvent
     public function getInbox()
     {
         // dd('hi there');
+        $mail=DB::table('mailers')->where([['user_id','=',Auth::user()->id],['direction','=','inbound']])->first();
         $oClient = new Client([
-            'host'          => 'imap.gmail.com',
-            'port'          => 993,
-            'encryption'    => 'ssl',
-            'validate_cert' => false,
-            'username'      => 'sonamistytyagi786@gmail.com',
-            'password'      => 't0shU@8376979391',
-            'protocol'      => 'imap'
+            'host'          => $mail->host,
+            'port'          => $mail->port,
+            'encryption'    => $mail->encryption,
+            'validate_cert' => $mail->validate_cert,
+            'username'      => $mail->username,
+            'password'      => $mail->password,
+            'protocol'      => $mail->vendor
         ]);
 
         //Connect to the IMAP Server

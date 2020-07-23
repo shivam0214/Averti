@@ -231,11 +231,12 @@ class MailerController extends Controller
     }
 
     public function getMailSetting(Request $request){
-        $settings = DB::table('mailers')->where('user_id',Auth::user()->id)->first();
-        return view('mail.setting',compact('settings'));
+        $outboundsettings = DB::table('mailers')->where([['user_id','=',Auth::user()->id],['direction','=','outbound']])->first();
+        $inboundsettings = DB::table('mailers')->where([['user_id','=',Auth::user()->id],['direction','=','inbound']])->first();
+        return view('mail.setting',compact('outboundsettings','inboundsettings'));
     }
 
-    public function saveMailSettings(Request $request)
+    public function saveOutboundMailSettings(Request $request)
     {
         $validatedData = $request->validate([
             'vendor' => 'required',
@@ -252,16 +253,54 @@ class MailerController extends Controller
         $data['password']=$request->password;
         $data['port']=$request->port;
         $data['encryption']=$request->encryption;
-        $count = DB::table('mailers')->where('user_id',Auth::user()->id)->count();
+        $data['direction']='outbound';
+        $data['validate_cert']=$request->validate_cert;
+        $count = DB::table('mailers')->where([['user_id','=',Auth::user()->id],['direction','=','outbound']])->count();
         // dd($count);
         if($count==0){
+            $data['user_id']=Auth::user()->id;
             $data['created_at']=date('Y-m-d H:i:s');
             DB::table('mailers')->insert($data);
-            $msg = 'Mail setting is added successfully.';
+            $msg = 'Outbound Mail setting is added successfully.';
         }else{
             $data['updated_at']=date('Y-m-d H:i:s');
-            DB::table('mailers')->where('user_id',Auth::user()->id)->limit(1)->update($data);
-            $msg = 'Mail setting is updated successfully.';
+            DB::table('mailers')->where([['user_id','=',Auth::user()->id],['direction','=','outbound']])->limit(1)->update($data);
+            $msg = 'Outbound Mail setting is updated successfully.';
+        }
+        return redirect('mailsetting/')->with('msg', $msg);
+
+    }
+
+    public function saveInboundMailSettings(Request $request)
+    {
+        $validatedData = $request->validate([
+            'vendor' => 'required',
+            'host' => 'required',
+            'username' => 'required|max:255',
+            'password' => 'required',
+            'port' => 'required',
+            'encryption' => 'required|not_in:0'
+        ]);
+        
+        $data['vendor']=$request->vendor;
+        $data['host']=$request->host;
+        $data['username']=$request->username;
+        $data['password']=$request->password;
+        $data['port']=$request->port;
+        $data['encryption']=$request->encryption;
+        $data['direction']='inbound';
+        $data['validate_cert']=$request->validate_cert;
+        $count = DB::table('mailers')->where([['user_id','=',Auth::user()->id],['direction','=','inbound']])->count();
+        // dd($count);
+        if($count==0){
+            $data['user_id']=Auth::user()->id;
+            $data['created_at']=date('Y-m-d H:i:s');
+            DB::table('mailers')->insert($data);
+            $msg = 'Inbound Mail setting is added successfully.';
+        }else{
+            $data['updated_at']=date('Y-m-d H:i:s');
+            DB::table('mailers')->where([['user_id','=',Auth::user()->id],['direction','=','inbound']])->limit(1)->update($data);
+            $msg = 'Inbound Mail setting is updated successfully.';
         }
         return redirect('mailsetting/')->with('msg', $msg);
 

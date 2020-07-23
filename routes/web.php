@@ -58,7 +58,8 @@ Route::get('/getmail','MailerController@getmessage');
 Route::get('/getMails', 'MailerController@getMails')->name('getMails');
 
 Route::get('/mailsetting', 'MailerController@getMailSetting')->name('mailsetting');
-Route::post('/savemailsetting', 'MailerController@saveMailSettings')->name('savemailsetting');
+Route::post('/saveoutboundmailsetting', 'MailerController@saveOutboundMailSettings')->name('saveoutboundmailsetting');
+Route::post('/saveinboundmailsetting', 'MailerController@saveInboundMailSettings')->name('saveinboundmailsetting');
 Route::get('/mailtemplate', 'MailTemplateController@index')->name('mailtemplate');
 Route::get('/addtemplate', 'MailTemplateController@create')->name('addtemplate');
 Route::post('/savetemplate', 'MailTemplateController@store')->name('savetemplate');

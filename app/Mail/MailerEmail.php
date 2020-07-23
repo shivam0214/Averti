@@ -26,7 +26,7 @@ class MailerEmail extends Mailable
      */
     public function __construct($subject,$view,$data)
     {
-        $mail=DB::table('mailers')->where('user_id',Auth::user()->id)->first();
+        $mail=DB::table('mailers')->where([['user_id','=',Auth::user()->id],['direction','=','outbound']])->first();
 	    $config = array(
             'driver' => $mail->vendor,
             'host' => $mail->host,
@@ -36,7 +36,7 @@ class MailerEmail extends Mailable
             'username' => $mail->username,
             'password' => $mail->password,
             'sendmail' => '/usr/sbin/sendmail -bs',
-            'pretend' => false
+            'pretend' => $mail->validate_cert
         );
         Config::set('mail',$config);
         
