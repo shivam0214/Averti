@@ -17,16 +17,29 @@
 							<form method="POST" action="<?php echo e(route('mailer.store')); ?>" enctype="multipart/form-data">
 							<?php echo csrf_field(); ?>
 							<div class="modal-body">
+					
 								<div class="form-group">
-									<input class="form-control" placeholder="To:" name="to">
+									<select class="form-control" placeholder="Group:" name="group" onChange="getgroup(this.value)">
+									<option value="0">Select Group</option>
+									<?php $__currentLoopData = $groups; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $record): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+										<option value="<?php echo e($record['id']); ?>"><?php echo e($record['group_name']); ?></option>
+										<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+									</select>
+								  </div>
+
+								<div class="form-group">
+									<input class="form-control" placeholder="To:" name="to" id="to" >
 								  </div>
 								  <div class="form-group">
 									<input class="form-control" placeholder="Subject:" name="subject">
 								  </div>
 								  <div class="form-group">
-									<select class="form-control" placeholder="Template:" name="template">
+									<select class="form-control" placeholder="Template:" name="template" id="templatebody" onChange="getBody(this.value)">
 									<option value="0">Select Template</option>
-									<option value="welcome_to_user_subscribe">Welcome User Subscription</option>
+									<?php $__currentLoopData = $templates; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $template): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+										<option value="<?php echo e($template->id); ?>"><?php echo e($template->title); ?></option>
+									<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 									</select>
 								  </div>
 
@@ -67,34 +80,60 @@
 					</div>
 					<div class="box-body no-padding mailbox-nav">
 					  <ul class="nav nav-pills flex-column">
-						<li class="nav-item"><a class="nav-link active" href="javascript:void(0)"><i class="ion ion-ios-email-outline"></i> Inbox </a></li>
+						<li class="nav-item"><a class="nav-link active" href="javascript:void(0)"><i class="ion ion-ios-email-outline"></i> Inbox <span class="label label-info pull-right"><?php echo e($countMails[1]->total); ?></span></a></li>
 
-						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-paper-airplane"></i> Sent <span class="label label-success pull-right"><?php echo e($countSent); ?></span></a></li>
+						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-paper-airplane"></i> Sent <span class="label label-success pull-right"><?php echo e($countMails[0]->total); ?></span></a></li>
 						
-						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-email-unread"></i> Drafts</a></li>
+						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-email-unread"></i> Drafts <span class="label label-primary pull-right"><?php echo e($draft); ?></span></a></li>
 
-						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-star"></i>  Starred <span class="label label-warning pull-right">14</span></a>
+						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-star"></i>  Starred <span class="label label-warning pull-right" id="starredcount">
+							<?php echo e($starred); ?>
+
+						</span></a>
 						</li>
 
-						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-trash-a"></i> Trash</a></li>
+						<li class="nav-item"><a class="nav-link" href="javascript:void(0)"><i class="ion ion-trash-a"></i> Trash <span class="label label-danger pull-right" id="trashcount">
+							<?php echo e($countMails[2]->total); ?>
+
+						</span></a></li>
 
 					  </ul>
 					</div>
 					<!-- /.box-body -->
 				  </div>
+				  
 				  <!-- /. box -->
-					
+				  <div class="contact-bx">
+				  	<?php $__currentLoopData = $contacts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $records): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+						<div class="media-list media-list-hover">
+							<div class="media py-10 px-0 align-items-center">
+							  <a class="avatar avatar-lg status-success" href="#">
+							  <img src="<?php echo (($records['single']['profile_image'])!= NULL) ? url($records['single']['profile_image']) : url(asset('assets/img/avatars/user.png')); ?>" alt="&#xf013;" height="50px" width="50px">
+							  </a>
+							  <div class="media-body">
+								<p class="font-size-16">
+								  <a href="#"><?php echo e($records['name']); ?></a>
+								</p>
+							  </div>
+							</div>
+						</div>
+					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+	
+					</div>
+			
 				</div>
+				
 				<!-- /.col -->
 				<div class="col-xl-6 col-lg-8 col-12">
+					<span id="syncInboxResponse"></span>
 				  <div class="box">
 					<div class="box-header with-border">
 					  <h4 class="box-title">Inbox</h4>
 						<div class="box-controls pull-right">
 						<div class="box-header-actions">
-						  <div class="lookup lookup-sm lookup-right d-none d-lg-block">
+						  <!-- <div class="lookup lookup-sm lookup-right d-none d-lg-block">
 							<input type="text" name="s" placeholder="Search">
-						  </div>
+						  </div> -->
 						</div>
 					  </div>
 					</div>
@@ -108,11 +147,10 @@
 						  <button type="button" class="btn btn-primary btn-sm" onClick="Delete()"><i class="fa fa-trash"></i></button>
 						</div>
 						<!-- /.btn-group -->
-						<button type="button" class="btn btn-primary btn-sm"><a href="<?php echo e(route('mailer.index')); ?>"><i class="fa fa-refresh"></i></a></button>
+						<button type="button" class="btn btn-primary btn-sm"><a href="javascript:void(0)" onClick="syncInbox()"><i class="fa fa-refresh"></i></a></button>
 						<div class="pull-right">
 						  <div class="btn-group">
-							<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-left"></i></button>
-							<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-right"></i></button>
+							  
 						  </div>
 						  <!-- /.btn-group -->
 						</div>
@@ -125,15 +163,25 @@
 							  <?php $__currentLoopData = $mailer; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 							  <tr>
 								<td><input type="checkbox" class="checkbox_mail" name="check[]" value="<?php echo e($val->id); ?>"></td>
-								<td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
+								<td class="mailbox-star" id="starred<?php echo e($val->id); ?>">
+									<?php if($val->is_starred=='0'): ?>
+										<a onClick="starred(<?php echo e($val->id); ?>,1)"><i class="fa text-yellow fa-star-o"></i></a>
+									<?php else: ?>
+										<a onClick="starred(<?php echo e($val->id); ?>,0)"><i class="fa text-yellow fa-star"></i></a>
+									<?php endif; ?>
+								</td>
 								<td>
 									<p class="mailbox-name mb-0 font-size-16 font-weight-600"><?php echo e($val->fullname); ?></p>
-									<a class="mailbox-subject" href="#">
+									<a class="mailbox-subject" href="javascript:void(0)" onClick="getMessage(<?php echo e($val->id); ?>)">
 										<?php echo e($val->subject); ?>
 
 									</a>
 								</td>
-								<td class="mailbox-attachment"></td>
+								<td class="mailbox-attachment">
+								<?php if($val->is_attachment=='1'): ?>
+									<i class="fa fa-paperclip"></i>
+								<?php endif; ?>
+								</td>
 								<td class="mailbox-date"><?php echo e(date('H:i:s a', strtotime($val->created_at))); ?></td>
 							  </tr>
 							  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -157,8 +205,10 @@
 						<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
 						<div class="pull-right">
 						  <div class="btn-group">
-							<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-left"></i></button>
-							<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-right"></i></button>
+						  <?php echo e($mailer->links()); ?>
+
+							<!-- <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-left"></i></button>
+							<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-right"></i></button> -->
 						  </div>
 						  <!-- /.btn-group -->
 						</div>
@@ -174,14 +224,19 @@
 				<div class="col-xl-4 col-12">
 				  <div class="box">
 					<div class="box-body pt-10">
-					  <div class="mailbox-read-info">
+					  <div class="mailbox-read-info" id="subject">
 						<h4>Your message title goes here</h4>
 					  </div>
 					  <div class="mailbox-read-info clearfix mb-20">
-						<div class="float-left mr-10"><a href="#"><img src="<?php echo e(asset('assets/img/avatars/4.jpg')); ?>" alt="user" width="40" class="rounded-circle"></a></div>
-						<h5 class="no-margin"> Pavan kumar<br>
-							 <small>From: jonathan@domain.com</small>
-						  <span class="mailbox-read-time pull-right">22 JUL. 2019 08:03 PM</span></h5>
+						<div class="float-left mr-10">
+							<a href="#">
+								<img src="<?php echo e(asset('assets/img/avatars/user.png')); ?>" alt="user" width="40" class="rounded-circle">
+							</a>
+						</div>
+						<h5 class="no-margin" id="mails"> <!-- Pavan kumar --><br>
+							<!-- <small>To: jonathan@domain.com</small> -->
+							
+						</h5>
 					  </div>
 					  <!-- /.mailbox-read-info -->
 					  <div class="mailbox-controls with-border clearfix">                
@@ -189,50 +244,31 @@
 						  <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Print">
 						  <i class="fa fa-print"></i></button>
 						</div>
-						<div class="float-right">
-						<div class="btn-group">
-						  <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-container="body" title="Delete">
-							<i class="fa fa-trash-o"></i></button>
-						</div>
-						</div>
+
+						<!-- <div class="float-right">
+							<div class="btn-group">
+								<button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></button>
+							</div>
+						</div> -->
 						<!-- /.btn-group -->
 
 					  </div>
 					  <!-- /.mailbox-controls -->
-					  <div class="mailbox-read-message read-mail-bx">
-						<p>Dear USer,</p>
-
-						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.</p>
-
-						<p>enean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar.</p>
-
-						<p>Thanks,<br>Jane</p>
+					  <div class="mailbox-read-message read-mail-bx" id="body">
+					  <h4>Your content goes here</h4>
 					  </div>
 					  <!-- /.mailbox-read-message -->
 					</div>
 					<!-- /.box-body -->
 					<div class="box-footer">
-						<h5><i class="fa fa-paperclip m-r-10 m-b-10"></i> Attachments <span>(3)</span></h5>
-					  <ul class="mailbox-attachments clearfix">
-						<li>
-						  <div class="mailbox-attachment-info">
-							<a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> Mag.pdf</a>
-								<span class="mailbox-attachment-size">
-								  5,215 KB
-								  <a href="#" class="btn btn-primary btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
-								</span>
-						  </div>
-						</li>
-						<li>
-						  <div class="mailbox-attachment-info">
-							<a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> Documents.docx</a>
-								<span class="mailbox-attachment-size">
-								  2,145 KB
-								  <a href="#" class="btn btn-primary btn-xs pull-right"><i class="fa fa-cloud-download"></i></a>
-								</span>
-						  </div>
-						</li>
-					  </ul>
+						<h5>
+							<!-- <i class="fa fa-paperclip m-r-10 m-b-10"></i>
+							Attachments 
+							<span>(3)</span> -->
+						</h5>
+						<ul class="mailbox-attachments clearfix" id="attachments">
+							<!-- Attachment files list goes here from ajax -->
+						</ul>
 					</div>
 					<!-- /.box-footer -->
 					<div class="box-footer">
@@ -240,8 +276,6 @@
 						<button type="button" class="btn btn-success"><i class="fa fa-reply"></i> Reply</button>
 						<button type="button" class="btn btn-info"><i class="fa fa-share"></i> Forward</button>
 					  </div>
-					  <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
-					  <button type="button" class="btn btn-warning"><i class="fa fa-print"></i></button>
 					</div>
 					<!-- /.box-footer -->
 				  </div>
@@ -268,13 +302,94 @@ function Delete(){
             url: '/trash',
             data: {mails_id: selected,"_token": "<?php echo e(csrf_token()); ?>"},
             success: function( msg ) {
-
                 // $("#ajaxResponse").append("<div>"+msg+"</div>");
+				$("#trashcount").html(msg.trash);
             }
         });
 		// alert('Selecionar todos?'+selected);
 	} else { alert('Remover'); }       
 
 }
+
+function starred(val,star){
+	// alert(val+"::"+star)
+	$.ajax({
+		type: "POST",
+		url: '/starred',
+		data: {mails_id: val,is_starred:star,"_token": "<?php echo e(csrf_token()); ?>"},
+		success: function( msg ) 
+		{
+			// alert(val+"::"+star)
+			$("#starredcount").html(msg.starred);
+		}
+	});
+}
+
+function getMessage(val){
+	$.ajax({
+		type: "GET",
+		url: '/getmail',
+		data: {mailid: val,"_token": "<?php echo e(csrf_token()); ?>"},
+		success: function( msg ) 
+		{
+			console.log(msg);
+			$("#subject").html("<h4>"+msg.mail.subject+"</h4>");
+			$("#mails").html(msg.mail.to);
+			$("#mails").append("<br /><span class='mailbox-read-time'>"+msg.mail.created_at+"</span>");
+			$("#body").html(msg.mail.body);
+			// msg.mail.attach.forEach(ele=>{
+				if(msg.mail.filename!==null && msg.mail.filename !==undefined){
+					var downld = "<?php echo e(asset('')); ?>";
+					var sds = downld+'storage/app/'+msg.mail.filepath+msg.mail.filename;
+					// console.log(sds);
+					// console.log("<?php echo e(route('downloadattachment',"+msg.mail.filename+")); ?>");
+					$("#attachments").html('<li><div class="mailbox-attachment-info"><a href=\"#\" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> '+msg.mail.filename+'</a></div></li>');
+				}
+
+			// })
+
+		}
+	});
+
+}
+function getBody(id){
+	console.log(id)
+	$.ajax({
+	type: "GET",
+	url: '/gettemplatebody',
+	data: {templateid: id,"_token": "<?php echo e(csrf_token()); ?>"},
+	success: function( data ) {
+		// console.log(data);
+		document.getElementById("compose-textarea").innerHTML = data.result;
+	}
+	});
+}
+
+function getgroup(id){
+//	console.log(id);
+	$.ajax({
+		type: "GET",
+		url: '/getmails',
+		data: {group_id: id,"_token": "<?php echo e(csrf_token()); ?>"},
+		success: function( data ) {
+			console.log(data);
+			$("#to").val(data.mail_result)
+		}
+	});
+}
+
+function syncInbox(){
+	$.ajax({
+		type: "GET",
+		url: '/inboundmails',
+		data: {"_token": "<?php echo e(csrf_token()); ?>"},
+		success: function( data ) {
+			console.log(data);
+			$('#syncInboxResponse').html('<div class="alert alert-warning alert-dismissible fade show" role="alert">'+data.success+'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+
+		}
+	});
+}
 </script>
+
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH H:\updateDemitrius\Averti\Averti\resources\views/mail/new_mail.blade.php ENDPATH**/ ?>

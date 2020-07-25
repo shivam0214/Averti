@@ -3,7 +3,7 @@ var connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
 	password: '',
-	database: 'ical'
+	database: 'averti_new'
 })
 connection.connect(function(err) {
   if (err) throw err;

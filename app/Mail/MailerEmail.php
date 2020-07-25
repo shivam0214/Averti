@@ -9,6 +9,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\DB;
 use Auth;
 use Config;
+use Illuminate\Support\Facades\Storage;
 
 class MailerEmail extends Mailable
 {
@@ -25,7 +26,7 @@ class MailerEmail extends Mailable
      */
     public function __construct($subject,$view,$data)
     {
-        $mail=DB::table('mailers')->where('user_id',Auth::user()->id)->first();
+        $mail=DB::table('mailers')->where([['user_id','=',Auth::user()->id],['direction','=','outbound']])->first();
 	    $config = array(
             'driver' => $mail->vendor,
             'host' => $mail->host,
@@ -35,7 +36,7 @@ class MailerEmail extends Mailable
             'username' => $mail->username,
             'password' => $mail->password,
             'sendmail' => '/usr/sbin/sendmail -bs',
-            'pretend' => false
+            'pretend' => $mail->validate_cert
         );
         Config::set('mail',$config);
         
@@ -81,10 +82,12 @@ class MailerEmail extends Mailable
             return $this->from(Auth::user()->email, Auth::user()->name)
             ->subject($this->subject)
             ->markdown('mail.mail_container')
-            ->attach($this->data['filepath'].'/'.$this->data['filename'], [
+            // ->attach(Storage::url($this->data['filepath'].$this->data['filename']))
+            ->attach(base_path('storage/app/'.$this->data['filepath'].$this->data['filename']))
+            /* ->attach(storage_path() .'/'. $this->data['filepath'].$this->data['filename'], [
                 'as' => $this->data['filename'],
                 'mime' => $this->data['filetype'],
-            ])
+            ]) */
             ->with([
                 'body' => $this->view,
                 'name' => 'Toshu Nigam',
@@ -95,7 +98,6 @@ class MailerEmail extends Mailable
 
             return $this->from(Auth::user()->email, Auth::user()->name)
             ->subject($this->subject)
-            // ->markdown('mail.welcome_to_user_subscribe')
             ->markdown('mail.mail_container')
             ->with([
                 'body' => $this->view,

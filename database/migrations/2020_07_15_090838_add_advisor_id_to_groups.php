@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCategoryIdToUsers extends Migration
+class AddAdvisorIdToGroups extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddCategoryIdToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('category_id')->after('role_id');
+        Schema::table('groups', function (Blueprint $table) {
+            //
+            $table->integer('advisor_id')->after('id');
+
         });
     }
 
@@ -25,7 +27,7 @@ class AddCategoryIdToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('groups', function (Blueprint $table) {
             //
         });
     }

@@ -50,3 +50,15 @@ $('#create_meetingform').submit(function(e) {
             }
       });
   });
+
+$('.add_user_to_groups').click(function(){
+  group_users_id= $(this).attr('role');
+    $('#myModal2').modal('show');
+ $.ajax({
+  url:'/add_to_group_users/'+group_users_id,
+  type:'GET',
+  success: function (response) {
+    $(".user_list").html(response);
+    }
+ });
+});

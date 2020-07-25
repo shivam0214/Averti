@@ -232,3 +232,4 @@
 		<!-- /.modal-dialog -->
 	</div>
   <!-- /.modal -->
+  

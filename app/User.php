@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','role_id','verify_key','category_id'
+        'name','perent_id', 'email','last_name','middle_name', 'password','role_id','verify_key','category_id'
     ];
 
     /**
@@ -53,10 +53,10 @@ class User extends Authenticatable
     public function req_userata(){
         return $this->belongsToMany('App\UserRequest','id','advisor_id');
     }
-
     public function catname(){
         return $this->belongsTo('App\Categories','category_id','id');
     }
-
-    
+    public function staff_details(){
+        return $this->belongsTo('App\Professional','id','user_id');
+    }    
 }

@@ -23,7 +23,7 @@ class UserController extends Controller
         return view('User.adduser');
     }
     public function contacts(){
-        $contacts = User::where(['perent_id'=>Auth::user()['id'],'role_id'=>3])->get();         
+        $contacts = User::where(['perent_id'=>Auth::user()['id'],'role_id'=>3])->get();  
         return view('User.contacts',compact('contacts'));
     }
     public function view_profile($id){
@@ -54,7 +54,7 @@ class UserController extends Controller
             $userrequests = UserRequest::create($form_data);
             if($userrequests){
             $notification = array(
-                 'message' => 'Sent Request',
+                 'message' => 'Request Send',
                  'alert-type' => 'success'
                  );
             }

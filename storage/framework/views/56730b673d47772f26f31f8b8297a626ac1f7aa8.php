@@ -1,8 +1,7 @@
 <?php $__env->startSection('content'); ?> 
 
 <!-- Calendly link widget begin -->
-<link href="https://calendly.com/assets/external/widget.css" rel="stylesheet">
-<script src="https://calendly.com/assets/external/widget.js" type="text/javascript"></script>
+
 <!-- Calendly link widget end -->
 <div class="content-wrapper">
 	  <div class="container-full">

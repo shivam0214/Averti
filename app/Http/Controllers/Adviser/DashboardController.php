@@ -10,6 +10,7 @@ use App\User;
 use App\User_meta;
 use App\UserRequest;
 
+
 use Redirect;
 
 class DashboardController extends Controller
@@ -152,15 +153,5 @@ class DashboardController extends Controller
             }
             return Redirect::to('/user_request')->with($notification);
     }
-    public function mail_template(){
-        return view('mail.template');
-    }
-    public function mail_temp_list(){
-        return view('mail.list');
-    }
-    public function groups(){
-        $contacts = User::where(['perent_id'=>Auth::user()['id'],'role_id'=>3])->get();         
 
-        return view('mail.group',compact('contacts'));
-    }
-}
+  }

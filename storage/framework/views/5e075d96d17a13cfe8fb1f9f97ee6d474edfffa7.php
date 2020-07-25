@@ -61,9 +61,11 @@
           </a>
         </li>
      
-            <li><a href="<?php echo e(route('mail_template')); ?>"><i class="ti-more"></i>Template</a></li>
-            <li><a href="<?php echo e(route('mailtemplist')); ?>"><i class="ti-more"></i>Template List</a></li>
+            <li><a href="<?php echo e(route('addtemplate')); ?>"><i class="ti-more"></i>Template</a></li>
+            <li><a href="<?php echo e(route('mailtemplate')); ?>"><i class="ti-more"></i>Template List</a></li>
             <li><a href="<?php echo e(route('groups')); ?>"><i class="ti-more"></i>Group</a></li>
+            <li><a href="<?php echo e(route('mailsetting')); ?>"><i class="ti-more"></i>Mail Setting</a></li>
+
           </ul>
         </li>
         
@@ -100,7 +102,8 @@
             <li><a href="javascript:void(0)" onclick="Calendly.showPopupWidget('https://calendly.com/shivam-sam');return false;"><i class="ti-more"></i>Calendly api</a></li>
           </ul>
         </li>
-    
+
+        
       </li>
       <li class="treeview">
           <a href="#">
@@ -128,13 +131,28 @@
             <li><a href="<?php echo e(route('booking')); ?>"><i class="ti-more"></i> Booking Schedule</a></li>
           </ul>
         </li>
-       
-
-  <?php else: ?>
+        <li class="treeview">
+          <a href="#">
+            <i class="ti-layout-grid2"></i>
+			<span>Staff</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+          <li>
+          <a href="<?php echo e(route('add_staff')); ?>"><i class="ti-more"></i>Add Staff Details</a>
+        </li>            
+        <li><a href="<?php echo e(route('staff_list')); ?>"><i class="ti-more"></i>Staff List</a></li>
+          </ul>
+        </li>
+      
+        	
+      <?php else: ?>
        <li>
           <a href="<?php echo e(route('advisor_request')); ?>">
             <i class="ti-dashboard"></i>
-      <span>Reuest to Advisor</span>
+      <span>Request to Advisor</span>
           </a>
         </li>
         <li>

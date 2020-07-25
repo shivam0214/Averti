@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\User;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
@@ -12,7 +10,7 @@ class UserbookingController extends Controller
 {
     public function index(){
         $bookingav = Bookingsetting::where('user_id',Auth::user()['perent_id'])->get();
-        return view('booking.booking',compact('bookingav'));
+        return view('booking.Booking',compact('bookingav'));
     }
     public function savebook(Request $r){
         print_r($r->input());
