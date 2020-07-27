@@ -82,9 +82,21 @@
 					
 					<div class="box-body no-padding mailbox-nav">
 					  <ul class="nav nav-pills flex-column">
-						<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#inbox" role="tab"><i class="ion ion-ios-email-outline"></i> Inbox <span class="label label-info pull-right">{{$countMails[1]->total}}</span></a></li>
+						<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#inbox" role="tab"><i class="ion ion-ios-email-outline"></i> Inbox <span class="label label-info pull-right">
+						@if(isset($countMails[1]) && $countMails[1]->labels=='inbox')
+						{{$countMails[1]->total}}
+						@else
+						0
+						@endif
+						</span></a></li>
 
-						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#sentbox" role="tab"><i class="ion ion-paper-airplane"></i> Sent <span class="label label-success pull-right">{{$countMails[0]->total}}</span></a></li>
+						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#sentbox" role="tab"><i class="ion ion-paper-airplane"></i> Sent <span class="label label-success pull-right">
+						@if(isset($countMails[0]) && $countMails[0]->labels=='sent')
+						{{$countMails[0]->total}}
+						@else
+						0
+						@endif
+						</span></a></li>
 						
 						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#drafts" role="tab"><i class="ion ion-email-unread"></i> Drafts <span class="label label-primary pull-right">{{$draft}}</span></a></li>
 
@@ -92,7 +104,12 @@
 							{{$starred}}
 						</span></a>
 						</li>
-						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#trash" role="tab"><i class="ion ion-trash-a"></i> Trash <span class="label label-danger pull-right" id="trashcount">{{$countMails[2]->total}}
+						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#trash" role="tab"><i class="ion ion-trash-a"></i> Trash <span class="label label-danger pull-right" id="trashcount">
+						@if(isset($countMails[2]) && $countMails[2]->labels=='trash')
+						{{$countMails[2]->total}}
+						@else
+						0
+						@endif
 						</span></a></li>						
 					  </ul>
 					</div>

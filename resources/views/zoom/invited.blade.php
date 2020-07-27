@@ -29,7 +29,6 @@
                         <p>Time {{date('Y-m-d',strtotime($r_advisor['mymeeting']['start_time']))}} {{date('H-i a',strtotime($r_advisor['mymeeting']['start_time']))}}</p>
 						<div class="d-inline-block pull-right mt-10">
 						  <a href="{{route('allmeeting',$r_advisor['mid'])}}" class="btn btn-rounded btn-sm btn-success m-5">Start</a>
-						  
 						</div>
 					  </div>
                     </div>

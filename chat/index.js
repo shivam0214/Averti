@@ -21,16 +21,12 @@ app.post('/uploadFile',function(req, res){
     upload(req,res,function(err) { 
   
         if(err) { 
-  
-            // ERROR occured (here it can be occured due 
-            // to uploading image of size greater than 
-            // 1MB or uploading different file type) 
             res.send(err) 
         } 
         else { 
-  db.query('update message set attachment_url =? where id =?',[fullpath,messageId],(err, result)=>{
+  /*db.query('update message set attachment_url =? where id =?',[fullpath,messageId],(err, result)=>{
 	  global.imgURL ='';
-  }) 
+  }) */
             // SUCCESS, image successfully uploaded 
             res.send("Success, Image uploaded!") 
         } 
