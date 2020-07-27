@@ -92,7 +92,8 @@
 
 						</span></a>
 						</li>
-						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#trash" role="tab"><i class="ion ion-trash-a"></i> Trash <span class="label label-danger pull-right" id="trashcount">
+						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#trash" role="tab"><i class="ion ion-trash-a"></i> Trash <span class="label label-danger pull-right" id="trashcount"><?php echo e($countMails[2]->total); ?>
+
 						</span></a></li>						
 					  </ul>
 					</div>
@@ -148,7 +149,7 @@
 									<button type="button" class="btn btn-primary btn-sm" onClick="Delete()"><i class="fa fa-trash"></i></button>
 									</div>
 									<!-- /.btn-group -->
-									<button type="button" class="btn btn-primary btn-sm"><a href="javascript:void(0)" onClick="syncInbox()"><i class="fa fa-refresh"></i></a></button>
+									<button type="button" class="btn btn-primary btn-sm" onClick="syncInbox()"><i class="fa fa-refresh"></i></button>
 									<div class="pull-right">
 									<div class="btn-group">
 										
@@ -161,29 +162,29 @@
 									<div class="table-responsive">
 										<table class="table table-hover table-striped">
 										<tbody>
-										<?php $__currentLoopData = $mailer; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $val): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+										<?php $__currentLoopData = $inboxlist; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $inbox): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 										<tr>
-											<td><input type="checkbox" class="checkbox_mail" name="check[]" value="<?php echo e($val->id); ?>"></td>
-											<td class="mailbox-star" id="starred<?php echo e($val->id); ?>">
-												<?php if($val->is_starred=='0'): ?>
-													<a onClick="starred(<?php echo e($val->id); ?>,1)"><i class="fa text-yellow fa-star-o"></i></a>
+											<td><input type="checkbox" class="checkbox_mail" name="check[]" value="<?php echo e($inbox->id); ?>"></td>
+											<td class="mailbox-star" id="starred<?php echo e($inbox->id); ?>">
+												<?php if($inbox->is_starred=='0'): ?>
+													<a onClick="starred(<?php echo e($inbox->id); ?>,1)"><i class="fa text-yellow fa-star-o"></i></a>
 												<?php else: ?>
-													<a onClick="starred(<?php echo e($val->id); ?>,0)"><i class="fa text-yellow fa-star"></i></a>
+													<a onClick="starred(<?php echo e($inbox->id); ?>,0)"><i class="fa text-yellow fa-star"></i></a>
 												<?php endif; ?>
 											</td>
 											<td>
-												<p class="mailbox-name mb-0 font-size-16 font-weight-600"><?php echo e($val->fullname); ?></p>
-												<a class="mailbox-subject" href="javascript:void(0)" onClick="getMessage(<?php echo e($val->id); ?>)">
-													<?php echo e($val->subject); ?>
+												<p class="mailbox-name mb-0 font-size-16 font-weight-600"><?php echo e($inbox->fullname); ?></p>
+												<a class="mailbox-subject" href="javascript:void(0)" onClick="getMessage(<?php echo e($inbox->id); ?>)">
+													<?php echo e($inbox->subject); ?>
 
 												</a>
 											</td>
 											<td class="mailbox-attachment">
-											<?php if($val->is_attachment=='1'): ?>
+											<?php if($inbox->is_attachment=='1'): ?>
 												<i class="fa fa-paperclip"></i>
 											<?php endif; ?>
 											</td>
-											<td class="mailbox-date"><?php echo e(date('H:i:s a', strtotime($val->created_at))); ?></td>
+											<td class="mailbox-date"><?php echo e($inbox->created_at->diffForHumans()); ?></td>
 										</tr>
 										<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 										</tbody>
@@ -196,20 +197,10 @@
 								<!-- /.box-body -->
 								<div class="box-footer">
 								<div class="mailbox-controls">
-									<!-- Check all button -->
-									<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
-									</button>
-									<div class="btn-group">
-									<button type="button" class="btn btn-primary btn-sm" title="Delete Selected Mail"><i class="fa fa-trash"></i></button>
-									</div>
-									<!-- /.btn-group -->
-									<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
 									<div class="pull-right">
 									<div class="btn-group">
-									<?php echo e($mailer->links()); ?>
+									<?php echo e($inboxlist->links()); ?>
 
-										<!-- <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-left"></i></button>
-										<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-right"></i></button> -->
 									</div>
 									<!-- /.btn-group -->
 									</div>
@@ -220,6 +211,7 @@
 								<!-- /. box -->
 
 							</div>
+<!-- SENTBOX SENTBOX SENTBOX SENTBOX SENTBOX SENTBOX SENTBOX SENTBOX SENTBOX SENTBOX SENTBOX -->							
 							<div class="tab-pane" id="sentbox" role="tabpanel">
 							<div class="box">
 
@@ -244,18 +236,37 @@
 										<button type="button" class="btn btn-primary btn-sm" onClick="Delete()"><i class="fa fa-trash"></i></button>
 										</div>
 										<!-- /.btn-group -->
-										<button type="button" class="btn btn-primary btn-sm"><a href="javascript:void(0)" onClick="syncInbox()"><i class="fa fa-refresh"></i></a></button>
-										<div class="pull-right">
-										<div class="btn-group">
-											
-										</div>
-										<!-- /.btn-group -->
-										</div>
-										<!-- /.pull-right -->
 									</div>
 									<div class="mailbox-messages inbox-bx">
 										<div class="table-responsive">
 											<table class="table table-hover table-striped">
+											<tbody>
+												<?php $__currentLoopData = $sentlist; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sent): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+												<tr>
+													<td><input type="checkbox" class="checkbox_mail" name="check[]" value="<?php echo e($sent->id); ?>"></td>
+													<td class="mailbox-star" id="starred<?php echo e($sent->id); ?>">
+														<?php if($sent->is_starred=='0'): ?>
+															<a onClick="starred(<?php echo e($sent->id); ?>,1)"><i class="fa text-yellow fa-star-o"></i></a>
+														<?php else: ?>
+															<a onClick="starred(<?php echo e($sent->id); ?>,0)"><i class="fa text-yellow fa-star"></i></a>
+														<?php endif; ?>
+													</td>
+													<td>
+														<p class="mailbox-name mb-0 font-size-16 font-weight-600"><?php echo e($sent->fullname); ?></p>
+														<a class="mailbox-subject" href="javascript:void(0)" onClick="getMessage(<?php echo e($sent->id); ?>)">
+															<?php echo e($sent->subject); ?>
+
+														</a>
+													</td>
+													<td class="mailbox-attachment">
+													<?php if($sent->is_attachment=='1'): ?>
+														<i class="fa fa-paperclip"></i>
+													<?php endif; ?>
+													</td>
+													<td class="mailbox-date"><?php echo e($sent->created_at->diffForHumans()); ?></td>
+												</tr>
+												<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+												</tbody>
 											</table>
 										</div>                
 										<!-- /.table -->
@@ -265,21 +276,11 @@
 									<!-- /.box-body -->
 									<div class="box-footer">
 									<div class="mailbox-controls">
-										<!-- Check all button -->
-										<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
-										</button>
-										<div class="btn-group">
-										<button type="button" class="btn btn-primary btn-sm" title="Delete Selected Mail"><i class="fa fa-trash"></i></button>
-										</div>
-										<!-- /.btn-group -->
-										<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
 										<div class="pull-right">
-										<div class="btn-group">
-										<?php echo e($mailer->links()); ?>
+											<div class="btn-group">
+												<?php echo e($sentlist->links()); ?>
 
-											<!-- <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-left"></i></button>
-											<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-right"></i></button> -->
-										</div>
+											</div>
 										<!-- /.btn-group -->
 										</div>
 										<!-- /.pull-right -->
@@ -287,9 +288,8 @@
 									</div>
 									</div>
 									<!-- /. box -->
-
-
 							</div>
+<!-- DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT DRAFT -->
 							<div class="tab-pane" id="drafts" role="tabpanel">
 							<div class="box">
 
@@ -297,9 +297,6 @@
 								<h4 class="box-title">Drafts</h4>
 									<div class="box-controls pull-right">
 									<div class="box-header-actions">
-									<!-- <div class="lookup lookup-sm lookup-right d-none d-lg-block">
-										<input type="text" name="s" placeholder="Search">
-									</div> -->
 									</div>
 								</div>
 								</div>
@@ -314,18 +311,38 @@
 									<button type="button" class="btn btn-primary btn-sm" onClick="Delete()"><i class="fa fa-trash"></i></button>
 									</div>
 									<!-- /.btn-group -->
-									<button type="button" class="btn btn-primary btn-sm"><a href="javascript:void(0)" onClick="syncInbox()"><i class="fa fa-refresh"></i></a></button>
-									<div class="pull-right">
-									<div class="btn-group">
-										
-									</div>
-									<!-- /.btn-group -->
-									</div>
 									<!-- /.pull-right -->
 								</div>
 								<div class="mailbox-messages inbox-bx">
 									<div class="table-responsive">
 										<table class="table table-hover table-striped">
+										<tbody>
+												<?php $__currentLoopData = $draftlist; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $draft): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+												<tr>
+													<td><input type="checkbox" class="checkbox_mail" name="check[]" value="<?php echo e($draft->id); ?>"></td>
+													<td class="mailbox-star" id="starred<?php echo e($draft->id); ?>">
+														<?php if($draft->is_starred=='0'): ?>
+															<a onClick="starred(<?php echo e($draft->id); ?>,1)"><i class="fa text-yellow fa-star-o"></i></a>
+														<?php else: ?>
+															<a onClick="starred(<?php echo e($draft->id); ?>,0)"><i class="fa text-yellow fa-star"></i></a>
+														<?php endif; ?>
+													</td>
+													<td>
+														<p class="mailbox-name mb-0 font-size-16 font-weight-600"><?php echo e($draft->fullname); ?></p>
+														<a class="mailbox-subject" href="javascript:void(0)" onClick="getMessage(<?php echo e($draft->id); ?>)">
+															<?php echo e($draft->subject); ?>
+
+														</a>
+													</td>
+													<td class="mailbox-attachment">
+													<?php if($draft->is_attachment=='1'): ?>
+														<i class="fa fa-paperclip"></i>
+													<?php endif; ?>
+													</td>
+													<td class="mailbox-date"><?php echo e($draft->created_at->diffForHumans()); ?></td>
+												</tr>
+												<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+												</tbody>
 										</table>
 									</div>                
 									<!-- /.table -->
@@ -335,20 +352,10 @@
 								<!-- /.box-body -->
 								<div class="box-footer">
 								<div class="mailbox-controls">
-									<!-- Check all button -->
-									<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
-									</button>
-									<div class="btn-group">
-									<button type="button" class="btn btn-primary btn-sm" title="Delete Selected Mail"><i class="fa fa-trash"></i></button>
-									</div>
-									<!-- /.btn-group -->
-									<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
 									<div class="pull-right">
 									<div class="btn-group">
-									<?php echo e($mailer->links()); ?>
+									<?php echo e($draftlist->links()); ?>
 
-										<!-- <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-left"></i></button>
-										<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-right"></i></button> -->
 									</div>
 									<!-- /.btn-group -->
 									</div>
@@ -359,6 +366,7 @@
 								<!-- /. box -->
 
 								</div>
+<!-- STARRED	STARRED STARRED STARRED STARRED STARRED STARRED STARRED STARRED STARRED STARRED STARRED -->								
 							<div class="tab-pane" id="starred" role="tabpanel">
 							<div class="box">
 
@@ -382,20 +390,37 @@
 									<div class="btn-group">
 									<button type="button" class="btn btn-primary btn-sm" onClick="Delete()"><i class="fa fa-trash"></i></button>
 									</div>
-									<!-- /.btn-group -->
-									<button type="button" class="btn btn-primary btn-sm"><a href="javascript:void(0)" onClick="syncInbox()"><i class="fa fa-refresh"></i></a></button>
-									<div class="pull-right">
-									<div class="btn-group">
-										
-									</div>
-									<!-- /.btn-group -->
-									</div>
-									<!-- /.pull-right -->
 								</div>
 								<div class="mailbox-messages inbox-bx">
 									<div class="table-responsive">
 										<table class="table table-hover table-striped">
-										
+										<tbody>
+												<?php $__currentLoopData = $starredlist; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $star): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+												<tr>
+													<td><input type="checkbox" class="checkbox_mail" name="check[]" value="<?php echo e($star->id); ?>"></td>
+													<td class="mailbox-star" id="starred<?php echo e($star->id); ?>">
+														<?php if($star->is_starred=='0'): ?>
+															<a onClick="starred(<?php echo e($star->id); ?>,1)"><i class="fa text-yellow fa-star-o"></i></a>
+														<?php else: ?>
+															<a onClick="starred(<?php echo e($star->id); ?>,0)"><i class="fa text-yellow fa-star"></i></a>
+														<?php endif; ?>
+													</td>
+													<td>
+														<p class="mailbox-name mb-0 font-size-16 font-weight-600"><?php echo e($star->fullname); ?></p>
+														<a class="mailbox-subject" href="javascript:void(0)" onClick="getMessage(<?php echo e($star->id); ?>)">
+															<?php echo e($star->subject); ?>
+
+														</a>
+													</td>
+													<td class="mailbox-attachment">
+													<?php if($star->is_attachment=='1'): ?>
+														<i class="fa fa-paperclip"></i>
+													<?php endif; ?>
+													</td>
+													<td class="mailbox-date"><?php echo e($star->created_at->diffForHumans()); ?></td>
+												</tr>
+												<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+												</tbody>
 										</table>
 									</div>                
 									<!-- /.table -->
@@ -405,20 +430,10 @@
 								<!-- /.box-body -->
 								<div class="box-footer">
 								<div class="mailbox-controls">
-									<!-- Check all button -->
-									<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
-									</button>
-									<div class="btn-group">
-									<button type="button" class="btn btn-primary btn-sm" title="Delete Selected Mail"><i class="fa fa-trash"></i></button>
-									</div>
-									<!-- /.btn-group -->
-									<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
 									<div class="pull-right">
 									<div class="btn-group">
-									<?php echo e($mailer->links()); ?>
+									<?php echo e($starredlist->links()); ?>
 
-										<!-- <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-left"></i></button>
-										<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-right"></i></button> -->
 									</div>
 									<!-- /.btn-group -->
 									</div>
@@ -427,9 +442,8 @@
 								</div>
 								</div>
 								<!-- /. box -->
-
-
 							</div>
+<!-- TRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASHTRASH -->
 							<div class="tab-pane" id="trash" role="tabpanel">
 							<div class="box">
 
@@ -450,22 +464,39 @@
 								<!-- Check all button -->
 								<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
 								</button>
-								<div class="btn-group">
+								<!-- <div class="btn-group">
 								<button type="button" class="btn btn-primary btn-sm" onClick="Delete()"><i class="fa fa-trash"></i></button>
-								</div>
-								<!-- /.btn-group -->
-								<button type="button" class="btn btn-primary btn-sm"><a href="javascript:void(0)" onClick="syncInbox()"><i class="fa fa-refresh"></i></a></button>
-								<div class="pull-right">
-								<div class="btn-group">
-									
-								</div>
-								<!-- /.btn-group -->
-								</div>
-								<!-- /.pull-right -->
+								</div> -->
 							</div>
 							<div class="mailbox-messages inbox-bx">
 								<div class="table-responsive">
 									<table class="table table-hover table-striped">
+									<tbody>
+												<?php $__currentLoopData = $trashlist; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $trash): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+												<tr>
+													<td class="mailbox-star" id="starred<?php echo e($trash->id); ?>">
+														<?php if($trash->is_starred=='0'): ?>
+															<a onClick="starred(<?php echo e($trash->id); ?>,1)"><i class="fa text-yellow fa-star-o"></i></a>
+														<?php else: ?>
+															<a onClick="starred(<?php echo e($trash->id); ?>,0)"><i class="fa text-yellow fa-star"></i></a>
+														<?php endif; ?>
+													</td>
+													<td>
+														<p class="mailbox-name mb-0 font-size-16 font-weight-600"><?php echo e($trash->fullname); ?></p>
+														<a class="mailbox-subject" href="javascript:void(0)" onClick="getMessage(<?php echo e($trash->id); ?>)">
+															<?php echo e($trash->subject); ?>
+
+														</a>
+													</td>
+													<td class="mailbox-attachment">
+													<?php if($trash->is_attachment=='1'): ?>
+														<i class="fa fa-paperclip"></i>
+													<?php endif; ?>
+													</td>
+													<td class="mailbox-date"><?php echo e($trash->created_at->diffForHumans()); ?></td>
+												</tr>
+												<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+												</tbody>
 									</table>
 								</div>                
 								<!-- /.table -->
@@ -475,20 +506,10 @@
 							<!-- /.box-body -->
 							<div class="box-footer">
 							<div class="mailbox-controls">
-								<!-- Check all button -->
-								<button type="button" id="selecctall" class="btn btn-primary btn-sm checkbox-toggle"><i class="ion ion-android-checkbox-outline-blank"></i>
-								</button>
-								<div class="btn-group">
-								<button type="button" class="btn btn-primary btn-sm" title="Delete Selected Mail"><i class="fa fa-trash"></i></button>
-								</div>
-								<!-- /.btn-group -->
-								<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i></button>
 								<div class="pull-right">
 								<div class="btn-group">
-								<?php echo e($mailer->links()); ?>
+								<?php echo e($trashlist->links()); ?>
 
-									<!-- <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-left"></i></button>
-									<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-chevron-right"></i></button> -->
 								</div>
 								<!-- /.btn-group -->
 								</div>
@@ -663,13 +684,16 @@ function getgroup(id){
 }
 
 function syncInbox(){
+	$('i.fa-refresh').addClass('fa-spin');
+	$('#syncInboxResponse').html('<div class="alert alert-warning alert-dismissible fade show" role="alert">Inbox syncing is initiated. It may take few minutes to sync.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
 	$.ajax({
 		type: "GET",
 		url: '/inboundmails',
 		data: {"_token": "<?php echo e(csrf_token()); ?>"},
 		success: function( data ) {
 			console.log(data);
-			$('#syncInboxResponse').html('<div class="alert alert-warning alert-dismissible fade show" role="alert">'+data.success+'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+			$('i.fa-refresh').removeClass('fa-spin');
+			$('#syncInboxResponse').html('<div class="alert alert-success alert-dismissible fade show" role="alert">'+data.success+'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
 
 		}
 	});

@@ -33,7 +33,7 @@
                                     <th scope="col">Profile</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Phone Number</th> 
-                                    <th scope="col">Advisor Type</th>                                  
+                                    <th scope="col">Specialization</th>                                  
                                     <th scope="col">Action</th>
                           </tr>
                             </thead>
