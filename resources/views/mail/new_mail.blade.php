@@ -684,6 +684,7 @@ function getgroup(id){
 		data: {group_id: id,"_token": "{{ csrf_token() }}"},
 		success: function( data ) {
 			console.log(data);
+		//	document.getElementById("to").innerHTML = data.mail_result;
 			$("#to").val(data.mail_result)
 		}
 	});

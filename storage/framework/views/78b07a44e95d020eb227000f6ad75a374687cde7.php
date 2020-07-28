@@ -81,9 +81,23 @@
 					
 					<div class="box-body no-padding mailbox-nav">
 					  <ul class="nav nav-pills flex-column">
-						<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#inbox" role="tab"><i class="ion ion-ios-email-outline"></i> Inbox <span class="label label-info pull-right"><?php echo e($countMails[1]->total); ?></span></a></li>
+						<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#inbox" role="tab"><i class="ion ion-ios-email-outline"></i> Inbox <span class="label label-info pull-right">
+						<?php if(isset($countMails[1]) && $countMails[1]->labels=='inbox'): ?>
+						<?php echo e($countMails[1]->total); ?>
 
-						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#sentbox" role="tab"><i class="ion ion-paper-airplane"></i> Sent <span class="label label-success pull-right"><?php echo e($countMails[0]->total); ?></span></a></li>
+						<?php else: ?>
+						0
+						<?php endif; ?>
+						</span></a></li>
+
+						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#sentbox" role="tab"><i class="ion ion-paper-airplane"></i> Sent <span class="label label-success pull-right">
+						<?php if(isset($countMails[0]) && $countMails[0]->labels=='sent'): ?>
+						<?php echo e($countMails[0]->total); ?>
+
+						<?php else: ?>
+						0
+						<?php endif; ?>
+						</span></a></li>
 						
 						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#drafts" role="tab"><i class="ion ion-email-unread"></i> Drafts <span class="label label-primary pull-right"><?php echo e($draft); ?></span></a></li>
 
@@ -92,8 +106,13 @@
 
 						</span></a>
 						</li>
-						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#trash" role="tab"><i class="ion ion-trash-a"></i> Trash <span class="label label-danger pull-right" id="trashcount"><?php echo e($countMails[2]->total); ?>
+						<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#trash" role="tab"><i class="ion ion-trash-a"></i> Trash <span class="label label-danger pull-right" id="trashcount">
+						<?php if(isset($countMails[2]) && $countMails[2]->labels=='trash'): ?>
+						<?php echo e($countMails[2]->total); ?>
 
+						<?php else: ?>
+						0
+						<?php endif; ?>
 						</span></a></li>						
 					  </ul>
 					</div>
@@ -678,6 +697,7 @@ function getgroup(id){
 		data: {group_id: id,"_token": "<?php echo e(csrf_token()); ?>"},
 		success: function( data ) {
 			console.log(data);
+		//	document.getElementById("to").innerHTML = data.mail_result;
 			$("#to").val(data.mail_result)
 		}
 	});

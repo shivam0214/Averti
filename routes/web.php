@@ -55,7 +55,7 @@ Route::resource("mailer",'MailerController');
 Route::post('/trash','MailerController@trash');
 Route::post('/starred','MailerController@starred');
 Route::get('/getmail','MailerController@getmessage');
-Route::get('/getMails', 'MailerController@getMails')->name('getMails');
+Route::get('/getmails', 'MailerController@getMails')->name('getMails');
 
 Route::get('/mailsetting', 'MailerController@getMailSetting')->name('mailsetting');
 Route::post('/saveoutboundmailsetting', 'MailerController@saveOutboundMailSettings')->name('saveoutboundmailsetting');
