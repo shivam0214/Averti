@@ -7,6 +7,7 @@ var port = process.env.PORT || 3000;
 const db = require('./config/db');
 const path = require("path") 
 const multer = require("multer");
+const { Console } = require('console');
 var router = express.Router();
 global.fullpath = "";
 
@@ -70,8 +71,14 @@ var upload = multer({
 // mypic is the name of file attribute 
 }).single("chatAttachment");
 io.on('connection', function(socket){
+  console.log("socket")
+  console.log(socket.room_id)
   socket.on('chat message', function(data){
-  let val ={room_id:socket.room_id,sender_id:socket.from,receiver_id:socket.to,message_text:data.msg}
+    console.log("DATA");
+    console.log(data);
+  let val ={room_id:socket.room_id, sender_id:socket.from, receiver_id:socket.to, message_text:data.msg}
+  console.log(val);
+  
   let sql = 'INSERT INTO message SET ?';
     db.query(sql,val, function (err, result) {
       if (err) io.emit('chat message',err);
@@ -83,47 +90,47 @@ io.on('connection', function(socket){
     });
    
   });
-   socket.on('Image_URL', function(data){
-	global.imgURL =   data; 
-   });
-     socket.on('create_room', function(data) {
-  socket.from = parseInt(data.curren_user);
-  socket.to = parseInt(data.clientId);
-  code = socket.from + socket.to ;
-  db.query('select id from chat_room where code =?',code,(err, result)=>{
-    if (err)  socket.emit('AllMessageFromRoom',err);
-    if(!result.length){
-  let val ={name:code,code:code,type:1,capacity:2}
-  let sql = 'INSERT INTO chat_room SET ?';
-    db.query(sql,val, function (err, result) {
-      if (err) socket.emit('room_id',err);
-	  socket.room_id =result.insertId
-      socket.emit('AllMessageFromRoom',result.insertId);
-      
-    });
-  }
-  else{
-	  socket.room_id =result[0].id
-	  socket.emit('AllMessageFromRoom',result[0].id);
-  
-  }
-});
+  socket.on('Image_URL', function(data){
+	  global.imgURL =   data; 
+  });
 
-	socket.on('messageData', function(room_id){
-		 let sql = 'Select * from message where room_id=?';
-    db.query(sql,[room_id], function (err, result) {
-      if (err) socket.emit('messageDataAll',err);
-     socket.emit('messageDataAll',result);
-
-    });
+  socket.on('create_room', function(data) {
+    socket.from = parseInt(data.curren_user);
+    socket.to = parseInt(data.clientId);
+    code = socket.from + socket.to ;
+    db.query('select id from chat_room where code =?',code,(err, result)=>{
+      if (err)  socket.emit('AllMessageFromRoom',err);
+      if(!result.length){
+        let val ={name:code,code:code,type:1,capacity:2}
+        let sql = 'INSERT INTO chat_room SET ?';
+        db.query(sql,val, function (err, result) {
+          if (err) socket.emit('room_id',err);
+          socket.room_id =result.insertId
+          socket.emit('AllMessageFromRoom',result.insertId);
         });
-        //io.emit('is_online', '🔵 <i>' + socket.username + ' join the chat..</i>');
+      }
+      else{
+        socket.room_id =result[0].id
+        socket.emit('AllMessageFromRoom',result[0].id);
+      }
     });
-   socket.on('username', function(username) {
-        socket.username = username;	
-        //io.emit('is_online', '🔵 <i>' + socket.username + ' join the chat..</i>');
+
+  	socket.on('messageData', function(room_id){
+     let sql = 'Select * from message where room_id=?';
+      db.query(sql,[room_id], function (err, result) {
+        if (err) socket.emit('messageDataAll',err);
+        socket.emit('messageDataAll',result);
+      });
     });
-});
+        //io.emit('is_online', '🔵 <i>' + socket.username + ' join the chat..</i>');
+  });
+
+  socket.on('username', function(username) {
+    socket.username = username;	
+    //io.emit('is_online', '🔵 <i>' + socket.username + ' join the chat..</i>');
+  });
+
+});//io.on connection 
 
 http.listen(port, function(){
   console.log('listening on *:' + port);
