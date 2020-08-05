@@ -112,7 +112,9 @@ Route::post('/update_details', 'Adviser\Health_staffController@update_details')-
 Route::get('/delete_data/{id}', 'Adviser\Health_staffController@delete_data')->name('delete_data');
 
 /* Notification details*/
-Route::get('/notification','Notification@index')->name('index');
+Route::get('/notification','NotificationController@index')->name('index');
+Route::get('/getstaff_name','NotificationController@show_disease')->name('show_disease');
+Route::post('/staff_booking','NotificationController@staff_booking')->name('staff_booking');
 
 
 

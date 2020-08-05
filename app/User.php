@@ -58,5 +58,8 @@ class User extends Authenticatable
     }
     public function staff_details(){
         return $this->belongsTo('App\Professional','id','user_id');
-    }    
+    } 
+    public function disease_details(){
+        return $this->belongsTo('App\Disease','id','user_id');
+    }   
 }
