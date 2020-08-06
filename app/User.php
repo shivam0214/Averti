@@ -61,5 +61,6 @@ class User extends Authenticatable
     } 
     public function disease_details(){
         return $this->belongsTo('App\Disease','id','user_id');
-    }   
+    }  
+     
 }

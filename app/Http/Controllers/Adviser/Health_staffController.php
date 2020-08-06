@@ -10,6 +10,7 @@ use Redirect;
 use App\User;
 use App\User_meta;
 use App\Professional;
+use App\Staff_booking;
 
 class Health_staffController extends Controller
 {
@@ -137,5 +138,17 @@ class Health_staffController extends Controller
             }
             return Redirect::to('/staff_list')->with($notification);
 
+    }
+
+    public function staff_user(){
+        $staff_user=Staff_booking::get();
+        $data=[];
+        foreach($staff_user as $list){
+            $data[]=$list;
+        }
+        // dd($data);
+        // die;
+
+        return view('health_staff.staff_user',compact('data'));
     }
 }

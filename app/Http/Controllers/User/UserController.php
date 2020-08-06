@@ -8,6 +8,7 @@ use App\User;
 use App\User_meta;
 use Auth;
 use App\UserRequest;
+use App\Contact;
 use App\Categories;
 
 use Redirect;
@@ -21,10 +22,6 @@ class UserController extends Controller
     }
     public function add_user(){
         return view('User.adduser');
-    }
-    public function contacts(){
-        $contacts = User::where(['perent_id'=>Auth::user()['id'],'role_id'=>3])->get();  
-        return view('User.contacts',compact('contacts'));
     }
     public function view_profile($id){
         $data = User::where('id',$id)->get();
@@ -60,7 +57,6 @@ class UserController extends Controller
             }
         }
             return Redirect::to('/advisor_request')->with($notification);
- 
         }
     public function mail(){
 
@@ -79,4 +75,51 @@ class UserController extends Controller
         }
         return view('chat.chat',compact('users'));
     }
+
+    public function contacts(){
+        $contacts = Contact::get();  
+        return view('User.contacts',compact('contacts'));
+    }
+    
+    public function add_contact(Request $r){
+        $check=Contact::where('email',$r->email)->count();
+                if($check>0){
+                        $notification = array(
+                         'message' => 'Email already exit',
+                         'alert-type' => 'warning'
+                         );
+                           }
+                else{
+        $data= array('name'=> $r->name,
+                    'email'=> $r->email,
+                    'phone_no'=> $r->phone_no, 
+                    'profile_image'=>$r->profile_image,
+                    'user_id'=>Auth::user()['id'], 
+                    'social'=> json_encode($r->social,JSON_FORCE_OBJECT),       
+                );
+                // print_r($data);
+                // die;
+                $contacts = Contact::create($data);
+        if($contacts){
+            $notification = array(
+                'message' => 'Contact Add Sucsessfully',
+                'alert-type' => 'success'
+                );
+            }       
+    return Redirect::to('/dashboard/ContactList')->with($notification);
+        }
+    }
+
+    public function delete_contact($id){
+        $staff_list=Contact::where('id',$id)->delete();
+        if($staff_list){
+            $notification = array(
+             'message' => 'Record deleted successfully',
+             'alert-type' => 'success'
+             );
+            }
+            return Redirect::to('/dashboard/ContactList')->with($notification);
+
+    }
+
 }

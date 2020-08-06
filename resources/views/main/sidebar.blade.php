@@ -131,6 +131,13 @@
             <li><a href="{{route('booking')}}"><i class="ti-more"></i> Booking Schedule</a></li>
           </ul>
         </li>
+        <li>
+          <a href="{{route('staff_user')}}">
+            <i class="ti-bell"></i>
+			<span>Notification</span>
+          </a>
+        </li>
+      
         <li class="treeview">
           <a href="#">
             <i class="ti-layout-grid2"></i>
@@ -162,7 +169,7 @@
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="{{route('notification')}}">
             <i class="ti-bell"></i>
 			<span>Notification</span>
           </a>

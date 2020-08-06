@@ -76,6 +76,8 @@ Route::get('/inboundmails', 'InboundMailController@getInboxEvent')->name('inboun
 
 Route::get('/dashboard/User/ViewUser/{id}', 'User\UserController@view_profile')->name('view_profile');
 Route::get('/dashboard/ContactList', 'User\UserController@contacts')->name('contacts');
+Route::post('/dashboard/add_contact', 'User\UserController@add_contact')->name('add_contact');
+Route::get('/delete_contact/{id}','User\UserController@delete_contact')->name('delete_contact');
 
 Route::get('/invoice', 'Adviser\InvoiceController@invoice')->name('invoice');
 Route::get('/invoice_list', 'Adviser\InvoiceController@invoice_list')->name('invoice_list');
@@ -110,9 +112,11 @@ Route::get('/staff_list', 'Adviser\Health_staffController@staff_list')->name('st
 Route::get('/staff_profile/{id}', 'Adviser\Health_staffController@view_staff')->name('view_staff');
 Route::post('/update_details', 'Adviser\Health_staffController@update_details')->name('update_details');
 Route::get('/delete_data/{id}', 'Adviser\Health_staffController@delete_data')->name('delete_data');
+Route::get('/staff_user', 'Adviser\Health_staffController@staff_user')->name('staff_user');
+
 
 /* Notification details*/
-Route::get('/notification','NotificationController@index')->name('index');
+Route::get('/notification','NotificationController@index')->name('notification');
 Route::get('/getstaff_name','NotificationController@show_disease')->name('show_disease');
 Route::post('/staff_booking','NotificationController@staff_booking')->name('staff_booking');
 
