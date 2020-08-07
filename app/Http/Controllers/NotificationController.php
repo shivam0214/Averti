@@ -35,7 +35,7 @@ class NotificationController extends Controller
         $s_name=User::where('id',$data)->get();
         $value='';
         foreach($s_name as $list){
-            $value = $list['name' ];
+            $value = $list;
         } 
         return response()->json([
             'message' => 'Staff here',
@@ -45,12 +45,13 @@ class NotificationController extends Controller
 }
     public function staff_booking(Request $r){
         $data=array(
-        'staff'=>$r->staff_name,
+        'staff_id'=>$r->staff_id,
         'disease_id'=>$r->disease_id,
         'description'=>$r->description,
         'profile_image'=>$r->profile_image,
         'user_id'=>Auth::user()['id'],
         );
+      //  print_r($data);die;
         $users = Staff_booking::create($data);
         if($users){
             $notification = array(

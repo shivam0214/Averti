@@ -204,8 +204,8 @@
 		<a href="mailbox_inbox.html" class="link" data-toggle="tooltip" title="" data-original-title="Email"><i class="ti-email"></i></a>
 		<!-- item-->
 		<a  href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="link" data-toggle="tooltip" title="" data-original-title="Logout"><i class="ti-lock"></i><form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
-                                        <?php echo csrf_field(); ?>
-                                    </form></a>
+      <?php echo csrf_field(); ?>
+      </form></a>
 	</div>
   </aside>
  <?php /**PATH H:\updateDemitrius\Averti\Averti\resources\views/main/sidebar.blade.php ENDPATH**/ ?>

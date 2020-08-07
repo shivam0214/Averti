@@ -79,6 +79,9 @@ Route::get('/dashboard/ContactList', 'User\UserController@contacts')->name('cont
 Route::post('/dashboard/add_contact', 'User\UserController@add_contact')->name('add_contact');
 Route::get('/delete_contact/{id}','User\UserController@delete_contact')->name('delete_contact');
 
+/*User to staff booking*/ 
+Route::get('/staff_booking','User\User_to_staff_bookingController@staff_booking')->name('staff_booking');
+
 Route::get('/invoice', 'Adviser\InvoiceController@invoice')->name('invoice');
 Route::get('/invoice_list', 'Adviser\InvoiceController@invoice_list')->name('invoice_list');
 

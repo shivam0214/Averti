@@ -17,11 +17,12 @@ class CreateStaffBookingsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id');
             $table->bigInteger('disease_id');
-            $table->string('staff')->nullable();
+            $table->bigInteger('staff_id')->nullable();
             $table->string('description')->nullable();
             $table->longText('profile_image')->nullable();
+           
             $table->timestamps();
-       });
+        });
     }
 
     /**

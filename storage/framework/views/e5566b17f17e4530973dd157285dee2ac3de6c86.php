@@ -38,6 +38,8 @@
 									<div class="col-md-5">
 								 		<div class="form-group">
 											<label>Doctor</label>
+											<input type="hidden"  class="form-control" id="staff_id" name="staff_id">
+
 											<input type="text" class="form-control" id="staff_name" name="staff_name">
                                     	</div>
                                 	</div> 
@@ -89,7 +91,9 @@ function getstaff(id){
 		success: function( data ) {
 			console.log(data);
 		//	document.getElementById("to").innerHTML = data.mail_result;
-			$("#staff_name").val(data.result)
+			$("#staff_name").val(data.result.name)
+			$("#staff_id").val(data.result.id)
+
 		}
 	});
 }

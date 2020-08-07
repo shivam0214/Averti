@@ -7,6 +7,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }} | {{Auth::user()['name']}}</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/averti1.jpg')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/frontassets/css/zInput_default_stylesheet.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/wizard_2.css')}}">
 
 	<link rel="stylesheet" href="{{asset('assets/css/vendors_css.css')}}">
 	<!-- Style-->  

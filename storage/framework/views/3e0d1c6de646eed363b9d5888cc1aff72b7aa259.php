@@ -129,56 +129,24 @@
         <div class="thumbnaildiv">
         <div class="flag"><i class="fa fa-flag"></i></div>
         <div class="userprogfilepic">
-        <div class="pic"><img src="<?php echo (($record['usermeta_staff_booking']['profile_image'])!= NULL) ? url($record['usermeta_staff_booking']['profile_image']) : url(asset('assets/img/avatars/user.png')); ?>" alt="&#xf013;" height="50px" width="50px" class="rounded-circle img-fluid">
+        <div class="pic"><img src="<?php echo (($record['single']['profile_image'])!= NULL) ? url($record['single']['profile_image']) : url(asset('assets/img/avatars/user.png')); ?>" alt="&#xf013;" height="50px" width="50px" class="rounded-circle img-fluid">
             </div>
-        <div class="name"><?php echo e($record['user_staff_booking']['name']); ?><span>53F</span></div>
+        <div class="name"><?php echo e($record['name']); ?><span>53F</span></div>
         </div>
+        
+        <?php $__currentLoopData = $value; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user_data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
         <div class="userdiscription">
-        <div class="illness"><?php echo e($record['disease_list']['disease']); ?><span class="posttime"> @ h Ago</span></div>
-        <div class="summewry"><p><?php echo e($record['description']); ?></p></div> 
+            <div class="illness"><?php echo e($user_data['disease_list']['disease']); ?> <span class="posttime"> @ h Ago</span></div>
+            <div class="summewry"><p><?php echo e($user_data['description']); ?></p></div> 
         </div>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
         </div>
         </div>
     </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        <div class="col-sm-4">
-<div class="mainthubclient">
-<div class="thumbnaildiv">
-<div class="flag"><i class="fa fa-flag"></i></div>
-<div class="userprogfilepic">
-<div class="pic"><img src="https://therightsw.com/wp-content/uploads/2019/12/dummy.jpg" class="rounded-circle img-fluid"></div>
-<div class="name">Ajad Rawat<span>53F</span></div>
-</div>
-<div class="userdiscription">
-<div class="illness">Diabetes <span class="posttime"> @ h Ago</span></div>
-<div class="summewry"><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p></div> 
-</div>
-<div class="userdiscription">
-<div class="illness">Diabetes <span class="posttime"> @ h Ago</span></div>
-<div class="summewry"><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p></div> 
-</div>
-</div>
-</div>
-    </div>
-    <div class="col-sm-4">
-<div class="mainthubclient">
-<div class="thumbnaildiv">
-<div class="flag"><i class="fa fa-flag"></i></div>
-<div class="userprogfilepic">
-<div class="pic"><img src="https://therightsw.com/wp-content/uploads/2019/12/dummy.jpg" class="rounded-circle img-fluid"></div>
-<div class="name">Ajad Rawat<span>53F</span></div>
-</div>
-<div class="userdiscription">
-<div class="illness">Diabetes <span class="posttime"> @ h Ago</span></div>
-<div class="summewry"><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p></div> 
-</div>
-<div class="userdiscription">
-<div class="illness">Diabetes <span class="posttime"> @ h Ago</span></div>
-<div class="summewry"><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p></div> 
-</div>
-</div>
-</div>
-    </div>
+        
   </div>		  
 </div>
 		</section>

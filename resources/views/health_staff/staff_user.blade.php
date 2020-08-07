@@ -130,56 +130,24 @@
         <div class="thumbnaildiv">
         <div class="flag"><i class="fa fa-flag"></i></div>
         <div class="userprogfilepic">
-        <div class="pic"><img src="<?php echo (($record['usermeta_staff_booking']['profile_image'])!= NULL) ? url($record['usermeta_staff_booking']['profile_image']) : url(asset('assets/img/avatars/user.png')); ?>" alt="&#xf013;" height="50px" width="50px" class="rounded-circle img-fluid">
+        <div class="pic"><img src="<?php echo (($record['single']['profile_image'])!= NULL) ? url($record['single']['profile_image']) : url(asset('assets/img/avatars/user.png')); ?>" alt="&#xf013;" height="50px" width="50px" class="rounded-circle img-fluid">
             </div>
-        <div class="name">{{$record['user_staff_booking']['name']}}<span>53F</span></div>
+        <div class="name">{{$record['name']}}<span>53F</span></div>
         </div>
+        
+        @foreach ($value as $user_data)
+
         <div class="userdiscription">
-        <div class="illness">{{$record['disease_list']['disease']}}<span class="posttime"> @ h Ago</span></div>
-        <div class="summewry"><p>{{$record['description']}}</p></div> 
+            <div class="illness">{{$user_data['disease_list']['disease']}} <span class="posttime"> @ h Ago</span></div>
+            <div class="summewry"><p>{{$user_data['description']}}</p></div> 
         </div>
+        @endforeach
+
         </div>
         </div>
     </div>
     @endforeach
-        <div class="col-sm-4">
-<div class="mainthubclient">
-<div class="thumbnaildiv">
-<div class="flag"><i class="fa fa-flag"></i></div>
-<div class="userprogfilepic">
-<div class="pic"><img src="https://therightsw.com/wp-content/uploads/2019/12/dummy.jpg" class="rounded-circle img-fluid"></div>
-<div class="name">Ajad Rawat<span>53F</span></div>
-</div>
-<div class="userdiscription">
-<div class="illness">Diabetes <span class="posttime"> @ h Ago</span></div>
-<div class="summewry"><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p></div> 
-</div>
-<div class="userdiscription">
-<div class="illness">Diabetes <span class="posttime"> @ h Ago</span></div>
-<div class="summewry"><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p></div> 
-</div>
-</div>
-</div>
-    </div>
-    <div class="col-sm-4">
-<div class="mainthubclient">
-<div class="thumbnaildiv">
-<div class="flag"><i class="fa fa-flag"></i></div>
-<div class="userprogfilepic">
-<div class="pic"><img src="https://therightsw.com/wp-content/uploads/2019/12/dummy.jpg" class="rounded-circle img-fluid"></div>
-<div class="name">Ajad Rawat<span>53F</span></div>
-</div>
-<div class="userdiscription">
-<div class="illness">Diabetes <span class="posttime"> @ h Ago</span></div>
-<div class="summewry"><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p></div> 
-</div>
-<div class="userdiscription">
-<div class="illness">Diabetes <span class="posttime"> @ h Ago</span></div>
-<div class="summewry"><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p></div> 
-</div>
-</div>
-</div>
-    </div>
+        
   </div>		  
 </div>
 		</section>

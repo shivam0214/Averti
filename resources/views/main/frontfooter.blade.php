@@ -91,13 +91,12 @@
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 	  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js'></script>
 	  <script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js'></script>
-	 
-  	<script src="{{asset('assets/frontassets/js/wow.min.js')}}"></script>
-    <script src="{{asset('assets/frontassets/js/theia-sticky-sidebar.js')}}"></script>
-	<script src="{{asset('assets/frontassets/js/swiper.min.js')}}"></script>
-	<script src="{{asset('assets/frontassets/js/jquery.nstSlider.js')}}"></script>
-  	<script src="{{asset('assets/frontassets/js/functions.js')}}"></script>
-	  <script src="{{asset('assets/frontassets/js/jquery.steps.js')}}"></script>
+		<script src="{{asset('assets/frontassets/js/wow.min.js')}}"></script>
+		<script src="{{asset('assets/frontassets/js/theia-sticky-sidebar.js')}}"></script>
+		<script src="{{asset('assets/frontassets/js/swiper.min.js')}}"></script>
+		<script src="{{asset('assets/frontassets/js/jquery.nstSlider.js')}}"></script>
+		<script src="{{asset('assets/frontassets/js/functions.js')}}"></script>
+	    <script src="{{asset('assets/frontassets/js/jquery.steps.js')}}"></script>
         <script src="{{asset('assets/frontassets/js/main.js')}}"></script>
         <script src="{{asset('assets/frontassets/js/jquery.backstretch.js')}}"></script>
         <script src="{{asset('assets/frontassets/js/scripts.js')}}"></script>
@@ -108,6 +107,5 @@
 $(function() {
     FastClick.attach(document.body);
 });
-
 $("#affected, #affected1, #affected2").zInput();
 </script>
