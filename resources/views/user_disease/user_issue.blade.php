@@ -40,6 +40,7 @@
 								 		<div class="form-group">
 											<label>Doctor</label>
 											<input type="hidden"  class="form-control" id="staff_id" name="staff_id">
+											<input type="hidden"  class="form-control" id="advisor_id" name="advisor_id">
 
 											<input type="text" class="form-control" id="staff_name" name="staff_name">
                                     	</div>
@@ -94,6 +95,7 @@ function getstaff(id){
 		//	document.getElementById("to").innerHTML = data.mail_result;
 			$("#staff_name").val(data.result.name)
 			$("#staff_id").val(data.result.id)
+			$("#advisor_id").val(data.result.perent_id)
 
 		}
 	});

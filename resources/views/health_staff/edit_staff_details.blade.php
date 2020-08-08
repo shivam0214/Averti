@@ -186,6 +186,16 @@
 						</div>
                                 </div>
                                     
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">                   
+                                    <div class="form-group">
+                                        <div class="position-relative">
+                                            <label for="disease" class="sr-only">Disease</label>
+                                            <input type="text" id="disease" name="disease" class="form-control" value="" placeholder="Fever|Cough|Headache">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>    
                             <button type="submit" id="btn" class="btn btn-primary waves-effect waves-light"><b>Update</b></button>                
                         </form>

@@ -25,20 +25,18 @@
 </div>
 </div>
 <div class="col-sm-12 col-xs-12 col-md-8 col-lg-7 col-xs-12 form-box p-0">
-<form role="form" action="" method="post" class="f1">
-
-
-
-
+<form method="POST" action="<?php echo e(route('staff_booking')); ?>" >
+<?php echo csrf_field(); ?>
 <fieldset>
 <div class="icongol"><img src="assets/images/banner/hello.png"></div>
-<h4>Nice to meet you!</h4>
-<h5>What's your name?</h5>
-<div class="form-group">
-
-<input type="text" name="f1-first-name" placeholder="First name..." class="f1-first-name form-control" id="f1-first-name">
-</div>
-
+    <div class="form-group">
+        <label>Select disease..</label>
+        <select class="form-control select2" style="width: 100%;" name="disease_id" onChange="getstaff(this.value)">
+        <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $record): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <option value="<?php echo e($record['id']); ?>"><?php echo e($record['disease']); ?></option>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </select>
+    </div>
 <div class="f1-buttons">
 <button type="button" class="btn btn-previous">Previous</button>
 <button type="button" class="btn btn-next">Next</button>
@@ -47,12 +45,12 @@
 
 <fieldset>
 <div class="icongol"><img src="assets/images/banner/location.png"></div>
-<h4>Where are you located?</h4>
-<h5>Zoe has great advisors all across the country.</h5>
-<div class="form-group">
+    <div class="form-group">
+        <label>Doctor</label>
+        <input type="hidden"  class="form-control" id="staff_id" name="staff_id">
 
-<input type="text" name="f1-email" placeholder="10583" class="f1-email form-control" id="located">
-</div>
+        <input type="text" class="form-control" id="staff_name" name="staff_name">
+    </div>
 
 
 <div class="f1-buttons">
@@ -63,35 +61,27 @@
 
 <fieldset>
 <div class="icongol"><img src="assets/images/banner/birthday-cake.png"></div>
-<h4>How old are you?</h4>
-<h5>Each stage of your life is financially unique.</h5>
-<div id="affected">
-
-<input type="radio" name="set 2" title="Under 30">
-<input type="radio" name="set 2" title="30s">
-<input type="radio" name="set 2" title="40s">
-<input type="radio" name="set 2" title="50s">
-<input type="radio" name="set 2" title="60s">
-<input type="radio" name="set 2" title="70+">
-</div>
-<div class="f1-buttons">
-<button type="button" class="btn btn-previous">Previous</button>
-<button type="button" class="btn btn-next">Next</button>
-</div>
+    <div class="form-group">
+        <label for="where">Description</label>
+        <input type="textarea" class="form-control" id="description" name="description" >
+        </div>
+    <div class="f1-buttons">
+        <button type="button" class="btn btn-previous">Previous</button>
+        <button type="button" class="btn btn-next">Next</button>
+    </div>
 </fieldset>
 
 <fieldset>
 <div class="icongol"><img src="assets/images/banner/wedding.png"></div>
-<h4>Are you married?</h4>
-<h5>Your marital status helps us understand the complexity of your finances</h5>
-<div id="affected1">
-
-<input type="radio" name="set 3" title="Married">
-<input type="radio" name="set 3" title="Divorced">
-<input type="radio" name="set 3" title="Single">
-<input type="radio" name="set 3" title="Separated">
-<input type="radio" name="set 3" title="Prefer not to say">
-</div>
+    <div class="form-group">
+            <span class="input-group-btn">
+            <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary text-white">
+                <i class="fa fa-picture-o"></i> Upload Picture
+            </a>							
+            <input id="thumbnail" class="form-control" type="text" name="profile_image"  name="filepath">
+            </span>
+        </div>
+    </div>	
 <div class="f1-buttons">
 <button type="button" class="btn btn-previous">Previous</button>
 <button type="button" class="btn btn-next">Next</button>
@@ -269,4 +259,22 @@
   <!-- /.content-wrapper -->
  
 <?php $__env->stopSection(); ?>
+<script>
+function getstaff(id){
+//	console.log(id);
+	$.ajax({
+		type: "GET",
+		url: '/getstaff_name',
+		data: {disease_id: id,"_token": "<?php echo e(csrf_token()); ?>"},
+		success: function( data ) {
+			console.log(data);
+		//	document.getElementById("to").innerHTML = data.mail_result;
+			$("#staff_name").val(data.result.name)
+			$("#staff_id").val(data.result.id)
+
+		}
+	});
+}
+
+</script>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH H:\updateDemitrius\Averti\Averti\resources\views/User/user_staff_booking.blade.php ENDPATH**/ ?>

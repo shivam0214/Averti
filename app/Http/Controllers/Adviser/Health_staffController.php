@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use Redirect;
-
 use App\User;
+use App\Disease;
 use App\User_meta;
 use App\Professional;
 use App\Staff_booking;
@@ -57,6 +57,7 @@ class Health_staffController extends Controller
             $set = User_meta::create($user_meta);
             $professional['user_id']=$users['id'];
             $data=Professional::create($professional);
+
             if($data){
                 $notification = array(
                  'message' => 'Data insert Sucsessfully',
@@ -82,6 +83,14 @@ class Health_staffController extends Controller
     }
 
     public function update_details(Request $r){
+        $des = explode('|',$r->disease);
+        if(!empty($des)){
+            foreach($des as $d){
+                if(Disease::where(['user_id'=>$r->id,'disease'=>$d])->count()==0){
+                    Disease::create(['user_id'=>$r->id,'disease'=>$d]);
+                }
+            }            
+        }
         $user=array(
             'name'=>$r->name,
             'email'=>$r->email,
@@ -129,7 +138,10 @@ class Health_staffController extends Controller
     public function delete_data($id){
         $staff_list=User::where('id',$id)->delete();
         $users_meta=User_meta::where('user_id',$id)->delete();
+        $disease=Disease::where('user_id',$id)->delete();
         $professional_data=Professional::where('user_id',$id)->delete();
+        $disease=Disease::where('user_id',$id)->delete();
+
         if($professional_data){
             $notification = array(
              'message' => 'Record deleted successfully',
@@ -151,6 +163,11 @@ class Health_staffController extends Controller
             $ids[]= $s_list['id'];
         }
         $user_issue=Staff_booking::whereIn('staff_id',$ids)->get();
+        // foreach($user_issue as $notify){
+        //     $notify['disease_list']
+        // }
+
+
         $value=[];
         foreach($user_issue as $s_list){
             $value[]= $s_list;

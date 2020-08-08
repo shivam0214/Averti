@@ -46,12 +46,14 @@ class NotificationController extends Controller
     public function staff_booking(Request $r){
         $data=array(
         'staff_id'=>$r->staff_id,
+        'advisor_id'=>$r->advisor_id,
+
         'disease_id'=>$r->disease_id,
         'description'=>$r->description,
-        'profile_image'=>$r->profile_image,
+        'picture'=>$r->profile_image,
         'user_id'=>Auth::user()['id'],
         );
-      //  print_r($data);die;
+        //print_r($data);die;
         $users = Staff_booking::create($data);
         if($users){
             $notification = array(

@@ -177,20 +177,30 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6">                   
+                                    <div class="form-group">
+                                        <div class="position-relative">
+                                            <label for="disease" class="sr-only">Disease</label>
+                                            <input type="text" id="disease" name="disease" class="form-control" value="" placeholder="Fever|Cough|Headache">
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                    
+                            </div>  
+                            <div class="row">
+                            <div class="col-md-6">
                                 <div class="form-group row">
                                 <span class="input-group-btn">
 								<a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary text-white">
-									<i class="fa fa-picture-o"></i> Choose
-                                    <input id="thumbnail" class="form-control" type="text" name="profile_image"  name="filepath">
-
+									<i class="fa fa-picture-o"></i> Choose Profile Image
 								</a>							
-
 							</span>
+                            <input id="thumbnail" class="form-control" type="text" name="profile_image"  name="filepath">
+
 						    </div>
-                                </div>
-                                    
-                            </div>    
+                                </div> 
+                            </div>  
                             <button type="submit" id="btn" class="btn btn-primary waves-effect waves-light"><b>Add Staff</b></button>                
                         </form>
                     </div>
