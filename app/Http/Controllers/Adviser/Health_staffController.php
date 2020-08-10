@@ -153,25 +153,20 @@ class Health_staffController extends Controller
     }
 
     public function staff_user(){
-        $staff_list=User::where('role_id',4)->get();
-        $data=[];
-        foreach($staff_list as $list){
-            $data[] = $list;
-        }
-        $ids=[];
-        foreach($staff_list as $s_list){
-            $ids[]= $s_list['id'];
-        }
-        $user_issue=Staff_booking::whereIn('staff_id',$ids)->get();
-        // foreach($user_issue as $notify){
-        //     $notify['disease_list']
-        // }
-
-
+        
+        $user_issue=Staff_booking::get();
         $value=[];
         foreach($user_issue as $s_list){
             $value[]= $s_list;
-        }
-        return view('health_staff.staff_user',compact('data','value'));
+        }  
+        return view('health_staff.staff_user',compact('value'));
+    }
+
+    public function staff_detail($id){
+        $details=Staff_booking::where('staff_id',$id)->get();
+        $details = $details[0];
+
+      // dd($details);die;       
+             return view('health_staff.staff_details',compact('details'));
     }
 }

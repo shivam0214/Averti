@@ -23255,3 +23255,120 @@ label{font-size:17px}
  height: 0px;
  overflow: hidden;
 }
+
+	<!-- Vendors Style-->
+.formbox {
+    background: #272e48;
+    border: #41475e 1px solid;
+    margin: 30px 0px;
+    border-radius: 20px;
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+}
+.profileinfo {
+    display: inline-block;
+    width: 100%;
+    padding: 20px;
+}
+
+.profileinfo .profilepic {
+    width: 25%;
+    float: left;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.profileinfo .profilepic img {
+    width: 100%;
+    overflow: hidden;
+}
+
+.profile-details {
+    width: 75%;
+    float: left;
+    padding-left: 30px;
+}
+
+.profile-details ul {
+    margin: 0;
+    border: #41475e 1px solid;
+    padding: 0;
+    display: inline-block;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.profile-details ul li {
+    width: 48%;
+    float: left;
+    font-size: 18px;
+    color: #bdd1f8;
+    list-style: none;
+    border-bottom: #41475e 1px solid;
+    line-height: 30px;
+    padding: 5px 0px;
+    text-transform: capitalize;
+}
+
+.profile-details ul li span {
+    float: right;
+    text-align: right;
+    color: #8a99b5;
+}
+
+.profile-details ul li:nth-child(odd) {
+    margin-right: 2%;
+}
+
+.profile-details ul li:nth-child(even) {
+    margin-left: 2%;
+}
+
+.profile-details ul li:last-child {
+    border: 0px;
+    padding-bottom: 0px;
+    padding-top: 10px;
+}
+.formbox .card {
+    background: #21273e !important;
+    border-radius: 0px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.formbox .card-header {
+    padding: 0px;
+    border: 0px;
+}
+
+.formbox .card-header h5 {
+    width: 100%;
+    display: block;
+    background: #21273e;
+    border: 0px;
+    border-radius: 0px;
+    padding: 10px 0px;
+}
+
+button.btn.btn-link {
+    background: transparent;
+    border: 0;
+    border-radius: 0px;
+}
+
+.formbox .card-body {
+    background: #272e48 !important;
+    box-shadow: none;
+    border: 0px;
+}
+button.btn.btn-link {
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+button.btn.btn-link:hover {
+    box-shadow: none;
+}

@@ -115,17 +115,19 @@
 		<section class="content">
 <div class="userslist">
 	<div class="row">
-    @foreach ($data as $record)
+    @foreach ($value as $record)
     <div class="col-sm-4">
         <div class="mainthubclient">
         <div class="thumbnaildiv">
         <div class="flag"><i class="fa fa-flag"></i></div>
         <div class="userprogfilepic">
-        <div class="pic"><img src="<?php echo (($record['single']['profile_image'])!= NULL) ? url($record['single']['profile_image']) : url(asset('assets/img/avatars/user.png')); ?>" alt="&#xf013;" height="50px" width="50px" class="rounded-circle img-fluid">
+
+        <div class="pic"><img src="<?php echo (($record['usermeta_staff_booking']['profile_image'])!= NULL) ? url($record['usermeta_staff_booking']['profile_image']) : url(asset('assets/img/avatars/user.png')); ?>" alt="&#xf013;" height="50px" width="50px" class="rounded-circle img-fluid">
             </div>
-        <div class="name">{{$record['name']}}<span>53F</span></div>
+        <div class="name"><a href="{{ route('staff_detail',['id'=>$record->staff_id]) }}">{{$record['user_staff_booking']['name']}}</a><span>53F</span></div>
         </div>
-        
+        <input type="hidden" value="{{$record['user_staff_booking']['id']}}">
+
         @foreach ($value as $user_data)
 
         <div class="userdiscription">

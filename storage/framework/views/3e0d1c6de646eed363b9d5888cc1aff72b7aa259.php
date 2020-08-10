@@ -114,17 +114,19 @@
 		<section class="content">
 <div class="userslist">
 	<div class="row">
-    <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $record): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+    <?php $__currentLoopData = $value; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $record): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="col-sm-4">
         <div class="mainthubclient">
         <div class="thumbnaildiv">
         <div class="flag"><i class="fa fa-flag"></i></div>
         <div class="userprogfilepic">
-        <div class="pic"><img src="<?php echo (($record['single']['profile_image'])!= NULL) ? url($record['single']['profile_image']) : url(asset('assets/img/avatars/user.png')); ?>" alt="&#xf013;" height="50px" width="50px" class="rounded-circle img-fluid">
+
+        <div class="pic"><img src="<?php echo (($record['usermeta_staff_booking']['profile_image'])!= NULL) ? url($record['usermeta_staff_booking']['profile_image']) : url(asset('assets/img/avatars/user.png')); ?>" alt="&#xf013;" height="50px" width="50px" class="rounded-circle img-fluid">
             </div>
-        <div class="name"><?php echo e($record['name']); ?><span>53F</span></div>
+        <div class="name"><a href="<?php echo e(route('staff_detail',['id'=>$record->staff_id])); ?>"><?php echo e($record['user_staff_booking']['name']); ?></a><span>53F</span></div>
         </div>
-        
+        <input type="hidden" value="<?php echo e($record['user_staff_booking']['id']); ?>">
+
         <?php $__currentLoopData = $value; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user_data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
         <div class="userdiscription">

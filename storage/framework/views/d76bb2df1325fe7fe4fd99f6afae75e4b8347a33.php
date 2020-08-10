@@ -52,8 +52,9 @@
 								<td><a href="<?php echo e(route('view_profile',['id'=>$record->id])); ?>"><?php echo e($record['name']); ?> </a></td>
 								<td><?php echo e($record['single']['phone_no']); ?></td>
 								<td><?php echo e($record['catname']['category_name']); ?></td>
-								<td><button type="button" data-toggle="modal" data-target="#modal-right_2" class="btn btn-primary waves-effect waves-light" data-target="#video-call"><i class="fa fa-video-camera"></i></button>
-                                        <a class="btn btn-success waves-effect waves-light" href="<?php echo e(route('view_profile',['id'=>$record->id])); ?>"><i class="fa fa-edit"></i></a>
+								<td><button type="button" data-toggle="modal" data-target="#modal-right_2" class="btn btn-success waves-effect waves-light" data-target="#audio-call"><i class="fa fa-phone"></i></button>
+									<button type="button" data-toggle="modal" data-target="#modal-right_2" class="btn btn-primary waves-effect waves-light" data-target="#video-call"><i class="fa fa-video-camera"></i></button>
+									    <a class="btn btn-info waves-effect waves-light" href="<?php echo e(route('view_profile',['id'=>$record->id])); ?>"><i class="fa fa-edit"></i></a>
                                       <button type="button" class="btn btn-danger waves-effect waves-light"><i class="fa fa-trash"></i></button></td>
 							</tr>
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
