@@ -164,9 +164,8 @@ class Health_staffController extends Controller
 
     public function staff_detail($id){
         $details=Staff_booking::where('staff_id',$id)->get();
-        $details = $details[0];
-
-      // dd($details);die;       
+        //$details = $details[0];
+         //dd($data);die;       
              return view('health_staff.staff_details',compact('details'));
     }
 }

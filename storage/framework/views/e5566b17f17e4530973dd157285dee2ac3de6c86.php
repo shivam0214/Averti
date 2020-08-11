@@ -95,7 +95,6 @@ function getstaff(id){
 			$("#staff_name").val(data.result.name)
 			$("#staff_id").val(data.result.id)
 			$("#advisor_id").val(data.result.perent_id)
-
 		}
 	});
 }

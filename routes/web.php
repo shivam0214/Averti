@@ -121,9 +121,9 @@ Route::get('/staff_detail/{id}', 'Adviser\Health_staffController@staff_detail')-
 
 
 /* Notification details*/
-Route::get('/notification','NotificationController@index')->name('notification');
-Route::get('/getstaff_name','NotificationController@show_disease')->name('show_disease');
-Route::post('/staff_booking','NotificationController@staff_booking')->name('staff_booking');
+Route::get('/notification','User\User_to_staff_bookingController@index')->name('notification');
+Route::get('/getstaff_name','User\User_to_staff_bookingController@show_disease')->name('show_disease');
+Route::post('/staff_booking','User\User_to_staff_bookingController@staff_booking')->name('staff_booking');
 
 
 
