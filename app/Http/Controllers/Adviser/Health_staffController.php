@@ -153,19 +153,17 @@ class Health_staffController extends Controller
     }
 
     public function staff_user(){
-        
-        $user_issue=Staff_booking::get();
+        $user_issue=Staff_booking::where('advisor_id',Auth::user()['id'])->get();
         $value=[];
         foreach($user_issue as $s_list){
             $value[]= $s_list;
         }  
+
         return view('health_staff.staff_user',compact('value'));
     }
 
     public function staff_detail($id){
         $details=Staff_booking::where('staff_id',$id)->get();
-        //$details = $details[0];
-         //dd($data);die;       
              return view('health_staff.staff_details',compact('details'));
     }
 }

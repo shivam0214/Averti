@@ -50,7 +50,7 @@ class User_to_staff_bookingController extends Controller
         $data=array(
         'staff_id'=>$r->staff_id,
         'advisor_id'=>$r->advisor_id,
-
+        'duration'=>$r->duration,
         'disease_id'=>$r->disease_id,
         'description'=>$r->description,
         'picture'=>$r->profile_image,

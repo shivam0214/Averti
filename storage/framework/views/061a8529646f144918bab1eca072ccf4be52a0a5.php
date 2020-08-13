@@ -126,6 +126,10 @@ button.btn.btn-link:hover {
 					<div class="box">
 						<div class="media-list media-list-divided media-list-hover">
 							<div class="media align-items-center">
+              <h3>
+				<a href="<?php echo e(route('staff_user')); ?>"  class="d-block"><i class="ti-arrow-left"></i></a>
+				</h3>
+				
 									<a class="avatar avatar-lg status-success" href="#">
 										<img src="<?php echo (($details[0]['usermeta_staff_booking']['profile_image'])!= NULL) ? url($details[0]['usermeta_staff_booking']['profile_image']) : url(asset('assets/img/avatars/user.png')); ?>" alt="&#xf013;">
 										
@@ -135,11 +139,9 @@ button.btn.btn-link:hover {
 									<a href="#"><strong><h4><?php echo e($details[0]['user_staff_booking']['name']); ?></h4></strong></a>
 									</p>
 									<nav class="nav mt-2">
-									<a class="nav-link" href="#"><i class="fa fa-facebook"></i></a>
-									<a class="nav-link" href="#"><i class="fa fa-twitter"></i></a>
-									<a class="nav-link" href="#"><i class="fa fa-github"></i></a>
-									<a class="nav-link" href="#"><i class="fa fa-linkedin"></i></a>
-									</nav>
+									<a class="nav-link" href="#">	<strong><h4><?php echo e($details[0]['user_professional_data']['specialization']); ?></h4></strong>
+								</a>  
+										</nav>
 								</div>
 								<div class="media-right">
 									<p><i class="fa fa-phone" aria-hidden="true"></i>
@@ -159,7 +161,7 @@ button.btn.btn-link:hover {
         <!-- Step wizard -->
          <div class="box box-default">
            <div class="box-header with-border">
-             <h4 class="box-title">view staff notification</h4>
+             <h4 class="box-title">notification</h4>
            </div>
            <!-- /.box-header -->
 <div class="col-lg-8 col-sm-10 col-md-12 col-xs-12 offset-lg-2 offset-md-2 offset-lg-1">
@@ -174,7 +176,9 @@ button.btn.btn-link:hover {
    <div class="card">
      <div class="card-header" id="exItem2Header">
        <h5 class="mb-0">
-         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#mycode<?php echo e($record['id']); ?>" aria-expanded="false" aria-controls="mycode<?php echo e($record['id']); ?>"><?php echo e($record['user_data']['name']); ?></button>
+         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#mycode<?php echo e($record['id']); ?>" aria-expanded="false" aria-controls="mycode<?php echo e($record['id']); ?>"><?php echo e($record['user_data']['name']); ?><p><span><?php echo e($record['disease_list']['disease']); ?></span>
+         </p>
+         </button>
        </h5>
      </div>
      <div id="mycode<?php echo e($record['id']); ?>" class="collapse" aria-labelledby="exItem2Header" data-parent="#exampleAccordion">
@@ -189,7 +193,7 @@ button.btn.btn-link:hover {
                           <li>Age: <span><?php echo e($record['usermeta_data']['age']); ?></span></li>
                           <li>Illness: <span><?php echo e($record['disease_list']['disease']); ?></span></li>
                           <li>Description:<span> <?php echo e($record['description']); ?></span></li>
-                          <li>Duration:<span> <?php echo e($record['description']); ?></span></li>
+                          <li>Duration:<span> <?php echo e($record['duration']); ?></span></li>
                           <li>Picture:<span> <img src="<?php echo (($record['picture'])!= NULL) ? url($record['picture']) : url(asset('assets/img/avatars/user.png')); ?>"/> </span></li>
 
                       </ul>	

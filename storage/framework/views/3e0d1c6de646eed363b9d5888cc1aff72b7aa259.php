@@ -131,7 +131,6 @@
 
         <div class="userdiscription">
             <div class="illness"><?php echo e($user_data['disease_list']['disease']); ?> <span class="posttime"> @ h Ago</span></div>
-            <div class="summewry"><p><?php echo e($user_data['description']); ?></p></div> 
         </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 

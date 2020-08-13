@@ -132,7 +132,6 @@
 
         <div class="userdiscription">
             <div class="illness">{{$user_data['disease_list']['disease']}} <span class="posttime"> @ h Ago</span></div>
-            <div class="summewry"><p>{{$user_data['description']}}</p></div> 
         </div>
         @endforeach
 
