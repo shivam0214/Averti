@@ -26,6 +26,7 @@
 	<link rel="stylesheet" href="<?php echo e(asset('assets/css/jquery-ui.css')); ?>">
   <link rel="stylesheet" href="<?php echo e(asset('assets/css/wizard.css')); ?>">
   <link rel="stylesheet" src="<?php echo e(asset('assets/icons/material-design-iconic-font/css/materialdesignicons.css')); ?>"></link>	
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">

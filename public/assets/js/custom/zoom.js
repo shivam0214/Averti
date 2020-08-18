@@ -62,3 +62,9 @@ $('.add_user_to_groups').click(function(){
     }
  });
 });
+
+$(document).ready(function(){
+  $('#clone_btn').click(function(){
+    $("#car_parent").append($("#food_image").clone());
+  });
+});

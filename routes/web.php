@@ -119,12 +119,22 @@ Route::get('/staff_user', 'Adviser\Health_staffController@staff_user')->name('st
 Route::get('/staff_user', 'Adviser\Health_staffController@staff_user')->name('staff_user');
 Route::get('/staff_detail/{id}', 'Adviser\Health_staffController@staff_detail')->name('staff_detail');
 
+/* Food details*/
+Route::get('/food_admin', 'Adviser\FoodController@food_admin')->name('food_admin');
+Route::get('/add_product', 'Adviser\FoodController@add_product')->name('add_product');
+Route::post('/product', 'Adviser\FoodController@product')->name('product');
+Route::get('/view_product', 'Adviser\FoodController@view_product')->name('view_product');
+Route::get('/edit_product/{id}', 'Adviser\FoodController@edit_product')->name('edit_product');
+Route::post('/update_product', 'Adviser\FoodController@update_product')->name('update_product');
+
+/*******/ 
+
+
 
 /* Notification details*/
 Route::get('/notification','User\User_to_staff_bookingController@index')->name('notification');
 Route::get('/getstaff_name','User\User_to_staff_bookingController@show_disease')->name('show_disease');
 Route::post('/staff_booking','User\User_to_staff_bookingController@staff_booking')->name('staff_booking');
-
 
 
 /* Booking */ 

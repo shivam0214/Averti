@@ -106,11 +106,9 @@
 			<div class="d-flex align-items-center">
 				<div class="mr-auto">
 					<h3 class="page-title">Staff</h3>
-				</div>
-				
+				</div>	
 			</div>
 		</div>
-
 		<!-- Main content -->
 		<section class="content">
 <div class="userslist">
@@ -132,6 +130,7 @@
 
         <div class="userdiscription">
             <div class="illness">{{$user_data['disease_list']['disease']}} <span class="posttime"> @ h Ago</span></div>
+            <div class="summewry"><p>{{$user_data['description']}}</p></div> 
         </div>
         @endforeach
 
