@@ -8,6 +8,7 @@
 		<section class="content">
 
         @include('food.food_sidebar') 
+        
         <section>
 				<!-- /.content -->
 	  </div>

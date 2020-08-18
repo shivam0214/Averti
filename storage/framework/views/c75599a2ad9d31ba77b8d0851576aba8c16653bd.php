@@ -23,10 +23,8 @@
             <i class="ti-dashboard"></i>
       <span>view product</span>
           </a>
-        </li>
-        
-      </ul>
-      
+        </li>        
+      </ul>      
     </section>
 	
   </aside>
