@@ -105,11 +105,9 @@
 			<div class="d-flex align-items-center">
 				<div class="mr-auto">
 					<h3 class="page-title">Staff</h3>
-				</div>
-				
+				</div>	
 			</div>
 		</div>
-
 		<!-- Main content -->
 		<section class="content">
 <div class="userslist">

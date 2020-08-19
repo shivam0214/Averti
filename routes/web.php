@@ -126,6 +126,7 @@ Route::post('/product', 'Adviser\FoodController@product')->name('product');
 Route::get('/view_product', 'Adviser\FoodController@view_product')->name('view_product');
 Route::get('/edit_product/{id}', 'Adviser\FoodController@edit_product')->name('edit_product');
 Route::post('/update_product', 'Adviser\FoodController@update_product')->name('update_product');
+Route::get('/delete_product/{id}', 'Adviser\FoodController@delete_product')->name('delete_product');
 
 /*******/ 
 

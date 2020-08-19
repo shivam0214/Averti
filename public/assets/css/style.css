@@ -23372,3 +23372,33 @@ button.btn.btn-link {
 button.btn.btn-link:hover {
     box-shadow: none;
 }
+
+/*  */
+
+.sidenav {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.034) !important;
+
+  color: rgba(255, 255, 255, 0.8) !important;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  overflow-x: hidden;
+  border-radius: 10px;
+  -webkit-transition: .5s;
+  transition: .5s;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.sidenav li {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  color: white;
+  display: block;
+}

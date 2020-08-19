@@ -130,11 +130,17 @@
             <li><a hregf="#"><i class="ti-more"></i>Booking List</a></li>
             <li><a href="{{route('booking')}}"><i class="ti-more"></i> Booking Schedule</a></li>
           </ul>
+        </li>        
+        <li>
+          <a href="{{route('view_product')}}" >
+            <i class="ti-bell"></i>
+			    <span>Food details</span>
+          </a>
         </li>
         <li>
           <a href="{{route('staff_user')}}">
             <i class="ti-bell"></i>
-			<span>Notification</span>
+			    <span>Notification</span>
           </a>
         </li>
       

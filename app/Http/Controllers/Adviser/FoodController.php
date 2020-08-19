@@ -85,4 +85,18 @@ class FoodController extends Controller
     
             }  
         }
+        public function delete_product($id){
+            $products= Food_product::where('id',$id)->delete();
+            if($products){
+                $notification = array(
+                 'message' => 'Data Delete Sucsessfully',
+                 'alert-type' => 'danger'
+                 );
+                 return Redirect::to('/view_product')->with($notification);
+        
+                }  
+                
+        }
+    
 }
+

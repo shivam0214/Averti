@@ -6,9 +6,16 @@
 	  <div class="container-full">
 		<!-- Main content -->
 		<section class="content">
-
-        @include('food.food_sidebar') 
-        
+            <div class="row">
+			    <div class="col-2 ">
+                        @include('food.food_sidebar')         
+                </div>
+                <div class="col-10">
+                <div class="box">
+                        @yield('sub_content')
+                        </div>
+                </div>
+            </div>
         <section>
 				<!-- /.content -->
 	  </div>
