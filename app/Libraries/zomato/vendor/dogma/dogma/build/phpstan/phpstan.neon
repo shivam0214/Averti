@@ -1,0 +1,25 @@
+
+parameters:
+    ignoreErrors:
+        # fix it!
+        - '~^Dogma\\.*Exception::__construct\(\) does not call parent constructor~' # skipping one ancestor
+
+        # misleading
+        - '~^Parameter #1 $value of class Dogma\Math\Decimal\Decimal constructor expects string|int, int|string|Dogma\Math\Decimal\Decimal given.~' # if (!$x instanceof C)
+        - '~^Method Dogma\Mapping\Type\TupleHandler::getParameters() should return Dogma\Type[] but returns Dogma\Type[]|Dogma\Type|null.~' # guaranteed
+        - '~^Method Dogma\\Http\\HttpDownloadRequest::execute\(\) should return Dogma\\Http\\HttpFileResponse but returns Dogma\\Http\\HttpResponse.~' # guaranteed
+
+        # missing dependencies
+        - '~^Function mailparse_.* not found~'
+        - '~^Used function mailparse_.* not found.~'
+
+        # interface
+        - '~^PHPDoc tag @return with type Dogma\\Language\\Locale\\LocaleCollationOption is not subtype of native type Dogma\\Enum\\StringEnum~'
+        - '~^Method Dogma\\IteratorHelper::iterableToIterator\(\) should return Iterator but returns Traversable~'
+
+    excludes_analyse:
+        - */tests/*/data/*
+
+    earlyTerminatingMethodCalls:
+        Dogma\Check:
+            - invalidClass
