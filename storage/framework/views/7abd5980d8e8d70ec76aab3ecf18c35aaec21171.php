@@ -288,7 +288,108 @@
 	  </div>
   </div>
 <?php $__env->stopSection(); ?>
+<script>
+function Delete(){
+	var chkArray = [];
+	$("input[name='check[]']:checked").map(function() {
+		chkArray.push(this.value);
+	}).get();
+	var selected;
+	selected = chkArray.join(',') + ",";
+	if(selected.length > 1){
+		$.ajax({
+            type: "POST",
+            url: '/trash',
+            data: {mails_id: selected,"_token": "<?php echo e(csrf_token()); ?>"},
+            success: function( msg ) {
+                // $("#ajaxResponse").append("<div>"+msg+"</div>");
+				$("#trashcount").html(msg.trash);
+            }
+        });
+		// alert('Selecionar todos?'+selected);
+	} else { alert('Remover'); }       
 
+}
+
+function starred(val,star){
+	// alert(val+"::"+star)
+	$.ajax({
+		type: "POST",
+		url: '/starred',
+		data: {mails_id: val,is_starred:star,"_token": "<?php echo e(csrf_token()); ?>"},
+		success: function( msg ) 
+		{
+			// alert(val+"::"+star)
+			$("#starredcount").html(msg.starred);
+		}
+	});
+}
+
+function getMessage(val){
+	$.ajax({
+		type: "GET",
+		url: '/getmail',
+		data: {mailid: val,"_token": "<?php echo e(csrf_token()); ?>"},
+		success: function( msg ) 
+		{
+			console.log(msg);
+			$("#subject").html("<h4>"+msg.mail.subject+"</h4>");
+			$("#mails").html(msg.mail.to);
+			$("#mails").append("<br /><span class='mailbox-read-time'>"+msg.mail.created_at+"</span>");
+			$("#body").html(msg.mail.body);
+			// msg.mail.attach.forEach(ele=>{
+				if(msg.mail.filename!==null && msg.mail.filename !==undefined){
+					var downld = "<?php echo e(asset('')); ?>";
+					var sds = downld+'storage/app/'+msg.mail.filepath+msg.mail.filename;
+					// console.log(sds);
+					// console.log("<?php echo e(route('downloadattachment',"+msg.mail.filename+")); ?>");
+					$("#attachments").html('<li><div class="mailbox-attachment-info"><a href=\"#\" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i> '+msg.mail.filename+'</a></div></li>');
+				}
+
+			// })
+
+		}
+	});
+
+}
+function getBody(id){
+	console.log(id)
+	$.ajax({
+	type: "GET",
+	url: '/gettemplatebody',
+	data: {templateid: id,"_token": "<?php echo e(csrf_token()); ?>"},
+	success: function( data ) {
+		// console.log(data);
+		document.getElementById("compose-textarea").innerHTML = data.result;
+	}
+	});
+}
+
+function getgroup(id){
+//	console.log(id);
+	$.ajax({
+		type: "GET",
+		url: '/getmails',
+		data: {group_id: id,"_token": "<?php echo e(csrf_token()); ?>"},
+		success: function( data ) {
+			console.log(data);
+			$("#to").val(data.mail_result)
+		}
+	});
+}
+
+function syncInbox(){
+	$.ajax({
+		type: "GET",
+		url: '/inboundmails',
+		data: {"_token": "<?php echo e(csrf_token()); ?>"},
+		success: function( data ) {
+			console.log(data);
+			$('#syncInboxResponse').html('<div class="alert alert-warning alert-dismissible fade show" role="alert">'+data.success+'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
+
+		}
+	});
+}
 </script>
 
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH H:\updateDemitrius\Averti\Averti\resources\views/mail/mail.blade.php ENDPATH**/ ?>

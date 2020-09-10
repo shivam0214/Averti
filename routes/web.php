@@ -127,10 +127,22 @@ Route::get('/view_product', 'Adviser\FoodController@view_product')->name('view_p
 Route::get('/edit_product/{id}', 'Adviser\FoodController@edit_product')->name('edit_product');
 Route::post('/update_product', 'Adviser\FoodController@update_product')->name('update_product');
 Route::get('/delete_product/{id}', 'Adviser\FoodController@delete_product')->name('delete_product');
+Route::get('/food_index', 'Adviser\FoodController@food_index')->name('food_index');
+Route::get('/food_result', 'Adviser\FoodController@food_result')->name('food_result');
+Route::get('/restaurant', 'Adviser\FoodController@restaurant')->name('restaurant');
+Route::get('/view_restaurant', 'Adviser\FoodController@view_restaurant')->name('view_restaurant');
+Route::get('/checkout', 'Adviser\FoodController@checkout')->name('checkout');
+
+/*Zomato*/ 
+Route::get('/get_categories', 'Adviser\FoodController@get_categories')->name('get_categories');
+Route::get('/get_restaurants', 'Adviser\FoodController@get_restaurants')->name('get_restaurants');
+Route::get('/get_city', 'Adviser\FoodController@get_city')->name('get_city');
+Route::get('/get_cuisines', 'Adviser\FoodController@get_cuisines')->name('get_cuisines');
+Route::get('/get_daily_menu', 'Adviser\FoodController@get_daily_menu')->name('get_daily_menu');
+Route::get('/search', 'Adviser\FoodController@search')->name('search');
+
 
 /*******/ 
-
-
 
 /* Notification details*/
 Route::get('/notification','User\User_to_staff_bookingController@index')->name('notification');

@@ -1,19 +1,6 @@
-@extends('layouts.app')
-@section('content') 
-<div class="content-wrapper">
-	  <div class="container-full">
-		<!-- Content Header (Page header) -->
-		<div class="content-header">
-			<div class="d-flex align-items-center">
-				<div class="mr-auto">
-					<h3 class="page-title">Staff Details</h3>
-				</div>
-			</div>
-		</div>
-		<section class="content">
-			<div class="row">
-				<div class="col-12">
-					<div class="box">
+@extends('food.food_layout')
+
+@section('sub_content') 
 						<div class="box-header with-border">
 							<h4 class="box-title"></h4>
 							<div class="box-controls pull-right">
@@ -62,10 +49,4 @@
                         </table>
                    		</div>
 						</div>	
-					</div>
-				</div>
-			</div>	
-		</section>
-	</div>
-</div>
-@endsection
+@endsection('sub_content') 

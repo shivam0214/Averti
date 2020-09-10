@@ -2,7 +2,7 @@
 
 @section('sub_content') 
 		<div class="box-header with-border">
-			<h4 class="box-title">About Product</h4>
+			<h4 class="box-title">Add Product</h4>
 		</div>
 		<div class="box-body">
 		<form action="{{route('product')}}" method="POST">
@@ -87,7 +87,7 @@
 						</div>
 					</div>
 					
-					<div class="col-md-3" id="car_parent">
+					<div class="col-md-3" id="food_parent">
 						<label class="font-weight-700 font-size-16">Upload Image</label>
 						<div class="product-img text-left" id="food_image">
 								<span class="input-group-btn" >

@@ -1,19 +1,4 @@
-<?php $__env->startSection('content'); ?> 
-
-<div class="content-wrapper">
-	  <div class="container-full">
-		<!-- Content Header (Page header) -->
-		
-		<!-- Main content -->
-		<section class="content">
-        <div class="row">
-            <div class="col-md-12 text-primary" >
-                    <?php if($message=Session::get('message')): ?>
-                <p><?php echo e($message); ?></p>
-                <?php endif; ?></div>
-            </div>
-		 <!-- Basic Forms -->
-		<div class="box">
+<?php $__env->startSection('sub_content'); ?> 
 			<div class="box-header with-border">
 			  <h4 class="box-title">Add Staff Details</h4>
 			</div>
@@ -204,12 +189,7 @@
                             <button type="submit" id="btn" class="btn btn-primary waves-effect waves-light"><b>Add Staff</b></button>                
                         </form>
                     </div>
-                </div>
-            </div>
-        </div>    
-		</section>
-	</div>
-</div>
+
 <script type = "text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"><script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 
@@ -284,6 +264,6 @@
     });
    
 </script>
-<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?> 
 
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH H:\updateDemitrius\Averti\Averti\resources\views/health_staff/add_staff.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('food.food_layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH H:\updateDemitrius\Averti\Averti\resources\views/health_staff/add_staff.blade.php ENDPATH**/ ?>

@@ -1,6 +1,5 @@
 $('#createzoom,#createzoom2').click(function(){
-    
-    $.ajax({
+        $.ajax({
         url:'/create/zoom',
         type:'GET',
         success: function (response) {
@@ -11,7 +10,6 @@ $('#createzoom,#createzoom2').click(function(){
 
 $('.invite').click(function(){
     mid= $(this).attr('role');
-       
     $('#invite').modal('show');
   $.ajax({
       url:'/invite/'+mid,
@@ -63,8 +61,10 @@ $('.add_user_to_groups').click(function(){
  });
 });
 
+// *****Food Template*****//
 $(document).ready(function(){
   $('#clone_btn').click(function(){
-    $("#car_parent").append($("#food_image").clone());
+    $("#food_parent").append($("#food_image").clone());
   });
 });
+ 

@@ -1,6 +1,6 @@
 <?php $__env->startSection('sub_content'); ?> 
 		<div class="box-header with-border">
-			<h4 class="box-title">About Product</h4>
+			<h4 class="box-title">Add Product</h4>
 		</div>
 		<div class="box-body">
 		<form action="<?php echo e(route('product')); ?>" method="POST">

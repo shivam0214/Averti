@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content') 
 <div class="content-wrapper">
 	  <div class="container-full">
@@ -31,8 +30,7 @@
 						  <a href="{{route('allmeeting',$r_advisor['mid'])}}" class="btn btn-rounded btn-sm btn-success m-5">Start</a>
 						</div>
 					  </div>
-                    </div>
-                   				
+                    </div>		
 				</div>		
             </div>
             @endforeach

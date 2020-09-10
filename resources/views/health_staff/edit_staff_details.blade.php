@@ -1,18 +1,6 @@
-@extends('layouts.app')
-@section('content') 
-<div class="content-wrapper">
-	  <div class="container-full">
-		<!-- Content Header (Page header) -->		
-		<!-- Main content -->
-		<section class="content">
-        <div class="row">
-            <div class="col-md-12 text-primary" >
-                @if($message=Session::get('message'))
-                    <p>{{$message}}</p>
-                @endif</div>
-            </div>
-		 <!-- Basic Forms -->
-		<div class="box">
+@extends('food.food_layout')
+
+@section('sub_content') 
 			<div class="box-header with-border">
 			  <h4 class="box-title">Add Staff Details</h4>
 			</div>
@@ -200,11 +188,6 @@
                             <button type="submit" id="btn" class="btn btn-primary waves-effect waves-light"><b>Update</b></button>                
                         </form>
                     </div>
-                </div>
-            </div>
-        </div>    
-		</section>
-	</div>
-</div>
+          
 
-@endsection
+@endsection('sub_content') 

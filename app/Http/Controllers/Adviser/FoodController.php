@@ -9,6 +9,8 @@ use Redirect;
 use App\User;
 use App\User_meta;
 use App\Food_product;
+use App\Libraries\zomato\Myzomato;
+
 
 class FoodController extends Controller
 {
@@ -82,7 +84,6 @@ class FoodController extends Controller
              'alert-type' => 'success'
              );
              return Redirect::to('/view_product')->with($notification);
-    
             }  
         }
         public function delete_product($id){
@@ -94,9 +95,76 @@ class FoodController extends Controller
                  );
                  return Redirect::to('/view_product')->with($notification);
         
-                }  
-                
+                }                  
         }
-    
+        public function get_categories(Request $r){
+            $get = new Myzomato;
+            $data = $get->get_category();     
+            dd($data);die;       
+        } 
+        
+        public function get_restaurants(Request $r){
+            $get = new Myzomato;
+            $data = $get->get_restaurant();     
+            dd($data);die;       
+        } 
+        
+        public function get_city(){
+            $get = new Myzomato;
+            $data = $get->get_cities();     
+            print_r($data);die;       
+        
+        }
+
+        public function get_cuisines(){
+            $get = new Myzomato;
+            $data = $get->get_cuisines();     
+            print_r($data);die;       
+        
+        }
+        public function get_daily_menu(){
+            $get = new Myzomato;
+            $data = $get->get_daily_menus();     
+            print_r($data);die;       
+        
+        }
+
+        public function search(){
+            $get = new Myzomato;
+            $data = $get->search();     
+            print_r($data);die;       
+        
+        }
+
+        public function food_index(){
+            
+            return view('food/food_template/index');
+        }       
+        public function food_result(){
+            return view('food/food_template/food_result');
+        }
+        public function restaurant(Request $r){
+            $get = new Myzomato;
+            $data = $get->search($r->get_name); 
+            $res=json_decode($data,'JSON_OBJECT_AS_ARRAY');
+            $restaurants = $res['restaurants'];
+            $d=[];
+            foreach ($restaurants as $value) {
+                $d[]=$value['restaurant'];
+            }
+          return view('food/food_template/restaurant',['data'=>$d]);
+        }
+
+        public function view_restaurant(Request $r){
+            $get = new Myzomato;
+            $data = $get->get_restaurant($r->id); 
+            $res=json_decode($data,'JSON_OBJECT_AS_ARRAY');   
+             
+     return view('food/food_template/view_restaurant',['value'=>$res]);
+            //}
+        }
+        public function checkout(){
+            return view('food/food_template/checkout');
+        }
 }
 

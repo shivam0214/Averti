@@ -1,18 +1,4 @@
-<?php $__env->startSection('content'); ?> 
-<div class="content-wrapper">
-	  <div class="container-full">
-		<!-- Content Header (Page header) -->
-		<div class="content-header">
-			<div class="d-flex align-items-center">
-				<div class="mr-auto">
-					<h3 class="page-title">Staff Details</h3>
-				</div>
-			</div>
-		</div>
-		<section class="content">
-			<div class="row">
-				<div class="col-12">
-					<div class="box">
+<?php $__env->startSection('sub_content'); ?> 
 						<div class="box-header with-border">
 							<h4 class="box-title"></h4>
 							<div class="box-controls pull-right">
@@ -61,12 +47,6 @@
                         </table>
                    		</div>
 						</div>	
-					</div>
-				</div>
-			</div>	
-		</section>
-	</div>
-</div>
-<?php $__env->stopSection(); ?>
+<?php $__env->stopSection(); ?> 
 
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH H:\updateDemitrius\Averti\Averti\resources\views/health_staff/staff_list.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('food.food_layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH H:\updateDemitrius\Averti\Averti\resources\views/health_staff/staff_list.blade.php ENDPATH**/ ?>

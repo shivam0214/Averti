@@ -3,27 +3,44 @@
     <section class="side ">	
 			<div class="d-flex align-items-center">							
 				<div class="info ml-10">
-					<h5 class="mb-0">Food</h5>
 				</div>
         </div>	
       <!-- sidebar menu-->
     <ul class="sidenav" data-widget="tree">
-        <li>
-          <a href="{{route('add_product')}}">
+        <li class="treeview">
+          <a href="#">
           <i class="ti-layout-grid2"></i>
-
-      <span>add food item</span>
+			<span>Food product</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
           </a>
+          <ul class="treeview-menu">
+            <li><a href="{{route('add_product')}}"><i class="ti-more"></i>Add food item</a></li>
+            <li><a href="{{route('view_product')}}"><i class="ti-more"></i>View product</a></li>
+          </ul>
         </li>
-        
-        <li>
-          <a href="{{route('view_product')}}">
-          <i class="ti-layout-grid2"></i>
-
-      <span>view product</span>
+        <li class="treeview">
+          <a href="#">
+            <i class="ti-layout-grid2"></i>
+			<span> Health Staff</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
           </a>
+          <ul class="treeview-menu">
+          <li>
+          <a href="{{route('add_staff')}}"><i class="ti-more"></i>Add Staff Details</a>
+        </li>            
+        <li><a href="{{route('staff_list')}}"><i class="ti-more"></i>Staff List</a></li>
+        <li>
+          <a href="{{route('staff_user')}}"><i class="ti-more"></i>Notification</a>
         </li>        
-      </ul>      
+          </ul>
+        </li>
+                
+      </ul>  
+          
     </section>
   </aside>
  

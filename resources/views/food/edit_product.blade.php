@@ -87,7 +87,7 @@
 					</div>
 				</div>
 				
-				<div class="col-md-3" id="car_parent">
+				<div class="col-md-3" id="food_parent">
 					<label class="font-weight-700 font-size-16">Upload Image</label>
 						<div class="product-img text-left" id="food_image">
 							<span class="input-group-btn" >
