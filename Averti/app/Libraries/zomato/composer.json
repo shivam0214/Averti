@@ -1,5 +1,0 @@
-{
-    "require": {
-        "darkling/php-zomato-client": "^0.2.0"
-    }
-}
