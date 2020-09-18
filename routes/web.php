@@ -120,6 +120,7 @@ Route::get('/staff_user', 'Adviser\Health_staffController@staff_user')->name('st
 Route::get('/staff_detail/{id}', 'Adviser\Health_staffController@staff_detail')->name('staff_detail');
 
 /* Food details*/
+Route::get('details', 'Adviser\FoodController@loc');
 Route::get('/food_admin', 'Adviser\FoodController@food_admin')->name('food_admin');
 Route::get('/add_product', 'Adviser\FoodController@add_product')->name('add_product');
 Route::post('/product', 'Adviser\FoodController@product')->name('product');
@@ -140,6 +141,7 @@ Route::get('/get_city', 'Adviser\FoodController@get_city')->name('get_city');
 Route::get('/get_cuisines', 'Adviser\FoodController@get_cuisines')->name('get_cuisines');
 Route::get('/get_daily_menu', 'Adviser\FoodController@get_daily_menu')->name('get_daily_menu');
 Route::get('/search', 'Adviser\FoodController@search')->name('search');
+Route::get('/location', 'Adviser\FoodController@location')->name('location');
 
 
 /*******/ 

@@ -104,9 +104,10 @@ class FoodController extends Controller
         } 
         
         public function get_restaurants(Request $r){
-            $get = new Myzomato;
-            $data = $get->get_restaurant();     
-            dd($data);die;       
+            $user_ip = getenv('REMOTE_ADDR');
+            $geo = unserialize(file_get_contents("http://www.geoplugin.net/php.gp?ip=$user_ip"));
+            $country = $geo["geoplugin_countryName"];
+            $city = $geo["geoplugin_city"];   dd($geo);die;       
         } 
         
         public function get_city(){
@@ -128,14 +129,7 @@ class FoodController extends Controller
             print_r($data);die;       
         
         }
-
-        public function search(){
-            $get = new Myzomato;
-            $data = $get->search();     
-            print_r($data);die;       
-        
-        }
-
+       
         public function food_index(){
             
             return view('food/food_template/index');
@@ -143,28 +137,52 @@ class FoodController extends Controller
         public function food_result(){
             return view('food/food_template/food_result');
         }
+
+        public function location(Request $r){
+            // echo($r->location);
+            // die;
+            $get = new Myzomato;
+            $value=$get->location($r->location);
+            $loc=json_decode($value,'JSON_OBJECT_AS_ARRAY');
+            
+           //print_r($loc);die;
+            return ([
+                'result'    => $loc
+            ]);
+                       
+        }
         public function restaurant(Request $r){
             $get = new Myzomato;
-            $data = $get->search($r->get_name); 
+            $data = $get->search($r->location,$r->get_name,$r->entity_id,$r->entity_type); 
             $res=json_decode($data,'JSON_OBJECT_AS_ARRAY');
             $restaurants = $res['restaurants'];
             $d=[];
             foreach ($restaurants as $value) {
                 $d[]=$value['restaurant'];
-            }
+            }            
           return view('food/food_template/restaurant',['data'=>$d]);
         }
 
         public function view_restaurant(Request $r){
             $get = new Myzomato;
             $data = $get->get_restaurant($r->id); 
-            $res=json_decode($data,'JSON_OBJECT_AS_ARRAY');   
-             
-     return view('food/food_template/view_restaurant',['value'=>$res]);
-            //}
+            $res=json_decode($data,'JSON_OBJECT_AS_ARRAY'); 
+          //  print_r($res);die;               
+              return view('food/food_template/view_restaurant',['value'=>$res]);
+            
         }
         public function checkout(){
             return view('food/food_template/checkout');
+        }
+
+        public function loc(){
+              $Latitude = '28.6323531';
+            $Longitude = '77.45871269999999'; 
+           
+            $get = new Myzomato;
+            $data = $get->current_location($Latitude ,$Longitude); 
+             dd($data);
+            die;
         }
 }
 

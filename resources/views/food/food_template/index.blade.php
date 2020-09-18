@@ -1,18 +1,53 @@
 @extends('layouts.food_app')
 @section('food_content')
+<style>
+
+#map-layer {
+	margin: 20px 0px;
+	max-width: 600px;
+	min-height: 400;
+}
+#btnAction {
+	background: #3878c7;
+    padding: 10px 40px;
+    border: #3672bb 1px solid;
+    border-radius: 2px;
+    color: #FFF;
+    font-size: 0.9em;
+    cursor:pointer;
+    display:block;
+}
+#btnAction:disabled {
+    background: #6c99d2;
+}
+</style>
+
 <section class="hero bg-image" data-image-src="http://placehold.it/1670x680">
             <div class="hero-inner">
                 <div class="container text-center hero-text font-white">
                     <h1>Order Delivery & Take-Out </h1>
                     <h5 class="font-white space-xs">Find restaurants, specials, and coupons for free</h5>
                     <div class="banner-form">
+                    <div id="button-layer">
+                    <button onclick="getLocation()">Try It</button>
+
+                    <p id="demo"></p>
+                    <div id="map-canvas"></div>
+
+                    </div>
+                    <div id="map-layer"></div>
                         <form class="form-inline"  role="form"  method="get" action="{{route('restaurant')}}">
                         
                             <div class="form-group">
                                 <label class="sr-only" for="exampleInputAmount">I would like to eat....</label>
                                 <div class="form-group">
+                               
+                                    <input type="text" name="location" id="loc" class="form-control form-control-lg"  placeholder="Enter Loctation" required> 
                                     <input type="text" name="get_name" class="form-control form-control-lg" id="exampleInputAmount" placeholder="I would like to eat...."> 
                                 </div>
+                                <input type="hidden" name="entity_id" class="form-control form-control-lg" id="entity_id"> 
+                                    <input type="hidden" name="entity_type" class="form-control form-control-lg" id="entity_type"> 
+
                             </div>
                             <button type="submit" class="btn theme-btn btn-lg search_food">Search food</button>
                         </form>
@@ -403,5 +438,76 @@
             </div>
         </section>
         <!-- Featured restaurants ends -->
-        
+           
 @endsection
+@push('scripts-footer')     
+<script>
+   $('#loc').keyup(function(){
+    let c=$(this).val();
+    console.log(c);
+    $.ajax({
+             url:'/location',
+              type:'get',
+              data: { 
+                location:c
+                },
+              success:function(value){
+                  $('#entity_type').val(value.result.location_suggestions[0].entity_type);
+                  $('#entity_id').val(value.result.location_suggestions[0].entity_id);
+              
+                console.log(value.result.location_suggestions[0].city_id);
+
+            }
+         })
+   }) 
+   
+   var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+
+}
+var geocoder;
+var map;
+var marker;
+var marker2;
+
+function initialize() {
+    geocoder = new google.maps.Geocoder();
+    var
+    latlng = new google.maps.LatLng(showPosition());
+    var mapOptions = {
+        zoom: 5,
+        center: latlng
+    }
+    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    google.maps.event.addListener(map, 'click', function (event) {
+        //alert(event.latLng);          
+        geocoder.geocode({
+            'latLng': event.latLng
+        }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                console.log(results[0]);
+                if (results[0]) {
+                    alert(results[0].formatted_address);
+                } else {
+                    alert('No results found');
+                }
+            } else {
+                alert('Geocoder failed due to: ' + status);
+            }
+        });
+    }); }
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>    
+@endpush

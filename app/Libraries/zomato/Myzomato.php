@@ -104,10 +104,9 @@ Class  Myzomato{
             }
 
     public function get_daily_menus($res_id=null){
-
         $curl = curl_init();
         curl_setopt_array($curl, array(
-        CURLOPT_URL => "https://developers.zomato.com/api/v2.1/dailymenu?res_id=19280080",
+        CURLOPT_URL => "https://developers.zomato.com/api/v2.1/dailymenu?res_id=".$res_id,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => "",
         CURLOPT_MAXREDIRS => 10,
@@ -124,17 +123,41 @@ Class  Myzomato{
         $response = curl_exec($curl);
         $err = curl_error($curl);
         curl_close($curl);
-        if ($err) {
-        echo "cURL Error #:" . $err;
-        } else {
-        echo $response;
-        }
+        return $response;
+        
     }
     
-    public function search($city=null){
+    public function location ($location=null){
+
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => "https://developers.zomato.com/api/v2.1/locations?query=.$location",
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => "",
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 30,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "GET",
+          CURLOPT_HTTPHEADER => array(
+            "accept: application/json",
+            "cache-control: no-cache",
+            "postman-token: 9234152c-daef-7b34-401b-b18da2b5f601",
+            "user-key: ef18c2db88ed7aaa5033fe57a62ec924"
+          ),
+        ));
+        
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        
+        curl_close($curl);
+        
+          return $response;
+        
+    }
+    public function search($city=null,$cuisines=null,$entity_id=null,$entity_type=null){
         $curl = curl_init();
             curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://developers.zomato.com/api/v2.1/search?q=".$city,
+            CURLOPT_URL => "https://developers.zomato.com/api/v2.1/search?entity_id=".$entity_id."&entity_type=".$entity_type."&q=".$city."&count=20&cuisines=".$cuisines,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -153,5 +176,20 @@ Class  Myzomato{
             $err = curl_error($curl);
             curl_close($curl);
             return $response;
+        }
+
+
+        public function current_location( $Latitude ,$Longitude ){
+            $url = "https://maps.google.com/maps/api/geocode/json?key=AIzaSyAKM11ln1wyuIoCaL4ocp6DXP40i9zwEvA&latlng=$Latitude,$Longitude&sensor=false";
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+            $response = curl_exec($ch);
+            curl_close($ch);
+            $response = json_decode($response);
+            return($response);
         }
 }

@@ -122,3 +122,7 @@
     <script src="{{asset('assets/foodassets/js/jquery.isotope.min.js')}}"></script>
     <script src="{{asset('assets/foodassets/js/headroom.js')}}"></script>
     <script src="{{asset('assets/foodassets/js/foodpicky.min.js')}}"></script>
+    <script src="{{asset('assets/js/custom/zomato.js')}}"></script>
+      <script defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKM11ln1wyuIoCaL4ocp6DXP40i9zwEvA&callback=initialize">
+</script>

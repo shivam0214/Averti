@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="#">
-    <title>Starter Template for Bootstrap</title>
+    <title>Averti</title>
     <!-- Bootstrap core CSS -->
     <link href="<?php echo e(asset('assets/foodassets/css/bootstrap.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('assets/foodassets/css/font-awesome.min.css')); ?>" rel="stylesheet">
@@ -25,6 +25,7 @@
     <?php echo $__env->yieldContent('food_content'); ?>
         </main>
 <?php echo $__env->make('main.food_footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?> 
+<?php echo $__env->yieldPushContent('scripts-footer'); ?>
 </body>
 </html>
 <?php /**PATH H:\updateDemitrius\Averti\Averti\resources\views/layouts/food_app.blade.php ENDPATH**/ ?>

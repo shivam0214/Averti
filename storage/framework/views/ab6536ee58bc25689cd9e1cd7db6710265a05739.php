@@ -19,7 +19,8 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-12  col-md-4 col-lg-4 profile-img">
                                 <div class="image-wrap">
-                                    <figure><img src="http://placehold.it/240x140" alt="Profile Image"></figure>
+                                    <figure><img src="<?php echo e($value['featured_image']); ?>" alt="Food logo"></a>
+                                    </figure>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 profile-desc">
@@ -29,7 +30,7 @@
                                     <h6><a href="#"><?php echo e($value['name']); ?></a></h6> <a class="btn btn-small btn-green">Open</a>
                                     <p><?php echo e($value['cuisines']); ?></p>
                                     <ul class="nav nav-inline">
-                                        <li class="nav-item"> <a class="nav-link active" href="#"><i class="fa fa-check"></i> Min <?php echo e($value['currency']); ?> <?php echo e($value['price_range']); ?></a> </li>
+                                        <li class="nav-item"> <a class="nav-link active" href="#"><i class="fa fa-check"></i> Min <?php echo e($value['currency']); ?> <?php echo e($value['average_cost_for_two']); ?></a> </li>
                                         <li class="nav-item"> <a class="nav-link" href="#"><i class="fa fa-motorcycle"></i> 30 min</a> </li>
                                         <li class="nav-item ratings">
                                             <a class="nav-link" href="#"> <span>

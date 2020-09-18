@@ -147,13 +147,12 @@
    
                                         <div class="entry-logo">
                                             <a class="img-fluid" href="#">
-                                            <img src="<?php echo (($value['photos_url'])!= NULL) ? url($value['photos_url']) : url(asset('assets/img/avatars/user.png')); ?>" alt="&#xf013;" height="50px" width="50px">
 
-                                                <img src="{{$value['photos_url']}}" alt="Food logo"></a>
+                                                <img src="{{$value['featured_image']}}" alt="Food logo"></a>
                                         </div>
                                         <!-- end:Logo -->
                                         <div class="entry-dscr">
-                                            <h5><a href="#">{{$value['name']}}</a></h5> 
+                                            <h5><a href="{{$value['menu_url']}}">{{$value['name']}}</a></h5> 
                                             <span>{{$value['cuisines']}} <a href="#">...</a></span>
                                             <ul class="list-inline">
                                                 <li class="list-inline-item"><i class="fa fa-check"></i> {{$value['timings']}}</li>
@@ -165,7 +164,9 @@
                                     <div class="col-sm-12 col-md-12 col-lg-4 text-xs-center">
                                         <div class="right-content bg-white">
                                             <div class="right-review">
-                                                <div class="rating-block"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>
+                                                <div class="rating-block" > <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> 
+                                                <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>
                                                 <p> {{$value['all_reviews_count']}} Reviews</p> 
                                                 <a href="{{route('view_restaurant',['id'=>$value['id']])}}" class="btn theme-btn-dash">View Menu</a> </div>
                                         </div>

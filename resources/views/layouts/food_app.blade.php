@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="#">
-    <title>Starter Template for Bootstrap</title>
+    <title>Averti</title>
     <!-- Bootstrap core CSS -->
     <link href="{{asset('assets/foodassets/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/foodassets/css/font-awesome.min.css')}}" rel="stylesheet">
@@ -25,5 +25,6 @@
     @yield('food_content')
         </main>
 @include('main.food_footer') 
+@stack('scripts-footer')
 </body>
 </html>
