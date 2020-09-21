@@ -131,12 +131,18 @@
             <li><a href="<?php echo e(route('booking')); ?>"><i class="ti-more"></i> Booking Schedule</a></li>
           </ul>
         </li>        
-        <li >
+        <!-- <li >
           <a href="<?php echo e(route('view_product')); ?>"  >
             <i class="ti-bell"></i>
 			    <span>Template details</span>
           </a>
-        </li>        
+        </li>  -->
+        <li >
+          <a href="<?php echo e(route('templates')); ?>"  >
+            <i class="ti-bell"></i>
+			    <span>Template</span>
+          </a>
+        </li>       
       <?php else: ?>
        <li>
           <a href="<?php echo e(route('advisor_request')); ?>">

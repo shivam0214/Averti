@@ -21,18 +21,17 @@
 }
 </style>
 
-<section class="hero bg-image" data-image-src="http://placehold.it/1670x680">
+<section class="hero bg-image" data-image-src="<?php echo e(asset('assets/images/food_image/sub1.jpg')); ?>">
             <div class="hero-inner">
                 <div class="container text-center hero-text font-white">
                     <h1>Order Delivery & Take-Out </h1>
                     <h5 class="font-white space-xs">Find restaurants, specials, and coupons for free</h5>
                     <div class="banner-form">
                     <div id="button-layer">
+
                     <button onclick="getLocation()">Try It</button>
-
+                  
                     <p id="demo"></p>
-                    <div id="map-canvas"></div>
-
                     </div>
                     <div id="map-layer"></div>
                         <form class="form-inline"  role="form"  method="get" action="<?php echo e(route('restaurant')); ?>">
@@ -40,12 +39,15 @@
                             <div class="form-group">
                                 <label class="sr-only" for="exampleInputAmount">I would like to eat....</label>
                                 <div class="form-group">
-                               
+                                <input type="hidden" name="latitude" class="form-control form-control-lg" id="latitude" > 
+                                 <input type="hidden" name="longitude" class="form-control form-control-lg" id="longitude" > 
+
                                     <input type="text" name="location" id="loc" class="form-control form-control-lg"  placeholder="Enter Loctation" required> 
                                     <input type="text" name="get_name" class="form-control form-control-lg" id="exampleInputAmount" placeholder="I would like to eat...."> 
                                 </div>
                                 <input type="hidden" name="entity_id" class="form-control form-control-lg" id="entity_id"> 
                                     <input type="hidden" name="entity_type" class="form-control form-control-lg" id="entity_type"> 
+                                    <input type="hidden" name="city_id" class="form-control form-control-lg" id="city_id"> 
 
                             </div>
                             <button type="submit" class="btn theme-btn btn-lg search_food">Search food</button>
@@ -453,7 +455,8 @@
               success:function(value){
                   $('#entity_type').val(value.result.location_suggestions[0].entity_type);
                   $('#entity_id').val(value.result.location_suggestions[0].entity_id);
-              
+                  $('#city_id').val(value.result.location_suggestions[0].city_id);
+
                 console.log(value.result.location_suggestions[0].city_id);
 
             }
@@ -461,7 +464,7 @@
    }) 
    
    var x = document.getElementById("demo");
-
+  // var y=  document.getElementById("latitude");
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
@@ -471,43 +474,15 @@ function getLocation() {
 }
 
 function showPosition(position) {
+    
+    console.log(position.coords.latitude);
   x.innerHTML = "Latitude: " + position.coords.latitude + 
   "<br>Longitude: " + position.coords.longitude;
+  //y.innerHTML =  position.coords.latitude ;
+  $('#latitude').val(position.coords.latitude);
+  $('#longitude').val(position.coords.longitude);
 
 }
-var geocoder;
-var map;
-var marker;
-var marker2;
-
-function initialize() {
-    geocoder = new google.maps.Geocoder();
-    var
-    latlng = new google.maps.LatLng(showPosition());
-    var mapOptions = {
-        zoom: 5,
-        center: latlng
-    }
-    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-    google.maps.event.addListener(map, 'click', function (event) {
-        //alert(event.latLng);          
-        geocoder.geocode({
-            'latLng': event.latLng
-        }, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                console.log(results[0]);
-                if (results[0]) {
-                    alert(results[0].formatted_address);
-                } else {
-                    alert('No results found');
-                }
-            } else {
-                alert('Geocoder failed due to: ' + status);
-            }
-        });
-    }); }
-    google.maps.event.addDomListener(window, 'load', initialize);
-
 </script>    
 <?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.food_app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH H:\updateDemitrius\Averti\Averti\resources\views/food/food_template/index.blade.php ENDPATH**/ ?>

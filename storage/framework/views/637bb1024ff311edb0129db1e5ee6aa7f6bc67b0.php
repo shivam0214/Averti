@@ -1,20 +1,8 @@
 <?php $__env->startSection('food_content'); ?>
 <div class="page-wrapper">
 
-    <!-- top Links -->
-    <div class="top-links">
-                <div class="container">
-                    <ul class="row links">
-                    <li class="col-xs-12 col-sm-3 link-item"><span>1</span><a href="<?php echo e(route('food_index')); ?>">Choose Your Location</a></li>
-                        <li class="col-xs-12 col-sm-3 link-item"><span>2</span><a href="<?php echo e(route('restaurant')); ?>">Choose Restaurant</a></li>
-                        <li class="col-xs-12 col-sm-3 link-item active"><span>3</span><a href="<?php echo e(route('view_restaurant')); ?>">Pick Your favorite food</a></li>
-                        <li class="col-xs-12 col-sm-3 link-item"><span>4</span><a href="<?php echo e(('checkout')); ?>">Order and Pay online</a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- end:Top links -->
             <!-- start: Inner page hero -->
-            <div class="inner-page-hero bg-image" data-image-src="http://placehold.it/1670x480">
+            <div class="inner-page-hero bg-image" data-image-src="<?php echo e(asset('assets/images/food_image/b1.jpg')); ?>">
                 <div class="container"> </div>
                 <!-- end:Container -->
             </div>
@@ -44,33 +32,29 @@
                                 <div class="main-block">
                                     <div class="sidebar-title white-txt">
                                         <h6>Choose Cusine</h6> <i class="fa fa-cutlery pull-right"></i> </div>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control search-field" placeholder="Search your favorite food"> <span class="input-group-btn"> 
-                                 <button class="btn btn-secondary search-btn" type="button"><i class="fa fa-search"></i></button> 
-                                 </span> </div>
-                                    <form>
-                                        <ul>
+                                    
+                                 <form   role="form"  method="get" action="<?php echo e(route('search_establishments')); ?>">
+                                 <div class="input-group">
+                                        <input type="text"  class="form-control search-field" id="myInput" placeholder="Search your favorite food"> 
+                                        <span class="input-group-btn"> 
+                                        <button class="btn btn-secondary search-btn" type="submit"><i class="fa fa-search"></i></button> 
+                                         </span> 
+                                 </div>
+                                    <ul id="myUL">
+
+                                            <?php $__currentLoopData = $establishment_data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cusine_data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
                                             <li>
                                                 <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"> <span class="custom-control-indicator"></span> <span class="custom-control-description">Barbecuing and Grilling</span> </label>
+                                                    <input type="checkbox" class="custom-control-input" value="<?php echo e($cusine_data['name']); ?>"> 
+                                                    <span class="custom-control-indicator"></span> 
+                                                    <span class="custom-control-description"><?php echo e($cusine_data['name']); ?></a></span> 
+                                                    </label>
                                             </li>
-                                            <li>
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"> <span class="custom-control-indicator"></span> <span class="custom-control-description">Appetizers</span> </label>
-                                            </li>
-                                            <li>
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"> <span class="custom-control-indicator"></span> <span class="custom-control-description">Soup and salads</span> </label>
-                                            </li>
-                                            <li>
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"> <span class="custom-control-indicator"></span> <span class="custom-control-description">Seafood</span> </label>
-                                            </li>
-                                            <li>
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input"> <span class="custom-control-indicator"></span> <span class="custom-control-description">Beverages</span> </label>
-                                            </li>
-                                        </ul>
+
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            </ul>
+
                                     </form>
                                     <div class="clearfix"></div>
                                 </div>
@@ -152,7 +136,10 @@
                                         <!-- end:Logo -->
                                         <div class="entry-dscr">
                                             <h5><a href="<?php echo e($value['menu_url']); ?>"><?php echo e($value['name']); ?></a></h5> 
-                                            <span><?php echo e($value['cuisines']); ?> <a href="#">...</a></span>
+                                            <span><?php echo e($value['cuisines']); ?> <a href="#">...</a></span></br>
+                                            <span><?php echo e($value['location']['city']); ?> <a href="#">...</a></span>
+                                            <input type="text" id="city" name="city" value="<?php echo e($value['location']['city_id']); ?>"> 
+
                                             <ul class="list-inline">
                                                 <li class="list-inline-item"><i class="fa fa-check"></i> <?php echo e($value['timings']); ?></li>
                                                 <li class="list-inline-item"><i class="fa fa-motorcycle"></i> 30 min</li>
@@ -181,9 +168,28 @@
                 </div>
             </section>
 </div>
-
-
-
 <?php $__env->stopSection(); ?>
+<?php $__env->startPush('scripts-footer'); ?>  
+ <script>
+ $('#myInput').keyup(function(){
+    let c=$(this).val();    
+    console.log(c);
+    var x = document.getElementById("city").value;
+    console.log(x);
 
+    $.ajax({
+             url:'/location',
+              type:'get',
+              data: { 
+                location:c
+                },
+              success:function(value){
+              
+                console.log();
+
+            }
+         })
+   })
+</script>
+<?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.food_app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH H:\updateDemitrius\Averti\Averti\resources\views/food/food_template/restaurant.blade.php ENDPATH**/ ?>

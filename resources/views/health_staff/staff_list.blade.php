@@ -1,6 +1,14 @@
 @extends('food.food_layout')
 
-@section('sub_content') 
+@section('content') 
+<div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Content Header (Page header) -->
+		<section class="content">
+			<div class="row">
+				<div class="col-12">
+					<div class="box">
+
 						<div class="box-header with-border">
 							<h4 class="box-title"></h4>
 							<div class="box-controls pull-right">
@@ -8,6 +16,7 @@
 									<input type="text" name="s">
 								</div>
 							</div>
+							
 						</div>
 						<div class="box-body no-padding">
 							<div class="table-responsive">
@@ -49,4 +58,10 @@
                         </table>
                    		</div>
 						</div>	
-@endsection('sub_content') 
+						</div>
+				</div>
+			</div>	
+		</section>
+	</div>
+</div>	
+@endsection('content') 

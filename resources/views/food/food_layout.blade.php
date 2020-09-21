@@ -16,10 +16,4 @@
                         </div>
                 </div>
             </div>
-        <section>
-				<!-- /.content -->
-	  </div>
-  </div>
-
-  
 @endsection('content')
