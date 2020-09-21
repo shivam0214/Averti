@@ -5,28 +5,27 @@
 		<div class="content-header">
 			<div class="d-flex align-items-center">
 				<div class="mr-auto">
-					<h3 class="page-title">Templates</h3>
+					<h3 class="page-title">Create Templates</h3>
 				</div>
 			</div>
 		</div>
-<section class="content">
+		<section class="content">
 		  <div class="row">
 			<div class="col-12">          
-
+				
 			  <div class="box">
 				<div class="box-header">
-				  <h4 class="box-title">CK Editor<br>
-					<small>Advanced and full of features</small>
-				  </h4>
+				  <h4 class="box-title">Template Editor</h4>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
-				  <form>
+					<form method="POST" action="<?php echo e(route('savetemplate')); ?>" enctype="multipart/form-data">
+					<?php echo csrf_field(); ?>
 					<div class="form-group">
-						<label>Subject</label>
-						<input class="form-control" type="text" placeholder="Enter your Subject">
+						<label>Template Title</label>
+						<input class="form-control" type="text" name="title" placeholder="Enter your Title" value="">
 					  </div>
-						<textarea id="editor1" name="editor1" rows="10" cols="80"></textarea>		
+						<textarea id="editor1" name="body" rows="10" cols="80"></textarea>		
 						<div class="text-xs-right mt-20">
 							<button type="submit" class="btn btn-rounded btn-info">Submit</button>
 						</div>

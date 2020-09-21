@@ -212,4 +212,5 @@
 		</div>
 		<!-- /.modal-dialog -->
 	</div>
-  <!-- /.modal --><?php /**PATH G:\averti\resources\views/main/header.blade.php ENDPATH**/ ?>
+  <!-- /.modal -->
+  <?php /**PATH G:\averti\resources\views/main/header.blade.php ENDPATH**/ ?>
