@@ -30,7 +30,7 @@
 			</li>
     	<?php else: ?>
 			<li class="btn-group nav-item d-xl-inline-block">
-				<a href="<?php echo e(route('advisor_request')); ?>" id="request" class="waves-effect waves-light nav-link rounded push-btn" onclick="$('#modal-right').modal('show');" title="View Advisor" role="button">
+				<a href="<?php echo e(route('advisor_request')); ?>" id="request" class="waves-effect waves-light nav-link rounded push-btn"  title="View Advisor" role="button">
 					<i class="fa fa-user-plus" aria-hidden="true"></i>
 			    </a>
 			</li>
@@ -38,6 +38,11 @@
 			<li class="btn-group nav-item d-none d-xl-inline-block">
 				<a href="javascript:void(0)" id="createzoom" onclick="$('#modal-right').modal('show');" class="waves-effect waves-light nav-link rounded svg-bt-icon" data-toggle="tooltip" data-placement="top" title="Zoom meeting create">
 					<i class="fa fa-video-camera"></i>
+			    </a>
+			</li>
+			<li class="btn-group nav-item d-none d-xl-inline-block">
+				<a href="javascript:void(0)"  onclick="$('#modal-right_1').modal('show');" class="waves-effect waves-light nav-link rounded svg-bt-icon" data-toggle="tooltip" data-placement="top" title="Audio Call">
+					<i class="fa fa-phone"></i>
 			    </a>
 			</li>
 			<li class="btn-group nav-item d-none d-xl-inline-block">
@@ -192,9 +197,9 @@
   <!-- /.modal -->
 
 
-   <div id="invite" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
-			<div class="modal-content" id="invitecontent">
+			<div class="modal-content" >
 				<div class="modal-header">
 					<h4 class="modal-title" id="myModalLabel">Medium model</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -213,4 +218,26 @@
 		<!-- /.modal-dialog -->
 	</div>
   <!-- /.modal -->
-  <?php /**PATH G:\averti\resources\views/main/header.blade.php ENDPATH**/ ?>
+  
+   <!-- Modal -->
+   <div class="modal modal-right fade show" id="modal-right_1" tabindex="-1">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title">Calling</h5>
+			<button type="button" class="close" data-dismiss="modal">
+			  <span aria-hidden="true">&times;</span>
+			</button>
+		  </div>
+		  <div class="modal-body">			
+		  </div>
+		  <div class="modal-footer modal-footer-uniform">
+		  <button type="submit" class="btn btn-success ">Call</button>
+
+			<button type="button" class="btn btn-danger float-right" data-dismiss="modal">Cancel</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  <!-- /.modal -->
+<?php /**PATH G:\averti\resources\views/main/header.blade.php ENDPATH**/ ?>

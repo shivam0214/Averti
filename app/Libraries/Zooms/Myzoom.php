@@ -47,7 +47,7 @@ Class Myzoom {
                    CURLOPT_MAXREDIRS => 10,
                    CURLOPT_TIMEOUT => 30,
                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                   CURLOPT_CUSTOMREQUEST => "POST",
+                   CURLOPT_CUSTOMREQUEST => $request,
                    CURLOPT_POSTFIELDS => $postFields,
                    CURLOPT_HTTPHEADER => array(
                      "authorization: Bearer ".$code,
@@ -58,7 +58,7 @@ Class Myzoom {
                 curl_close($curl);
                 return $response;               
             }
-
+           
             public function listMeetings() {
             $request_url = $this->api_url . 'users/' . $this->host_id . '/meetings';
             $listMeetingsArray              = array();
@@ -84,13 +84,27 @@ Class Myzoom {
             curl_close($curl);
 
             if ($err) {
-            echo "cURL Error #:" . $err;
+                return "cURL Error #:" . $err;
             } else {
-            echo $response;
+            return $response;
             }
 
             }
     
+            public function listUsers( $page = 1 ) {
+                $listUsersArray                = array();
+                $listUsersArray['page_size']   = 300;
+                $listUsersArray['page_number'] =  $page ;
+               // $listUsersArray                = apply_filters( 'vczapi_listUsers', $listUsersArray );
+    
+                return $this->sendRequest( 'users', $listUsersArray, "GET" );
+            }
+            public function getUserInfo( $user_id ) {
+                $getUserInfoArray = array();
+               // $getUserInfoArray = apply_filters( 'vczapi_getUserInfo', $getUserInfoArray );
+    
+                return $this->sendRequest( 'users/' . $user_id, $getUserInfoArray );
+            }
 
     public function createAMeeting( $data = array() ){
             $post_time  = $data['start_time'];
@@ -150,11 +164,13 @@ Class Myzoom {
 
             public function getMeetingInfo( $id ) {
                 $getMeetingInfoArray = array();
-                $getMeetingInfoArray = apply_filters( 'vczapi_getMeetingInfo', $getMeetingInfoArray );
-    
                 return $this->sendRequest( 'meetings/' . $id, $getMeetingInfoArray, "GET" );
             }
 
+            public function deleteAMeeting( $meeting_id ) {
+                $deleteAMeetingArray = array();
+                return $this->sendRequest( 'meetings/' . $meeting_id, $deleteAMeetingArray, "DELETE" );
+            }
             public function getlink($meeting_id, $password = false ) {
                 $link               = route('call');
                 $encrypt_pwd        = $this->vczapi_encrypt_decrypt( 'encrypt', $password );

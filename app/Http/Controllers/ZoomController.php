@@ -26,25 +26,34 @@ class ZoomController extends Controller
         return Functions::save_meeting($jdata);
     }
     public function getmeeting(){
-        $meetings = Meeting::where(['user_id'=>Auth::user()['id'],'status'=>'waiting'])->orderBy('id','desc')->get();
+        $d = new Myzoom;
+        $jdata = $d->listMeetings();
+        $meetings = json_decode($jdata,JSON_OBJECT_AS_ARRAY);
+        
+      //  $meetings = Meeting::where(['user_id'=>Auth::user()['id'],'status'=>'waiting'])->orderBy('id','desc')->get();
         return view('zoom.list',compact('meetings'));
     }
 
     public function host(Request $r){
         $loggedinUser = Auth::user();
-        $mtng = Meeting::where(['id'=>$r->mid])->get();
-        $mid = str_replace("'","",$mtng[0]->meeting_id);
-        $p = $mtng[0]->password;
-        $role = ($loggedinUser['role_id']==2)?0:1;
-        $name = $loggedinUser['firstname'];
-        $id = $r->mid;
-       return view('zoom.hostmeeting',compact('mid','p','role','name','id'));
+        
+        $d = new Myzoom;
+        $details = json_decode($d->getMeetingInfo($r['mid']),JSON_OBJECT_AS_ARRAY); 
+        $mid = $id = $details['id'];
+        $p = $details['password'];
+        $role = ($loggedinUser['role_id']==2)?1:0;
+        $name = $loggedinUser['name'];
+       return view('zoom.hostmeeting',compact('mid','p','role','name'));
     }
     public function status(Request $r){
         $mtng = Meeting::where(['id'=>$r->mid])->update(['status'=>'complete']);
         return redirect('/getmeeting'); 
     }
-
+    public function delete(Request $r){
+        $d = new Myzoom;
+        $details = $d->deleteAMeeting($r['mid']); // ($d->deleteAMeeting($r['mid']),JSON_OBJECT_AS_ARRAY); 
+        return redirect('/getmeeting'); 
+    }
     public function invite(Request $r){
         $users = User::where(['perent_id'=>Auth::user()['id'],'role_id'=>3])->get();
         $mid = $r->mid;

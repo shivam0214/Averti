@@ -1,5 +1,9 @@
 @extends('layouts.app')
-
+@php
+use App\Libraries\Zooms\Myzoom;
+ $d = new Myzoom;
+        
+@endphp
 @section('content') 
 <div class="content-wrapper">
 	  <div class="container-full">
@@ -25,16 +29,21 @@
                             </tr>
                         </thead>
                         <tbody>
+                        @if(count($meetings['meetings'])==0)
+                            <h2 class="">No Meetings Found</h2>
+                        @endif 
+                        @foreach ($meetings['meetings'] as $record)
+                        @php $meet_details = json_decode($d->getMeetingInfo($record['id']),JSON_OBJECT_AS_ARRAY); @endphp
                         
-                        @foreach ($meetings as $record)
+                        
                             <tr>
-                            <th scope="row">{{str_replace("'",'',$record['meeting_id'])}}</th>
+                            <th scope="row">{{str_replace("'",'',$record['id'])}}</th>
                             <td>{{$record['topic']}}</td>
-                            <td>{{$record['status']}}</td>
+                            <td>{{$meet_details['status']}}</td>
                             <td>{{date('Y-m-d',strtotime($record['start_time']))}}  {{date('H-i a',strtotime($record['start_time']))}}</td>
-                            <td><a href="javascript:void(0)" role="{{$record['id']}}" class="btn btn-primary waves-effect waves-light invite" >Invite</a> <a  class="btn btn-primary waves-effect waves-light" href="{{route('allmeeting',$record['id'])}}">Start</a></td>
+                            <td><a href="javascript:void(0)" role="{{$record['id']}}" class="btn btn-primary waves-effect waves-light invite" >Invite</a> <a  class="btn btn-primary waves-effect waves-light" href="{{route('allmeeting',$record['id'])}}">Start</a> <a  class="btn btn-primary waves-effect waves-light" href="{{route('deletemeeting',$record['id'])}}"><i class="fa fa-trash"></i></a></td>
                             
-                            </tr>
+                            </tr> 
                         @endforeach
                         
                             

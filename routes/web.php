@@ -160,6 +160,7 @@ Zoom */
 Route::get('create/zoom','ZoomController@index')->name('zoomcreate');
 Route::post('post/zoom','ZoomController@store')->name('zoomcreatepost');
 Route::get('meetings/{mid}','ZoomController@host')->name('allmeeting');
+Route::get('delete/{id}','ZoomController@delete')->name('deletemeeting');
 Route::get('getmeeting','ZoomController@getmeeting')->name('getmeeting');
 Route::get('status/{mid}','ZoomController@status')->name('status');
 Route::get('invite/{mid}','ZoomController@invite')->name('invite');

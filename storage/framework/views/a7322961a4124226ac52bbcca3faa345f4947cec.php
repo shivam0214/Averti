@@ -334,7 +334,17 @@
 	<script src="<?php echo e(asset('assets/js/custom/zoom.js')); ?>"></script>
 	<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script> 
 	<script src="https://api.vsee.com/js/vseepresence.js"></script>
+   
+   
+	<script src="<?php echo e(asset('assets/frontassets/js/jquery.backstretch.js')); ?>"></script>
+	<script src="<?php echo e(asset('assets/frontassets/js/scripts.js')); ?>"></script>
+	<script src="<?php echo e(asset('assets/frontassets/js/zInput.js')); ?>"></script>
+            
+<script>
 
+
+$("#affected, #affected1, #affected2").zInput();
+</script>
 	<script>
 	 CKEDITOR.replace( 'editor1' );
   $( function() {
