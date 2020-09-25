@@ -19,7 +19,7 @@ class CreateMeetingsTable extends Migration
             $table->string('host_id')->nullable();
             $table->string('uuid')->nullable();
             $table->string('topic')->nullable();
-            $table->string('meeting_id')->nullable();
+            $table->bigInteger('meeting_id')->nullable()->length(15);
             $table->string('status')->nullable();
             $table->mediumText('start_url')->nullable();
             $table->mediumText('join_url')->nullable();

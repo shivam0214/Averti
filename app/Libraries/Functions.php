@@ -16,7 +16,7 @@ Class Functions{
             $save = array(
                 'user_id'=>Auth::user()['id'],
                 'uuid'=>$data['uuid'],
-                'meeting_id'=>"'".$data['id']."'",
+                'meeting_id'=>$data['id'],
                 'host_id'=>$data['host_id'],
                 'topic'=>$data['topic'],
                 'status'=>$data['status'],

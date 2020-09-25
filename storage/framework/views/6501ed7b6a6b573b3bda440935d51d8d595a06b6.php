@@ -130,24 +130,13 @@
             <li><a hregf="#"><i class="ti-more"></i>Booking List</a></li>
             <li><a href="<?php echo e(route('booking')); ?>"><i class="ti-more"></i> Booking Schedule</a></li>
           </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="ti-layout-grid2"></i>
-			<span>Staff</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
+        </li>        
+        <li >
+          <a href="<?php echo e(route('view_product')); ?>"  >
+            <i class="ti-bell"></i>
+			    <span>Template details</span>
           </a>
-          <ul class="treeview-menu">
-          <li>
-          <a href="<?php echo e(route('add_staff')); ?>"><i class="ti-more"></i>Add Staff Details</a>
-        </li>            
-        <li><a href="<?php echo e(route('staff_list')); ?>"><i class="ti-more"></i>Staff List</a></li>
-          </ul>
-        </li>
-      
-        	
+        </li>        
       <?php else: ?>
        <li>
           <a href="<?php echo e(route('advisor_request')); ?>">
@@ -162,7 +151,7 @@
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="<?php echo e(route('notification')); ?>">
             <i class="ti-bell"></i>
 			<span>Notification</span>
           </a>
@@ -197,8 +186,7 @@
 		<a href="mailbox_inbox.html" class="link" data-toggle="tooltip" title="" data-original-title="Email"><i class="ti-email"></i></a>
 		<!-- item-->
 		<a  href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="link" data-toggle="tooltip" title="" data-original-title="Logout"><i class="ti-lock"></i><form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
-                                        <?php echo csrf_field(); ?>
-                                    </form></a>
+      <?php echo csrf_field(); ?>
+      </form></a>
 	</div>
-  </aside>
- <?php /**PATH G:\averti\resources\views/main/sidebar.blade.php ENDPATH**/ ?>
+  </aside><?php /**PATH G:\averti\resources\views/main/sidebar.blade.php ENDPATH**/ ?>

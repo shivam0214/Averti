@@ -36,8 +36,8 @@
                     <input type="text" name="display_name" id="display_name" value="{{$name}}" placeholder="Name" class="form-control" required>
                 </div>
                 
-          <input type="hidden" value="oncall/{{$id}}" id="url">
-			<input type="hidden" value="/status/{{$id}}" id="rurl">
+          <input type="hidden" value="oncall/{{$mid}}" id="url">
+			<input type="hidden" value="/status/{{$mid}}" id="rurl">
 			<input type="hidden" value="{{$mid}}" id="meeting_number">
 			<input type="hidden" value="{{$p}}" id="meeting_pwd">
             <input type="hidden" value="{{$role}}" id="meeting_role">
