@@ -5,7 +5,7 @@
             <nav class="navbar navbar-dark">
                 <div class="container">
                     <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#mainNavbarCollapse">&#9776;</button>
-                    <a class="navbar-brand" href="<?php echo e(route('food_index')); ?>"> <img class="img-rounded" src="<?php echo e(asset('assets/foodassets/images/food-picky-logo.png')); ?>" alt=""> </a>
+                    <a class="navbar-brand" href="<?php echo e(route('dashboard')); ?>"> <img class="img-rounded" src="<?php echo e(asset('assets/images/logo/averti.png')); ?>" alt="" height="50px"> </a>
                     <div class="collapse navbar-toggleable-md  float-lg-right" id="mainNavbarCollapse">
                         <ul class="nav navbar-nav">
                             <li class="nav-item"> <a class="nav-link active" href="<?php echo e(route('food_index')); ?>">Home <span class="sr-only">(current)</span></a> </li>

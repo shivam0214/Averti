@@ -179,10 +179,10 @@ Class  Myzomato{
           return $response;
         
     }
-    public function search($city=null,$cuisines=null,$entity_id=null,$entity_type=null){
+    public function search($city=null,$cuisines=null,$entity_id=null,$entity_type=null,$establishment_type=null	){
         $curl = curl_init();
             curl_setopt_array($curl, array(
-            CURLOPT_URL => "https://developers.zomato.com/api/v2.1/search?entity_id=".$entity_id."&entity_type=".$entity_type."&q=".$city."&count=20&cuisines=".$cuisines,
+            CURLOPT_URL => "https://developers.zomato.com/api/v2.1/search?entity_id=".$entity_id."&entity_type=".$entity_type."&q=".$city."&count=20&cuisines=".$cuisines."&establishment_type=".$establishment_type,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,

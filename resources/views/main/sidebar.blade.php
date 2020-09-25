@@ -157,7 +157,7 @@
           </a>
         </li>
         <li>
-          <a href="{{route('notification')}}">
+          <a href="#">
             <i class="ti-bell"></i>
 			<span>Notification</span>
           </a>
@@ -181,6 +181,25 @@
       <span>Booking</span>
           </a>
         </li>
+        <li >
+          <a href="{{route('food_index')}}"  >
+            <i class="ti-bell"></i>
+			    <span>Food Template</span>
+          </a>
+        </li>
+        <li>
+          <a href="{{route('notification')}}">
+            <i class="ti-bell"></i>
+			<span>Healt Template</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://fitnessitynew.raursoft.org/">
+            <i class="ti-bell"></i>
+			<span>Fitness Template</span>
+          </a>
+        </li>
+       
 @endif
       </ul>
       

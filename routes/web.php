@@ -140,7 +140,7 @@ Route::get('/get_restaurants', 'Adviser\FoodController@get_restaurants')->name('
 Route::get('/get_city', 'Adviser\FoodController@get_city')->name('get_city');
 Route::get('/get_cuisines', 'Adviser\FoodController@get_cuisines')->name('get_cuisines');
 Route::get('/get_daily_menu', 'Adviser\FoodController@get_daily_menu')->name('get_daily_menu');
-Route::get('/search', 'Adviser\FoodController@search_establishments')->name('search_establishments');
+Route::post('/search', 'Adviser\FoodController@search_establishments')->name('search_establishments');
 Route::get('/location', 'Adviser\FoodController@location')->name('location');
 
 

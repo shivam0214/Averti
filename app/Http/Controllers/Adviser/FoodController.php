@@ -160,40 +160,48 @@ class FoodController extends Controller
             foreach ($establishments as $value) {
                 $establishment_data[]=$value['establishment'];
             }            
-            $data = $get->search($r->location,$r->get_name,$r->entity_id,$r->entity_type); 
+
+            $data = $get->search($r->location,$r->get_name,$r->entity_id,$r->entity_type,$r->cusine_id); 
             $res=json_decode($data,'JSON_OBJECT_AS_ARRAY');
             $restaurants = $res['restaurants'];
             $d=[];
             foreach ($restaurants as $value) {
                 $d[]=$value['restaurant'];
             }    
-              return view('food/food_template/restaurant',['data'=>$d,'establishment_data'=>$establishment_data]);
+              return view('food/food_template/restaurant',['data'=>$d,'establishment_data'=>$establishment_data,'city'=>$r->city_id]);
         }
 
         public function search_establishments(Request $r){
-            // $get = new Myzomato;    
-            // $food=$get->establishments($r->city_id);
-            dd($r->city_id);
-            die;
+            print_r($r->cusine_id);
+
+            $get = new Myzomato;    
+            $data = $get->search($r->location,$r->get_name,$r->entity_id,$r->entity_type,281); 
+            $res=json_decode($data,'JSON_OBJECT_AS_ARRAY');
+            $restaurants = $res['restaurants'];
+            $d=[];
+            foreach ($restaurants as $value) {
+                $d[]=$value['restaurant'];
+            }                      
+            print_r($d);
+             die;   
+          // return Redirect::to('/restaurant');
+          // return view('food/food_template/restaurant',['establishment_data'=>$establishment_data,'city'=>$r->city_id]);
         }
 
         public function view_restaurant(Request $r){
             $get = new Myzomato;
             $data = $get->get_restaurant($r->id); 
             $res=json_decode($data,'JSON_OBJECT_AS_ARRAY'); 
-              return view('food/food_template/view_restaurant',['value'=>$res]);
-            
+              return view('food/food_template/view_restaurant',['value'=>$res]);   
         }
         public function checkout(){
             return view('food/food_template/checkout');
         }
-
         public function loc(){
             // $Latitude = '28.5355';
             // $Longitude = '77.3910'; 
             //   print_r($Latitude);
             //     print_r($Longitude);
-
             // die;
             $get = new Myzomato;
             $data = $get->current_location(); 
@@ -201,4 +209,6 @@ class FoodController extends Controller
             die;
         }
 }
+
+
 

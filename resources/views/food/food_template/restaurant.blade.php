@@ -1,7 +1,6 @@
 @extends('layouts.food_app')
 @section('food_content')
 <div class="page-wrapper">
-
             <!-- start: Inner page hero -->
             <div class="inner-page-hero bg-image" data-image-src="{{asset('assets/images/food_image/b1.jpg')}}">
                 <div class="container"> </div>
@@ -34,29 +33,28 @@
                                     <div class="sidebar-title white-txt">
                                         <h6>Choose Cusine</h6> <i class="fa fa-cutlery pull-right"></i> </div>
                                     
-                                 <form   role="form"  method="get" action="{{route('search_establishments')}}">
+                                 <form method="POST" action="{{route('search_establishments')}}">
+                                 @csrf
                                  <div class="input-group">
-                                        <input type="text"  class="form-control search-field" id="myInput" placeholder="Search your favorite food"> 
-                                        <span class="input-group-btn"> 
-                                        <button class="btn btn-secondary search-btn" type="submit"><i class="fa fa-search"></i></button> 
+                                    <input type="text"  class="form-control search-field" onkeyup="myFunction()" name="myInput" id="myInput" placeholder="Search your favorite food">
+                                <input type="hidden" id="city_id" name="city_id" value="{{$city}}"> 
+                                    <span class="input-group-btn"> 
+                                        <button  class="btn btn-secondary search-btn" id="search_data" type="submit"><i class="fa fa-search"></i></button> 
                                          </span> 
-                                 </div>
+                                </div>
                                     <ul id="myUL">
-
-                                            @foreach($establishment_data as $cusine_data)
-
-                                            <li>
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" value="{{$cusine_data['name']}}"> 
-                                                    <span class="custom-control-indicator"></span> 
-                                                    <span class="custom-control-description">{{$cusine_data['name']}}</a></span> 
-                                                    </label>
-                                            </li>
-
-                                            @endforeach
-                                            </ul>
-
-                                    </form>
+                                        @foreach($establishment_data as $cusine_data)
+                                        <li>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="hidden" name="cusine_id" id="cusine_id" value="{{$cusine_data['id']}}" > 
+                                                <input  type="checkbox" id="get_data" class="custom-control-input" id="cusine_data" name="cusine_data" value="{{$cusine_data['name']}}"> 
+                                                <span class="custom-control-indicator"></span> 
+                                                <span class="custom-control-description">{{$cusine_data['name']}}</a></span> 
+                                                </label>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                </form>
                                     <div class="clearfix"></div>
                                 </div>
                                 <!-- end:Sidebar nav -->
@@ -139,7 +137,7 @@
                                             <h5><a href="{{$value['menu_url']}}">{{$value['name']}}</a></h5> 
                                             <span>{{$value['cuisines']}} <a href="#">...</a></span></br>
                                             <span>{{$value['location']['city']}} <a href="#">...</a></span>
-                                            <input type="text" id="city_id" name="city_id" value="{{$value['location']['city_id']}}"> 
+                                            <input type="hidden" id="city_id" name="city_id" value="{{$value['location']['city_id']}}"> 
 
                                             <ul class="list-inline">
                                                 <li class="list-inline-item"><i class="fa fa-check"></i> {{$value['timings']}}</li>
@@ -168,28 +166,27 @@
                     </div>
                 </div>
             </section>
-</div>
+    </div>
 @endsection
 @push('scripts-footer')  
  <script>
- $('#myInput').keyup(function(){
-    let c=$(this).val();    
-    console.log(c);
-    var x = document.getElementById("city").value;
-    console.log(x);
-
-    $.ajax({
-             url:'/location',
-              type:'get',
-              data: { 
-                location:c
-                },
-              success:function(value){
-              
-                console.log();
-
+    function myFunction() {
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        console.log(filter);
+        ul = document.getElementById("myUL");
+        li = ul.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("label")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
             }
-         })
-   })
-</script>
+        }
+    }
+    
+   </script>
 @endpush
