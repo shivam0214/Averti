@@ -1,4 +1,12 @@
-<?php $__env->startSection('sub_content'); ?> 
+<?php $__env->startSection('content'); ?> 
+<div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Content Header (Page header) -->
+		<section class="content">
+			<div class="row">
+				<div class="col-12">
+					<div class="box">
+
 						<div class="box-header with-border">
 							<h4 class="box-title"></h4>
 							<div class="box-controls pull-right">
@@ -6,6 +14,7 @@
 									<input type="text" name="s">
 								</div>
 							</div>
+							gg
 						</div>
 						<div class="box-body no-padding">
 							<div class="table-responsive">
@@ -47,6 +56,12 @@
                         </table>
                    		</div>
 						</div>	
+						</div>
+				</div>
+			</div>	
+		</section>
+	</div>
+</div>	
 <?php $__env->stopSection(); ?> 
 
 <?php echo $__env->make('food.food_layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH H:\updateDemitrius\Averti\Averti\resources\views/health_staff/staff_list.blade.php ENDPATH**/ ?>

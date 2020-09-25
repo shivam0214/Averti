@@ -13,7 +13,7 @@
             </div>
             <!-- end:Top links -->
             <!-- start: Inner page hero -->
-            <section class="inner-page-hero bg-image" data-image-src="http://placehold.it/1670x480">
+            <section class="inner-page-hero bg-image" data-image-src="<?php echo e(asset('assets/images/food_image/bak2.jpg')); ?>">
                 <div class="profile">
                     <div class="container">
                         <div class="row">

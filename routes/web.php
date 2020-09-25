@@ -89,6 +89,7 @@ Route::get('/advisor_request', 'User\UserController@advisor_request')->name('adv
 Route::post('/advisor_request_send', 'User\UserController@advisor_request_send')->name('advisor_request_send');
 Route::get('/user_request', 'Adviser\DashboardController@user_request')->name('user_request');
 Route::post('/accept_request', 'Adviser\DashboardController@accept_userreq')->name('accept_userreq');
+Route::get('/templates', 'Adviser\DashboardController@templates')->name('templates');
 
 /*Group Mail Controller*/
 Route::get('/template', 'GroupMailController@mail_template')->name('mail_template');
@@ -116,11 +117,10 @@ Route::get('/staff_profile/{id}', 'Adviser\Health_staffController@view_staff')->
 Route::post('/update_details', 'Adviser\Health_staffController@update_details')->name('update_details');
 Route::get('/delete_data/{id}', 'Adviser\Health_staffController@delete_data')->name('delete_data');
 Route::get('/staff_user', 'Adviser\Health_staffController@staff_user')->name('staff_user');
-Route::get('/staff_user', 'Adviser\Health_staffController@staff_user')->name('staff_user');
 Route::get('/staff_detail/{id}', 'Adviser\Health_staffController@staff_detail')->name('staff_detail');
 
 /* Food details*/
-Route::get('details', 'Adviser\FoodController@loc');
+Route::get('/details', 'Adviser\FoodController@loc');
 Route::get('/food_admin', 'Adviser\FoodController@food_admin')->name('food_admin');
 Route::get('/add_product', 'Adviser\FoodController@add_product')->name('add_product');
 Route::post('/product', 'Adviser\FoodController@product')->name('product');
@@ -140,7 +140,7 @@ Route::get('/get_restaurants', 'Adviser\FoodController@get_restaurants')->name('
 Route::get('/get_city', 'Adviser\FoodController@get_city')->name('get_city');
 Route::get('/get_cuisines', 'Adviser\FoodController@get_cuisines')->name('get_cuisines');
 Route::get('/get_daily_menu', 'Adviser\FoodController@get_daily_menu')->name('get_daily_menu');
-Route::get('/search', 'Adviser\FoodController@search')->name('search');
+Route::get('/search', 'Adviser\FoodController@search_establishments')->name('search_establishments');
 Route::get('/location', 'Adviser\FoodController@location')->name('location');
 
 

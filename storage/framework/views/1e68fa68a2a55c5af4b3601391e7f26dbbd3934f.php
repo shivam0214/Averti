@@ -1,6 +1,14 @@
-<?php $__env->startSection('sub_content'); ?> 
+<?php $__env->startSection('content'); ?> 
+<div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Content Header (Page header) -->
+		<section class="content">
+			<div class="row">
+				<div class="col-12">
+					<div class="box">
+
 			<div class="box-header with-border">
-			  <h4 class="box-title">Add Staff Details</h4>
+			  <h4 class="box-title">Edit Staff Details</h4>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
@@ -186,7 +194,12 @@
                             <button type="submit" id="btn" class="btn btn-primary waves-effect waves-light"><b>Update</b></button>                
                         </form>
                     </div>
-          
+                    </div>
+				</div>
+			</div>	
+		</section>
+	</div>
+</div>	
 
 <?php $__env->stopSection(); ?> 
 

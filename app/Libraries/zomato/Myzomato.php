@@ -58,6 +58,31 @@ Class  Myzomato{
         curl_close($curl);
         echo $response;die;
     }
+    public function establishments($city_id){
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://developers.zomato.com/api/v2.1/establishments?city_id=".$city_id,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "accept: application/json",
+                "cache-control: no-cache",
+                "postman-token: 54ba40e3-7e81-050a-36db-a8320cac8f20",
+                "user_key: ef18c2db88ed7aaa5033fe57a62ec924"
+            ),
+            ));
+
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+
+            curl_close($curl);
+            return $response;
+            
+    }
     public function get_restaurant($resid = null){
         $curl = curl_init();
             curl_setopt_array($curl, array(
@@ -179,7 +204,9 @@ Class  Myzomato{
         }
 
 
-        public function current_location( $Latitude ,$Longitude ){
+        public function current_location(){
+            $Latitude = '26.8467088';
+            $Longitude = '80.9461592';
             $url = "https://maps.google.com/maps/api/geocode/json?key=AIzaSyAKM11ln1wyuIoCaL4ocp6DXP40i9zwEvA&latlng=$Latitude,$Longitude&sensor=false";
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
@@ -190,6 +217,6 @@ Class  Myzomato{
             $response = curl_exec($ch);
             curl_close($ch);
             $response = json_decode($response);
-            return($response);
+            return($response); 
         }
 }

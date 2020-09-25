@@ -1,6 +1,14 @@
-@extends('food.food_layout')
+@extends('layouts.app')
 
-@section('sub_content') 
+@section('content')
+<div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Content Header (Page header) -->
+		<section class="content">
+			<div class="row">
+				<div class="col-12">
+					<div class="box">
+
 	<div class="box-header with-border">
 		<h4 class="box-title">About Product</h4>
 	</div>
@@ -112,5 +120,11 @@
 		</div>
 	</form>
 	</div>
-@endsection('sub_content') 
+	</div>
+				</div>
+			</div>	
+		</section>
+	</div>
+</div>	
+@endsection('content') 
 

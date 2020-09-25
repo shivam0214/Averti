@@ -1,6 +1,14 @@
 @extends('food.food_layout')
 
-@section('sub_content') 
+@section('content') 
+<div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Content Header (Page header) -->
+		<section class="content">
+			<div class="row">
+				<div class="col-12">
+					<div class="box">
+
 			<div class="box-header with-border">
 			  <h4 class="box-title">Add Staff Details</h4>
 			</div>
@@ -191,7 +199,12 @@
                             <button type="submit" id="btn" class="btn btn-primary waves-effect waves-light"><b>Add Staff</b></button>                
                         </form>
                     </div>
-
+                    </div>
+				</div>
+			</div>	
+		</section>
+	</div>
+</div>	
 <script type = "text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"><script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 
@@ -266,4 +279,4 @@
     });
    
 </script>
-@endsection('sub_content') 
+@endsection('content') 

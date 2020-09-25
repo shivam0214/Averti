@@ -131,12 +131,18 @@
             <li><a href="{{route('booking')}}"><i class="ti-more"></i> Booking Schedule</a></li>
           </ul>
         </li>        
-        <li >
+        <!-- <li >
           <a href="{{route('view_product')}}"  >
             <i class="ti-bell"></i>
 			    <span>Template details</span>
           </a>
-        </li>        
+        </li>  -->
+        <li >
+          <a href="{{route('templates')}}"  >
+            <i class="ti-bell"></i>
+			    <span>Template</span>
+          </a>
+        </li>       
       @else
        <li>
           <a href="{{route('advisor_request')}}">

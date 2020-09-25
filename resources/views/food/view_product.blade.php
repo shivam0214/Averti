@@ -1,5 +1,22 @@
-@extends('food.food_layout')
-@section('sub_content') 
+@extends('layouts.app')
+
+@section('content')
+
+<div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Content Header (Page header) -->
+		<div class="content-header">
+			<div class="d-flex align-items-center">
+				<div class="mr-auto">
+					<h3 class="page-title">List</h3>
+				</div>
+			</div>
+		</div>
+		<section class="content">
+			<div class="row">
+				<div class="col-12">
+					<div class="box">
+
 			<div class="box-header with-border">
 				<h4 class="box-title"></h4>
 				<div class="box-controls pull-right">
@@ -48,4 +65,11 @@
                         </table>
                    		</div>
 						</div>		
-@endsection('sub_content')
+
+						</div>
+				</div>
+			</div>	
+		</section>
+	</div>
+</div>
+		@endsection('content')

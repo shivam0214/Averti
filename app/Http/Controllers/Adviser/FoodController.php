@@ -152,22 +152,35 @@ class FoodController extends Controller
                        
         }
         public function restaurant(Request $r){
-            $get = new Myzomato;
+            $get = new Myzomato;    
+            $food=$get->establishments($r->city_id);
+            $food_data=json_decode($food,'JSON_OBJECT_AS_ARRAY');
+            $establishments = $food_data['establishments'];
+            $establishment_data=[];
+            foreach ($establishments as $value) {
+                $establishment_data[]=$value['establishment'];
+            }            
             $data = $get->search($r->location,$r->get_name,$r->entity_id,$r->entity_type); 
             $res=json_decode($data,'JSON_OBJECT_AS_ARRAY');
             $restaurants = $res['restaurants'];
             $d=[];
             foreach ($restaurants as $value) {
                 $d[]=$value['restaurant'];
-            }            
-          return view('food/food_template/restaurant',['data'=>$d]);
+            }    
+              return view('food/food_template/restaurant',['data'=>$d,'establishment_data'=>$establishment_data]);
+        }
+
+        public function search_establishments(Request $r){
+            // $get = new Myzomato;    
+            // $food=$get->establishments($r->city_id);
+            dd($r->city_id);
+            die;
         }
 
         public function view_restaurant(Request $r){
             $get = new Myzomato;
             $data = $get->get_restaurant($r->id); 
             $res=json_decode($data,'JSON_OBJECT_AS_ARRAY'); 
-          //  print_r($res);die;               
               return view('food/food_template/view_restaurant',['value'=>$res]);
             
         }
@@ -176,11 +189,14 @@ class FoodController extends Controller
         }
 
         public function loc(){
-              $Latitude = '28.6323531';
-            $Longitude = '77.45871269999999'; 
-           
+            // $Latitude = '28.5355';
+            // $Longitude = '77.3910'; 
+            //   print_r($Latitude);
+            //     print_r($Longitude);
+
+            // die;
             $get = new Myzomato;
-            $data = $get->current_location($Latitude ,$Longitude); 
+            $data = $get->current_location(); 
              dd($data);
             die;
         }
