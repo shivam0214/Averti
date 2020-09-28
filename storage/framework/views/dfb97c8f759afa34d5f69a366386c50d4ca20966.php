@@ -48,6 +48,8 @@
                                 <input type="hidden" name="entity_id" class="form-control form-control-lg" id="entity_id"> 
                                     <input type="hidden" name="entity_type" class="form-control form-control-lg" id="entity_type"> 
                                     <input type="hidden" name="city_id" class="form-control form-control-lg" id="city_id"> 
+                                    <input type="text" name="latitude_loc" class="form-control form-control-lg" id="latitude_loc"> 
+                                    <input type="text" name="longitude_loc" class="form-control form-control-lg" id="longitude_loc"> 
 
                             </div>
                             <button type="submit" class="btn theme-btn btn-lg search_food">Search food</button>
@@ -445,23 +447,29 @@
 <script>
    $('#loc').keyup(function(){
     let c=$(this).val();
+     let a=$('#latitude_loc').val();
+     let d=$('#longitude_loc').val();
+      console.log(a);
+
     console.log(c);
     $.ajax({
              url:'/location',
               type:'get',
               data: { 
-                location:c
+                location:c,
+                latitude_loc:a,
+                longitude_loc:d
                 },
-              success:function(value){
+                  success:function(value){
                   $('#entity_type').val(value.result.location_suggestions[0].entity_type);
                   $('#entity_id').val(value.result.location_suggestions[0].entity_id);
                   $('#city_id').val(value.result.location_suggestions[0].city_id);
-
-                console.log(value.result.location_suggestions[0].city_id);
-
+                  $('#latitude_loc').val(value.result.location_suggestions[0].latitude);
+                  $('#longitude_loc').val(value.result.location_suggestions[0].longitude);
             }
          })
    }) 
+
    
    var x = document.getElementById("demo");
   // var y=  document.getElementById("latitude");

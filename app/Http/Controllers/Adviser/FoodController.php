@@ -147,9 +147,22 @@ class FoodController extends Controller
             
            //print_r($loc);die;
             return ([
-                'result'    => $loc
+                'result' => $loc
             ]);
                        
+        }
+
+        public function popularity_res(){
+            $latitude=29.945749;
+            $longitude=78.164138;
+            $get = new Myzomato;    
+            $popular=$get->popular_restaurant($latitude,$longitude);
+            $data=json_decode($popular,'JSON_OBJECT_AS_ARRAY');
+            return ([
+                'result' => $data
+            ]);
+           // print_r($data);die;
+
         }
         public function restaurant(Request $r){
             $get = new Myzomato;    
@@ -160,7 +173,6 @@ class FoodController extends Controller
             foreach ($establishments as $value) {
                 $establishment_data[]=$value['establishment'];
             }            
-
             $data = $get->search($r->location,$r->get_name,$r->entity_id,$r->entity_type,$r->cusine_id); 
             $res=json_decode($data,'JSON_OBJECT_AS_ARRAY');
             $restaurants = $res['restaurants'];
@@ -168,41 +180,44 @@ class FoodController extends Controller
             foreach ($restaurants as $value) {
                 $d[]=$value['restaurant'];
             }    
-              return view('food/food_template/restaurant',['data'=>$d,'establishment_data'=>$establishment_data,'city'=>$r->city_id]);
+              return view('food/food_template/restaurant',['data'=>$d,
+                                                            'establishment_data'=>$establishment_data,
+                                                            'cityid'=>$r->city_id,
+                                                            'entity_type'=>$r->entity_type,
+                                                            'city'=>$r->location]);
         }
 
         public function search_establishments(Request $r){
-            print_r($r->cusine_id);
-
-            $get = new Myzomato;    
-            $data = $get->search($r->location,$r->get_name,$r->entity_id,$r->entity_type,281); 
+            $get = new Myzomato; 
+            $data = $get->search($r->city,$r->get_name,$r->cityid,$r->entity_type,$r->cusine_data); 
             $res=json_decode($data,'JSON_OBJECT_AS_ARRAY');
             $restaurants = $res['restaurants'];
-            $d=[];
-            foreach ($restaurants as $value) {
-                $d[]=$value['restaurant'];
-            }                      
-            print_r($d);
-             die;   
-          // return Redirect::to('/restaurant');
-          // return view('food/food_template/restaurant',['establishment_data'=>$establishment_data,'city'=>$r->city_id]);
-        }
+            return([
+                'result' => $restaurants,
+            ]);   
+        }   
 
         public function view_restaurant(Request $r){
             $get = new Myzomato;
+            $data = $get->get_cuisines();  
+            $get_cuisine=json_decode($data,'JSON_OBJECT_AS_ARRAY'); 
+            $restaurant_cuisine = $get_cuisine['cuisines'];
+            $d=[];
+            foreach ($restaurant_cuisine as $value) {
+                $d[]=$value['cuisine'];
+            }  
+          //     print_r($d);die;       
             $data = $get->get_restaurant($r->id); 
             $res=json_decode($data,'JSON_OBJECT_AS_ARRAY'); 
-              return view('food/food_template/view_restaurant',['value'=>$res]);   
+
+              return view('food/food_template/view_restaurant',['value'=>$res,'data'=>$d]);   
         }
+        
         public function checkout(){
             return view('food/food_template/checkout');
         }
+        
         public function loc(){
-            // $Latitude = '28.5355';
-            // $Longitude = '77.3910'; 
-            //   print_r($Latitude);
-            //     print_r($Longitude);
-            // die;
             $get = new Myzomato;
             $data = $get->current_location(); 
              dd($data);

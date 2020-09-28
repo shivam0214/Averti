@@ -65,15 +65,12 @@
                             <div class="main-block">
                                 <div class="sidebar-title white-txt">
                                     <h6>Choose Cusine</h6> <i class="fa fa-cutlery pull-right"></i> </div>
-                                <ul>
-                                    <li><a href="#1" class="scroll active">Pizza</a></li>
-                                    <li><a href="#2" class="scroll">Barbecuing and Grilling</a></li>
-                                    <li><a href="#3" class="scroll">Appetizers</a></li>
-                                    <li><a href="#4" class="scroll">Soup and salads</a></li>
-                                    <li><a href="#5" class="scroll">Pasta</a></li>
-                                    <li><a href="#6" class="scroll">Seafood</a></li>
-                                    <li><a href="#7" class="scroll">Beverages</a></li>
-                                </ul>
+                                    <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cusine_data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                    <ul>
+                                    <li><a href="#2" class="scroll"><?php echo e($cusine_data['cuisine_name']); ?></a></li>
+                                 </ul>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <div class="clearfix"></div>
                             </div>
                             <!-- end:Sidebar nav -->

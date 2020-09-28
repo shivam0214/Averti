@@ -33,24 +33,28 @@
                                     <div class="sidebar-title white-txt">
                                         <h6>Choose Cusine</h6> <i class="fa fa-cutlery pull-right"></i> </div>
                                     
-                                 <form method="POST" action="{{route('search_establishments')}}">
-                                 @csrf
+                                 <form  action="#">
+                                 
                                  <div class="input-group">
                                     <input type="text"  class="form-control search-field" onkeyup="myFunction()" name="myInput" id="myInput" placeholder="Search your favorite food">
-                                <input type="hidden" id="city_id" name="city_id" value="{{$city}}"> 
+                                    <input type="hidden" id="cityid" name="cityid" value="{{$cityid}}">  
+                                    <input type="hidden" id="city" name="city" value="{{$city}}">  
+
+                                    <input type="hidden" id="entity_type" name="entity_type" value="{{$entity_type}}"> 
+
                                     <span class="input-group-btn"> 
-                                        <button  class="btn btn-secondary search-btn" id="search_data" type="submit"><i class="fa fa-search"></i></button> 
-                                         </span> 
+                                        <button  class="btn btn-secondary search-btn" id="search_data"  onclick="myFunction()" type="button"><i class="fa fa-search"></i></button> 
+                                    </span> 
                                 </div>
                                     <ul id="myUL">
                                         @foreach($establishment_data as $cusine_data)
                                         <li>
+
                                             <label class="custom-control custom-checkbox">
-                                                <input type="hidden" name="cusine_id" id="cusine_id" value="{{$cusine_data['id']}}" > 
-                                                <input  type="checkbox" id="get_data" class="custom-control-input" id="cusine_data" name="cusine_data" value="{{$cusine_data['name']}}"> 
-                                                <span class="custom-control-indicator"></span> 
-                                                <span class="custom-control-description">{{$cusine_data['name']}}</a></span> 
-                                                </label>
+                                            <input  type="checkbox" role="{{$cusine_data['id']}}"  class="custom-control-input cusine_data" id="cusine_data" name="cusine_data" value="{{$cusine_data['id']}}"> 
+                                            <span class="custom-control-indicator"></span> 
+                                            <span class="custom-control-description">{{$cusine_data['name']}}</a></span> 
+                                            </label>
                                         </li>
                                         @endforeach
                                     </ul>
@@ -130,12 +134,12 @@
                                         <div class="entry-logo">
                                             <a class="img-fluid" href="#">
 
-                                                <img src="{{$value['featured_image']}}" alt="Food logo"></a>
+                                                <img id ="rest_img" src="{{$value['featured_image']}}" alt="Food logo"></a>
                                         </div>
                                         <!-- end:Logo -->
                                         <div class="entry-dscr">
-                                            <h5><a href="{{$value['menu_url']}}">{{$value['name']}}</a></h5> 
-                                            <span>{{$value['cuisines']}} <a href="#">...</a></span></br>
+                                            <h5 ><a id="rest_name" href="{{$value['menu_url']}}">{{$value['name']}}</a></h5> 
+                                            <span id="cuisines_name">{{$value['cuisines']}} <a href="#">...</a></span></br>
                                             <span>{{$value['location']['city']}} <a href="#">...</a></span>
                                             <input type="hidden" id="city_id" name="city_id" value="{{$value['location']['city_id']}}"> 
 
@@ -174,7 +178,6 @@
         var input, filter, ul, li, a, i, txtValue;
         input = document.getElementById("myInput");
         filter = input.value.toUpperCase();
-        console.log(filter);
         ul = document.getElementById("myUL");
         li = ul.getElementsByTagName("li");
         for (i = 0; i < li.length; i++) {
@@ -184,9 +187,33 @@
                 li[i].style.display = "";
             } else {
                 li[i].style.display = "none";
-            }
-        }
+            }}
     }
-    
+    $("input.cusine_data").click(function(){
+    let food_id=$(this).attr('role');
+    let food_data=$(this).val();
+    var city_ids= document.getElementById("cityid").value;
+    var city_name= document.getElementById("city").value;
+    var city_type= document.getElementById("entity_type").value;
+    console.log(city_ids,city_name,city_type);
+    $.ajax({
+             url:'/search',
+              type:'GET',
+              data: { 
+                cusine_data:food_id,
+                cityid:city_ids,
+                city:city_name,
+                entity_type:city_type,
+                },                
+              success:function(value){
+                  
+                 $('#rest_name').html(value.result[0].restaurant.name);
+                 $('#cuisines_name').html(value.result[0].restaurant.cuisines);
+                 $('#rest_img').html(value.result[0].restaurant.featured_image);
+
+                console.log(value.result.restaurant.name);}
+         });
+    });
+
    </script>
 @endpush

@@ -2,7 +2,8 @@
 <!doctype html>
 <html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 <head>
-    <meta charset="utf-8">
+ <link rel="shortcut icon" type="image/x-icon" href="<?php echo e(asset('assets/images/averti1.jpg')); ?>">
+    <meta charset="utf-8"></meta>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <title><?php echo e(config('app.name', 'Laravel')); ?> | <?php echo e(Auth::user()['name']); ?></title>

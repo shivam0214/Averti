@@ -98,6 +98,23 @@
 				  </div>
 				  <!-- /.box -->
 				</div>
+				
+				<div class="col-md-12 col-lg-4">
+				  <div class="box">
+					<div class="box-header with-border">
+					<a class="d-block" href="#" target="_blank">
+						  <img src="<?php echo e(asset('assets/images/about/auction.png')); ?>" height="350" width="100%" alt="Verify Emial page">
+						</a>
+					</div>
+					<div class="box-body">
+					<a class="d-block" href="#" target="_blank">
+					<h4 class="box-title d-block text-center">Auction</h4>          
+					</a>
+					</div>
+					<!-- /.box-body -->
+				  </div>
+				  <!-- /.box -->
+				</div>
 			</div>
 
 		</section>
