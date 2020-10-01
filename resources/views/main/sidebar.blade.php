@@ -190,7 +190,7 @@
         <li>
           <a href="{{route('notification')}}">
             <i class="ti-bell"></i>
-			<span>Healt Template</span>
+			<span>Health Template</span>
           </a>
         </li>
         <li>
@@ -199,7 +199,12 @@
 			<span>Fitness Template</span>
           </a>
         </li>
-       
+        <li>
+          <a href="{{route('gym_index')}}">
+            <i class="ti-bell"></i>
+			<span>Gym Trainer</span>
+          </a>
+        </li>
 @endif
       </ul>
       

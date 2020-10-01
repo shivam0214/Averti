@@ -49,8 +49,8 @@
                                 <input type="hidden" name="entity_id" class="form-control form-control-lg" id="entity_id"> 
                                     <input type="hidden" name="entity_type" class="form-control form-control-lg" id="entity_type"> 
                                     <input type="hidden" name="city_id" class="form-control form-control-lg" id="city_id"> 
-                                    <input type="text" name="latitude_loc" class="form-control form-control-lg" id="latitude_loc"> 
-                                    <input type="text" name="longitude_loc" class="form-control form-control-lg" id="longitude_loc"> 
+                                    <input type="hidden" name="latitude_loc" class="form-control form-control-lg" id="latitude_loc"> 
+                                    <input type="hidden" name="longitude_loc" class="form-control form-control-lg" id="longitude_loc"> 
 
                             </div>
                             <button type="submit" class="btn theme-btn btn-lg search_food">Search food</button>
@@ -100,73 +100,30 @@
                 </div>
                 <div class="row">
                     <!-- Each popular food item starts -->
+                    @foreach($best_restaurant as $data)
                     <div class="col-xs-12 col-sm-6 col-md-4 food-item">
                         <div class="food-item-wrap">
-                            <div class="figure-wrap bg-image" data-image-src="http://placehold.it/380x210">
+                            <div class="figure-wrap bg-image" data-image-src="{{$data['restaurant']['featured_image']}}">
                                 <div class="distance"><i class="fa fa-pin"></i>1240m</div>
-                                <div class="rating pull-left"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>
-                                <div class="review pull-right"><a href="#">198 reviews</a> </div>
+                                <div class="rating pull-left" > 
+                                    <i class="fa fa-star" value="{{$data['restaurant']['user_rating']['aggregate_rating']}}"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>
+                                <div class="review pull-right"><a href="#">{{$data['restaurant']['all_reviews_count']}} reviews</a> </div>
                             </div>
                             <div class="content">
-                                <h5><a href="profile.html">The South"s Best Fried Chicken</a></h5>
-                                <div class="product-name">Fried Chicken with cheese</div>
-                                <div class="price-btn-block"> <span class="price">$ 15,99</span> <a href="#" class="btn theme-btn-dash pull-right">Order Now</a> </div>
+                                <h5><a href="profile.html">{{$data['restaurant']['name']}}</a></h5>
+                                <div class="product-name">{{$data['restaurant']['cuisines']}}</div>
+                                <div class="price-btn-block"> <span class="price">{{$data['restaurant']['currency']}} {{$data['restaurant']['average_cost_for_two']}}</span> <a href="#" class="btn theme-btn-dash pull-right">Order Now</a> </div>
                             </div>
                             <div class="restaurant-block">
                                 <div class="left">
                                     <a class="pull-left" href="profile.html"> <img src="http://placehold.it/50x46" alt="Restaurant logo" /> </a>
-                                    <div class="pull-left right-text"> <a href="#">Chicken Restaurant</a> <span>68 5th Avenue New York</span> </div>
+                                    <div class="pull-left right-text"> <a href="#">{{$data['restaurant']['location']['locality_verbose']}}</a> <span></span> </div>
                                 </div>
                                 <div class="right-like-part pull-right"> <i class="fa fa-heart-o"></i> <span>48</span> </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Each popular food item starts -->
-                    <!-- Each popular food item starts -->
-                    <div class="col-xs-12 col-sm-6 col-md-4 food-item">
-                        <div class="food-item-wrap">
-                            <div class="figure-wrap bg-image" data-image-src="http://placehold.it/380x210">
-                                <div class="distance"><i class="fa fa-pin"></i>1240m</div>
-                                <div class="rating pull-left"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>
-                                <div class="review pull-right"><a href="#">198 reviews</a> </div>
-                            </div>
-                            <div class="content">
-                                <h5><a href="profile.html">The South"s Best Fried Chicken</a></h5>
-                                <div class="product-name">Fried Chicken with cheese</div>
-                                <div class="price-btn-block"> <span class="price">$ 18,49</span> <a href="#" class="btn theme-btn-dash pull-right">Order Now</a> </div>
-                            </div>
-                            <div class="restaurant-block">
-                                <div class="left">
-                                    <a class="pull-left" href="profile.html"> <img src="http://placehold.it/50x46" alt="Restaurant logo" /> </a>
-                                    <div class="pull-left right-text"> <a href="#">Chicken Restaurant</a> <span>68 5th Avenue New York</span> </div>
-                                </div>
-                                <div class="right-like-part pull-right"> <i class="fa fa-heart-o"></i> <span>48</span> </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Each popular food item starts -->
-                    <!-- Each popular food item starts -->
-                    <div class="col-xs-12 col-sm-6 col-md-4 food-item">
-                        <div class="food-item-wrap">
-                            <div class="figure-wrap bg-image" data-image-src="http://placehold.it/380x210">
-                                <div class="distance"><i class="fa fa-pin"></i>1240m</div>
-                                <div class="rating pull-left"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>
-                                <div class="review pull-right"><a href="#">198 reviews</a> </div>
-                            </div>
-                            <div class="content">
-                                <h5><a href="profile.html">The South"s Best Fried Chicken</a></h5>
-                                <div class="product-name">Fried Chicken with cheese</div>
-                                <div class="price-btn-block"> <span class="price">$ 21,19</span> <a href="#" class="btn theme-btn-dash pull-right">Order Now</a> </div>
-                            </div>
-                            <div class="restaurant-block">
-                                <div class="left">
-                                    <a class="pull-left" href="profile.html"> <img src="http://placehold.it/50x46" alt="Restaurant logo" /> </a>
-                                    <div class="pull-left right-text"> <a href="#">Chicken Restaurant</a> <span>68 5th Avenue New York</span> </div>
-                                </div>
-                                <div class="right-like-part pull-right"> <i class="fa fa-heart-o"></i> <span>48</span> </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                     <!-- Each popular food item starts -->
                 </div>
             </div>
@@ -254,25 +211,29 @@
                 <!-- restaurants listing starts -->
                 <div class="row">
                     <div class="restaurant-listing">
+                        @foreach($d as $value)
                         <div class="col-xs-12 col-sm-12 col-md-6 single-restaurant grill fish thaifood pizza">
                             <div class="restaurant-wrap">
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-3 col-md-12 col-lg-3 text-xs-center">
-                                        <a class="restaurant-logo" href="#"> <img src="http://placehold.it/95x95" alt="Restaurant logo"> </a>
+                                        <a class="restaurant-logo" href="#"> <img src="{{$value['restaurant']['featured_image']}}" alt="Restaurant logo"> </a>
                                     </div>
                                     <!--end:col -->
                                     <div class="col-xs-12 col-sm-9 col-md-12 col-lg-9">
-                                        <h5><a href="profile.html">Maenaam Thai Restaurant</a></h5> <span>Burgers, American, Sandwiches, Fast Food, BBQ</span>
+                                        <h5><a href="profile.html">{{$value['restaurant']['name']}}</a></h5> 
+                                        <span>{{$value['restaurant']['cuisines']}}</span></br>
+                                        <span>{{$value['restaurant']['location']['locality_verbose']}}</span>
+
                                         <div class="bottom-part">
-                                            <div class="cost"><i class="fa fa-check"></i> Min $ 10,00</div>
+                                            <div class="cost"><i class="fa fa-check"></i> Min {{$value['restaurant']['currency']}} {{$value['restaurant']['average_cost_for_two']}}</div>
                                             <div class="mins"><i class="fa fa-motorcycle"></i> 30 min</div>
-                                            <div class="ratings"> <span>
+                                            <div class="ratings" > <span>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star-o"></i>
-                                                </span> (122) </div>
+                                                </span> {{$value['restaurant']['user_rating']['aggregate_rating']}} </div>
                                         </div>
                                     </div>
                                     <!-- end:col -->
@@ -281,146 +242,7 @@
                             </div>
                             <!--end:Restaurant wrap -->
                         </div>
-                        <!--end: col -->
-                        <div class="col-xs-12 col-sm-12 col-md-6 single-restaurant grill fish pasta thaifood">
-                            <div class="restaurant-wrap">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-3 col-md-12 col-lg-3 text-xs-center">
-                                        <a class="restaurant-logo" href="#"> <img src="http://placehold.it/95x95" alt="Restaurant logo"> </a>
-                                    </div>
-                                    <!--end:col -->
-                                    <div class="col-xs-12 col-sm-9 col-md-12 col-lg-9">
-                                        <h5><a href="profile.html">Maenaam Thai Restaurant</a></h5> <span>Burgers, American, Sandwiches, Fast Food, BBQ</span>
-                                        <div class="bottom-part">
-                                            <div class="cost"><i class="fa fa-check"></i> Min $ 10,00</div>
-                                            <div class="mins"><i class="fa fa-motorcycle"></i> 30 min</div>
-                                            <div class="ratings"> <span>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </span> (122) </div>
-                                        </div>
-                                    </div>
-                                    <!-- end:col -->
-                                </div>
-                                <!-- end:row -->
-                            </div>
-                            <!--end:Restaurant wrap -->
-                        </div>
-                        <!--end: col -->
-                        <div class="col-xs-12 col-sm-12 col-md-6 single-restaurant grill thaifood pasta pizza">
-                            <div class="restaurant-wrap">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-3 col-md-12 col-lg-3 text-xs-center">
-                                        <a class="restaurant-logo" href="#"> <img src="http://placehold.it/95x95" alt="Restaurant logo"> </a>
-                                    </div>
-                                    <!--end:col -->
-                                    <div class="col-xs-12 col-sm-9 col-md-12 col-lg-9">
-                                        <h5><a href="profile.html">Maenaam Thai Restaurant</a></h5> <span>Burgers, American, Sandwiches, Fast Food, BBQ</span>
-                                        <div class="bottom-part">
-                                            <div class="cost"><i class="fa fa-check"></i> Min $ 10,00</div>
-                                            <div class="mins"><i class="fa fa-motorcycle"></i> 30 min</div>
-                                            <div class="ratings"> <span>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </span> (122) </div>
-                                        </div>
-                                    </div>
-                                    <!-- end:col -->
-                                </div>
-                                <!-- end:row -->
-                            </div>
-                            <!--end:Restaurant wrap -->
-                        </div>
-                        <!--end: col -->
-                        <div class="col-xs-12 col-sm-12 col-md-6 single-restaurant thaifood fish pasta">
-                            <div class="restaurant-wrap">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-3 col-md-12 col-lg-3 text-xs-center">
-                                        <a class="restaurant-logo" href="#"> <img src="http://placehold.it/95x95" alt="Restaurant logo"> </a>
-                                    </div>
-                                    <!--end:col -->
-                                    <div class="col-xs-12 col-sm-9 col-md-12 col-lg-9">
-                                        <h5><a href="profile.html">Maenaam Thai Restaurant</a></h5> <span>Burgers, American, Sandwiches, Fast Food, BBQ</span>
-                                        <div class="bottom-part">
-                                            <div class="cost"><i class="fa fa-check"></i> Min $ 10,00</div>
-                                            <div class="mins"><i class="fa fa-motorcycle"></i> 30 min</div>
-                                            <div class="ratings"> <span>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </span> (122) </div>
-                                        </div>
-                                    </div>
-                                    <!-- end:col -->
-                                </div>
-                                <!-- end:row -->
-                            </div>
-                            <!--end:Restaurant wrap -->
-                        </div>
-                        <!--end: col -->
-                        <div class="col-xs-12 col-sm-12 col-md-6 single-restaurant grill fish thaifood pasta pizza">
-                            <div class="restaurant-wrap">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-3 col-md-12 col-lg-3 text-xs-center">
-                                        <a class="restaurant-logo" href="#"> <img src="http://placehold.it/95x95" alt="Restaurant logo"> </a>
-                                    </div>
-                                    <!--end:col -->
-                                    <div class="col-xs-12 col-sm-9 col-md-12 col-lg-9">
-                                        <h5><a href="profile.html">Maenaam Thai Restaurant</a></h5> <span>Burgers, American, Sandwiches, Fast Food, BBQ</span>
-                                        <div class="bottom-part">
-                                            <div class="cost"><i class="fa fa-check"></i> Min $ 10,00</div>
-                                            <div class="mins"><i class="fa fa-motorcycle"></i> 30 min</div>
-                                            <div class="ratings"> <span>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </span> (122) </div>
-                                        </div>
-                                    </div>
-                                    <!-- end:col -->
-                                </div>
-                                <!-- end:row -->
-                            </div>
-                            <!--end:Restaurant wrap -->
-                        </div>
-                        <!--end: col -->
-                        <div class="col-xs-12 col-sm-12 col-md-6 single-restaurant grill pasta pizza">
-                            <div class="restaurant-wrap">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-3 col-md-12 col-lg-3 text-xs-center">
-                                        <a class="restaurant-logo" href="#"> <img src="http://placehold.it/95x95" alt="Restaurant logo"> </a>
-                                    </div>
-                                    <!--end:col -->
-                                    <div class="col-xs-12 col-sm-9 col-md-12 col-lg-9">
-                                        <h5><a href="profile.html">Maenaam Thai Restaurant</a></h5> <span>Burgers, American, Sandwiches, Fast Food, BBQ</span>
-                                        <div class="bottom-part">
-                                            <div class="cost"><i class="fa fa-check"></i> Min $ 10,00</div>
-                                            <div class="mins"><i class="fa fa-motorcycle"></i> 30 min</div>
-                                            <div class="ratings"> <span>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </span> (122) </div>
-                                        </div>
-                                    </div>
-                                    <!-- end:col -->
-                                </div>
-                                <!-- end:row -->
-                            </div>
-                            <!--end:Restaurant wrap -->
-                        </div>
+                        @endforeach
                         <!--end: col -->
                     </div>
                 </div>

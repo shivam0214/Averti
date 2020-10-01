@@ -206,12 +206,12 @@
                 entity_type:city_type,
                 },                
               success:function(value){
-                  
+                    console.log(value);
                  $('#rest_name').html(value.result[0].restaurant.name);
                  $('#cuisines_name').html(value.result[0].restaurant.cuisines);
                  $('#rest_img').html(value.result[0].restaurant.featured_image);
 
-                console.log(value.result.restaurant.name);}
+                //console.log(value.result.restaurant.name);}
          });
     });
 

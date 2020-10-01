@@ -147,6 +147,21 @@ Route::get('/popularity_res', 'Adviser\FoodController@popularity_res')->name('po
 
 /*******/ 
 
+/*****Food template*******/
+Route::get('/food_dashboard', 'food_template\DashboardController@index')->name('food_dashboard');
+
+/*********/  
+
+
+/*****Gym template*******/
+Route::get('/gym_index', 'Adviser\GymTrainerController@index')->name('gym_index');
+Route::get('/gym_about', 'Adviser\GymTrainerController@about')->name('gym_about');
+Route::get('/gym_pricing', 'Adviser\GymTrainerController@pricing')->name('gym_pricing');
+Route::get('/gym_course', 'Adviser\GymTrainerController@course')->name('gym_course');
+Route::get('/gym_gallery', 'Adviser\GymTrainerController@gallery')->name('gym_gallery');
+
+/*********************/ 
+
 /* Notification details*/
 Route::get('/notification','User\User_to_staff_bookingController@index')->name('notification');
 Route::get('/getstaff_name','User\User_to_staff_bookingController@show_disease')->name('show_disease');

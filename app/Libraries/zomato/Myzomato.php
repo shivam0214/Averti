@@ -179,6 +179,31 @@ Class  Myzomato{
           return $response;
         
     }
+        public function location_details(){
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://developers.zomato.com/api/v2.1/location_details?entity_id=11291&entity_type=city",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "accept: application/json",
+                "cache-control: no-cache",
+                "postman-token: ed21fb22-c1c0-4063-a77d-f21eac8debbb",
+                "user-key: ef18c2db88ed7aaa5033fe57a62ec924"
+            ),
+            ));
+
+            $response = curl_exec($curl);
+            $err = curl_error($curl);
+            curl_close($curl);
+            return $response;
+            
+        }
 
     public function popular_restaurant($latitude=null,$longitude=null){
                 $curl = curl_init();
