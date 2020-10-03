@@ -21,7 +21,7 @@
 				  <div class="box">
 					<div class="box-header with-border">
 					<a class="d-block" href="#" target="_blank">
-						  <img src="{{asset('assets/images/about/07.jpg')}}"  height="350" width="100%" alt="welcome email page">
+						  <img src="{{asset('assets/images/about/07.jpg')}}"  height="250" width="100%" alt="welcome email page">
 						</a>
 					</div>
 					<div class="box-body">
@@ -37,7 +37,7 @@
 				  <div class="box">
 					<div class="box-header with-border">
 					<a class="d-block" href="{{route('staff_user')}}" target="_blank">
-						  <img src="{{asset('assets/images/about/04.jpg')}}" height="350" width="100%" alt="Verify Emial page">
+						  <img src="{{asset('assets/images/about/04.jpg')}}" height="250" width="100%" alt="Verify Emial page">
 						</a>
 					</div>
 					<div class="box-body">
@@ -53,7 +53,7 @@
 				  <div class="box">
 					<div class="box-header with-border">
 					<a class="d-block" href="#" target="_blank">
-						  <img src="{{asset('assets/images/about/1gym.jpg')}}" height="350" width="100%" alt="Change Password page">
+						  <img src="{{asset('assets/images/about/fitness.png')}}" height="250" width="100%" alt="Change Password page">
 						</a>
 					</div>
 					<div class="box-body">
@@ -69,7 +69,7 @@
 				  <div class="box">
 				  <div class="box-header with-border">
 				  <a href="{{route('view_product')}}" target="_blank">
-						  <img src="{{asset('assets/images/food_image/ch.jpg')}}" height="350" width="100%" alt="Expired Card page">
+						  <img src="{{asset('assets/images/about/food.png')}}" height="250" width="100%" alt="Expired Card page">
 						</a>
 					</div>
 					
@@ -87,7 +87,7 @@
 				  <div class="box">
 					<div class="box-header with-border">
 					<a class="d-block" href="#" target="_blank">
-						  <img src="{{asset('assets/images/about/travel.jpg')}}" height="350" width="100%" alt="Closed Account page">
+						  <img src="{{asset('assets/images/about/travel.jpg')}}" height="250" width="100%" alt="Closed Account page">
 						</a>
 				
 					</div>
@@ -105,7 +105,7 @@
 				  <div class="box">
 					<div class="box-header with-border">
 					<a class="d-block" href="#" target="_blank">
-						  <img src="{{asset('assets/images/about/auction.png')}}" height="350" width="100%" alt="Verify Emial page">
+						  <img src="{{asset('assets/images/about/auction.png')}}" height="250" width="100%" alt="Verify Emial page">
 						</a>
 					</div>
 					<div class="box-body">
@@ -119,6 +119,22 @@
 				</div>
 			</div>
 
+			<div class="col-md-12 col-lg-4">
+				  <div class="box">
+					<div class="box-header with-border">
+					<a class="d-block" href="#" target="_blank">
+						  <img src="{{asset('assets/images/about/gym.png')}}" height="250" width="100%" alt="Change Password page">
+						</a>
+					</div>
+					<div class="box-body">
+					<a class="d-block" href="#" target="_blank">
+					<h4 class="box-title d-block text-center">GYM </h4>          
+					</a>	
+					</div>
+					<!-- /.box-body -->
+				  </div>
+				  <!-- /.box -->
+				</div>
 		</section>
 		<!-- /.content -->
 	  </div>
