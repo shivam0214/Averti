@@ -17,7 +17,10 @@ class UserController extends Controller
 {
     
     public function user(){
-        $users = User::where(['perent_id'=>Auth::user()['id'],'role_id'=>3])->get();         
+        $users = User::where(['perent_id'=>Auth::user()['id'],'role_id'=>3])->get(); 
+        $img = User_meta::where('user_id',Auth::user()['id'])->get();
+        
+        Auth::user()['profile'] = $img[0]['profile_image'];         
         return view('User.listuser',compact('users'));
     }
     public function add_user(){

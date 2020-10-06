@@ -162,6 +162,17 @@ class Health_staffController extends Controller
     }
 
     public function staff_detail($id){
+        $img = User_meta::where('user_id',Auth::user()['id'])->get();
+        
+        Auth::user()['profile'] = $img[0]['profile_image'];
+        
+        if(Auth::user()['role_id']==3){
+        $users = User::where(['id'=>Auth::user()['perent_id'],'role_id'=>2])->get();
+        }
+        else{
+            $users = User::where(['perent_id'=>Auth::user()['id'],'role_id'=>3])->get();
+        }
+        
         $details=Staff_booking::where('staff_id',$id)->get();
              return view('health_staff.staff_details',compact('details'));
     }

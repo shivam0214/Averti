@@ -14,7 +14,7 @@
 									<input type="text" name="s">
 								</div>
 							</div>
-							gg
+							
 						</div>
 						<div class="box-body no-padding">
 							<div class="table-responsive">

@@ -116,7 +116,7 @@ Route::get('/staff_list', 'Adviser\Health_staffController@staff_list')->name('st
 Route::get('/staff_profile/{id}', 'Adviser\Health_staffController@view_staff')->name('view_staff');
 Route::post('/update_details', 'Adviser\Health_staffController@update_details')->name('update_details');
 Route::get('/delete_data/{id}', 'Adviser\Health_staffController@delete_data')->name('delete_data');
-Route::get('/staff_user', 'Adviser\Health_staffController@staff_user')->name('staff_user');
+Route::get('/staff', 'Adviser\Health_staffController@staff_user')->name('staff_user');
 Route::get('/staff_detail/{id}', 'Adviser\Health_staffController@staff_detail')->name('staff_detail');
 
 /* Food details*/

@@ -10,6 +10,8 @@
 </style>
 
 <div class="content-wrapper">
+<input type="hidden" id="current_user" value="<?php echo e(Auth::user()); ?>" />
+
 	  <div class="container-full">
 		<!-- Content Header (Page header) -->
 		<div class="content-header">
@@ -48,18 +50,22 @@
                                   
                           </tr>
                             </thead>
-                            <tbody class ="chat_list" style="height:50%">
+                            <tbody  style="height:50%">
                                 <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $record): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <tr>
+                <tr class ="chat_list">
 								<td scope="row"><div class="icheck-material-primary">
 									<input type="checkbox" id="primary2" >
 									<label for="primary2"></label>
 									</div>
 								</td>
 								<td>
-								<img src="<?php echo (($record['single']['profile_image'])!= NULL) ? url($record['single']['profile_image']) : url(asset('assets/img/avatars/user.png')); ?>" alt="&#xf013;" height="50px" width="50px">
-											</td>
-								<td><a href="<?php echo e(route('view_profile',['id'=>$record->id])); ?>"><?php echo e($record['name']); ?> </a></td>
+								<a style="display:none" class="avatar avatar-lg status-success" href="#">
+										<img src="<?php echo e($record['single']['profile_image']); ?>" class="img" alt="..." >
+								</a>
+											  
+								<img src="<?php echo (($record['single']['profile_image'])!= NULL) ? url($record['single']['profile_image']) : url(asset('assets/img/avatars/user.png')); ?>"  alt="&#xf013;" height="50px" width="50px">
+								</td>
+								<td ><a class="hover-primary" href="<?php echo e(route('view_profile',['id'=>$record->id])); ?>"><?php echo e($record['name']); ?> </a></td>
 								<td><?php echo e($record['single']['phone_no']); ?></td>
 								<td><?php echo e($record['catname']['category_name']); ?></td>
 								<td><button type="button" data-toggle="modal" data-target="#modal-right_2" class="btn btn-success waves-effect waves-light" data-target="#audio-call"><i class="fa fa-phone"></i></button>
@@ -106,9 +112,8 @@
 	</div>
 </div>
 <div class="modal modal-right fade" id="modal-right_chat" tabindex="-1">
-<input type="hidden" id="current_user" value="<?php echo e(Auth::user()); ?>" />
 
-	  <div class="modal-dialog" style="width:800px; height:1000px;">
+	  <div class="modal-dialog" style="width:500px; height:800px">
 		<div class="modal-content">
 		    <div class="modal-header">
 				<h3 class="modal-title">Message</h3>
@@ -122,7 +127,7 @@
 						<div class="col-12 mb-3 pt-0 mt-0">
 							<span id="username"></span>
 						</div>
-						<div class="slimScrollDiv" style="overflow-y: scroll;width: 100%;height: 550px;">
+						<div class="slimScrollDiv" style="overflow-y: scroll;width: 100%;height: 400px;">
 							<ul class="box box-transparent no-border" id="messages" >
 								
 							</ul>
@@ -200,6 +205,8 @@
 			console.log(data.img_URL);
 			var li = ''; var img ='';
 			img+= '<img src="'+data.img_URL+'" height="200" weight="200">';
+			console.log(data);
+
 			if(current_user.id == data.sender_id){
 				li+='<li><div class="card d-inline-block mb-3 float-right mr-2"><div class="position-absolute pt-1 pr-2 r-0"><span class="text-extra-small text-muted">'+ formatAMPM(new Date())+'</span></div><div class="card-body"><div class="d-flex flex-row pb-2"><a class="d-flex" href="#"><img alt="Profile" src="'+current_user.profile+'" class="avatar mr-10"></a><div class="d-flex flex-grow-1 min-width-zero"><div class="m-2 pl-0 align-self-center d-flex flex-column flex-lg-row justify-content-between"><div class="min-width-zero"><p class="mb-0 font-size-16 ">'+current_user.name+'</p></div></div></div></div><div class="chat-text-left pl-55"><p class="mb-0 text-semi-muted">'+img+'<br/>'+data.message_text+' </p></div></div></div></li>'
 
@@ -277,11 +284,9 @@
 		var strTime = hours + ':' + minutes + ' ' + ampm;
 		return strTime;
 	}
-
 	function browsefile(){
 		$('#fileinput').trigger('click'); 
 	}
-
 	function previewFile(input){	    
         var file = $("input[type=file]").get(0).files[0];
         if(file){

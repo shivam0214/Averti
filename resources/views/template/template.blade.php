@@ -41,7 +41,7 @@
 						</a>
 					</div>
 					<div class="box-body">
-					<a class="d-block" href="{{route('staff_list')}}" target="_blank">
+					<a class="d-block" href="{{route('staff_user')}}" target="_blank">
 					<h4 class="box-title d-block text-center">Doctors</h4>          
 					</a>
 					</div>
