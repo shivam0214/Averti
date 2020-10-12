@@ -113,10 +113,10 @@
 </div>
 <div class="modal modal-right fade" id="modal-right_chat" tabindex="-1">
 
-	  <div class="modal-dialog" style="width:500px; height:800px">
+	  <div class="modal-dialog" style="width:500px; height:700px">
 		<div class="modal-content">
 		    <div class="modal-header">
-				<h3 class="modal-title">Message</h3>
+				<h3 class="modal-title"><span id="username"></span></h3>
 				<button type="button" class="close" data-dismiss="modal">
 				<span aria-hidden="true">&times;</span>
 				</button>
@@ -162,9 +162,7 @@
 				</div>
 					
 			</div>
-			<div class="modal-footer modal-footer-uniform">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			</div>
+			
 		</div>
 	</div>
 </div>
