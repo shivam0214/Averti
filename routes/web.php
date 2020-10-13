@@ -143,10 +143,16 @@ Route::get('/get_daily_menu', 'Adviser\FoodController@get_daily_menu')->name('ge
 Route::get('/search', 'Adviser\FoodController@search_establishments')->name('search_establishments');
 Route::get('/location', 'Adviser\FoodController@location')->name('location');
 Route::get('/popularity_res', 'Adviser\FoodController@popularity_res')->name('popularity_res');
-
-
 /*******/ 
 
+
+/***Plaid****/
+Route::get('/transactions', 'PlaidController@transactions')->name('transactions');
+Route::get('/plaid_view', 'PlaidController@plaid_view')->name('plaid_view');
+Route::get('/balance', 'PlaidController@balance')->name('balance');
+
+
+/********/  
 /*****Food template*******/
 Route::get('/food_dashboard', 'food_template\DashboardController@index')->name('food_dashboard');
 
