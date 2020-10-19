@@ -28,4 +28,42 @@ class PlaidController extends Controller
         $data = $get->balance();     
         dd($data);die;       
     }
+
+    public function reterive_income(){
+        $get = new Plaid;
+        $data = $get->reterive_income();     
+        dd($data);die;       
+        
+    }
+    public function reterive_auth(){
+        $get = new Plaid;
+        $data = $get->reterive_auth();     
+        dd($data);die;       
+        
+    }
+    public function reterive_identity(){
+        $get = new Plaid;
+        $data = $get->reterive_identity();     
+        dd($data);die;       
+        
+    }
+
+    public function categories(){
+        $get = new Plaid;
+        $data = $get->categories();     
+        dd($data);die;       
+        
+    }
+    public function investment_holding(){
+        $get = new Plaid;
+        $data = $get->investment_holding();     
+        dd($data);die;       
+        
+    }
+    public function investment_transactions(){
+        $get = new Plaid;
+        $data = $get->investment_transactions();     
+        dd($data);die;       
+        
+    }
 }

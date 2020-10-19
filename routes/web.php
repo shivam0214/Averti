@@ -150,6 +150,12 @@ Route::get('/popularity_res', 'Adviser\FoodController@popularity_res')->name('po
 Route::get('/transactions', 'PlaidController@transactions')->name('transactions');
 Route::get('/plaid_view', 'PlaidController@plaid_view')->name('plaid_view');
 Route::get('/balance', 'PlaidController@balance')->name('balance');
+Route::get('/reterive_income', 'PlaidController@reterive_income')->name('reterive_income');
+Route::get('/reterive_auth', 'PlaidController@reterive_auth')->name('reterive_auth');
+Route::get('/reterive_identity', 'PlaidController@reterive_identity')->name('reterive_identity');
+Route::get('/categories', 'PlaidController@categories')->name('categories');
+Route::get('/investment_holding', 'PlaidController@investment_holding')->name('investment_holding');
+Route::get('/investment_transactions', 'PlaidController@investment_transactions')->name('investment_transactions');
 
 
 /********/  
