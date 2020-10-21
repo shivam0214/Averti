@@ -29,8 +29,7 @@
 						  <a href="<?php echo e(route('allmeeting',$r_advisor['mid'])); ?>" class="btn btn-rounded btn-sm btn-success m-5">Start</a>
 						</div>
 					  </div>
-                    </div>
-                   				
+                    </div>		
 				</div>		
             </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

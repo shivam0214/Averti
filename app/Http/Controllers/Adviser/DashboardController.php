@@ -9,6 +9,7 @@ use DB;
 use App\User;
 use App\User_meta;
 use App\UserRequest;
+use App\Notifications\RequestNotification;
 
 
 use Redirect;
@@ -129,14 +130,19 @@ class DashboardController extends Controller
     }
     
     public function user_request(){
+        $user_req=Auth::user();
+        print_r($user_req);
+        die;
+        
         $advisor=UserRequest::where(['advisor_id'=>Auth::user()->id,'status'=>0])->get();
+        Auth::user()->notify(new RequestNotification($user_req));
+
         $ids = [];
         foreach($advisor as $user_details){
              $ids[] =$user_details['user_id'];
          }
          
         $value= user::where(['role_id'=>3])->whereIn('id',$ids)->get();
-        
         return view('Adviser.user_request',compact('value'));
     }
 
@@ -146,6 +152,7 @@ class DashboardController extends Controller
         $insert =User::where('id',$r->id)->update($data);
         UserRequest::where(['advisor_id'=>$advisor,'user_id'=>$r->id])->update(['status'=>1]);
         if($insert){
+
             $notification = array(
              'message' => 'Thanks',
              'alert-type' => 'success'

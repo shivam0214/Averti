@@ -102,8 +102,7 @@
 			</li>
 		  <!-- Notifications -->
 		  <li class="dropdown notifications-menu">
-			<a href="#" class="waves-effect waves-light dropdown-toggle" data-toggle="dropdown" title="Notifications">
-			  <i class="ti-bell"></i>
+			<a href="#" class="waves-effect waves-light dropdown-toggle" data-toggle="dropdown" title="Notifications"><i class="ti-bell"></i><span class="badge">{{count(auth()->user()->unreadnotifications)}}</span>
 			</a>
 			<ul class="dropdown-menu animated bounceIn">
 

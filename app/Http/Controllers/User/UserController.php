@@ -10,6 +10,7 @@ use Auth;
 use App\UserRequest;
 use App\Contact;
 use App\Categories;
+use App\Notifications\RequestNotification;
 
 use Redirect;
 
@@ -57,6 +58,7 @@ class UserController extends Controller
                  'message' => 'Request Send',
                  'alert-type' => 'success'
                  );
+
             }
         }
             return Redirect::to('/advisor_request')->with($notification);
@@ -72,6 +74,7 @@ class UserController extends Controller
         
         if(Auth::user()['role_id']==3){
         $users = User::where(['id'=>Auth::user()['perent_id'],'role_id'=>2])->get();
+
         }
         else{
             $users = User::where(['perent_id'=>Auth::user()['id'],'role_id'=>3])->get();
