@@ -129,10 +129,10 @@ class DashboardController extends Controller
          return Redirect::to('/Profile')->with($notification);
     }
     
-    public function user_request(){
+    public function user_request(User $user_req ){
         $user_req=Auth::user();
-        print_r($user_req);
-        die;
+        // print_r($user_req);
+        // die;
         
         $advisor=UserRequest::where(['advisor_id'=>Auth::user()->id,'status'=>0])->get();
         Auth::user()->notify(new RequestNotification($user_req));

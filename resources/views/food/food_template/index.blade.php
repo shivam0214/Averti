@@ -30,7 +30,7 @@
                     <div class="banner-form">
                     <div id="button-layer">
 
-                    <button onclick="getLocation()">Try It</button>
+                    <button type="hidden" onclick="getLocation()">Try It</button>
                   
                     <p id="demo"></p>
                     </div>

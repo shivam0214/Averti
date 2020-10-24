@@ -6,11 +6,11 @@
 			<i class="ti-menu"></i>
 		</a>	
 		<!-- Logo -->
-		<a href="index.html" class="logo">
+		<a href="#" class="logo">
 		  <!-- logo-->
 		  <div class="logo-lg">
 		  <?php if(Auth::user()->role_id==2): ?>
-			  <span class="light-logo"><img src="<?php echo e(asset('assets/images/averti1.png')); ?>" alt="logo"></span>
+			  <span class="light-logo"><img src="<?php echo e(asset('assets/images/averti1.png')); ?>" alt="logo" width="100px"></span>
 			  <?php else: ?>
 			  <span class="light-logo"><img src="<?php echo e(asset('assets/images/averti.png')); ?>" alt="logo"></span>
 			  <?php endif; ?>
@@ -104,41 +104,14 @@
 				<!-- inner menu: contains the actual data -->
 				<ul class="menu sm-scrol">
 				  <li>
+				    <?php $__currentLoopData = auth()->user()->unreadnotifications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 					<a href="#">
-					  <i class="fa fa-users text-info"></i> Curabitur id eros quis nunc suscipit blandit.
+					  <i class="fa fa-users text-info">
+					  <?php echo e($notification->data['user_req']); ?>  </i> 
 					</a>
+					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 				  </li>
-				  <li>
-					<a href="#">
-					  <i class="fa fa-warning text-warning"></i> Duis malesuada justo eu sapien elementum, in semper diam posuere.
-					</a>
-				  </li>
-				  <li>
-					<a href="#">
-					  <i class="fa fa-users text-danger"></i> Donec at nisi sit amet tortor commodo porttitor pretium a erat.
-					</a>
-				  </li>
-				  <li>
-					<a href="#">
-					  <i class="fa fa-shopping-cart text-success"></i> In gravida mauris et nisi
-					</a>
-				  </li>
-				  <li>
-					<a href="#">
-					  <i class="fa fa-user text-danger"></i> Praesent eu lacus in libero dictum fermentum.
-					</a>
-				  </li>
-				  <li>
-					<a href="#">
-					  <i class="fa fa-user text-primary"></i> Nunc fringilla lorem 
-					</a>
-				  </li>
-				  <li>
-					<a href="#">
-					  <i class="fa fa-user text-success"></i> Nullam euismod dolor ut quam interdum, at scelerisque ipsum imperdiet.
-					</a>
-				  </li>
-				</ul>
+				 </ul>
 			  </li>
 			  <li class="footer">
 				  <a href="#">View all</a>

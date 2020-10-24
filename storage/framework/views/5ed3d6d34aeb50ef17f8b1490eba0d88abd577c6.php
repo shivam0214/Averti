@@ -2,13 +2,7 @@
 <div class="content-wrapper">
 	  <div class="container-full">
 		<!-- Content Header (Page header) -->
-		<div class="content-header">
-			<div class="d-flex align-items-center">
-				<div class="mr-auto">
-					<h3 class="page-title">List</h3>
-				</div>
-			</div>
-		</div>
+		
 		<section class="content">
 			<div class="row">
 				<div class="col-12">

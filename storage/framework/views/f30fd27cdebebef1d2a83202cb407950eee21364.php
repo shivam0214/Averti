@@ -8,7 +8,7 @@
 					<div class="d-inline-block align-items-center">
 						<nav>
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item active" aria-current="page"><h3 class="page-title"><?php echo e(auth::user()['name']); ?>s Profile</h3></li>
+								<li class="breadcrumb-item active" aria-current="page"><h3 class="page-title"><?php echo e(auth::user()['name']); ?>'s Profile</h3></li>
 							</ol>
 						</nav>
 					</div>
