@@ -126,7 +126,7 @@
 				    @foreach(auth()->user()->unreadnotifications as $notification)
 					<a href="#">
 					  <i class="fa fa-users text-info">
-					  {{$notification}}  </i> 
+					  {{json_decode($notification)}}  </i> 
 					</a>
 					@endforeach
 				  </li>

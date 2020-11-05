@@ -107,7 +107,7 @@
 				    <?php $__currentLoopData = auth()->user()->unreadnotifications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 					<a href="#">
 					  <i class="fa fa-users text-info">
-					  <?php echo e($notification->data['user_req']); ?>  </i> 
+					  <?php echo e(json_decode($notification)); ?>  </i> 
 					</a>
 					<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 				  </li>

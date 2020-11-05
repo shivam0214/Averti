@@ -41,7 +41,7 @@ class RequestNotification extends Notification
      */
     public function toDatabase($notifiable)
     {
-        //dd ($this->user_req->name);
+      //  dd ($this->user_req->name);
         return [
             'user_req'=>$this->user_req,
             'user'=>$notifiable,
